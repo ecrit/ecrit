@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Plugin Documentation Tooling
+Bundle-SymbolicName: at.ecrit.plugin.documentation.tools;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: at.ecrit.plugin.tools.Activator
+Bundle-Vendor: ecrit.at
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui;bundle-version="3.105.0",
+ org.eclipse.e4.tools;bundle-version="0.12.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="at.ecrit.plugin.tools.editor.EcritEditor"
+            contributorClass="at.ecrit.plugin.tools.editor.EcritEditorContributor"
+            default="false"
+            extensions="ecritxmi"
+            icon="rsc/icons/ecrit_16.png"
+            id="at.ecrit.plugin.documentation.tools.ecriteditor"
+            name="Ecrit File Editor">
+      </editor>
+   </extension>
+
+</plugin>
