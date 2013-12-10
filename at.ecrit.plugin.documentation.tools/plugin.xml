@@ -2,15 +2,20 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         point="org.eclipse.e4.tools.emf.ui.elementEditorTab">
+      <elementEditorTab
+            contribution="at.ecrit.plugin.documentation.tools.elementEditor.EcritElementEditorContribution">
+      </elementEditorTab>
+   </extension>
+   <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="at.ecrit.plugin.tools.editor.EcritEditor"
-            contributorClass="at.ecrit.plugin.tools.editor.EcritEditorContributor"
-            default="false"
+            class="at.ecrit.plugin.documentation.tools.editor.EcritDocumentationModelEditor"
+            default="true"
             extensions="ecritxmi"
             icon="rsc/icons/ecrit_16.png"
-            id="at.ecrit.plugin.documentation.tools.ecriteditor"
-            name="Ecrit File Editor">
+            id="at.ecrit.plugin.documentation.tools.editor"
+            name="Ecrit Documentation File Editor">
       </editor>
    </extension>
 

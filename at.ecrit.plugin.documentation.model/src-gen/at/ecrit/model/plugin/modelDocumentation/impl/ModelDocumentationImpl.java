@@ -6,18 +6,20 @@ import at.ecrit.model.plugin.modelDocumentation.ElementDocumentation;
 import at.ecrit.model.plugin.modelDocumentation.ModelDocumentation;
 import at.ecrit.model.plugin.modelDocumentation.ModelDocumentationPackage;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,24 +28,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ModelDocumentationImpl#getElementDocumentation <em>Element Documentation</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ModelDocumentationImpl#getReferencedModelFile <em>Referenced Model File</em>}</li>
+ *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ModelDocumentationImpl#getElementDocumentation <em>Element Documentation</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class ModelDocumentationImpl extends MinimalEObjectImpl.Container implements ModelDocumentation {
-	/**
-	 * The cached value of the '{@link #getElementDocumentation() <em>Element Documentation</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getElementDocumentation()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ElementDocumentation> elementDocumentation;
-
 	/**
 	 * The default value of the '{@link #getReferencedModelFile() <em>Referenced Model File</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -65,6 +57,16 @@ public class ModelDocumentationImpl extends MinimalEObjectImpl.Container impleme
 	protected String referencedModelFile = REFERENCED_MODEL_FILE_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getElementDocumentation() <em>Element Documentation</em>}' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementDocumentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected EMap<String, ElementDocumentation> elementDocumentation;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -81,18 +83,6 @@ public class ModelDocumentationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	protected EClass eStaticClass() {
 		return ModelDocumentationPackage.Literals.MODEL_DOCUMENTATION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<ElementDocumentation> getElementDocumentation() {
-		if (elementDocumentation == null) {
-			elementDocumentation = new EObjectResolvingEList<ElementDocumentation>(ElementDocumentation.class, this, ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION);
-		}
-		return elementDocumentation;
 	}
 
 	/**
@@ -121,13 +111,40 @@ public class ModelDocumentationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EMap<String, ElementDocumentation> getElementDocumentation() {
+		if (elementDocumentation == null) {
+			elementDocumentation = new EcoreEMap<String,ElementDocumentation>(ModelDocumentationPackage.Literals.STRING_TO_ELEMENT_DOCUMENTATION_MAP, stringToElementDocumentationMapImpl.class, this, ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION);
+		}
+		return elementDocumentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION:
+				return ((InternalEList<?>)getElementDocumentation()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION:
-				return getElementDocumentation();
 			case ModelDocumentationPackage.MODEL_DOCUMENTATION__REFERENCED_MODEL_FILE:
 				return getReferencedModelFile();
+			case ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION:
+				if (coreType) return getElementDocumentation();
+				else return getElementDocumentation().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -137,16 +154,14 @@ public class ModelDocumentationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION:
-				getElementDocumentation().clear();
-				getElementDocumentation().addAll((Collection<? extends ElementDocumentation>)newValue);
-				return;
 			case ModelDocumentationPackage.MODEL_DOCUMENTATION__REFERENCED_MODEL_FILE:
 				setReferencedModelFile((String)newValue);
+				return;
+			case ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION:
+				((EStructuralFeature.Setting)getElementDocumentation()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -160,11 +175,11 @@ public class ModelDocumentationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION:
-				getElementDocumentation().clear();
-				return;
 			case ModelDocumentationPackage.MODEL_DOCUMENTATION__REFERENCED_MODEL_FILE:
 				setReferencedModelFile(REFERENCED_MODEL_FILE_EDEFAULT);
+				return;
+			case ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION:
+				getElementDocumentation().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -178,10 +193,10 @@ public class ModelDocumentationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION:
-				return elementDocumentation != null && !elementDocumentation.isEmpty();
 			case ModelDocumentationPackage.MODEL_DOCUMENTATION__REFERENCED_MODEL_FILE:
 				return REFERENCED_MODEL_FILE_EDEFAULT == null ? referencedModelFile != null : !REFERENCED_MODEL_FILE_EDEFAULT.equals(referencedModelFile);
+			case ModelDocumentationPackage.MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION:
+				return elementDocumentation != null && !elementDocumentation.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

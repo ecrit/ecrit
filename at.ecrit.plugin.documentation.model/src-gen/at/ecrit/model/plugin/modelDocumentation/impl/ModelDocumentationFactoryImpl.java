@@ -4,6 +4,8 @@ package at.ecrit.model.plugin.modelDocumentation.impl;
 
 import at.ecrit.model.plugin.modelDocumentation.*;
 
+import java.util.Map;
+
 import org.eclipse.core.resources.IProject;
 
 import org.eclipse.emf.ecore.EClass;
@@ -63,6 +65,7 @@ public class ModelDocumentationFactoryImpl extends EFactoryImpl implements Model
 		switch (eClass.getClassifierID()) {
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION: return createElementDocumentation();
 			case ModelDocumentationPackage.MODEL_DOCUMENTATION: return createModelDocumentation();
+			case ModelDocumentationPackage.STRING_TO_ELEMENT_DOCUMENTATION_MAP: return (EObject)createstringToElementDocumentationMap();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,6 +83,8 @@ public class ModelDocumentationFactoryImpl extends EFactoryImpl implements Model
 				return createIProjectFromString(eDataType, initialValue);
 			case ModelDocumentationPackage.VERSION:
 				return createVersionFromString(eDataType, initialValue);
+			case ModelDocumentationPackage.STRING:
+				return createStringFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +102,8 @@ public class ModelDocumentationFactoryImpl extends EFactoryImpl implements Model
 				return convertIProjectToString(eDataType, instanceValue);
 			case ModelDocumentationPackage.VERSION:
 				return convertVersionToString(eDataType, instanceValue);
+			case ModelDocumentationPackage.STRING:
+				return convertStringToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -120,6 +127,16 @@ public class ModelDocumentationFactoryImpl extends EFactoryImpl implements Model
 	public ModelDocumentation createModelDocumentation() {
 		ModelDocumentationImpl modelDocumentation = new ModelDocumentationImpl();
 		return modelDocumentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, ElementDocumentation> createstringToElementDocumentationMap() {
+		stringToElementDocumentationMapImpl stringToElementDocumentationMap = new stringToElementDocumentationMapImpl();
+		return stringToElementDocumentationMap;
 	}
 
 	/**
@@ -155,6 +172,24 @@ public class ModelDocumentationFactoryImpl extends EFactoryImpl implements Model
 	 * @generated
 	 */
 	public String convertVersionToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String createStringFromString(EDataType eDataType, String initialValue) {
+		return (String)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertStringToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

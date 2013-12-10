@@ -4,6 +4,8 @@ package at.ecrit.model.plugin.modelDocumentation.util;
 
 import at.ecrit.model.plugin.modelDocumentation.*;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -78,6 +80,12 @@ public class ModelDocumentationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ModelDocumentationPackage.STRING_TO_ELEMENT_DOCUMENTATION_MAP: {
+				@SuppressWarnings("unchecked") Map.Entry<String, ElementDocumentation> stringToElementDocumentationMap = (Map.Entry<String, ElementDocumentation>)theEObject;
+				T result = casestringToElementDocumentationMap(stringToElementDocumentationMap);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -109,6 +117,21 @@ public class ModelDocumentationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseModelDocumentation(ModelDocumentation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>string To Element Documentation Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>string To Element Documentation Map</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casestringToElementDocumentationMap(Map.Entry<String, ElementDocumentation> object) {
 		return null;
 	}
 

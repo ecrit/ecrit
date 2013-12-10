@@ -1,4 +1,4 @@
-package at.ecrit.plugin.tools;
+package at.ecrit.plugin.documentation.tools;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

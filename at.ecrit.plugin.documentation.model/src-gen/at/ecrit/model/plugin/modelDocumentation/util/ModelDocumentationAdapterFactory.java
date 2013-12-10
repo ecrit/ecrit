@@ -4,6 +4,8 @@ package at.ecrit.model.plugin.modelDocumentation.util;
 
 import at.ecrit.model.plugin.modelDocumentation.*;
 
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -76,6 +78,10 @@ public class ModelDocumentationAdapterFactory extends AdapterFactoryImpl {
 				return createModelDocumentationAdapter();
 			}
 			@Override
+			public Adapter casestringToElementDocumentationMap(Map.Entry<String, ElementDocumentation> object) {
+				return createstringToElementDocumentationMapAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -120,6 +126,20 @@ public class ModelDocumentationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelDocumentationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>string To Element Documentation Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createstringToElementDocumentationMapAdapter() {
 		return null;
 	}
 

@@ -14,3 +14,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore.xmi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
+Export-Package: at.ecrit.plugin.documentation.core.constants,
+ at.ecrit.plugin.documentation.core.helper

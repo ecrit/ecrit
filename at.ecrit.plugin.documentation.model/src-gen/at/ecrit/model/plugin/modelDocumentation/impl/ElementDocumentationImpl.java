@@ -26,7 +26,6 @@ import org.osgi.framework.Version;
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getElementId <em>Element Id</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getElementXmiId <em>Element Xmi Id</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getValidFrom <em>Valid From</em>}</li>
- *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getValidTo <em>Valid To</em>}</li>
  * </ul>
  * </p>
  *
@@ -141,26 +140,6 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected Version validFrom = VALID_FROM_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getValidTo() <em>Valid To</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValidTo()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Version VALID_TO_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValidTo() <em>Valid To</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValidTo()
-	 * @generated
-	 * @ordered
-	 */
-	protected Version validTo = VALID_TO_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -316,27 +295,6 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Version getValidTo() {
-		return validTo;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValidTo(Version newValidTo) {
-		Version oldValidTo = validTo;
-		validTo = newValidTo;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelDocumentationPackage.ELEMENT_DOCUMENTATION__VALID_TO, oldValidTo, validTo));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -350,8 +308,6 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 				return getElementXmiId();
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__VALID_FROM:
 				return getValidFrom();
-			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__VALID_TO:
-				return getValidTo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -378,9 +334,6 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__VALID_FROM:
 				setValidFrom((Version)newValue);
-				return;
-			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__VALID_TO:
-				setValidTo((Version)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -409,9 +362,6 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__VALID_FROM:
 				setValidFrom(VALID_FROM_EDEFAULT);
 				return;
-			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__VALID_TO:
-				setValidTo(VALID_TO_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -434,8 +384,6 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 				return ELEMENT_XMI_ID_EDEFAULT == null ? elementXmiId != null : !ELEMENT_XMI_ID_EDEFAULT.equals(elementXmiId);
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__VALID_FROM:
 				return VALID_FROM_EDEFAULT == null ? validFrom != null : !VALID_FROM_EDEFAULT.equals(validFrom);
-			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__VALID_TO:
-				return VALID_TO_EDEFAULT == null ? validTo != null : !VALID_TO_EDEFAULT.equals(validTo);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -460,8 +408,6 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 		result.append(elementXmiId);
 		result.append(", validFrom: ");
 		result.append(validFrom);
-		result.append(", validTo: ");
-		result.append(validTo);
 		result.append(')');
 		return result.toString();
 	}

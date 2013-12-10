@@ -19,7 +19,6 @@ import org.osgi.framework.Version;
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getElementId <em>Element Id</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getElementXmiId <em>Element Xmi Id</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getValidFrom <em>Valid From</em>}</li>
- *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getValidTo <em>Valid To</em>}</li>
  * </ul>
  * </p>
  *
@@ -184,31 +183,5 @@ public interface ElementDocumentation extends EObject {
 	 * @generated
 	 */
 	void setValidFrom(Version value);
-
-	/**
-	 * Returns the value of the '<em><b>Valid To</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Valid To</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Valid To</em>' attribute.
-	 * @see #setValidTo(Version)
-	 * @see at.ecrit.model.plugin.modelDocumentation.ModelDocumentationPackage#getElementDocumentation_ValidTo()
-	 * @model dataType="at.ecrit.model.plugin.modelDocumentation.Version"
-	 * @generated
-	 */
-	Version getValidTo();
-
-	/**
-	 * Sets the value of the '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getValidTo <em>Valid To</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Valid To</em>' attribute.
-	 * @see #getValidTo()
-	 * @generated
-	 */
-	void setValidTo(Version value);
 
 } // ElementDocumentation

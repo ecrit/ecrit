@@ -2,7 +2,7 @@
  */
 package at.ecrit.model.plugin.modelDocumentation;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ModelDocumentation#getElementDocumentation <em>Element Documentation</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ModelDocumentation#getReferencedModelFile <em>Referenced Model File</em>}</li>
+ *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ModelDocumentation#getElementDocumentation <em>Element Documentation</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,22 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ModelDocumentation extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Element Documentation</b></em>' reference list.
-	 * The list contents are of type {@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Element Documentation</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Element Documentation</em>' reference list.
-	 * @see at.ecrit.model.plugin.modelDocumentation.ModelDocumentationPackage#getModelDocumentation_ElementDocumentation()
-	 * @model
-	 * @generated
-	 */
-	EList<ElementDocumentation> getElementDocumentation();
-
 	/**
 	 * Returns the value of the '<em><b>Referenced Model File</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -65,5 +49,22 @@ public interface ModelDocumentation extends EObject {
 	 * @generated
 	 */
 	void setReferencedModelFile(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Element Documentation</b></em>' map.
+	 * The key is of type {@link java.lang.String},
+	 * and the value is of type {@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation},
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Element Documentation</em>' map isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Element Documentation</em>' map.
+	 * @see at.ecrit.model.plugin.modelDocumentation.ModelDocumentationPackage#getModelDocumentation_ElementDocumentation()
+	 * @model mapType="at.ecrit.model.plugin.modelDocumentation.stringToElementDocumentationMap<at.ecrit.model.plugin.modelDocumentation.String, at.ecrit.model.plugin.modelDocumentation.ElementDocumentation>"
+	 * @generated
+	 */
+	EMap<String, ElementDocumentation> getElementDocumentation();
 
 } // ModelDocumentation

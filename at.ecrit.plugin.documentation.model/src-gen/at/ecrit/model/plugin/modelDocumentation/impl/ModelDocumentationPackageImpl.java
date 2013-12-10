@@ -7,6 +7,8 @@ import at.ecrit.model.plugin.modelDocumentation.ModelDocumentation;
 import at.ecrit.model.plugin.modelDocumentation.ModelDocumentationFactory;
 import at.ecrit.model.plugin.modelDocumentation.ModelDocumentationPackage;
 
+import java.util.Map;
+
 import org.eclipse.core.resources.IProject;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -45,6 +47,13 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass stringToElementDocumentationMapEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType iProjectEDataType = null;
 
 	/**
@@ -53,6 +62,13 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * @generated
 	 */
 	private EDataType versionEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType stringEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -174,15 +190,6 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getElementDocumentation_ValidTo() {
-		return (EAttribute)elementDocumentationEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getModelDocumentation() {
 		return modelDocumentationEClass;
 	}
@@ -192,8 +199,8 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModelDocumentation_ElementDocumentation() {
-		return (EReference)modelDocumentationEClass.getEStructuralFeatures().get(0);
+	public EAttribute getModelDocumentation_ReferencedModelFile() {
+		return (EAttribute)modelDocumentationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -201,8 +208,35 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getModelDocumentation_ReferencedModelFile() {
-		return (EAttribute)modelDocumentationEClass.getEStructuralFeatures().get(1);
+	public EReference getModelDocumentation_ElementDocumentation() {
+		return (EReference)modelDocumentationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getstringToElementDocumentationMap() {
+		return stringToElementDocumentationMapEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getstringToElementDocumentationMap_Key() {
+		return (EAttribute)stringToElementDocumentationMapEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getstringToElementDocumentationMap_Value() {
+		return (EReference)stringToElementDocumentationMapEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -221,6 +255,15 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 */
 	public EDataType getVersion() {
 		return versionEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getString() {
+		return stringEDataType;
 	}
 
 	/**
@@ -257,15 +300,19 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__ELEMENT_ID);
 		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__ELEMENT_XMI_ID);
 		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__VALID_FROM);
-		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__VALID_TO);
 
 		modelDocumentationEClass = createEClass(MODEL_DOCUMENTATION);
-		createEReference(modelDocumentationEClass, MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION);
 		createEAttribute(modelDocumentationEClass, MODEL_DOCUMENTATION__REFERENCED_MODEL_FILE);
+		createEReference(modelDocumentationEClass, MODEL_DOCUMENTATION__ELEMENT_DOCUMENTATION);
+
+		stringToElementDocumentationMapEClass = createEClass(STRING_TO_ELEMENT_DOCUMENTATION_MAP);
+		createEAttribute(stringToElementDocumentationMapEClass, STRING_TO_ELEMENT_DOCUMENTATION_MAP__KEY);
+		createEReference(stringToElementDocumentationMapEClass, STRING_TO_ELEMENT_DOCUMENTATION_MAP__VALUE);
 
 		// Create data types
 		iProjectEDataType = createEDataType(IPROJECT);
 		versionEDataType = createEDataType(VERSION);
+		stringEDataType = createEDataType(STRING);
 	}
 
 	/**
@@ -304,15 +351,19 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 		initEAttribute(getElementDocumentation_ElementId(), ecorePackage.getEString(), "elementId", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDocumentation_ElementXmiId(), ecorePackage.getEString(), "elementXmiId", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDocumentation_ValidFrom(), this.getVersion(), "validFrom", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getElementDocumentation_ValidTo(), this.getVersion(), "validTo", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelDocumentationEClass, ModelDocumentation.class, "ModelDocumentation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModelDocumentation_ElementDocumentation(), this.getElementDocumentation(), null, "elementDocumentation", null, 0, -1, ModelDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelDocumentation_ReferencedModelFile(), ecorePackage.getEString(), "referencedModelFile", null, 1, 1, ModelDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelDocumentation_ElementDocumentation(), this.getstringToElementDocumentationMap(), null, "elementDocumentation", null, 0, -1, ModelDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stringToElementDocumentationMapEClass, Map.Entry.class, "stringToElementDocumentationMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getstringToElementDocumentationMap_Key(), this.getString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getstringToElementDocumentationMap_Value(), this.getElementDocumentation(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(iProjectEDataType, IProject.class, "IProject", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(versionEDataType, Version.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(stringEDataType, String.class, "String", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
