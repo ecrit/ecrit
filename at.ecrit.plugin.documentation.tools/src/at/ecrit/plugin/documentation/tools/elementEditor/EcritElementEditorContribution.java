@@ -1,6 +1,6 @@
 package at.ecrit.plugin.documentation.tools.elementEditor;
 
-import java.io.IOException;
+import java.util.UUID;
 
 import org.eclipse.core.databinding.UpdateValueStrategy;
 import org.eclipse.core.databinding.observable.value.IValueChangeListener;
@@ -90,8 +90,8 @@ public class EcritElementEditorContribution extends
 
 				String elementId = mae.getElementId();
 				if (elementId == null) {
-					wvDocu.setValue(null);
-					System.out.println("[ERR] null elementId");
+					mae.setElementId(UUID.randomUUID().toString());
+					System.out.println("Generated random id for element "+mae);
 					return;
 				}
 
