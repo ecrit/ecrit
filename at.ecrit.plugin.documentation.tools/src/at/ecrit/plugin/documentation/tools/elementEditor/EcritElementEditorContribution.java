@@ -90,9 +90,9 @@ public class EcritElementEditorContribution extends
 
 				String elementId = mae.getElementId();
 				if (elementId == null) {
-					mae.setElementId(UUID.randomUUID().toString());
+					elementId = UUID.randomUUID().toString();
+					mae.setElementId(elementId);
 					System.out.println("Generated random id for element "+mae);
-					return;
 				}
 
 				EMap<String, ElementDocumentation> map = bundleDocumentation.getElementDocumentation();
