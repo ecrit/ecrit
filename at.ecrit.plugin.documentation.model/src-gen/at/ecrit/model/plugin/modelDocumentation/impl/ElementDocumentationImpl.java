@@ -21,7 +21,9 @@ import org.osgi.framework.Version;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getPostcondition <em>Postcondition</em>}</li>
+ *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getPrecondition <em>Precondition</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getElementType <em>Element Type</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getElementId <em>Element Id</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.impl.ElementDocumentationImpl#getElementXmiId <em>Element Xmi Id</em>}</li>
@@ -33,33 +35,73 @@ import org.osgi.framework.Version;
  */
 public class ElementDocumentationImpl extends MinimalEObjectImpl.Container implements ElementDocumentation {
 	/**
-	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDocumentation()
+	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DOCUMENTATION_EDEFAULT = null;
+	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDocumentation()
+	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected String documentation = DOCUMENTATION_EDEFAULT;
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * This is true if the Documentation attribute has been set.
+	 * This is true if the Description attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean documentationESet;
+	protected boolean descriptionESet;
+
+	/**
+	 * The default value of the '{@link #getPostcondition() <em>Postcondition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostcondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String POSTCONDITION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPostcondition() <em>Postcondition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostcondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected String postcondition = POSTCONDITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPrecondition() <em>Precondition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPrecondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PRECONDITION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPrecondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected String precondition = PRECONDITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getElementType() <em>Element Type</em>}' attribute.
@@ -165,8 +207,8 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDocumentation() {
-		return documentation;
+	public String getDescription() {
+		return description;
 	}
 
 	/**
@@ -174,13 +216,13 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDocumentation(String newDocumentation) {
-		String oldDocumentation = documentation;
-		documentation = newDocumentation;
-		boolean oldDocumentationESet = documentationESet;
-		documentationESet = true;
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		boolean oldDescriptionESet = descriptionESet;
+		descriptionESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DOCUMENTATION, oldDocumentation, documentation, !oldDocumentationESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DESCRIPTION, oldDescription, description, !oldDescriptionESet));
 	}
 
 	/**
@@ -188,13 +230,13 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void unsetDocumentation() {
-		String oldDocumentation = documentation;
-		boolean oldDocumentationESet = documentationESet;
-		documentation = DOCUMENTATION_EDEFAULT;
-		documentationESet = false;
+	public void unsetDescription() {
+		String oldDescription = description;
+		boolean oldDescriptionESet = descriptionESet;
+		description = DESCRIPTION_EDEFAULT;
+		descriptionESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DOCUMENTATION, oldDocumentation, DOCUMENTATION_EDEFAULT, oldDocumentationESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DESCRIPTION, oldDescription, DESCRIPTION_EDEFAULT, oldDescriptionESet));
 	}
 
 	/**
@@ -202,8 +244,50 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetDocumentation() {
-		return documentationESet;
+	public boolean isSetDescription() {
+		return descriptionESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPostcondition() {
+		return postcondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPostcondition(String newPostcondition) {
+		String oldPostcondition = postcondition;
+		postcondition = newPostcondition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelDocumentationPackage.ELEMENT_DOCUMENTATION__POSTCONDITION, oldPostcondition, postcondition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPrecondition() {
+		return precondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPrecondition(String newPrecondition) {
+		String oldPrecondition = precondition;
+		precondition = newPrecondition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelDocumentationPackage.ELEMENT_DOCUMENTATION__PRECONDITION, oldPrecondition, precondition));
 	}
 
 	/**
@@ -298,8 +382,12 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DOCUMENTATION:
-				return getDocumentation();
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DESCRIPTION:
+				return getDescription();
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__POSTCONDITION:
+				return getPostcondition();
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__PRECONDITION:
+				return getPrecondition();
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__ELEMENT_TYPE:
 				return getElementType();
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__ELEMENT_ID:
@@ -320,8 +408,14 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DOCUMENTATION:
-				setDocumentation((String)newValue);
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DESCRIPTION:
+				setDescription((String)newValue);
+				return;
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__POSTCONDITION:
+				setPostcondition((String)newValue);
+				return;
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__PRECONDITION:
+				setPrecondition((String)newValue);
 				return;
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__ELEMENT_TYPE:
 				setElementType((String)newValue);
@@ -347,8 +441,14 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DOCUMENTATION:
-				unsetDocumentation();
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DESCRIPTION:
+				unsetDescription();
+				return;
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__POSTCONDITION:
+				setPostcondition(POSTCONDITION_EDEFAULT);
+				return;
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__PRECONDITION:
+				setPrecondition(PRECONDITION_EDEFAULT);
 				return;
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__ELEMENT_TYPE:
 				setElementType(ELEMENT_TYPE_EDEFAULT);
@@ -374,8 +474,12 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DOCUMENTATION:
-				return isSetDocumentation();
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__DESCRIPTION:
+				return isSetDescription();
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__POSTCONDITION:
+				return POSTCONDITION_EDEFAULT == null ? postcondition != null : !POSTCONDITION_EDEFAULT.equals(postcondition);
+			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__PRECONDITION:
+				return PRECONDITION_EDEFAULT == null ? precondition != null : !PRECONDITION_EDEFAULT.equals(precondition);
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__ELEMENT_TYPE:
 				return ELEMENT_TYPE_EDEFAULT == null ? elementType != null : !ELEMENT_TYPE_EDEFAULT.equals(elementType);
 			case ModelDocumentationPackage.ELEMENT_DOCUMENTATION__ELEMENT_ID:
@@ -398,8 +502,12 @@ public class ElementDocumentationImpl extends MinimalEObjectImpl.Container imple
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (documentation: ");
-		if (documentationESet) result.append(documentation); else result.append("<unset>");
+		result.append(" (description: ");
+		if (descriptionESet) result.append(description); else result.append("<unset>");
+		result.append(", postcondition: ");
+		result.append(postcondition);
+		result.append(", precondition: ");
+		result.append(precondition);
 		result.append(", elementType: ");
 		result.append(elementType);
 		result.append(", elementId: ");

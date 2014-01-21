@@ -14,7 +14,9 @@ import org.osgi.framework.Version;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDescription <em>Description</em>}</li>
+ *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getPostcondition <em>Postcondition</em>}</li>
+ *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getPrecondition <em>Precondition</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getElementType <em>Element Type</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getElementId <em>Element Id</em>}</li>
  *   <li>{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getElementXmiId <em>Element Xmi Id</em>}</li>
@@ -28,57 +30,109 @@ import org.osgi.framework.Version;
  */
 public interface ElementDocumentation extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Documentation</b></em>' attribute.
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Documentation</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Documentation</em>' attribute.
-	 * @see #isSetDocumentation()
-	 * @see #unsetDocumentation()
-	 * @see #setDocumentation(String)
-	 * @see at.ecrit.model.plugin.modelDocumentation.ModelDocumentationPackage#getElementDocumentation_Documentation()
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #isSetDescription()
+	 * @see #unsetDescription()
+	 * @see #setDescription(String)
+	 * @see at.ecrit.model.plugin.modelDocumentation.ModelDocumentationPackage#getElementDocumentation_Description()
 	 * @model unsettable="true"
 	 * @generated
 	 */
-	String getDocumentation();
+	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDocumentation <em>Documentation</em>}' attribute.
+	 * Sets the value of the '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Documentation</em>' attribute.
-	 * @see #isSetDocumentation()
-	 * @see #unsetDocumentation()
-	 * @see #getDocumentation()
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #isSetDescription()
+	 * @see #unsetDescription()
+	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDocumentation(String value);
+	void setDescription(String value);
 
 	/**
-	 * Unsets the value of the '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDocumentation <em>Documentation</em>}' attribute.
+	 * Unsets the value of the '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSetDocumentation()
-	 * @see #getDocumentation()
-	 * @see #setDocumentation(String)
+	 * @see #isSetDescription()
+	 * @see #getDescription()
+	 * @see #setDescription(String)
 	 * @generated
 	 */
-	void unsetDocumentation();
+	void unsetDescription();
 
 	/**
-	 * Returns whether the value of the '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDocumentation <em>Documentation</em>}' attribute is set.
+	 * Returns whether the value of the '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDescription <em>Description</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Documentation</em>' attribute is set.
-	 * @see #unsetDocumentation()
-	 * @see #getDocumentation()
-	 * @see #setDocumentation(String)
+	 * @return whether the value of the '<em>Description</em>' attribute is set.
+	 * @see #unsetDescription()
+	 * @see #getDescription()
+	 * @see #setDescription(String)
 	 * @generated
 	 */
-	boolean isSetDocumentation();
+	boolean isSetDescription();
+
+	/**
+	 * Returns the value of the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Postcondition</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Postcondition</em>' attribute.
+	 * @see #setPostcondition(String)
+	 * @see at.ecrit.model.plugin.modelDocumentation.ModelDocumentationPackage#getElementDocumentation_Postcondition()
+	 * @model
+	 * @generated
+	 */
+	String getPostcondition();
+
+	/**
+	 * Sets the value of the '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getPostcondition <em>Postcondition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Postcondition</em>' attribute.
+	 * @see #getPostcondition()
+	 * @generated
+	 */
+	void setPostcondition(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Precondition</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Precondition</em>' attribute.
+	 * @see #setPrecondition(String)
+	 * @see at.ecrit.model.plugin.modelDocumentation.ModelDocumentationPackage#getElementDocumentation_Precondition()
+	 * @model
+	 * @generated
+	 */
+	String getPrecondition();
+
+	/**
+	 * Sets the value of the '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getPrecondition <em>Precondition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Precondition</em>' attribute.
+	 * @see #getPrecondition()
+	 * @generated
+	 */
+	void setPrecondition(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Element Type</b></em>' attribute.

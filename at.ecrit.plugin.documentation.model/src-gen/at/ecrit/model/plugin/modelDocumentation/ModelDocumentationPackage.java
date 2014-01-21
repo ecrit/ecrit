@@ -68,13 +68,31 @@ public interface ModelDocumentationPackage extends EPackage {
 	int ELEMENT_DOCUMENTATION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DOCUMENTATION__DOCUMENTATION = 0;
+	int ELEMENT_DOCUMENTATION__DESCRIPTION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_DOCUMENTATION__POSTCONDITION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_DOCUMENTATION__PRECONDITION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Element Type</b></em>' attribute.
@@ -83,7 +101,7 @@ public interface ModelDocumentationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DOCUMENTATION__ELEMENT_TYPE = 1;
+	int ELEMENT_DOCUMENTATION__ELEMENT_TYPE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
@@ -92,7 +110,7 @@ public interface ModelDocumentationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DOCUMENTATION__ELEMENT_ID = 2;
+	int ELEMENT_DOCUMENTATION__ELEMENT_ID = 4;
 
 	/**
 	 * The feature id for the '<em><b>Element Xmi Id</b></em>' attribute.
@@ -101,7 +119,7 @@ public interface ModelDocumentationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DOCUMENTATION__ELEMENT_XMI_ID = 3;
+	int ELEMENT_DOCUMENTATION__ELEMENT_XMI_ID = 5;
 
 	/**
 	 * The feature id for the '<em><b>Valid From</b></em>' attribute.
@@ -110,7 +128,7 @@ public interface ModelDocumentationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DOCUMENTATION__VALID_FROM = 4;
+	int ELEMENT_DOCUMENTATION__VALID_FROM = 6;
 
 	/**
 	 * The number of structural features of the '<em>Element Documentation</em>' class.
@@ -119,7 +137,7 @@ public interface ModelDocumentationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DOCUMENTATION_FEATURE_COUNT = 5;
+	int ELEMENT_DOCUMENTATION_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Element Documentation</em>' class.
@@ -264,15 +282,37 @@ public interface ModelDocumentationPackage extends EPackage {
 	EClass getElementDocumentation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDocumentation <em>Documentation</em>}'.
+	 * Returns the meta object for the attribute '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Documentation</em>'.
-	 * @see at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDocumentation()
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getDescription()
 	 * @see #getElementDocumentation()
 	 * @generated
 	 */
-	EAttribute getElementDocumentation_Documentation();
+	EAttribute getElementDocumentation_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getPostcondition <em>Postcondition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Postcondition</em>'.
+	 * @see at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getPostcondition()
+	 * @see #getElementDocumentation()
+	 * @generated
+	 */
+	EAttribute getElementDocumentation_Postcondition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getPrecondition <em>Precondition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Precondition</em>'.
+	 * @see at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getPrecondition()
+	 * @see #getElementDocumentation()
+	 * @generated
+	 */
+	EAttribute getElementDocumentation_Precondition();
 
 	/**
 	 * Returns the meta object for the attribute '{@link at.ecrit.model.plugin.modelDocumentation.ElementDocumentation#getElementType <em>Element Type</em>}'.
@@ -451,12 +491,28 @@ public interface ModelDocumentationPackage extends EPackage {
 		EClass ELEMENT_DOCUMENTATION = eINSTANCE.getElementDocumentation();
 
 		/**
-		 * The meta object literal for the '<em><b>Documentation</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELEMENT_DOCUMENTATION__DOCUMENTATION = eINSTANCE.getElementDocumentation_Documentation();
+		EAttribute ELEMENT_DOCUMENTATION__DESCRIPTION = eINSTANCE.getElementDocumentation_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Postcondition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT_DOCUMENTATION__POSTCONDITION = eINSTANCE.getElementDocumentation_Postcondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Precondition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT_DOCUMENTATION__PRECONDITION = eINSTANCE.getElementDocumentation_Precondition();
 
 		/**
 		 * The meta object literal for the '<em><b>Element Type</b></em>' attribute feature.

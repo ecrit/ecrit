@@ -12,6 +12,7 @@ package at.ecrit.plugin.documentation.tools.editor;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.internal.resources.Workspace;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -19,10 +20,10 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.e4.tools.compat.parts.DIEditorPart;
-import org.eclipse.e4.tools.emf.ui.common.IModelResource.ModelListener;
-import org.eclipse.e4.tools.emf.ui.internal.wbm.ApplicationModelEditor;
 import org.eclipse.e4.tools.emf.editor3x.RedoAction;
 import org.eclipse.e4.tools.emf.editor3x.UndoAction;
+import org.eclipse.e4.tools.emf.ui.common.IModelResource.ModelListener;
+import org.eclipse.e4.tools.emf.ui.internal.wbm.ApplicationModelEditor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
@@ -43,7 +44,7 @@ public class EcritDocumentationModelEditor extends
 	private RedoAction redoAction;
 	
 	private IFile ecritXmiFile;
-
+	
 	private ModelListener listener = new ModelListener() {
 
 		public void dirtyChanged() {
@@ -72,7 +73,7 @@ public class EcritDocumentationModelEditor extends
 		IFile e4xmiFile = (IFile) ws.newResource(e4xmiFilePath, IResource.FILE);
 
 		FileEditorInput e4XmiFEInput = new FileEditorInput(e4xmiFile);
-
+		
 		// initializes the context
 		super.init(site, e4XmiFEInput);
 	}
@@ -115,6 +116,9 @@ public class EcritDocumentationModelEditor extends
 	
 	@Override
 	public void doSave(IProgressMonitor monitor) {
+		// BUG if the editor is opened on an .e4xmi file this
+		// doSave method is not being called; hence the changes are not stored!
+		
 		super.doSave(monitor);
 		
 		try {

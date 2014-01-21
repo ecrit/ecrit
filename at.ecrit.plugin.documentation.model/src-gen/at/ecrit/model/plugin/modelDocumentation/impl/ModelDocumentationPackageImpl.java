@@ -145,7 +145,7 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getElementDocumentation_Documentation() {
+	public EAttribute getElementDocumentation_Description() {
 		return (EAttribute)elementDocumentationEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -154,7 +154,7 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getElementDocumentation_ElementType() {
+	public EAttribute getElementDocumentation_Postcondition() {
 		return (EAttribute)elementDocumentationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -163,7 +163,7 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getElementDocumentation_ElementId() {
+	public EAttribute getElementDocumentation_Precondition() {
 		return (EAttribute)elementDocumentationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -172,7 +172,7 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getElementDocumentation_ElementXmiId() {
+	public EAttribute getElementDocumentation_ElementType() {
 		return (EAttribute)elementDocumentationEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -181,8 +181,26 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getElementDocumentation_ValidFrom() {
+	public EAttribute getElementDocumentation_ElementId() {
 		return (EAttribute)elementDocumentationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getElementDocumentation_ElementXmiId() {
+		return (EAttribute)elementDocumentationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getElementDocumentation_ValidFrom() {
+		return (EAttribute)elementDocumentationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -295,7 +313,9 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 
 		// Create classes and their features
 		elementDocumentationEClass = createEClass(ELEMENT_DOCUMENTATION);
-		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__DOCUMENTATION);
+		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__DESCRIPTION);
+		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__POSTCONDITION);
+		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__PRECONDITION);
 		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__ELEMENT_TYPE);
 		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__ELEMENT_ID);
 		createEAttribute(elementDocumentationEClass, ELEMENT_DOCUMENTATION__ELEMENT_XMI_ID);
@@ -346,7 +366,9 @@ public class ModelDocumentationPackageImpl extends EPackageImpl implements Model
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(elementDocumentationEClass, ElementDocumentation.class, "ElementDocumentation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getElementDocumentation_Documentation(), ecorePackage.getEString(), "documentation", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElementDocumentation_Description(), ecorePackage.getEString(), "description", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElementDocumentation_Postcondition(), ecorePackage.getEString(), "postcondition", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElementDocumentation_Precondition(), ecorePackage.getEString(), "precondition", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDocumentation_ElementType(), ecorePackage.getEString(), "elementType", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDocumentation_ElementId(), ecorePackage.getEString(), "elementId", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDocumentation_ElementXmiId(), ecorePackage.getEString(), "elementXmiId", null, 0, 1, ElementDocumentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

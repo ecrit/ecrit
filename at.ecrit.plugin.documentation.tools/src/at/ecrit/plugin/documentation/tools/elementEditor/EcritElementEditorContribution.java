@@ -32,11 +32,11 @@ public class EcritElementEditorContribution extends
 		AbstractElementEditorContribution {
 
 	private static ModelDocumentation bundleDocumentation = null;
-	
+
 	public static ModelDocumentation getBundleDocumentation() {
 		return bundleDocumentation;
 	}
-	
+
 	public EcritElementEditorContribution() {
 	}
 
@@ -57,29 +57,65 @@ public class EcritElementEditorContribution extends
 		final WritableValue wvDocu = new WritableValue(null,
 				ElementDocumentation.class);
 
-		if(bundleDocumentation == null) {
-			bundleDocumentation = Helper.loadEcritModelDocumentationForProject(project);
+		if (bundleDocumentation == null) {
+			bundleDocumentation = Helper
+					.loadEcritModelDocumentationForProject(project);
 		}
 		
-		Label l = new Label(parent, SWT.NONE);
-		l.setText(getTabLabel());
-		l.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-
-		final Text text = new Text(parent, SWT.BORDER | SWT.MULTI);
-		GridData gd = new GridData(GridData.FILL_BOTH);
-		gd.horizontalSpan = 2;
-		text.setLayoutData(gd);
-
 		UpdateValueStrategy acv = new UpdateValueStrategy();
-
 		IWidgetValueProperty textProp = WidgetProperties.text(SWT.Modify);
 
-		IEMFEditValueProperty modelProp = EMFEditProperties
-				.value(editingDomain,
-						ModelDocumentationPackage.Literals.ELEMENT_DOCUMENTATION__DOCUMENTATION);
+		{
+			Label l = new Label(parent, SWT.NONE);
+			l.setText("Description");
+			l.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
 
-		context.bindValue(textProp.observeDelayed(200, text),
-				modelProp.observeDetail(wvDocu), acv, acv);
+			final Text text = new Text(parent, SWT.BORDER | SWT.MULTI);
+			GridData gd = new GridData(GridData.FILL_BOTH);
+			gd.horizontalSpan = 2;
+			text.setLayoutData(gd);
+
+			IEMFEditValueProperty modelProp = EMFEditProperties
+					.value(editingDomain,
+							ModelDocumentationPackage.Literals.ELEMENT_DOCUMENTATION__DESCRIPTION);
+			context.bindValue(textProp.observeDelayed(200, text),
+					modelProp.observeDetail(wvDocu), acv, acv);
+		}
+		{
+			Label l = new Label(parent, SWT.NONE);
+			l.setText("Precondition");
+			l.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+
+			final Text text = new Text(parent, SWT.BORDER | SWT.MULTI);
+			GridData gd = new GridData(GridData.FILL_BOTH);
+			gd.horizontalSpan = 2;
+			text.setLayoutData(gd);
+			
+			IEMFEditValueProperty modelProp = EMFEditProperties
+					.value(editingDomain,
+							ModelDocumentationPackage.Literals.ELEMENT_DOCUMENTATION__PRECONDITION);
+			context.bindValue(textProp.observeDelayed(200, text),
+					modelProp.observeDetail(wvDocu), acv, acv);
+
+		}
+		{
+			Label l = new Label(parent, SWT.NONE);
+			l.setText("Postcondition");
+			l.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+
+			final Text text = new Text(parent, SWT.BORDER | SWT.MULTI);
+			GridData gd = new GridData(GridData.FILL_BOTH);
+			gd.horizontalSpan = 2;
+			text.setLayoutData(gd);
+			
+			IEMFEditValueProperty modelProp = EMFEditProperties
+					.value(editingDomain,
+							ModelDocumentationPackage.Literals.ELEMENT_DOCUMENTATION__POSTCONDITION);
+			context.bindValue(textProp.observeDelayed(200, text),
+					modelProp.observeDetail(wvDocu), acv, acv);
+
+		}
+		
 
 		master.addValueChangeListener(new IValueChangeListener() {
 
@@ -92,10 +128,12 @@ public class EcritElementEditorContribution extends
 				if (elementId == null) {
 					elementId = UUID.randomUUID().toString();
 					mae.setElementId(elementId);
-					System.out.println("Generated random id for element "+mae);
+					System.out
+							.println("Generated random id for element " + mae);
 				}
 
-				EMap<String, ElementDocumentation> map = bundleDocumentation.getElementDocumentation();
+				EMap<String, ElementDocumentation> map = bundleDocumentation
+						.getElementDocumentation();
 				if (!map.containsKey(elementId)) {
 					ElementDocumentation ed = ModelDocumentationFactory.eINSTANCE
 							.createElementDocumentation();
@@ -103,9 +141,10 @@ public class EcritElementEditorContribution extends
 					map.put(elementId, ed);
 				}
 
-
 				wvDocu.setValue(map.get(elementId));
-				System.out.println("setting " + bundleDocumentation.getElementDocumentation().get(elementId));
+				System.out.println("setting "
+						+ bundleDocumentation.getElementDocumentation().get(
+								elementId));
 			}
 		});
 
