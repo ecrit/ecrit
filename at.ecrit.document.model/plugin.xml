@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ecritdocument -->
+      <package
+            uri="http://www.ecrit.at/model/document/2014"
+            class="at.ecrit.document.model.ecritdocument.EcritdocumentPackage"
+            genModel="model/ecritdocument.genmodel"/>
+   </extension>
+
+</plugin>
