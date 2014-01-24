@@ -3,15 +3,18 @@
 package at.ecrit.document.model.ecritdocument.impl;
 
 import at.ecrit.document.model.ecritdocument.ApplicationLayout;
+import at.ecrit.document.model.ecritdocument.DocumentedPart;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
+import at.ecrit.document.model.ecritdocument.DocumentedWindow;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
 import java.util.Collection;
-import org.eclipse.e4.ui.model.application.ui.basic.MPart;
-import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +33,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class ApplicationLayoutImpl extends MinimalEObjectImpl.Container implements ApplicationLayout {
 	/**
-	 * The cached value of the '{@link #getPerspective() <em>Perspective</em>}' reference list.
+	 * The cached value of the '{@link #getPerspective() <em>Perspective</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPerspective()
@@ -40,24 +43,24 @@ public class ApplicationLayoutImpl extends MinimalEObjectImpl.Container implemen
 	protected EList<DocumentedPerspective> perspective;
 
 	/**
-	 * The cached value of the '{@link #getPart() <em>Part</em>}' reference list.
+	 * The cached value of the '{@link #getPart() <em>Part</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPart()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<MPart> part;
+	protected EList<DocumentedPart> part;
 
 	/**
-	 * The cached value of the '{@link #getWindow() <em>Window</em>}' reference list.
+	 * The cached value of the '{@link #getWindow() <em>Window</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getWindow()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<MWindow> window;
+	protected EList<DocumentedWindow> window;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,7 +88,7 @@ public class ApplicationLayoutImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	public EList<DocumentedPerspective> getPerspective() {
 		if (perspective == null) {
-			perspective = new EObjectResolvingEList<DocumentedPerspective>(DocumentedPerspective.class, this, EcritdocumentPackage.APPLICATION_LAYOUT__PERSPECTIVE);
+			perspective = new EObjectContainmentEList<DocumentedPerspective>(DocumentedPerspective.class, this, EcritdocumentPackage.APPLICATION_LAYOUT__PERSPECTIVE);
 		}
 		return perspective;
 	}
@@ -95,9 +98,9 @@ public class ApplicationLayoutImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<MPart> getPart() {
+	public EList<DocumentedPart> getPart() {
 		if (part == null) {
-			part = new EObjectResolvingEList<MPart>(MPart.class, this, EcritdocumentPackage.APPLICATION_LAYOUT__PART);
+			part = new EObjectContainmentEList<DocumentedPart>(DocumentedPart.class, this, EcritdocumentPackage.APPLICATION_LAYOUT__PART);
 		}
 		return part;
 	}
@@ -107,11 +110,29 @@ public class ApplicationLayoutImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<MWindow> getWindow() {
+	public EList<DocumentedWindow> getWindow() {
 		if (window == null) {
-			window = new EObjectResolvingEList<MWindow>(MWindow.class, this, EcritdocumentPackage.APPLICATION_LAYOUT__WINDOW);
+			window = new EObjectContainmentEList<DocumentedWindow>(DocumentedWindow.class, this, EcritdocumentPackage.APPLICATION_LAYOUT__WINDOW);
 		}
 		return window;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PERSPECTIVE:
+				return ((InternalEList<?>)getPerspective()).basicRemove(otherEnd, msgs);
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PART:
+				return ((InternalEList<?>)getPart()).basicRemove(otherEnd, msgs);
+			case EcritdocumentPackage.APPLICATION_LAYOUT__WINDOW:
+				return ((InternalEList<?>)getWindow()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -147,11 +168,11 @@ public class ApplicationLayoutImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case EcritdocumentPackage.APPLICATION_LAYOUT__PART:
 				getPart().clear();
-				getPart().addAll((Collection<? extends MPart>)newValue);
+				getPart().addAll((Collection<? extends DocumentedPart>)newValue);
 				return;
 			case EcritdocumentPackage.APPLICATION_LAYOUT__WINDOW:
 				getWindow().clear();
-				getWindow().addAll((Collection<? extends MWindow>)newValue);
+				getWindow().addAll((Collection<? extends DocumentedWindow>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

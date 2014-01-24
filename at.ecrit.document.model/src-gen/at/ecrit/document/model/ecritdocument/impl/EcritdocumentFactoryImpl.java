@@ -4,6 +4,7 @@ package at.ecrit.document.model.ecritdocument.impl;
 
 import at.ecrit.document.model.ecritdocument.*;
 
+import java.io.IOException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -65,6 +66,8 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 			case EcritdocumentPackage.INITIATABLE_ITEM: return createInitiatableItem();
 			case EcritdocumentPackage.APPLICATION_LAYOUT: return createApplicationLayout();
 			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE: return createDocumentedPerspective();
+			case EcritdocumentPackage.DOCUMENTED_PART: return createDocumentedPart();
+			case EcritdocumentPackage.DOCUMENTED_WINDOW: return createDocumentedWindow();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,6 +83,8 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 		switch (eDataType.getClassifierID()) {
 			case EcritdocumentPackage.INITIATABLE_ITEM_TYPE:
 				return createInitiatableItemTypeFromString(eDataType, initialValue);
+			case EcritdocumentPackage.IO_EXCEPTION:
+				return createIOExceptionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -95,6 +100,8 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 		switch (eDataType.getClassifierID()) {
 			case EcritdocumentPackage.INITIATABLE_ITEM_TYPE:
 				return convertInitiatableItemTypeToString(eDataType, instanceValue);
+			case EcritdocumentPackage.IO_EXCEPTION:
+				return convertIOExceptionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -185,6 +192,26 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DocumentedPart createDocumentedPart() {
+		DocumentedPartImpl documentedPart = new DocumentedPartImpl();
+		return documentedPart;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DocumentedWindow createDocumentedWindow() {
+		DocumentedWindowImpl documentedWindow = new DocumentedWindowImpl();
+		return documentedWindow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InitiatableItemType createInitiatableItemTypeFromString(EDataType eDataType, String initialValue) {
 		InitiatableItemType result = InitiatableItemType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -198,6 +225,24 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 	 */
 	public String convertInitiatableItemTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IOException createIOExceptionFromString(EDataType eDataType, String initialValue) {
+		return (IOException)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIOExceptionToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

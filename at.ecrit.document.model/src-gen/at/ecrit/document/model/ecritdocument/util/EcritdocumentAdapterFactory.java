@@ -108,6 +108,18 @@ public class EcritdocumentAdapterFactory extends AdapterFactoryImpl {
 				return createDocumentedPerspectiveAdapter();
 			}
 			@Override
+			public Adapter caseDepictable(Depictable object) {
+				return createDepictableAdapter();
+			}
+			@Override
+			public Adapter caseDocumentedPart(DocumentedPart object) {
+				return createDocumentedPartAdapter();
+			}
+			@Override
+			public Adapter caseDocumentedWindow(DocumentedWindow object) {
+				return createDocumentedWindowAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -264,6 +276,48 @@ public class EcritdocumentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDocumentedPerspectiveAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.Depictable <em>Depictable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.ecrit.document.model.ecritdocument.Depictable
+	 * @generated
+	 */
+	public Adapter createDepictableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.DocumentedPart <em>Documented Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedPart
+	 * @generated
+	 */
+	public Adapter createDocumentedPartAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.DocumentedWindow <em>Documented Window</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedWindow
+	 * @generated
+	 */
+	public Adapter createDocumentedWindowAdapter() {
 		return null;
 	}
 

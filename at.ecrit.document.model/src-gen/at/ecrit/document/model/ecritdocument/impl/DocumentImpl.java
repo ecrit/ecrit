@@ -8,11 +8,13 @@ import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.ecritdocument.EcritdocumentFactory;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
 import at.ecrit.document.model.ecritdocument.Step;
+import at.ecrit.document.model.methods.DepictableItemMethods;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-
 import java.util.Date;
+
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -326,6 +328,15 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated not
+	 */
+	public void generateDepictableItemPNGImages(String targetDirectory) throws IOException {
+		DepictableItemMethods.generateDepictableItemPNGImages(this, targetDirectory);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -457,6 +468,14 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 		switch (operationID) {
 			case EcritdocumentPackage.DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND:
 				return findOrCreateCommandStepByCommand((MCommand)arguments.get(0));
+			case EcritdocumentPackage.DOCUMENT___GENERATE_DEPICTABLE_ITEM_PNG_IMAGES__STRING:
+				try {
+					generateDepictableItemPNGImages((String)arguments.get(0));
+					return null;
+				}
+				catch (Throwable throwable) {
+					throw new InvocationTargetException(throwable);
+				}
 		}
 		return super.eInvoke(operationID, arguments);
 	}

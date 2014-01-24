@@ -24,6 +24,9 @@
     <eOperations name="findOrCreateCommandStepByCommand" eType="#//CommandStep">
       <eParameters name="command" lowerBound="1" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//commands/Command"/>
     </eOperations>
+    <eOperations name="generateDepictableItemPNGImages" eExceptions="#//IOException">
+      <eParameters name="targetDirectory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="step" upperBound="-1" eType="#//Step"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -54,18 +57,38 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ApplicationLayout">
     <eStructuralFeatures xsi:type="ecore:EReference" name="perspective" upperBound="-1"
-        eType="#//DocumentedPerspective"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="part" upperBound="-1" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Part"/>
+        eType="#//DocumentedPerspective" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="part" upperBound="-1" eType="#//DocumentedPart"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="window" upperBound="-1"
-        eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Window"/>
+        eType="#//DocumentedWindow" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DocumentedElement" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="precondition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="postcondition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DocumentedPerspective" eSuperTypes="#//DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="DocumentedPerspective" eSuperTypes="#//DocumentedElement #//Depictable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/advanced/Perspective"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedParts" upperBound="-1"
+        eType="#//DocumentedPart"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Depictable" abstract="true" interface="true">
+    <eOperations name="generatePNGDepictionImage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    <eOperations name="getElementDepictionImageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="IOException" instanceClassName="java.io.IOException"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DocumentedPart" eSuperTypes="#//DocumentedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Part"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedInPerspective"
+        upperBound="-1" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/advanced/Perspective"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DocumentedWindow" eSuperTypes="#//DocumentedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Window"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedPerspective" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/advanced/Perspective"/>
   </eClassifiers>
 </ecore:EPackage>

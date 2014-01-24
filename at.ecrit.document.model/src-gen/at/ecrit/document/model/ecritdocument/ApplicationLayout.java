@@ -2,8 +2,6 @@
  */
 package at.ecrit.document.model.ecritdocument;
 
-import org.eclipse.e4.ui.model.application.ui.basic.MPart;
-import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -27,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ApplicationLayout extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Perspective</b></em>' reference list.
+	 * Returns the value of the '<em><b>Perspective</b></em>' containment reference list.
 	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedPerspective}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -35,43 +33,43 @@ public interface ApplicationLayout extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Perspective</em>' reference list.
+	 * @return the value of the '<em>Perspective</em>' containment reference list.
 	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationLayout_Perspective()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<DocumentedPerspective> getPerspective();
 
 	/**
-	 * Returns the value of the '<em><b>Part</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.e4.ui.model.application.ui.basic.MPart}.
+	 * Returns the value of the '<em><b>Part</b></em>' containment reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedPart}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Part</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Part</em>' reference list.
+	 * @return the value of the '<em>Part</em>' containment reference list.
 	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationLayout_Part()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<MPart> getPart();
+	EList<DocumentedPart> getPart();
 
 	/**
-	 * Returns the value of the '<em><b>Window</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.e4.ui.model.application.ui.basic.MWindow}.
+	 * Returns the value of the '<em><b>Window</b></em>' containment reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedWindow}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Window</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Window</em>' reference list.
+	 * @return the value of the '<em>Window</em>' containment reference list.
 	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationLayout_Window()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<MWindow> getWindow();
+	EList<DocumentedWindow> getWindow();
 
 } // ApplicationLayout

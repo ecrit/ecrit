@@ -4,6 +4,7 @@ package at.ecrit.document.model.ecritdocument;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -387,13 +388,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND = 0;
 
 	/**
+	 * The operation id for the '<em>Generate Depictable Item PNG Images</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___GENERATE_DEPICTABLE_ITEM_PNG_IMAGES__STRING = 1;
+
+	/**
 	 * The number of operations of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_OPERATION_COUNT = 1;
+	int DOCUMENT_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.UserImpl <em>User</em>}' class.
@@ -663,7 +673,7 @@ public interface EcritdocumentPackage extends EPackage {
 	int APPLICATION_LAYOUT = 7;
 
 	/**
-	 * The feature id for the '<em><b>Perspective</b></em>' reference list.
+	 * The feature id for the '<em><b>Perspective</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -672,7 +682,7 @@ public interface EcritdocumentPackage extends EPackage {
 	int APPLICATION_LAYOUT__PERSPECTIVE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Part</b></em>' reference list.
+	 * The feature id for the '<em><b>Part</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -681,7 +691,7 @@ public interface EcritdocumentPackage extends EPackage {
 	int APPLICATION_LAYOUT__PART = 1;
 
 	/**
-	 * The feature id for the '<em><b>Window</b></em>' reference list.
+	 * The feature id for the '<em><b>Window</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -754,13 +764,40 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Contained Parts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PERSPECTIVE__CONTAINED_PARTS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Documented Perspective</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENTED_PERSPECTIVE_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int DOCUMENTED_PERSPECTIVE_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Generate PNG Depiction Image</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PERSPECTIVE___GENERATE_PNG_DEPICTION_IMAGE = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Element Depiction Image Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PERSPECTIVE___GET_ELEMENT_DEPICTION_IMAGE_NAME = DOCUMENTED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Documented Perspective</em>' class.
@@ -769,7 +806,199 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENTED_PERSPECTIVE_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+	int DOCUMENTED_PERSPECTIVE_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.Depictable <em>Depictable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.Depictable
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDepictable()
+	 * @generated
+	 */
+	int DEPICTABLE = 10;
+
+	/**
+	 * The number of structural features of the '<em>Depictable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPICTABLE_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Generate PNG Depiction Image</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPICTABLE___GENERATE_PNG_DEPICTION_IMAGE = 0;
+
+	/**
+	 * The operation id for the '<em>Get Element Depiction Image Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPICTABLE___GET_ELEMENT_DEPICTION_IMAGE_NAME = 1;
+
+	/**
+	 * The number of operations of the '<em>Depictable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPICTABLE_OPERATION_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl <em>Documented Part</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedPart()
+	 * @generated
+	 */
+	int DOCUMENTED_PART = 11;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PART__DESCRIPTION = DOCUMENTED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PART__PRECONDITION = DOCUMENTED_ELEMENT__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PART__POSTCONDITION = DOCUMENTED_ELEMENT__POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PART__MODEL_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contained In Perspective</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Documented Part</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PART_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Documented Part</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PART_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl <em>Documented Window</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedWindow()
+	 * @generated
+	 */
+	int DOCUMENTED_WINDOW = 12;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_WINDOW__DESCRIPTION = DOCUMENTED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_WINDOW__PRECONDITION = DOCUMENTED_ELEMENT__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_WINDOW__POSTCONDITION = DOCUMENTED_ELEMENT__POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_WINDOW__MODEL_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contained Perspective</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Documented Window</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_WINDOW_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Documented Window</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_WINDOW_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.
@@ -779,7 +1008,18 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getInitiatableItemType()
 	 * @generated
 	 */
-	int INITIATABLE_ITEM_TYPE = 10;
+	int INITIATABLE_ITEM_TYPE = 13;
+
+
+	/**
+	 * The meta object id for the '<em>IO Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.IOException
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getIOException()
+	 * @generated
+	 */
+	int IO_EXCEPTION = 14;
 
 
 	/**
@@ -944,6 +1184,16 @@ public interface EcritdocumentPackage extends EPackage {
 	EOperation getDocument__FindOrCreateCommandStepByCommand__MCommand();
 
 	/**
+	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Document#generateDepictableItemPNGImages(java.lang.String) <em>Generate Depictable Item PNG Images</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Generate Depictable Item PNG Images</em>' operation.
+	 * @see at.ecrit.document.model.ecritdocument.Document#generateDepictableItemPNGImages(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDocument__GenerateDepictableItemPNGImages__String();
+
+	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.User <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1092,10 +1342,10 @@ public interface EcritdocumentPackage extends EPackage {
 	EClass getApplicationLayout();
 
 	/**
-	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getPerspective <em>Perspective</em>}'.
+	 * Returns the meta object for the containment reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getPerspective <em>Perspective</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Perspective</em>'.
+	 * @return the meta object for the containment reference list '<em>Perspective</em>'.
 	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getPerspective()
 	 * @see #getApplicationLayout()
 	 * @generated
@@ -1103,10 +1353,10 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getApplicationLayout_Perspective();
 
 	/**
-	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getPart <em>Part</em>}'.
+	 * Returns the meta object for the containment reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getPart <em>Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Part</em>'.
+	 * @return the meta object for the containment reference list '<em>Part</em>'.
 	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getPart()
 	 * @see #getApplicationLayout()
 	 * @generated
@@ -1114,10 +1364,10 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getApplicationLayout_Part();
 
 	/**
-	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getWindow <em>Window</em>}'.
+	 * Returns the meta object for the containment reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getWindow <em>Window</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Window</em>'.
+	 * @return the meta object for the containment reference list '<em>Window</em>'.
 	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getWindow()
 	 * @see #getApplicationLayout()
 	 * @generated
@@ -1189,6 +1439,111 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getDocumentedPerspective_ModelElement();
 
 	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedPerspective#getContainedParts <em>Contained Parts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained Parts</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedPerspective#getContainedParts()
+	 * @see #getDocumentedPerspective()
+	 * @generated
+	 */
+	EReference getDocumentedPerspective_ContainedParts();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.Depictable <em>Depictable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Depictable</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.Depictable
+	 * @generated
+	 */
+	EClass getDepictable();
+
+	/**
+	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Depictable#generatePNGDepictionImage() <em>Generate PNG Depiction Image</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Generate PNG Depiction Image</em>' operation.
+	 * @see at.ecrit.document.model.ecritdocument.Depictable#generatePNGDepictionImage()
+	 * @generated
+	 */
+	EOperation getDepictable__GeneratePNGDepictionImage();
+
+	/**
+	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Depictable#getElementDepictionImageName() <em>Get Element Depiction Image Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Element Depiction Image Name</em>' operation.
+	 * @see at.ecrit.document.model.ecritdocument.Depictable#getElementDepictionImageName()
+	 * @generated
+	 */
+	EOperation getDepictable__GetElementDepictionImageName();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedPart <em>Documented Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Documented Part</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedPart
+	 * @generated
+	 */
+	EClass getDocumentedPart();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getModelElement <em>Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Model Element</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedPart#getModelElement()
+	 * @see #getDocumentedPart()
+	 * @generated
+	 */
+	EReference getDocumentedPart_ModelElement();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getContainedInPerspective <em>Contained In Perspective</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained In Perspective</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedPart#getContainedInPerspective()
+	 * @see #getDocumentedPart()
+	 * @generated
+	 */
+	EReference getDocumentedPart_ContainedInPerspective();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedWindow <em>Documented Window</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Documented Window</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedWindow
+	 * @generated
+	 */
+	EClass getDocumentedWindow();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.ecrit.document.model.ecritdocument.DocumentedWindow#getModelElement <em>Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Model Element</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedWindow#getModelElement()
+	 * @see #getDocumentedWindow()
+	 * @generated
+	 */
+	EReference getDocumentedWindow_ModelElement();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedPerspective <em>Contained Perspective</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained Perspective</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedPerspective()
+	 * @see #getDocumentedWindow()
+	 * @generated
+	 */
+	EReference getDocumentedWindow_ContainedPerspective();
+
+	/**
 	 * Returns the meta object for enum '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1197,6 +1552,17 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getInitiatableItemType();
+
+	/**
+	 * Returns the meta object for data type '{@link java.io.IOException <em>IO Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>IO Exception</em>'.
+	 * @see java.io.IOException
+	 * @model instanceClass="java.io.IOException"
+	 * @generated
+	 */
+	EDataType getIOException();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1348,6 +1714,14 @@ public interface EcritdocumentPackage extends EPackage {
 		EOperation DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND = eINSTANCE.getDocument__FindOrCreateCommandStepByCommand__MCommand();
 
 		/**
+		 * The meta object literal for the '<em><b>Generate Depictable Item PNG Images</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DOCUMENT___GENERATE_DEPICTABLE_ITEM_PNG_IMAGES__STRING = eINSTANCE.getDocument__GenerateDepictableItemPNGImages__String();
+
+		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.UserImpl <em>User</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1470,7 +1844,7 @@ public interface EcritdocumentPackage extends EPackage {
 		EClass APPLICATION_LAYOUT = eINSTANCE.getApplicationLayout();
 
 		/**
-		 * The meta object literal for the '<em><b>Perspective</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Perspective</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1478,7 +1852,7 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference APPLICATION_LAYOUT__PERSPECTIVE = eINSTANCE.getApplicationLayout_Perspective();
 
 		/**
-		 * The meta object literal for the '<em><b>Part</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Part</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1486,7 +1860,7 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference APPLICATION_LAYOUT__PART = eINSTANCE.getApplicationLayout_Part();
 
 		/**
-		 * The meta object literal for the '<em><b>Window</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Window</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1546,6 +1920,92 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT = eINSTANCE.getDocumentedPerspective_ModelElement();
 
 		/**
+		 * The meta object literal for the '<em><b>Contained Parts</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_PERSPECTIVE__CONTAINED_PARTS = eINSTANCE.getDocumentedPerspective_ContainedParts();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.Depictable <em>Depictable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.Depictable
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDepictable()
+		 * @generated
+		 */
+		EClass DEPICTABLE = eINSTANCE.getDepictable();
+
+		/**
+		 * The meta object literal for the '<em><b>Generate PNG Depiction Image</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DEPICTABLE___GENERATE_PNG_DEPICTION_IMAGE = eINSTANCE.getDepictable__GeneratePNGDepictionImage();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Element Depiction Image Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DEPICTABLE___GET_ELEMENT_DEPICTION_IMAGE_NAME = eINSTANCE.getDepictable__GetElementDepictionImageName();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl <em>Documented Part</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedPart()
+		 * @generated
+		 */
+		EClass DOCUMENTED_PART = eINSTANCE.getDocumentedPart();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_PART__MODEL_ELEMENT = eINSTANCE.getDocumentedPart_ModelElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained In Perspective</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE = eINSTANCE.getDocumentedPart_ContainedInPerspective();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl <em>Documented Window</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedWindow()
+		 * @generated
+		 */
+		EClass DOCUMENTED_WINDOW = eINSTANCE.getDocumentedWindow();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_WINDOW__MODEL_ELEMENT = eINSTANCE.getDocumentedWindow_ModelElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Perspective</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE = eINSTANCE.getDocumentedWindow_ContainedPerspective();
+
+		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1554,6 +2014,16 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum INITIATABLE_ITEM_TYPE = eINSTANCE.getInitiatableItemType();
+
+		/**
+		 * The meta object literal for the '<em>IO Exception</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.io.IOException
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getIOException()
+		 * @generated
+		 */
+		EDataType IO_EXCEPTION = eINSTANCE.getIOException();
 
 	}
 

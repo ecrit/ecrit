@@ -11,8 +11,10 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 public class Outputter {
-	public static void processOutput(Document doc, Template template) {
-
+	
+	public static void processOutput(Document doc, Template template, File targetDirectory) {
+		
+		
 		Map<String, Object> input = new HashMap<String, Object>();
 		input.put("doc", doc);
 
@@ -25,12 +27,14 @@ public class Outputter {
 		// }
 
 		try {
-			File outputFile = new File("/Users/marco/Desktop/output.html");
+			File outputFile = new File(targetDirectory, "output.html");
 			FileWriter fileWriter = new FileWriter(outputFile);
 			template.process(input, fileWriter);
 			fileWriter.close();
 			System.out.println("[DONE] Written to "
 					+ outputFile.getAbsolutePath());
+			
+//			doc.generateDepictableItemPNGImages(targetDirectory.getAbsolutePath());
 		} catch (IOException | TemplateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

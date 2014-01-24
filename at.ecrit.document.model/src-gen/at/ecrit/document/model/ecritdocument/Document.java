@@ -2,6 +2,7 @@
  */
 package at.ecrit.document.model.ecritdocument;
 
+import java.io.IOException;
 import java.util.Date;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.emf.common.util.EList;
@@ -183,5 +184,13 @@ public interface Document extends EObject {
 	 * @generated
 	 */
 	CommandStep findOrCreateCommandStepByCommand(MCommand command);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="at.ecrit.document.model.ecritdocument.IOException"
+	 * @generated
+	 */
+	void generateDepictableItemPNGImages(String targetDirectory) throws IOException;
 
 } // Document

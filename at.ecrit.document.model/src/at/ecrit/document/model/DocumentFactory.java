@@ -1,6 +1,7 @@
 package at.ecrit.document.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -24,7 +25,9 @@ import at.ecrit.document.model.ecritdocument.ApplicationLayout;
 import at.ecrit.document.model.ecritdocument.CommandStep;
 import at.ecrit.document.model.ecritdocument.DirectStep;
 import at.ecrit.document.model.ecritdocument.Document;
+import at.ecrit.document.model.ecritdocument.DocumentedPart;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
+import at.ecrit.document.model.ecritdocument.DocumentedWindow;
 import at.ecrit.document.model.ecritdocument.EcritdocumentFactory;
 import at.ecrit.document.model.ecritdocument.InitiatableItem;
 import at.ecrit.document.model.ecritdocument.InitiatableItemType;
@@ -60,10 +63,22 @@ public class DocumentFactory {
 		
 		ApplicationLayout al = EcritdocumentFactory.eINSTANCE.createApplicationLayout();
 		
+//		MApplication app = (MApplication) appModelResource.getContents().get(0);
+//		List<MWindow> windows = app.getChildren();
+//		for (MWindow mWindow : windows) {
+//			DocumentedWindow dw = EcritdocumentFactory.eINSTANCE.createDocumentedWindow();
+//			dw.setModelElement(mWindow);
+//			al.getWindow().add(dw);
+//		}
+		
+		
 		for (TreeIterator<EObject> i = appModelResource.getAllContents(); i.hasNext();) {
 			EObject eObject = (EObject) i.next();
 			if(eObject instanceof MPart) {
-				al.getPart().add((MPart) eObject);
+				DocumentedPart dp = EcritdocumentFactory.eINSTANCE.createDocumentedPart();
+				MPart part = (MPart) eObject;
+				dp.setModelElement(part);
+				al.getPart().add(dp);
 			} else if (eObject instanceof MPerspective) {
 				DocumentedPerspective dp = EcritdocumentFactory.eINSTANCE.createDocumentedPerspective();
 				MPerspective ps = (MPerspective) eObject;
@@ -76,7 +91,9 @@ public class DocumentFactory {
 				dp.setModelElement(ps);
 				al.getPerspective().add(dp);
 			} else if (eObject instanceof MWindow) {
-				al.getWindow().add((MWindow) eObject);
+				DocumentedWindow dw = EcritdocumentFactory.eINSTANCE.createDocumentedWindow();
+				dw.setModelElement((MWindow) eObject);
+				al.getWindow().add(dw);
 			}
 		}
 		
@@ -92,7 +109,7 @@ public class DocumentFactory {
 		} else {
 			doc.setTitle(app.getElementId());
 		}
-		
+		doc.setCreationDate(new Date());
 	}
 
 	private static void initCommandSteps(MApplication application, Document doc, ModelDocumentation md) {
@@ -143,8 +160,8 @@ public class DocumentFactory {
 					ii.setContainingMenu((MMenu) parent);
 					
 					// find part contribution is associated to
-					for (MPart part : doc.getApplicationLayout().getPart()) {
-						if (part.getMenus().contains(parent)) ii.setContainingPart(part);
+					for (DocumentedPart part : doc.getApplicationLayout().getPart()) {
+						if (part.getModelElement().getMenus().contains(parent)) ii.setContainingPart(part.getModelElement());
 					}
 				} else {
 					ii.setItemType(InitiatableItemType.TOOLBAR);

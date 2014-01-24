@@ -3,6 +3,7 @@
 package at.ecrit.document.model.ecritdocument;
 
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +14,7 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
  * The following features are supported:
  * <ul>
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedPerspective#getModelElement <em>Model Element</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedPerspective#getContainedParts <em>Contained Parts</em>}</li>
  * </ul>
  * </p>
  *
@@ -20,7 +22,7 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
  * @model
  * @generated
  */
-public interface DocumentedPerspective extends DocumentedElement {
+public interface DocumentedPerspective extends DocumentedElement, Depictable {
 	/**
 	 * Returns the value of the '<em><b>Model Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -46,5 +48,21 @@ public interface DocumentedPerspective extends DocumentedElement {
 	 * @generated
 	 */
 	void setModelElement(MPerspective value);
+
+	/**
+	 * Returns the value of the '<em><b>Contained Parts</b></em>' reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedPart}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Contained Parts</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contained Parts</em>' reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getDocumentedPerspective_ContainedParts()
+	 * @model
+	 * @generated
+	 */
+	EList<DocumentedPart> getContainedParts();
 
 } // DocumentedPerspective

@@ -2,43 +2,46 @@
  */
 package at.ecrit.document.model.ecritdocument.impl;
 
-import at.ecrit.document.model.ecritdocument.Depictable;
 import at.ecrit.document.model.ecritdocument.DocumentedPart;
-import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
-import at.ecrit.document.model.methods.DepictableItemMethods;
-
-import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
+
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Documented Perspective</b></em>'.
+ * An implementation of the model object '<em><b>Documented Part</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPerspectiveImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPerspectiveImpl#getPrecondition <em>Precondition</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPerspectiveImpl#getPostcondition <em>Postcondition</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPerspectiveImpl#getModelElement <em>Model Element</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPerspectiveImpl#getContainedParts <em>Contained Parts</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getPrecondition <em>Precondition</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getPostcondition <em>Postcondition</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getModelElement <em>Model Element</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getContainedInPerspective <em>Contained In Perspective</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container implements DocumentedPerspective {
+public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements DocumentedPart {
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -107,24 +110,24 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 * @ordered
 	 */
-	protected MPerspective modelElement;
+	protected MPart modelElement;
 
 	/**
-	 * The cached value of the '{@link #getContainedParts() <em>Contained Parts</em>}' reference list.
+	 * The cached value of the '{@link #getContainedInPerspective() <em>Contained In Perspective</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getContainedParts()
+	 * @see #getContainedInPerspective()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DocumentedPart> containedParts;
+	protected EList<MPerspective> containedInPerspective;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DocumentedPerspectiveImpl() {
+	protected DocumentedPartImpl() {
 		super();
 	}
 
@@ -135,7 +138,7 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcritdocumentPackage.Literals.DOCUMENTED_PERSPECTIVE;
+		return EcritdocumentPackage.Literals.DOCUMENTED_PART;
 	}
 
 	/**
@@ -156,7 +159,7 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -177,7 +180,7 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 		String oldPrecondition = precondition;
 		precondition = newPrecondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__PRECONDITION, oldPrecondition, precondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION, oldPrecondition, precondition));
 	}
 
 	/**
@@ -198,7 +201,7 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 		String oldPostcondition = postcondition;
 		postcondition = newPostcondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__POSTCONDITION, oldPostcondition, postcondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION, oldPostcondition, postcondition));
 	}
 
 	/**
@@ -206,13 +209,13 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MPerspective getModelElement() {
+	public MPart getModelElement() {
 		if (modelElement != null && ((EObject)modelElement).eIsProxy()) {
 			InternalEObject oldModelElement = (InternalEObject)modelElement;
-			modelElement = (MPerspective)eResolveProxy(oldModelElement);
+			modelElement = (MPart)eResolveProxy(oldModelElement);
 			if (modelElement != oldModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT, oldModelElement, modelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT, oldModelElement, modelElement));
 			}
 		}
 		return modelElement;
@@ -223,7 +226,7 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MPerspective basicGetModelElement() {
+	public MPart basicGetModelElement() {
 		return modelElement;
 	}
 
@@ -232,11 +235,11 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setModelElement(MPerspective newModelElement) {
-		MPerspective oldModelElement = modelElement;
+	public void setModelElement(MPart newModelElement) {
+		MPart oldModelElement = modelElement;
 		modelElement = newModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT, oldModelElement, modelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT, oldModelElement, modelElement));
 	}
 
 	/**
@@ -244,29 +247,11 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DocumentedPart> getContainedParts() {
-		if (containedParts == null) {
-			containedParts = new EObjectResolvingEList<DocumentedPart>(DocumentedPart.class, this, EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__CONTAINED_PARTS);
+	public EList<MPerspective> getContainedInPerspective() {
+		if (containedInPerspective == null) {
+			containedInPerspective = new EObjectResolvingEList<MPerspective>(MPerspective.class, this, EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE);
 		}
-		return containedParts;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated not
-	 */
-	public byte[] generatePNGDepictionImage() {
-		return DepictableItemMethods.generatePNGDepictionImageForPerspective(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated not
-	 */
-	public String getElementDepictionImageName() {
-		return getModelElement().getElementId();
+		return containedInPerspective;
 	}
 
 	/**
@@ -277,17 +262,17 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION:
 				return getDescription();
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION:
 				return getPrecondition();
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION:
 				return getPostcondition();
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT:
+			case EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT:
 				if (resolve) return getModelElement();
 				return basicGetModelElement();
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__CONTAINED_PARTS:
-				return getContainedParts();
+			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
+				return getContainedInPerspective();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -301,21 +286,21 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION:
 				setPrecondition((String)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION:
 				setPostcondition((String)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT:
-				setModelElement((MPerspective)newValue);
+			case EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT:
+				setModelElement((MPart)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__CONTAINED_PARTS:
-				getContainedParts().clear();
-				getContainedParts().addAll((Collection<? extends DocumentedPart>)newValue);
+			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
+				getContainedInPerspective().clear();
+				getContainedInPerspective().addAll((Collection<? extends MPerspective>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -329,20 +314,20 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION:
 				setPrecondition(PRECONDITION_EDEFAULT);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION:
 				setPostcondition(POSTCONDITION_EDEFAULT);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT:
-				setModelElement((MPerspective)null);
+			case EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT:
+				setModelElement((MPart)null);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__CONTAINED_PARTS:
-				getContainedParts().clear();
+			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
+				getContainedInPerspective().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -356,51 +341,18 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION:
 				return PRECONDITION_EDEFAULT == null ? precondition != null : !PRECONDITION_EDEFAULT.equals(precondition);
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION:
 				return POSTCONDITION_EDEFAULT == null ? postcondition != null : !POSTCONDITION_EDEFAULT.equals(postcondition);
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT:
+			case EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT:
 				return modelElement != null;
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE__CONTAINED_PARTS:
-				return containedParts != null && !containedParts.isEmpty();
+			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
+				return containedInPerspective != null && !containedInPerspective.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Depictable.class) {
-			switch (baseOperationID) {
-				case EcritdocumentPackage.DEPICTABLE___GENERATE_PNG_DEPICTION_IMAGE: return EcritdocumentPackage.DOCUMENTED_PERSPECTIVE___GENERATE_PNG_DEPICTION_IMAGE;
-				case EcritdocumentPackage.DEPICTABLE___GET_ELEMENT_DEPICTION_IMAGE_NAME: return EcritdocumentPackage.DOCUMENTED_PERSPECTIVE___GET_ELEMENT_DEPICTION_IMAGE_NAME;
-				default: return -1;
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE___GENERATE_PNG_DEPICTION_IMAGE:
-				return generatePNGDepictionImage();
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE___GET_ELEMENT_DEPICTION_IMAGE_NAME:
-				return getElementDepictionImageName();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
@@ -423,4 +375,4 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 		return result.toString();
 	}
 
-} //DocumentedPerspectiveImpl
+} //DocumentedPartImpl

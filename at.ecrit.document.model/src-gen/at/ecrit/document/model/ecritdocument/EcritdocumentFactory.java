@@ -94,6 +94,24 @@ public interface EcritdocumentFactory extends EFactory {
 	DocumentedPerspective createDocumentedPerspective();
 
 	/**
+	 * Returns a new object of class '<em>Documented Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Documented Part</em>'.
+	 * @generated
+	 */
+	DocumentedPart createDocumentedPart();
+
+	/**
+	 * Returns a new object of class '<em>Documented Window</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Documented Window</em>'.
+	 * @generated
+	 */
+	DocumentedWindow createDocumentedWindow();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

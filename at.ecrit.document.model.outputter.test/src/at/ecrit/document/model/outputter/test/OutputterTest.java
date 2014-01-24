@@ -1,5 +1,6 @@
 package at.ecrit.document.model.outputter.test;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -48,7 +49,7 @@ public class OutputterTest {
 			Template template = cfg.getTemplate(
 					TemplateConstants.HTML_TEMPLATE);
 			
-			Outputter.processOutput(doc, template);
+			Outputter.processOutput(doc, template, new File("/Users/marco/Desktop/"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
