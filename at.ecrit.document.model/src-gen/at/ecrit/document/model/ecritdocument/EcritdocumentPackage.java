@@ -59,6 +59,61 @@ public interface EcritdocumentPackage extends EPackage {
 	EcritdocumentPackage eINSTANCE = at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.DocumentedElement <em>Documented Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedElement
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedElement()
+	 * @generated
+	 */
+	int DOCUMENTED_ELEMENT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_ELEMENT__DESCRIPTION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_ELEMENT__PRECONDITION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_ELEMENT__POSTCONDITION = 2;
+
+	/**
+	 * The number of structural features of the '<em>Documented Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_ELEMENT_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Documented Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.StepImpl <em>Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -75,7 +130,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__DESCRIPTION = 0;
+	int STEP__DESCRIPTION = DOCUMENTED_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
@@ -84,7 +139,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__PRECONDITION = 1;
+	int STEP__PRECONDITION = DOCUMENTED_ELEMENT__PRECONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
@@ -93,7 +148,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__POSTCONDITION = 2;
+	int STEP__POSTCONDITION = DOCUMENTED_ELEMENT__POSTCONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Executable By</b></em>' reference list.
@@ -102,7 +157,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__EXECUTABLE_BY = 3;
+	int STEP__EXECUTABLE_BY = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Initiatable By</b></em>' reference list.
@@ -111,7 +166,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__INITIATABLE_BY = 4;
+	int STEP__INITIATABLE_BY = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Possible Error</b></em>' reference list.
@@ -120,7 +175,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__POSSIBLE_ERROR = 5;
+	int STEP__POSSIBLE_ERROR = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Keybinding</b></em>' reference.
@@ -129,7 +184,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__KEYBINDING = 6;
+	int STEP__KEYBINDING = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Step</em>' class.
@@ -138,7 +193,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP_FEATURE_COUNT = 7;
+	int STEP_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Step</em>' class.
@@ -147,7 +202,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP_OPERATION_COUNT = 0;
+	int STEP_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.CommandStepImpl <em>Command Step</em>}' class.
@@ -278,13 +333,49 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENT__TITLE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__CREATION_DATE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Document Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__DOCUMENT_VERSION = 3;
+
+	/**
+	 * The feature id for the '<em><b>Product Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__PRODUCT_VERSION = 4;
+
+	/**
+	 * The feature id for the '<em><b>Application Layout</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__APPLICATION_LAYOUT = 5;
+
+	/**
 	 * The number of structural features of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = 2;
+	int DOCUMENT_FEATURE_COUNT = 6;
 
 	/**
 	 * The operation id for the '<em>Find Or Create Command Step By Command</em>' operation.
@@ -562,6 +653,125 @@ public interface EcritdocumentPackage extends EPackage {
 	int INITIATABLE_ITEM_OPERATION_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.ApplicationLayoutImpl <em>Application Layout</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.impl.ApplicationLayoutImpl
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getApplicationLayout()
+	 * @generated
+	 */
+	int APPLICATION_LAYOUT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Perspective</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_LAYOUT__PERSPECTIVE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_LAYOUT__PART = 1;
+
+	/**
+	 * The feature id for the '<em><b>Window</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_LAYOUT__WINDOW = 2;
+
+	/**
+	 * The number of structural features of the '<em>Application Layout</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_LAYOUT_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Application Layout</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_LAYOUT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPerspectiveImpl <em>Documented Perspective</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedPerspectiveImpl
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedPerspective()
+	 * @generated
+	 */
+	int DOCUMENTED_PERSPECTIVE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PERSPECTIVE__DESCRIPTION = DOCUMENTED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PERSPECTIVE__PRECONDITION = DOCUMENTED_ELEMENT__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PERSPECTIVE__POSTCONDITION = DOCUMENTED_ELEMENT__POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Documented Perspective</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PERSPECTIVE_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Documented Perspective</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PERSPECTIVE_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -569,7 +779,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getInitiatableItemType()
 	 * @generated
 	 */
-	int INITIATABLE_ITEM_TYPE = 7;
+	int INITIATABLE_ITEM_TYPE = 10;
 
 
 	/**
@@ -602,39 +812,6 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStep();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.Step#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see at.ecrit.document.model.ecritdocument.Step#getDescription()
-	 * @see #getStep()
-	 * @generated
-	 */
-	EAttribute getStep_Description();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.Step#getPrecondition <em>Precondition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Precondition</em>'.
-	 * @see at.ecrit.document.model.ecritdocument.Step#getPrecondition()
-	 * @see #getStep()
-	 * @generated
-	 */
-	EAttribute getStep_Precondition();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.Step#getPostcondition <em>Postcondition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Postcondition</em>'.
-	 * @see at.ecrit.document.model.ecritdocument.Step#getPostcondition()
-	 * @see #getStep()
-	 * @generated
-	 */
-	EAttribute getStep_Postcondition();
 
 	/**
 	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.Step#getExecutableBy <em>Executable By</em>}'.
@@ -711,6 +888,50 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDocument_Title();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.Document#getCreationDate <em>Creation Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Creation Date</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.Document#getCreationDate()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EAttribute getDocument_CreationDate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.Document#getDocumentVersion <em>Document Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Document Version</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.Document#getDocumentVersion()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EAttribute getDocument_DocumentVersion();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.Document#getProductVersion <em>Product Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Product Version</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.Document#getProductVersion()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EAttribute getDocument_ProductVersion();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.ecrit.document.model.ecritdocument.Document#getApplicationLayout <em>Application Layout</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Application Layout</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.Document#getApplicationLayout()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EReference getDocument_ApplicationLayout();
 
 	/**
 	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Document#findOrCreateCommandStepByCommand(org.eclipse.e4.ui.model.application.commands.MCommand) <em>Find Or Create Command Step By Command</em>}' operation.
@@ -861,6 +1082,113 @@ public interface EcritdocumentPackage extends EPackage {
 	EOperation getInitiatableItem__GetLocationDescription();
 
 	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout <em>Application Layout</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Application Layout</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout
+	 * @generated
+	 */
+	EClass getApplicationLayout();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getPerspective <em>Perspective</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Perspective</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getPerspective()
+	 * @see #getApplicationLayout()
+	 * @generated
+	 */
+	EReference getApplicationLayout_Perspective();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getPart <em>Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Part</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getPart()
+	 * @see #getApplicationLayout()
+	 * @generated
+	 */
+	EReference getApplicationLayout_Part();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getWindow <em>Window</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Window</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getWindow()
+	 * @see #getApplicationLayout()
+	 * @generated
+	 */
+	EReference getApplicationLayout_Window();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedElement <em>Documented Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Documented Element</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedElement
+	 * @generated
+	 */
+	EClass getDocumentedElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.DocumentedElement#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedElement#getDescription()
+	 * @see #getDocumentedElement()
+	 * @generated
+	 */
+	EAttribute getDocumentedElement_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.DocumentedElement#getPrecondition <em>Precondition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Precondition</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedElement#getPrecondition()
+	 * @see #getDocumentedElement()
+	 * @generated
+	 */
+	EAttribute getDocumentedElement_Precondition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.DocumentedElement#getPostcondition <em>Postcondition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Postcondition</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedElement#getPostcondition()
+	 * @see #getDocumentedElement()
+	 * @generated
+	 */
+	EAttribute getDocumentedElement_Postcondition();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedPerspective <em>Documented Perspective</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Documented Perspective</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedPerspective
+	 * @generated
+	 */
+	EClass getDocumentedPerspective();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.ecrit.document.model.ecritdocument.DocumentedPerspective#getModelElement <em>Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Model Element</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedPerspective#getModelElement()
+	 * @see #getDocumentedPerspective()
+	 * @generated
+	 */
+	EReference getDocumentedPerspective_ModelElement();
+
+	/**
 	 * Returns the meta object for enum '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -922,30 +1250,6 @@ public interface EcritdocumentPackage extends EPackage {
 		EClass STEP = eINSTANCE.getStep();
 
 		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute STEP__DESCRIPTION = eINSTANCE.getStep_Description();
-
-		/**
-		 * The meta object literal for the '<em><b>Precondition</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute STEP__PRECONDITION = eINSTANCE.getStep_Precondition();
-
-		/**
-		 * The meta object literal for the '<em><b>Postcondition</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute STEP__POSTCONDITION = eINSTANCE.getStep_Postcondition();
-
-		/**
 		 * The meta object literal for the '<em><b>Executable By</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1002,6 +1306,38 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DOCUMENT__TITLE = eINSTANCE.getDocument_Title();
+
+		/**
+		 * The meta object literal for the '<em><b>Creation Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT__CREATION_DATE = eINSTANCE.getDocument_CreationDate();
+
+		/**
+		 * The meta object literal for the '<em><b>Document Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT__DOCUMENT_VERSION = eINSTANCE.getDocument_DocumentVersion();
+
+		/**
+		 * The meta object literal for the '<em><b>Product Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT__PRODUCT_VERSION = eINSTANCE.getDocument_ProductVersion();
+
+		/**
+		 * The meta object literal for the '<em><b>Application Layout</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT__APPLICATION_LAYOUT = eINSTANCE.getDocument_ApplicationLayout();
 
 		/**
 		 * The meta object literal for the '<em><b>Find Or Create Command Step By Command</b></em>' operation.
@@ -1122,6 +1458,92 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation INITIATABLE_ITEM___GET_LOCATION_DESCRIPTION = eINSTANCE.getInitiatableItem__GetLocationDescription();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.ApplicationLayoutImpl <em>Application Layout</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.impl.ApplicationLayoutImpl
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getApplicationLayout()
+		 * @generated
+		 */
+		EClass APPLICATION_LAYOUT = eINSTANCE.getApplicationLayout();
+
+		/**
+		 * The meta object literal for the '<em><b>Perspective</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION_LAYOUT__PERSPECTIVE = eINSTANCE.getApplicationLayout_Perspective();
+
+		/**
+		 * The meta object literal for the '<em><b>Part</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION_LAYOUT__PART = eINSTANCE.getApplicationLayout_Part();
+
+		/**
+		 * The meta object literal for the '<em><b>Window</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION_LAYOUT__WINDOW = eINSTANCE.getApplicationLayout_Window();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.DocumentedElement <em>Documented Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.DocumentedElement
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedElement()
+		 * @generated
+		 */
+		EClass DOCUMENTED_ELEMENT = eINSTANCE.getDocumentedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENTED_ELEMENT__DESCRIPTION = eINSTANCE.getDocumentedElement_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Precondition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENTED_ELEMENT__PRECONDITION = eINSTANCE.getDocumentedElement_Precondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Postcondition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENTED_ELEMENT__POSTCONDITION = eINSTANCE.getDocumentedElement_Postcondition();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPerspectiveImpl <em>Documented Perspective</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedPerspectiveImpl
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedPerspective()
+		 * @generated
+		 */
+		EClass DOCUMENTED_PERSPECTIVE = eINSTANCE.getDocumentedPerspective();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT = eINSTANCE.getDocumentedPerspective_ModelElement();
 
 		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.

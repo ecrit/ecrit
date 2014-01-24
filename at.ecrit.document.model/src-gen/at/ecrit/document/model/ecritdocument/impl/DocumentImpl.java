@@ -2,6 +2,7 @@
  */
 package at.ecrit.document.model.ecritdocument.impl;
 
+import at.ecrit.document.model.ecritdocument.ApplicationLayout;
 import at.ecrit.document.model.ecritdocument.CommandStep;
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.ecritdocument.EcritdocumentFactory;
@@ -11,6 +12,7 @@ import at.ecrit.document.model.ecritdocument.Step;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
+import java.util.Date;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -30,6 +32,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getStep <em>Step</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getCreationDate <em>Creation Date</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getDocumentVersion <em>Document Version</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getProductVersion <em>Product Version</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getApplicationLayout <em>Application Layout</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,6 +70,76 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected String title = TITLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreationDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date CREATION_DATE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreationDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date creationDate = CREATION_DATE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDocumentVersion() <em>Document Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DOCUMENT_VERSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDocumentVersion() <em>Document Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String documentVersion = DOCUMENT_VERSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getProductVersion() <em>Product Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProductVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PRODUCT_VERSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getProductVersion() <em>Product Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProductVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String productVersion = PRODUCT_VERSION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getApplicationLayout() <em>Application Layout</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApplicationLayout()
+	 * @generated
+	 * @ordered
+	 */
+	protected ApplicationLayout applicationLayout;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -115,6 +191,112 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCreationDate(Date newCreationDate) {
+		Date oldCreationDate = creationDate;
+		creationDate = newCreationDate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENT__CREATION_DATE, oldCreationDate, creationDate));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getDocumentVersion() {
+		return documentVersion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDocumentVersion(String newDocumentVersion) {
+		String oldDocumentVersion = documentVersion;
+		documentVersion = newDocumentVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENT__DOCUMENT_VERSION, oldDocumentVersion, documentVersion));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getProductVersion() {
+		return productVersion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProductVersion(String newProductVersion) {
+		String oldProductVersion = productVersion;
+		productVersion = newProductVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENT__PRODUCT_VERSION, oldProductVersion, productVersion));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ApplicationLayout getApplicationLayout() {
+		return applicationLayout;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApplicationLayout(ApplicationLayout newApplicationLayout, NotificationChain msgs) {
+		ApplicationLayout oldApplicationLayout = applicationLayout;
+		applicationLayout = newApplicationLayout;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT, oldApplicationLayout, newApplicationLayout);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApplicationLayout(ApplicationLayout newApplicationLayout) {
+		if (newApplicationLayout != applicationLayout) {
+			NotificationChain msgs = null;
+			if (applicationLayout != null)
+				msgs = ((InternalEObject)applicationLayout).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT, null, msgs);
+			if (newApplicationLayout != null)
+				msgs = ((InternalEObject)newApplicationLayout).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT, null, msgs);
+			msgs = basicSetApplicationLayout(newApplicationLayout, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT, newApplicationLayout, newApplicationLayout));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated not
@@ -153,6 +335,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 			case EcritdocumentPackage.DOCUMENT__STEP:
 				return ((InternalEList<?>)getStep()).basicRemove(otherEnd, msgs);
+			case EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT:
+				return basicSetApplicationLayout(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -168,6 +352,14 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 				return getStep();
 			case EcritdocumentPackage.DOCUMENT__TITLE:
 				return getTitle();
+			case EcritdocumentPackage.DOCUMENT__CREATION_DATE:
+				return getCreationDate();
+			case EcritdocumentPackage.DOCUMENT__DOCUMENT_VERSION:
+				return getDocumentVersion();
+			case EcritdocumentPackage.DOCUMENT__PRODUCT_VERSION:
+				return getProductVersion();
+			case EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT:
+				return getApplicationLayout();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -187,6 +379,18 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 			case EcritdocumentPackage.DOCUMENT__TITLE:
 				setTitle((String)newValue);
 				return;
+			case EcritdocumentPackage.DOCUMENT__CREATION_DATE:
+				setCreationDate((Date)newValue);
+				return;
+			case EcritdocumentPackage.DOCUMENT__DOCUMENT_VERSION:
+				setDocumentVersion((String)newValue);
+				return;
+			case EcritdocumentPackage.DOCUMENT__PRODUCT_VERSION:
+				setProductVersion((String)newValue);
+				return;
+			case EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT:
+				setApplicationLayout((ApplicationLayout)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -204,6 +408,18 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 			case EcritdocumentPackage.DOCUMENT__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
+			case EcritdocumentPackage.DOCUMENT__CREATION_DATE:
+				setCreationDate(CREATION_DATE_EDEFAULT);
+				return;
+			case EcritdocumentPackage.DOCUMENT__DOCUMENT_VERSION:
+				setDocumentVersion(DOCUMENT_VERSION_EDEFAULT);
+				return;
+			case EcritdocumentPackage.DOCUMENT__PRODUCT_VERSION:
+				setProductVersion(PRODUCT_VERSION_EDEFAULT);
+				return;
+			case EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT:
+				setApplicationLayout((ApplicationLayout)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -219,6 +435,14 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 				return step != null && !step.isEmpty();
 			case EcritdocumentPackage.DOCUMENT__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+			case EcritdocumentPackage.DOCUMENT__CREATION_DATE:
+				return CREATION_DATE_EDEFAULT == null ? creationDate != null : !CREATION_DATE_EDEFAULT.equals(creationDate);
+			case EcritdocumentPackage.DOCUMENT__DOCUMENT_VERSION:
+				return DOCUMENT_VERSION_EDEFAULT == null ? documentVersion != null : !DOCUMENT_VERSION_EDEFAULT.equals(documentVersion);
+			case EcritdocumentPackage.DOCUMENT__PRODUCT_VERSION:
+				return PRODUCT_VERSION_EDEFAULT == null ? productVersion != null : !PRODUCT_VERSION_EDEFAULT.equals(productVersion);
+			case EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT:
+				return applicationLayout != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -249,6 +473,12 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (title: ");
 		result.append(title);
+		result.append(", creationDate: ");
+		result.append(creationDate);
+		result.append(", documentVersion: ");
+		result.append(documentVersion);
+		result.append(", productVersion: ");
+		result.append(productVersion);
 		result.append(')');
 		return result.toString();
 	}

@@ -70,12 +70,14 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 				CommandStep commandStep = (CommandStep)theEObject;
 				T result = caseCommandStep(commandStep);
 				if (result == null) result = caseStep(commandStep);
+				if (result == null) result = caseDocumentedElement(commandStep);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EcritdocumentPackage.STEP: {
 				Step step = (Step)theEObject;
 				T result = caseStep(step);
+				if (result == null) result = caseDocumentedElement(step);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -101,12 +103,32 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 				DirectStep directStep = (DirectStep)theEObject;
 				T result = caseDirectStep(directStep);
 				if (result == null) result = caseStep(directStep);
+				if (result == null) result = caseDocumentedElement(directStep);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EcritdocumentPackage.INITIATABLE_ITEM: {
 				InitiatableItem initiatableItem = (InitiatableItem)theEObject;
 				T result = caseInitiatableItem(initiatableItem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EcritdocumentPackage.APPLICATION_LAYOUT: {
+				ApplicationLayout applicationLayout = (ApplicationLayout)theEObject;
+				T result = caseApplicationLayout(applicationLayout);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EcritdocumentPackage.DOCUMENTED_ELEMENT: {
+				DocumentedElement documentedElement = (DocumentedElement)theEObject;
+				T result = caseDocumentedElement(documentedElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE: {
+				DocumentedPerspective documentedPerspective = (DocumentedPerspective)theEObject;
+				T result = caseDocumentedPerspective(documentedPerspective);
+				if (result == null) result = caseDocumentedElement(documentedPerspective);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -216,6 +238,51 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInitiatableItem(InitiatableItem object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Application Layout</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Application Layout</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseApplicationLayout(ApplicationLayout object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Documented Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Documented Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocumentedElement(DocumentedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Documented Perspective</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Documented Perspective</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocumentedPerspective(DocumentedPerspective object) {
 		return null;
 	}
 

@@ -4,7 +4,6 @@ package at.ecrit.document.model.ecritdocument;
 
 import org.eclipse.e4.ui.model.application.commands.MKeyBinding;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,9 +22,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.ecrit.document.model.ecritdocument.Step#getDescription <em>Description</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.Step#getPrecondition <em>Precondition</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.Step#getPostcondition <em>Postcondition</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.Step#getExecutableBy <em>Executable By</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.Step#getInitiatableBy <em>Initiatable By</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.Step#getPossibleError <em>Possible Error</em>}</li>
@@ -37,85 +33,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface Step extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Description</em>' attribute.
-	 * @see #setDescription(String)
-	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getStep_Description()
-	 * @model
-	 * @generated
-	 */
-	String getDescription();
-
-	/**
-	 * Sets the value of the '{@link at.ecrit.document.model.ecritdocument.Step#getDescription <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Description</em>' attribute.
-	 * @see #getDescription()
-	 * @generated
-	 */
-	void setDescription(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Precondition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Precondition</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Precondition</em>' attribute.
-	 * @see #setPrecondition(String)
-	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getStep_Precondition()
-	 * @model
-	 * @generated
-	 */
-	String getPrecondition();
-
-	/**
-	 * Sets the value of the '{@link at.ecrit.document.model.ecritdocument.Step#getPrecondition <em>Precondition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Precondition</em>' attribute.
-	 * @see #getPrecondition()
-	 * @generated
-	 */
-	void setPrecondition(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Postcondition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Postcondition</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Postcondition</em>' attribute.
-	 * @see #setPostcondition(String)
-	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getStep_Postcondition()
-	 * @model
-	 * @generated
-	 */
-	String getPostcondition();
-
-	/**
-	 * Sets the value of the '{@link at.ecrit.document.model.ecritdocument.Step#getPostcondition <em>Postcondition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Postcondition</em>' attribute.
-	 * @see #getPostcondition()
-	 * @generated
-	 */
-	void setPostcondition(String value);
-
+public interface Step extends DocumentedElement {
 	/**
 	 * Returns the value of the '<em><b>Executable By</b></em>' reference list.
 	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.User}.

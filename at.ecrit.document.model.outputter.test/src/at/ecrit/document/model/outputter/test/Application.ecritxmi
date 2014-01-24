@@ -36,4 +36,46 @@
   <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.command.addToInvoice">
     <value description="Add an Article of the available article list to the Invoice. &#xA;By adding it to the Invoice the amount the customer is required to pay will increase. &#xA;The open invoice amount can be settled by either providing a receipt or paying the open amount." postcondition="The article(s) selected are now part of the invoice." elementId="at.medevit.ecrit.pharmacy_at.application.command.addToInvoice"/>
   </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.command.addPrescritption">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.command.addPrescritption"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.command.addToPrescription">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.command.addToPrescription"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.command.openPrescritption">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.command.openPrescritption"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.command.editPrescription">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.command.editPrescription"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.commandparameter.modelelement.Article">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.commandparameter.modelelement.Article"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.trimbar.0">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.trimbar.0"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.toolbar.0">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.toolbar.0"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.perspectiveSwitcher">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.perspectiveSwitcher"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.handledtoolitem.0">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.handledtoolitem.0"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.menu.1">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.menu.1"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.popupmenu.articlelist">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.popupmenu.articlelist"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.toolbar.1">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.toolbar.1"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.handledmenuitem.addToInvoice">
+    <value elementId="at.medevit.ecrit.pharmacy_at.application.handledmenuitem.addToInvoice"/>
+  </elementDocumentation>
+  <elementDocumentation key="at.medevit.ecrit.pharmacy_at.application.perspective.seller">
+    <value description="This perspective is targeted at the seller. It allows him to execute the business cases required to sell &#xA;articles to the customer, collecting receipts and billing." elementId="at.medevit.ecrit.pharmacy_at.application.perspective.seller"/>
+  </elementDocumentation>
 </modelDocumentation:ModelDocumentation>

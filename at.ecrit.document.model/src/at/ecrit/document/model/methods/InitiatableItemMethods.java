@@ -13,8 +13,8 @@ public class InitiatableItemMethods {
 		case MENU:
 			boolean hasContainingPart = (ii.getContainingPart()!=null);
 			boolean hasContainingMenu = (ii.getContainingMenu()!=null);
-			if(hasContainingPart) sb.append("Part "+ii.getContainingPart().getLabel()+" | ");
-			if(hasContainingMenu) sb.append("Menu "+ii.getContainingMenu().getLabel()+ " | ");
+			if(hasContainingPart) sb.append("Part "+ii.getContainingPart().getElementId()+" | ");
+			if(hasContainingMenu) sb.append("Menu "+ii.getContainingMenu().getElementId()+ " | ");
 			sb.append(ii.getItem().getLabel());
 			break;
 		case TOOLBAR:

@@ -1,0 +1,199 @@
+/**
+ */
+package at.ecrit.document.model.ecritdocument.impl;
+
+import at.ecrit.document.model.ecritdocument.ApplicationLayout;
+import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
+import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
+import java.util.Collection;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Application Layout</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationLayoutImpl#getPerspective <em>Perspective</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationLayoutImpl#getPart <em>Part</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationLayoutImpl#getWindow <em>Window</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated
+ */
+public class ApplicationLayoutImpl extends MinimalEObjectImpl.Container implements ApplicationLayout {
+	/**
+	 * The cached value of the '{@link #getPerspective() <em>Perspective</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPerspective()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DocumentedPerspective> perspective;
+
+	/**
+	 * The cached value of the '{@link #getPart() <em>Part</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPart()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MPart> part;
+
+	/**
+	 * The cached value of the '{@link #getWindow() <em>Window</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWindow()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MWindow> window;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ApplicationLayoutImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return EcritdocumentPackage.Literals.APPLICATION_LAYOUT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<DocumentedPerspective> getPerspective() {
+		if (perspective == null) {
+			perspective = new EObjectResolvingEList<DocumentedPerspective>(DocumentedPerspective.class, this, EcritdocumentPackage.APPLICATION_LAYOUT__PERSPECTIVE);
+		}
+		return perspective;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<MPart> getPart() {
+		if (part == null) {
+			part = new EObjectResolvingEList<MPart>(MPart.class, this, EcritdocumentPackage.APPLICATION_LAYOUT__PART);
+		}
+		return part;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<MWindow> getWindow() {
+		if (window == null) {
+			window = new EObjectResolvingEList<MWindow>(MWindow.class, this, EcritdocumentPackage.APPLICATION_LAYOUT__WINDOW);
+		}
+		return window;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PERSPECTIVE:
+				return getPerspective();
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PART:
+				return getPart();
+			case EcritdocumentPackage.APPLICATION_LAYOUT__WINDOW:
+				return getWindow();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PERSPECTIVE:
+				getPerspective().clear();
+				getPerspective().addAll((Collection<? extends DocumentedPerspective>)newValue);
+				return;
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PART:
+				getPart().clear();
+				getPart().addAll((Collection<? extends MPart>)newValue);
+				return;
+			case EcritdocumentPackage.APPLICATION_LAYOUT__WINDOW:
+				getWindow().clear();
+				getWindow().addAll((Collection<? extends MWindow>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PERSPECTIVE:
+				getPerspective().clear();
+				return;
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PART:
+				getPart().clear();
+				return;
+			case EcritdocumentPackage.APPLICATION_LAYOUT__WINDOW:
+				getWindow().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PERSPECTIVE:
+				return perspective != null && !perspective.isEmpty();
+			case EcritdocumentPackage.APPLICATION_LAYOUT__PART:
+				return part != null && !part.isEmpty();
+			case EcritdocumentPackage.APPLICATION_LAYOUT__WINDOW:
+				return window != null && !window.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
+} //ApplicationLayoutImpl

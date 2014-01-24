@@ -9,7 +9,9 @@ import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MContribution;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
@@ -18,9 +20,11 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import at.ecrit.document.model.ecritdocument.ApplicationLayout;
 import at.ecrit.document.model.ecritdocument.CommandStep;
 import at.ecrit.document.model.ecritdocument.DirectStep;
 import at.ecrit.document.model.ecritdocument.Document;
+import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
 import at.ecrit.document.model.ecritdocument.EcritdocumentFactory;
 import at.ecrit.document.model.ecritdocument.InitiatableItem;
 import at.ecrit.document.model.ecritdocument.InitiatableItemType;
@@ -30,8 +34,6 @@ import at.ecrit.model.plugin.modelDocumentation.ModelDocumentation;
 public class DocumentFactory {
 	
 	private static Log log = LogFactory.getLog(DocumentFactory.class);
-
-	private static List<MPart> parts = new ArrayList<MPart>();
 	
 	/**
 	 * 
@@ -46,21 +48,39 @@ public class DocumentFactory {
 		ModelDocumentation md = (ModelDocumentation) ecritResource.getContents().get(0);
 		
 		setDocumentInformation(doc, app, md);
-		collectParts(doc, appModelResource, md);
+		collectApplicationLayout(doc, appModelResource, md);
 		initCommandSteps(app, doc, md);
 		populateStepsWithContributions(appModelResource, doc);
 
 		return doc;
 	}
 
-	private static void collectParts(Document doc, Resource appModelResource,
+	private static void collectApplicationLayout(Document doc, Resource appModelResource,
 			ModelDocumentation md) {
+		
+		ApplicationLayout al = EcritdocumentFactory.eINSTANCE.createApplicationLayout();
+		
 		for (TreeIterator<EObject> i = appModelResource.getAllContents(); i.hasNext();) {
 			EObject eObject = (EObject) i.next();
 			if(eObject instanceof MPart) {
-				parts.add((MPart) eObject);
+				al.getPart().add((MPart) eObject);
+			} else if (eObject instanceof MPerspective) {
+				DocumentedPerspective dp = EcritdocumentFactory.eINSTANCE.createDocumentedPerspective();
+				MPerspective ps = (MPerspective) eObject;
+				ElementDocumentation ed = md.getElementDocumentation().get(ps.getElementId());
+				if(ed!=null) {
+					dp.setDescription(ed.getDescription());
+					dp.setPostcondition(ed.getPostcondition());
+					dp.setPrecondition(ed.getPrecondition());
+				}
+				dp.setModelElement(ps);
+				al.getPerspective().add(dp);
+			} else if (eObject instanceof MWindow) {
+				al.getWindow().add((MWindow) eObject);
 			}
 		}
+		
+		doc.setApplicationLayout(al);
 		
 	}
 
@@ -123,7 +143,7 @@ public class DocumentFactory {
 					ii.setContainingMenu((MMenu) parent);
 					
 					// find part contribution is associated to
-					for (MPart part : parts) {
+					for (MPart part : doc.getApplicationLayout().getPart()) {
 						if (part.getMenus().contains(parent)) ii.setContainingPart(part);
 					}
 				} else {

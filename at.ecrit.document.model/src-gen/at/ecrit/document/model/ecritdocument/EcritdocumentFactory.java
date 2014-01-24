@@ -76,6 +76,24 @@ public interface EcritdocumentFactory extends EFactory {
 	InitiatableItem createInitiatableItem();
 
 	/**
+	 * Returns a new object of class '<em>Application Layout</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Application Layout</em>'.
+	 * @generated
+	 */
+	ApplicationLayout createApplicationLayout();
+
+	/**
+	 * Returns a new object of class '<em>Documented Perspective</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Documented Perspective</em>'.
+	 * @generated
+	 */
+	DocumentedPerspective createDocumentedPerspective();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

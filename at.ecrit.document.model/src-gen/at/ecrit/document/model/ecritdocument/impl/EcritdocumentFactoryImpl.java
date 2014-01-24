@@ -63,6 +63,8 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 			case EcritdocumentPackage.ERROR_MESSAGE: return createErrorMessage();
 			case EcritdocumentPackage.DIRECT_STEP: return createDirectStep();
 			case EcritdocumentPackage.INITIATABLE_ITEM: return createInitiatableItem();
+			case EcritdocumentPackage.APPLICATION_LAYOUT: return createApplicationLayout();
+			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE: return createDocumentedPerspective();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -156,6 +158,26 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 	public InitiatableItem createInitiatableItem() {
 		InitiatableItemImpl initiatableItem = new InitiatableItemImpl();
 		return initiatableItem;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ApplicationLayout createApplicationLayout() {
+		ApplicationLayoutImpl applicationLayout = new ApplicationLayoutImpl();
+		return applicationLayout;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DocumentedPerspective createDocumentedPerspective() {
+		DocumentedPerspectiveImpl documentedPerspective = new DocumentedPerspectiveImpl();
+		return documentedPerspective;
 	}
 
 	/**
