@@ -58,7 +58,9 @@
   	
   	<p><i>Parts</i>
   		<ul>
-  	
+  		 <#list perspective.containedParts as containedPart>
+  		 	<li>${containedPart.modelElement.label}</li>
+  		 </#list>
   		</ul>
   	<p>
   </#list>

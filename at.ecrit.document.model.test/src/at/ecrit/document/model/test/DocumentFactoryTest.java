@@ -14,7 +14,7 @@ import at.ecrit.document.model.DocumentFactory;
 import at.ecrit.document.model.ecritdocument.Document;
 
 public class DocumentFactoryTest {
-
+	
 	private static ResourceSet resourceSet = new ResourceSetImpl();
 
 	@Test
