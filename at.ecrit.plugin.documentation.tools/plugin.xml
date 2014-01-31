@@ -2,12 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.e4.tools.emf.ui.elementEditorTab">
-      <elementEditorTab
-            contribution="at.ecrit.plugin.documentation.tools.elementEditor.EcritElementEditorContribution">
-      </elementEditorTab>
-   </extension>
-   <extension
          point="org.eclipse.ui.editors">
       <editor
             class="at.ecrit.plugin.documentation.tools.editor.EcritDocumentationModelEditor"
@@ -17,6 +11,12 @@
             id="at.ecrit.plugin.documentation.tools.editor"
             name="Ecrit Documentation File Editor">
       </editor>
+   </extension>
+   <extension
+         point="org.eclipse.e4.tools.emf.ui.editors">
+      <editorTab
+            contribution="at.ecrit.plugin.documentation.tools.elementEditor.EcritElementEditorContribution">
+      </editorTab>
    </extension>
 
 </plugin>

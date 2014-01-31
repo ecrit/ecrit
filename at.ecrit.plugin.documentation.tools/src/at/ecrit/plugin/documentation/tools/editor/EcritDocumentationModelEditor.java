@@ -12,7 +12,6 @@ package at.ecrit.plugin.documentation.tools.editor;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.internal.resources.Workspace;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -20,17 +19,13 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.e4.tools.compat.parts.DIEditorPart;
-import org.eclipse.e4.tools.emf.editor3x.RedoAction;
-import org.eclipse.e4.tools.emf.editor3x.UndoAction;
 import org.eclipse.e4.tools.emf.ui.common.IModelResource.ModelListener;
 import org.eclipse.e4.tools.emf.ui.internal.wbm.ApplicationModelEditor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.FileEditorInput;
 
 import at.ecrit.plugin.documentation.core.constants.StringConstants;
@@ -40,8 +35,8 @@ import at.ecrit.plugin.documentation.tools.elementEditor.EcritElementEditorContr
 @SuppressWarnings("restriction")
 public class EcritDocumentationModelEditor extends
 		DIEditorPart<ApplicationModelEditor> {
-	private UndoAction undoAction;
-	private RedoAction redoAction;
+//	private UndoAction undoAction;
+//	private RedoAction redoAction;
 	
 	private IFile ecritXmiFile;
 	
@@ -87,25 +82,25 @@ public class EcritDocumentationModelEditor extends
 	@Override
 	protected void makeActions() {
 		super.makeActions();
-		undoAction = new UndoAction(getComponent().getModelProvider());
-		undoAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_UNDO);
+//		undoAction = new UndoAction(getComponent().getModelProvider());
+//		undoAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_UNDO);
+//
+//		redoAction = new RedoAction(getComponent().getModelProvider());
+//		redoAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_REDO);
 
-		redoAction = new RedoAction(getComponent().getModelProvider());
-		redoAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_REDO);
-
-		getEditorSite().getActionBars().setGlobalActionHandler(
-				ActionFactory.UNDO.getId(), undoAction);
-		getEditorSite().getActionBars().setGlobalActionHandler(
-				ActionFactory.REDO.getId(), redoAction);
+//		getEditorSite().getActionBars().setGlobalActionHandler(
+//				ActionFactory.UNDO.getId(), undoAction);
+//		getEditorSite().getActionBars().setGlobalActionHandler(
+//				ActionFactory.REDO.getId(), redoAction);
 	}
 
 	@Override
 	public void dispose() {
-		if (undoAction != null)
-			undoAction.dispose();
-
-		if (redoAction != null)
-			redoAction.dispose();
+//		if (undoAction != null)
+//			undoAction.dispose();
+//
+//		if (redoAction != null)
+//			redoAction.dispose();
 
 		if (listener != null && getComponent() != null
 				&& getComponent().getModelProvider() != null)
