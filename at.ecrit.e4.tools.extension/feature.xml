@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="at.ecrit.e4.tools.extension"
+      label="Ecrit e4 tooling Extension"
+      version="1.0.0.qualifier"
+      provider-name="ecrit.at">
+
+   <description url="http://www.ecrit.at/">
+      This feature extends the &lt;i&gt;Eclipse 4 model editor&lt;/i&gt; with an additional tab to add documentation to the model application elements.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://opensource.org/licenses/EPL-1.0">
+      EPL 1.0
+   </license>
+
+   <plugin
+         id="at.ecrit.e4.tools.extension.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.ecrit.e4.tools.extension.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
