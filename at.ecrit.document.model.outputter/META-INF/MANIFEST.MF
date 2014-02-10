@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Outputter
 Bundle-SymbolicName: at.ecrit.document.model.outputter
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.1.qualifier
 Bundle-Vendor: ecrit.at
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: at.ecrit.document.model,
