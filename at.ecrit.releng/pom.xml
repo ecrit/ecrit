@@ -80,5 +80,11 @@
 
 		<module>../at.ecrit.p2site</module>
 		<module>../at.ecrit.target</module>
+		<module>
+			../at.ecrit.eclipse.plugin.feature
+		</module>
+		<module>../at.ecrit.eclipse.plugin</module>
+		<module>../at.ecrit.document.model</module>
+		<module>../at.ecrit.document.model.outputter</module>
 	</modules>
 </project>
