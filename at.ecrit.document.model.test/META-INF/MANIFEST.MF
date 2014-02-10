@@ -4,9 +4,12 @@ Bundle-Name: Test
 Bundle-SymbolicName: at.ecrit.document.model.test
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ecrit.at
-Fragment-Host: at.ecrit.document.model;bundle-version="0.1.0"
+Fragment-Host: at.ecrit.document.model;bundle-version="0.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.junit,
  org.eclipse.e4.ui.workbench,
- org.eclipse.emf.ecore.xmi;bundle-version="2.10.0"
-Import-Package: javax.inject
+ org.eclipse.emf.ecore.xmi;bundle-version="2.10.0",
+ org.eclipse.emf.ecore
+Import-Package: javax.inject,
+ org.eclipse.e4.ui.internal.workbench,
+ org.eclipse.emf.ecore.resource

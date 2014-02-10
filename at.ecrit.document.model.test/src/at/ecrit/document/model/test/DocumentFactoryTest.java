@@ -7,11 +7,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.Test;
 
 import at.ecrit.document.model.DocumentFactory;
 import at.ecrit.document.model.ecritdocument.Document;
+
 
 public class DocumentFactoryTest {
 	
@@ -21,21 +21,14 @@ public class DocumentFactoryTest {
 	public void testCreateFromApplicationModel() {
 		URL applicationModelUrl = DocumentFactoryTest.class
 				.getResource("Application.e4xmi");
-		URL ecritModelUrl = DocumentFactoryTest.class
-				.getResource("Application.ecritxmi");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 				.put("e4xmi", new E4XMIResourceFactory());
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("ecritxmi", new XMIResourceFactoryImpl());
 		
 		Resource appModelResource = resourceSet.getResource(
 				URI.createURI(applicationModelUrl.toString()), true);
-		
-		Resource ecritModelResource = resourceSet.getResource(
-				URI.createURI(ecritModelUrl.toString()), true);
 
-		Document doc = DocumentFactory.createFromApplicationModel(appModelResource, ecritModelResource);
+		Document doc = DocumentFactory.createFromApplicationModel(appModelResource);
 	}
 
 }
