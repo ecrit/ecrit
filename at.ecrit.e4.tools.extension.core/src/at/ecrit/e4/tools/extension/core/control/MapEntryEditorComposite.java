@@ -46,7 +46,7 @@ public class MapEntryEditorComposite extends AbstractEditorComposite {
 			l.setText(label);
 			l.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
 
-			final Text text = new Text(this, SWT.BORDER | SWT.MULTI);
+			final Text text = new Text(this, SWT.BORDER | SWT.WRAP | SWT.MULTI);
 			GridData gd_text = new GridData(GridData.FILL_BOTH);
 			gd_text.horizontalSpan = 2;
 			text.setLayoutData(gd_text);
