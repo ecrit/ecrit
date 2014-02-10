@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/at.ecrit.e4.tools.extension.feature_1.0.0.qualifier.jar" id="at.ecrit.e4.tools.extension.feature" version="1.0.0.qualifier"/>
+   <feature url="features/at.ecrit.e4.tools.extension.feature_0.0.1.qualifier.jar" id="at.ecrit.e4.tools.extension.feature" version="0.0.0"/>
 </site>
