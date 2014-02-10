@@ -5,3 +5,6 @@ rebel.xml
 *.jar
 *.war
 *.ear
+
+bin/
+target/
