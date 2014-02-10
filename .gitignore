@@ -2,7 +2,7 @@
 rebel.xml
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.ear
 
