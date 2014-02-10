@@ -10,7 +10,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
-import at.ecrit.e4.tools.extension.core.control.DescriptionComposite;
+import at.ecrit.e4.tools.extension.core.control.MapEntryEditorComposite;
 
 public class EcritDocumentationElementEditorContribution extends
 		AbstractElementEditorContribution {
@@ -34,10 +34,21 @@ public class EcritDocumentationElementEditorContribution extends
 			EMFDataBindingContext context, final WritableValue master,
 			final EditingDomain editingDomain, IProject project) {
 
-		Composite comp = new DescriptionComposite(parent, SWT.None, context, master,
-				editingDomain);
+		Composite descEdComp = new MapEntryEditorComposite(parent, SWT.None,
+				context, master, editingDomain, "Description",
+				Constants.PERSISTENT_STATE_DESCRIPTION);
 		GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1);
-		comp.setLayoutData(gd);
+		descEdComp.setLayoutData(gd);
+
+		Composite preCondComp = new MapEntryEditorComposite(parent, SWT.None,
+				context, master, editingDomain, "Precondition",
+				Constants.PERSISTENT_STATE_PRECONDITION);
+		preCondComp.setLayoutData(gd);
+
+		Composite postCondComp = new MapEntryEditorComposite(parent, SWT.None,
+				context, master, editingDomain, "Postcondition",
+				Constants.PERSISTENT_STATE_POSTCONDITION);
+		postCondComp.setLayoutData(gd);
 	}
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="at.ecrit.e4.tools.extension"
-      label="Ecrit e4 tooling Extension"
+      id="at.ecrit.e4.tools.extension.feature"
+      label="Ecrit e4 tooling extension"
       version="1.0.0.qualifier"
       provider-name="ecrit.at">
 
@@ -19,13 +19,6 @@
 
    <plugin
          id="at.ecrit.e4.tools.extension.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.ecrit.e4.tools.extension.model"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="Luna SDK" sequenceNumber="0">
+<?pde version="3.8"?><target name="Luna SDK" sequenceNumber="1">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.sdk.ide" version="4.4.0.I20140123-1600"/>
 <unit id="org.eclipse.mylyn.wikitext_feature.feature.group" version="2.0.0.20131219-0024"/>
 <unit id="org.eclipse.emf.sdk.feature.group" version="2.10.0.v20140127-0448"/>
@@ -21,6 +21,19 @@
 <unit id="org.mozilla.javascript" version="1.7.4.v201209142200"/>
 <unit id="org.junit" version="4.11.0.v201303080030"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.e4.core.tools.feature.source.feature.group" version="0.14.0.v20140210-0748"/>
+<unit id="org.eclipse.e4.tools.orion.css.editor.feature.source.feature.group" version="0.15.0.v20140209-1851"/>
+<unit id="org.eclipse.e4.tools.css.editor.feature.feature.group" version="0.14.0.v20140206-0829"/>
+<unit id="org.eclipse.e4.tools.event.spy.feature.feature.group" version="0.15.0.v20140206-0829"/>
+<unit id="org.eclipse.e4.tools.css.editor.feature.source.feature.group" version="0.14.0.v20140206-0829"/>
+<unit id="org.eclipse.e4.core.tools.feature.feature.group" version="0.14.0.v20140210-0748"/>
+<unit id="org.eclipse.e4.tools.css.spy.feature.source.feature.group" version="0.14.0.v20140206-0829"/>
+<unit id="org.eclipse.e4.tools.event.spy.feature.source.feature.group" version="0.15.0.v20140206-0829"/>
+<unit id="org.eclipse.e4.tools.orion.css.editor.feature.feature.group" version="0.15.0.v20140209-1851"/>
+<unit id="org.eclipse.e4.tools.css.spy.feature.feature.group" version="0.14.0.v20140206-0829"/>
+<repository location="http://download.ecrit.at/e4-tools/"/>
 </location>
 </locations>
 </target>
