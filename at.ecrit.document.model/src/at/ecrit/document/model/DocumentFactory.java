@@ -68,7 +68,7 @@ public class DocumentFactory {
 		E4Application.initializeServices(application);
 		modelService = application.getContext().get(EModelService.class);
 
-		AppModelHelper.initAppModel(application, modelService);
+		AppModelHelper.initAppModel(modelService, appModelResource);
 
 		setDocumentInformation(doc, application);
 		collectApplicationLayout(doc, appModelResource);

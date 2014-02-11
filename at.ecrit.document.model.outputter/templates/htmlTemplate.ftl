@@ -31,7 +31,6 @@
   <h1>Application Documentation - ${doc.title}</h1>
   <p>Document created on ${doc.creationDate?string("EEEE, MMMM dd, yyyy, hh:mm:ss a '('zzz')'")}</p>
   
-  
   <h2>Introduction</h2>
   
   <h2>Conventions used in this documentation</h2>
@@ -50,11 +49,13 @@
   The application has one main window presented to the user on startup.
   </#if> 
   
+  <h4>Perspectives</h4>
+  
   There are ${doc.applicationLayout.perspective?size} perspectives available to the user.
   
   <#list doc.applicationLayout.perspective as perspective>
-  	<h4>Perspective ${perspective.modelElement.label}</h4>
-  	<p><i>Description</i> ${perspective.description!""}<p>
+  	<h5>Perspective ${perspective.modelElement.label}</h5>
+  	<p><i>Description</i> ${perspective.description}<p>
   	
   	<p><i>Parts</i>
   		<ul>
@@ -65,8 +66,16 @@
   	<p>
   </#list>
   
+  <h4>Parts</h4>
+  
+  <#list doc.applicationLayout.part as part>
+  	<h5>Part ${part.modelElement.label}</h5>
+  	<p><i>Description</i> ${part.description}<p>
+  </#list>
   
   <h2>Procedures</h2>
+
+	Not available. Requires "cheat-sheets".
 
   <h2>Information on software commands</h2>
     <#list doc.step as st>

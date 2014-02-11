@@ -4,7 +4,7 @@ Bundle-Name: Test
 Bundle-SymbolicName: at.ecrit.document.model.outputter.test
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ecrit.at
-Fragment-Host: at.ecrit.document.model.outputter;bundle-version="1.0.0"
+Fragment-Host: at.ecrit.document.model.outputter;bundle-version="0.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.junit,
  at.ecrit.plugin.documentation.model;bundle-version="1.0.0",
