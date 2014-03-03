@@ -35,18 +35,18 @@ public class EcritDocumentationElementEditorContribution extends
 			final EditingDomain editingDomain, IProject project) {
 
 		Composite descEdComp = new MapEntryEditorComposite(parent, SWT.None,
-				context, master, editingDomain, "Description",
+				context, master, editingDomain, "description",
 				Constants.PERSISTENT_STATE_DESCRIPTION);
 		GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1);
 		descEdComp.setLayoutData(gd);
 
 		Composite preCondComp = new MapEntryEditorComposite(parent, SWT.None,
-				context, master, editingDomain, "Precondition",
+				context, master, editingDomain, "precondition",
 				Constants.PERSISTENT_STATE_PRECONDITION);
 		preCondComp.setLayoutData(gd);
 
 		Composite postCondComp = new MapEntryEditorComposite(parent, SWT.None,
-				context, master, editingDomain, "Postcondition",
+				context, master, editingDomain, "postcondition",
 				Constants.PERSISTENT_STATE_POSTCONDITION);
 		postCondComp.setLayoutData(gd);
 	}
