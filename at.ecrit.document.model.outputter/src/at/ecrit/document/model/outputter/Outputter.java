@@ -27,7 +27,7 @@ public class Outputter {
 		// }
 
 		try {
-			File outputFile = new File(targetDirectory, "output.html");
+			File outputFile = new File(targetDirectory, "main.tex");
 			FileWriter fileWriter = new FileWriter(outputFile);
 			template.process(input, fileWriter);
 			fileWriter.close();

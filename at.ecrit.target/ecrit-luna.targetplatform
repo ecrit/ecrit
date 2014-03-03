@@ -1,0 +1,28 @@
+target "Luna SDK"
+
+// Eclipse plugins dependencies
+location "http://download.eclipse.org/releases/luna" {
+	with source, requirements
+	org.eclipse.sdk.ide	
+	org.eclipse.mylyn.wikitext_feature.feature.group	
+	org.eclipse.emf.sdk.feature.group
+	org.eclipse.emf.transaction.sdk.feature.group
+	org.eclipse.emf.validation.sdk.feature.group
+	org.eclipse.emf.compare.feature.group
+	org.eclipse.emf.facet.sdk.feature.feature.group
+	org.eclipse.emf.compare.ide.ui.feature.group
+	org.eclipse.jdt.feature.group
+	org.eclipse.emf.cdo.sdk.feature.group
+	org.eclipse.mylyn.ide_feature.feature.group
+	org.eclipse.acceleo.feature.group
+}
+
+// Orbit dependencies
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/" {
+	with source, requirements	
+	com.google.guava;version="[11.0.0,16.0.0)"
+	org.mozilla.javascript
+	org.junit
+}
+
+

@@ -39,9 +39,9 @@ public class OutputterTest {
 		try {
 			Configuration cfg = Activator.getFreemarkerConfig();
 			Template template = cfg.getTemplate(
-					TemplateConstants.HTML_TEMPLATE);
+					TemplateConstants.LATEX_TEMPLATE);
 			
-			Outputter.processOutput(doc, template, new File("/Users/marco/Desktop/"));
+			Outputter.processOutput(doc, template, new File("/Users/marco/Desktop/book_2/"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
