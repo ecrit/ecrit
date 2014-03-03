@@ -9,7 +9,6 @@ location "http://download.eclipse.org/releases/luna" {
 	org.eclipse.emf.transaction.sdk.feature.group
 	org.eclipse.emf.validation.sdk.feature.group
 	org.eclipse.emf.compare.feature.group
-	org.eclipse.emf.facet.sdk.feature.feature.group
 	org.eclipse.emf.compare.ide.ui.feature.group
 	org.eclipse.jdt.feature.group
 	org.eclipse.emf.cdo.sdk.feature.group
@@ -18,11 +17,12 @@ location "http://download.eclipse.org/releases/luna" {
 }
 
 // Orbit dependencies
-location "http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/" {
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/" {
 	with source, requirements	
 	com.google.guava;version="[11.0.0,16.0.0)"
 	org.mozilla.javascript
 	org.junit
+	com.lowagie.text
 }
 
 
