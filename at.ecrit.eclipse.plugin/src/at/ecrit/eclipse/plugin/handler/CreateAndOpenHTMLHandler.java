@@ -12,6 +12,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import at.ecrit.document.model.DocumentFactory;
+import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.eclipse.plugin.internal.Activator;
 
 public class CreateAndOpenHTMLHandler extends AbstractHandler {
@@ -26,7 +27,10 @@ public class CreateAndOpenHTMLHandler extends AbstractHandler {
 		Resource appModelResource = Activator.getResourceSet().getResource(
 				uri, true);
 		
-		DocumentFactory.createFromApplicationModel(appModelResource);
+		Document doc = DocumentFactory.createFromApplicationModel(appModelResource);
+		
+		
+		
 		return null;
 	}
 
