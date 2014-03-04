@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="output" name="output" schema="schema/output.exsd"/>
+
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
@@ -10,11 +12,6 @@
                icon="rsc/icons/ecrit_16.png"
                id="ecrit_popup_submenu"
                label="Ecrit">
-            <command
-                  commandId="at.ecrit.eclipse.plugin.command.createAndOpenHTMLDocumentation"
-                  label="Create and open HTML Documentation"
-                  style="push">
-            </command>
             <visibleWhen
                   checkEnabled="false">
                <or>
@@ -32,21 +29,25 @@
                   </with>
                </or>
             </visibleWhen>
+            <dynamic
+                  class="at.ecrit.eclipse.plugin.ui.DynamicOutputterMenu"
+                  id="at.ecrit.eclipse.plugin.dynamic.outputterSelection">
+            </dynamic>
          </menu>
       </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <command
-            id="at.ecrit.eclipse.plugin.command.createAndOpenHTMLDocumentation"
-            name="Create and open HTML Documentation">
+            id="at.ecrit.eclipse.plugin.command.createAndOpenDocumentation"
+            name="Create and open Documentation">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="at.ecrit.eclipse.plugin.handler.CreateAndOpenHTMLHandler"
-            commandId="at.ecrit.eclipse.plugin.command.createAndOpenHTMLDocumentation">
+            class="at.ecrit.eclipse.plugin.handler.CreateAndOpenDocumentationHandler"
+            commandId="at.ecrit.eclipse.plugin.command.createAndOpenDocumentation">
       </handler>
    </extension>
    <extension

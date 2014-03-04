@@ -1,12 +1,9 @@
 package at.ecrit.document.model.internal;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
-import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;

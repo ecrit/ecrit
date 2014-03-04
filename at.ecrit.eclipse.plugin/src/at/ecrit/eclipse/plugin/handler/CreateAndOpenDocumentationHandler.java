@@ -15,7 +15,7 @@ import at.ecrit.document.model.DocumentFactory;
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.eclipse.plugin.internal.Activator;
 
-public class CreateAndOpenHTMLHandler extends AbstractHandler {
+public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 
 	
 	@Override
@@ -28,8 +28,7 @@ public class CreateAndOpenHTMLHandler extends AbstractHandler {
 				uri, true);
 		
 		Document doc = DocumentFactory.createFromApplicationModel(appModelResource);
-		
-		
+
 		
 		return null;
 	}
