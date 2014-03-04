@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="at.ecrit.eclipse.plugin.output">
+      <output
+            class="at.ecrit.eclipse.plugin.outputter.html.HTMLOutputter">
+      </output>
+   </extension>
+
+</plugin>

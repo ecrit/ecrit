@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ecrit HTML output
+Bundle-SymbolicName: at.ecrit.eclipse.plugin.outputter.html;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: ecrit.at
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: at.ecrit.eclipse.plugin;bundle-version="0.0.1"
+Import-Package: at.ecrit.document.model.ecritdocument,
+ org.eclipse.core.runtime
