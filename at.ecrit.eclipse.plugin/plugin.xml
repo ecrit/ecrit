@@ -29,10 +29,11 @@
                   </with>
                </or>
             </visibleWhen>
-            <dynamic
-                  class="at.ecrit.eclipse.plugin.ui.DynamicOutputterMenu"
-                  id="at.ecrit.eclipse.plugin.dynamic.outputterSelection">
-            </dynamic>
+            <command
+                  commandId="at.ecrit.eclipse.plugin.command.createAndOpenDocumentation"
+                  label="Create Documentation"
+                  style="push">
+            </command>
          </menu>
       </menuContribution>
    </extension>
