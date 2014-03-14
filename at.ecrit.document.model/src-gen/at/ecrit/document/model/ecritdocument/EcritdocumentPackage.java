@@ -370,13 +370,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENT__APPLICATION_LAYOUT = 5;
 
 	/**
+	 * The feature id for the '<em><b>Application Properties</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__APPLICATION_PROPERTIES = 6;
+
+	/**
 	 * The number of structural features of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = 6;
+	int DOCUMENT_FEATURE_COUNT = 7;
 
 	/**
 	 * The operation id for the '<em>Find Or Create Command Step By Command</em>' operation.
@@ -388,22 +397,13 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND = 0;
 
 	/**
-	 * The operation id for the '<em>Generate Depictable Item PNG Images</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT___GENERATE_DEPICTABLE_ITEM_PNG_IMAGES__STRING = 1;
-
-	/**
 	 * The number of operations of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_OPERATION_COUNT = 2;
+	int DOCUMENT_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.UserImpl <em>User</em>}' class.
@@ -560,7 +560,6 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECT_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
-
 
 	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.InitiatableItemImpl <em>Initiatable Item</em>}' class.
@@ -782,77 +781,13 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENTED_PERSPECTIVE_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Generate PNG Depiction Image</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENTED_PERSPECTIVE___GENERATE_PNG_DEPICTION_IMAGE = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Get Element Depiction Image Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENTED_PERSPECTIVE___GET_ELEMENT_DEPICTION_IMAGE_NAME = DOCUMENTED_ELEMENT_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Documented Perspective</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENTED_PERSPECTIVE_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.Depictable <em>Depictable</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.ecrit.document.model.ecritdocument.Depictable
-	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDepictable()
-	 * @generated
-	 */
-	int DEPICTABLE = 10;
-
-	/**
-	 * The number of structural features of the '<em>Depictable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPICTABLE_FEATURE_COUNT = 0;
-
-	/**
-	 * The operation id for the '<em>Generate PNG Depiction Image</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPICTABLE___GENERATE_PNG_DEPICTION_IMAGE = 0;
-
-	/**
-	 * The operation id for the '<em>Get Element Depiction Image Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPICTABLE___GET_ELEMENT_DEPICTION_IMAGE_NAME = 1;
-
-	/**
-	 * The number of operations of the '<em>Depictable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPICTABLE_OPERATION_COUNT = 2;
+	int DOCUMENTED_PERSPECTIVE_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl <em>Documented Part</em>}' class.
@@ -862,7 +797,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedPart()
 	 * @generated
 	 */
-	int DOCUMENTED_PART = 11;
+	int DOCUMENTED_PART = 10;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -935,7 +870,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedWindow()
 	 * @generated
 	 */
-	int DOCUMENTED_WINDOW = 12;
+	int DOCUMENTED_WINDOW = 11;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1001,6 +936,70 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENTED_WINDOW_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl <em>Application Properties</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getApplicationProperties()
+	 * @generated
+	 */
+	int APPLICATION_PROPERTIES = 12;
+
+	/**
+	 * The feature id for the '<em><b>Requires Login</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_PROPERTIES__REQUIRES_LOGIN = 0;
+
+	/**
+	 * The feature id for the '<em><b>Requires Installation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_PROPERTIES__REQUIRES_INSTALLATION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Perspective Switcher</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_PROPERTIES__PERSPECTIVE_SWITCHER = 2;
+
+	/**
+	 * The feature id for the '<em><b>Has Concept Of Multiple Users</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS = 3;
+
+	/**
+	 * The number of structural features of the '<em>Application Properties</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_PROPERTIES_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Application Properties</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_PROPERTIES_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1009,7 +1008,6 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 */
 	int INITIATABLE_ITEM_TYPE = 13;
-
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -1174,6 +1172,17 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getDocument_ApplicationLayout();
 
 	/**
+	 * Returns the meta object for the reference '{@link at.ecrit.document.model.ecritdocument.Document#getApplicationProperties <em>Application Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Application Properties</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.Document#getApplicationProperties()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EReference getDocument_ApplicationProperties();
+
+	/**
 	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Document#findOrCreateCommandStepByCommand(org.eclipse.e4.ui.model.application.commands.MCommand) <em>Find Or Create Command Step By Command</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1182,16 +1191,6 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getDocument__FindOrCreateCommandStepByCommand__MCommand();
-
-	/**
-	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Document#generateDepictableItemPNGImages(java.lang.String) <em>Generate Depictable Item PNG Images</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Generate Depictable Item PNG Images</em>' operation.
-	 * @see at.ecrit.document.model.ecritdocument.Document#generateDepictableItemPNGImages(java.lang.String)
-	 * @generated
-	 */
-	EOperation getDocument__GenerateDepictableItemPNGImages__String();
 
 	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.User <em>User</em>}'.
@@ -1450,36 +1449,6 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getDocumentedPerspective_ContainedParts();
 
 	/**
-	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.Depictable <em>Depictable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Depictable</em>'.
-	 * @see at.ecrit.document.model.ecritdocument.Depictable
-	 * @generated
-	 */
-	EClass getDepictable();
-
-	/**
-	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Depictable#generatePNGDepictionImage() <em>Generate PNG Depiction Image</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Generate PNG Depiction Image</em>' operation.
-	 * @see at.ecrit.document.model.ecritdocument.Depictable#generatePNGDepictionImage()
-	 * @generated
-	 */
-	EOperation getDepictable__GeneratePNGDepictionImage();
-
-	/**
-	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Depictable#getElementDepictionImageName() <em>Get Element Depiction Image Name</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Element Depiction Image Name</em>' operation.
-	 * @see at.ecrit.document.model.ecritdocument.Depictable#getElementDepictionImageName()
-	 * @generated
-	 */
-	EOperation getDepictable__GetElementDepictionImageName();
-
-	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedPart <em>Documented Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1542,6 +1511,60 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDocumentedWindow_ContainedPerspective();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties <em>Application Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Application Properties</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationProperties
+	 * @generated
+	 */
+	EClass getApplicationProperties();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#isRequiresLogin <em>Requires Login</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Requires Login</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationProperties#isRequiresLogin()
+	 * @see #getApplicationProperties()
+	 * @generated
+	 */
+	EAttribute getApplicationProperties_RequiresLogin();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getRequiresInstallation <em>Requires Installation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Requires Installation</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationProperties#getRequiresInstallation()
+	 * @see #getApplicationProperties()
+	 * @generated
+	 */
+	EAttribute getApplicationProperties_RequiresInstallation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getPerspectiveSwitcher <em>Perspective Switcher</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Perspective Switcher</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationProperties#getPerspectiveSwitcher()
+	 * @see #getApplicationProperties()
+	 * @generated
+	 */
+	EAttribute getApplicationProperties_PerspectiveSwitcher();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#isHasConceptOfMultipleUsers <em>Has Concept Of Multiple Users</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Has Concept Of Multiple Users</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationProperties#isHasConceptOfMultipleUsers()
+	 * @see #getApplicationProperties()
+	 * @generated
+	 */
+	EAttribute getApplicationProperties_HasConceptOfMultipleUsers();
 
 	/**
 	 * Returns the meta object for enum '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}'.
@@ -1706,20 +1729,20 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference DOCUMENT__APPLICATION_LAYOUT = eINSTANCE.getDocument_ApplicationLayout();
 
 		/**
+		 * The meta object literal for the '<em><b>Application Properties</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT__APPLICATION_PROPERTIES = eINSTANCE.getDocument_ApplicationProperties();
+
+		/**
 		 * The meta object literal for the '<em><b>Find Or Create Command Step By Command</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EOperation DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND = eINSTANCE.getDocument__FindOrCreateCommandStepByCommand__MCommand();
-
-		/**
-		 * The meta object literal for the '<em><b>Generate Depictable Item PNG Images</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation DOCUMENT___GENERATE_DEPICTABLE_ITEM_PNG_IMAGES__STRING = eINSTANCE.getDocument__GenerateDepictableItemPNGImages__String();
 
 		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.UserImpl <em>User</em>}' class.
@@ -1928,32 +1951,6 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference DOCUMENTED_PERSPECTIVE__CONTAINED_PARTS = eINSTANCE.getDocumentedPerspective_ContainedParts();
 
 		/**
-		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.Depictable <em>Depictable</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.ecrit.document.model.ecritdocument.Depictable
-		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDepictable()
-		 * @generated
-		 */
-		EClass DEPICTABLE = eINSTANCE.getDepictable();
-
-		/**
-		 * The meta object literal for the '<em><b>Generate PNG Depiction Image</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation DEPICTABLE___GENERATE_PNG_DEPICTION_IMAGE = eINSTANCE.getDepictable__GeneratePNGDepictionImage();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Element Depiction Image Name</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation DEPICTABLE___GET_ELEMENT_DEPICTION_IMAGE_NAME = eINSTANCE.getDepictable__GetElementDepictionImageName();
-
-		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl <em>Documented Part</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2004,6 +2001,48 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE = eINSTANCE.getDocumentedWindow_ContainedPerspective();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl <em>Application Properties</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getApplicationProperties()
+		 * @generated
+		 */
+		EClass APPLICATION_PROPERTIES = eINSTANCE.getApplicationProperties();
+
+		/**
+		 * The meta object literal for the '<em><b>Requires Login</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION_PROPERTIES__REQUIRES_LOGIN = eINSTANCE.getApplicationProperties_RequiresLogin();
+
+		/**
+		 * The meta object literal for the '<em><b>Requires Installation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION_PROPERTIES__REQUIRES_INSTALLATION = eINSTANCE.getApplicationProperties_RequiresInstallation();
+
+		/**
+		 * The meta object literal for the '<em><b>Perspective Switcher</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION_PROPERTIES__PERSPECTIVE_SWITCHER = eINSTANCE.getApplicationProperties_PerspectiveSwitcher();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Concept Of Multiple Users</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS = eINSTANCE.getApplicationProperties_HasConceptOfMultipleUsers();
 
 		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.

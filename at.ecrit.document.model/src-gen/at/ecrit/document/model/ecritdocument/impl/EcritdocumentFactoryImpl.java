@@ -5,6 +5,7 @@ package at.ecrit.document.model.ecritdocument.impl;
 import at.ecrit.document.model.ecritdocument.*;
 
 import java.io.IOException;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -68,6 +69,7 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE: return createDocumentedPerspective();
 			case EcritdocumentPackage.DOCUMENTED_PART: return createDocumentedPart();
 			case EcritdocumentPackage.DOCUMENTED_WINDOW: return createDocumentedWindow();
+			case EcritdocumentPackage.APPLICATION_PROPERTIES: return createApplicationProperties();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -205,6 +207,16 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 	public DocumentedWindow createDocumentedWindow() {
 		DocumentedWindowImpl documentedWindow = new DocumentedWindowImpl();
 		return documentedWindow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ApplicationProperties createApplicationProperties() {
+		ApplicationPropertiesImpl applicationProperties = new ApplicationPropertiesImpl();
+		return applicationProperties;
 	}
 
 	/**

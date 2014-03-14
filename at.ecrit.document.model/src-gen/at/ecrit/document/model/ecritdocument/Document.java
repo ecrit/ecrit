@@ -2,9 +2,10 @@
  */
 package at.ecrit.document.model.ecritdocument;
 
-import java.io.IOException;
 import java.util.Date;
+
 import org.eclipse.e4.ui.model.application.commands.MCommand;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link at.ecrit.document.model.ecritdocument.Document#getDocumentVersion <em>Document Version</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.Document#getProductVersion <em>Product Version</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.Document#getApplicationLayout <em>Application Layout</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.Document#getApplicationProperties <em>Application Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -178,19 +180,37 @@ public interface Document extends EObject {
 	void setApplicationLayout(ApplicationLayout value);
 
 	/**
+	 * Returns the value of the '<em><b>Application Properties</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Application Properties</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Application Properties</em>' reference.
+	 * @see #setApplicationProperties(ApplicationProperties)
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getDocument_ApplicationProperties()
+	 * @model required="true"
+	 * @generated
+	 */
+	ApplicationProperties getApplicationProperties();
+
+	/**
+	 * Sets the value of the '{@link at.ecrit.document.model.ecritdocument.Document#getApplicationProperties <em>Application Properties</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Application Properties</em>' reference.
+	 * @see #getApplicationProperties()
+	 * @generated
+	 */
+	void setApplicationProperties(ApplicationProperties value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model commandRequired="true"
 	 * @generated
 	 */
 	CommandStep findOrCreateCommandStepByCommand(MCommand command);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model exceptions="at.ecrit.document.model.ecritdocument.IOException"
-	 * @generated
-	 */
-	void generateDepictableItemPNGImages(String targetDirectory) throws IOException;
 
 } // Document

@@ -13,7 +13,12 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.10.0",
  org.eclipse.emf.ecore.xmi;bundle-version="2.10.0",
  org.eclipse.e4.ui.workbench,
  at.ecrit.document.model,
- at.ecrit.document.model.outputter;bundle-version="0.0.1"
+ at.ecrit.document.model.outputter;bundle-version="0.0.1",
+ org.eclipse.jface.databinding;bundle-version="1.6.200",
+ org.eclipse.core.databinding;bundle-version="1.4.1",
+ org.eclipse.core.databinding.beans,
+ org.eclipse.core.databinding.property,
+ com.ibm.icu
 Bundle-Activator: at.ecrit.eclipse.plugin.internal.Activator
 Bundle-ActivationPolicy: lazy
 Export-Package: at.ecrit.eclipse.plugin.extension

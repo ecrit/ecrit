@@ -108,16 +108,16 @@ public class EcritdocumentAdapterFactory extends AdapterFactoryImpl {
 				return createDocumentedPerspectiveAdapter();
 			}
 			@Override
-			public Adapter caseDepictable(Depictable object) {
-				return createDepictableAdapter();
-			}
-			@Override
 			public Adapter caseDocumentedPart(DocumentedPart object) {
 				return createDocumentedPartAdapter();
 			}
 			@Override
 			public Adapter caseDocumentedWindow(DocumentedWindow object) {
 				return createDocumentedWindowAdapter();
+			}
+			@Override
+			public Adapter caseApplicationProperties(ApplicationProperties object) {
+				return createApplicationPropertiesAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -280,20 +280,6 @@ public class EcritdocumentAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.Depictable <em>Depictable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see at.ecrit.document.model.ecritdocument.Depictable
-	 * @generated
-	 */
-	public Adapter createDepictableAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.DocumentedPart <em>Documented Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -318,6 +304,20 @@ public class EcritdocumentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDocumentedWindowAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties <em>Application Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationProperties
+	 * @generated
+	 */
+	public Adapter createApplicationPropertiesAdapter() {
 		return null;
 	}
 

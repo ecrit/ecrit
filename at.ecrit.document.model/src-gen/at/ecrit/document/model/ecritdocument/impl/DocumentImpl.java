@@ -3,14 +3,14 @@
 package at.ecrit.document.model.ecritdocument.impl;
 
 import at.ecrit.document.model.ecritdocument.ApplicationLayout;
+import at.ecrit.document.model.ecritdocument.ApplicationProperties;
 import at.ecrit.document.model.ecritdocument.CommandStep;
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.ecritdocument.EcritdocumentFactory;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
 import at.ecrit.document.model.ecritdocument.Step;
-import at.ecrit.document.model.methods.DepictableItemMethods;
+import at.ecrit.document.model.methods.DocumentMethods;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Date;
@@ -27,8 +27,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Document</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Document</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -38,16 +39,17 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getDocumentVersion <em>Document Version</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getProductVersion <em>Product Version</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getApplicationLayout <em>Application Layout</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl#getApplicationProperties <em>Application Properties</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DocumentImpl extends MinimalEObjectImpl.Container implements
-		Document {
+public class DocumentImpl extends MinimalEObjectImpl.Container implements Document {
 	/**
 	 * The cached value of the '{@link #getStep() <em>Step</em>}' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getStep()
 	 * @generated
 	 * @ordered
@@ -63,6 +65,7 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected static final String TITLE_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -144,7 +147,18 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	protected ApplicationLayout applicationLayout;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getApplicationProperties() <em>Application Properties</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApplicationProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected ApplicationProperties applicationProperties;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected DocumentImpl() {
@@ -152,7 +166,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -161,7 +176,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Step> getStep() {
@@ -299,32 +315,41 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated not
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public CommandStep findOrCreateCommandStepByCommand(MCommand command) {
-		if (command == null)
-			throw new IllegalArgumentException();
-		
-		// try to find existing
-		for (Step stepEntry : step) {
-			if (stepEntry instanceof CommandStep) {
-				CommandStep se = (CommandStep) stepEntry;
-				MCommand com = se.getCommand();
-				if (com != null) {
-					if (com.getElementId().equalsIgnoreCase(
-							command.getElementId()))
-						return se;
-				}
+	public ApplicationProperties getApplicationProperties() {
+		if (applicationProperties != null && applicationProperties.eIsProxy()) {
+			InternalEObject oldApplicationProperties = (InternalEObject)applicationProperties;
+			applicationProperties = (ApplicationProperties)eResolveProxy(oldApplicationProperties);
+			if (applicationProperties != oldApplicationProperties) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcritdocumentPackage.DOCUMENT__APPLICATION_PROPERTIES, oldApplicationProperties, applicationProperties));
 			}
 		}
-		
-		// create new
-		CommandStep newstep = EcritdocumentFactory.eINSTANCE.createCommandStep();
-		newstep.setCommand(command);
-		step.add(newstep);
-		return newstep;
+		return applicationProperties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ApplicationProperties basicGetApplicationProperties() {
+		return applicationProperties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApplicationProperties(ApplicationProperties newApplicationProperties) {
+		ApplicationProperties oldApplicationProperties = applicationProperties;
+		applicationProperties = newApplicationProperties;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENT__APPLICATION_PROPERTIES, oldApplicationProperties, applicationProperties));
 	}
 
 	/**
@@ -332,17 +357,17 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated not
 	 */
-	public void generateDepictableItemPNGImages(String targetDirectory) throws IOException {
-		DepictableItemMethods.generateDepictableItemPNGImages(this, targetDirectory);
+	public CommandStep findOrCreateCommandStepByCommand(MCommand command) {
+		return DocumentMethods.findOrCreateCommandStepByCommand(command, this);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EcritdocumentPackage.DOCUMENT__STEP:
 				return ((InternalEList<?>)getStep()).basicRemove(otherEnd, msgs);
@@ -353,7 +378,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -371,12 +397,16 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 				return getProductVersion();
 			case EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT:
 				return getApplicationLayout();
+			case EcritdocumentPackage.DOCUMENT__APPLICATION_PROPERTIES:
+				if (resolve) return getApplicationProperties();
+				return basicGetApplicationProperties();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -402,12 +432,16 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 			case EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT:
 				setApplicationLayout((ApplicationLayout)newValue);
 				return;
+			case EcritdocumentPackage.DOCUMENT__APPLICATION_PROPERTIES:
+				setApplicationProperties((ApplicationProperties)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -431,12 +465,16 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 			case EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT:
 				setApplicationLayout((ApplicationLayout)null);
 				return;
+			case EcritdocumentPackage.DOCUMENT__APPLICATION_PROPERTIES:
+				setApplicationProperties((ApplicationProperties)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -454,28 +492,22 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 				return PRODUCT_VERSION_EDEFAULT == null ? productVersion != null : !PRODUCT_VERSION_EDEFAULT.equals(productVersion);
 			case EcritdocumentPackage.DOCUMENT__APPLICATION_LAYOUT:
 				return applicationLayout != null;
+			case EcritdocumentPackage.DOCUMENT__APPLICATION_PROPERTIES:
+				return applicationProperties != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Object eInvoke(int operationID, EList<?> arguments)
-			throws InvocationTargetException {
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case EcritdocumentPackage.DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND:
 				return findOrCreateCommandStepByCommand((MCommand)arguments.get(0));
-			case EcritdocumentPackage.DOCUMENT___GENERATE_DEPICTABLE_ITEM_PNG_IMAGES__STRING:
-				try {
-					generateDepictableItemPNGImages((String)arguments.get(0));
-					return null;
-				}
-				catch (Throwable throwable) {
-					throw new InvocationTargetException(throwable);
-				}
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -502,4 +534,4 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements
 		return result.toString();
 	}
 
-} // DocumentImpl
+} //DocumentImpl

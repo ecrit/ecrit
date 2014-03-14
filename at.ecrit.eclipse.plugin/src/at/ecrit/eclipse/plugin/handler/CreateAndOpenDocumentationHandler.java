@@ -1,19 +1,22 @@
 package at.ecrit.eclipse.plugin.handler;
 
+import java.io.File;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import at.ecrit.document.model.DocumentFactory;
 import at.ecrit.document.model.ecritdocument.Document;
+import at.ecrit.eclipse.plugin.extension.AbstractOutputter;
 import at.ecrit.eclipse.plugin.internal.Activator;
-import at.ecrit.eclipse.plugin.internal.ui.OutputterSelectionDialog;
+import at.ecrit.eclipse.plugin.internal.ui.OutputSelectionDialog;
 
 public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 
@@ -30,16 +33,15 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		Document doc = DocumentFactory
 				.createFromApplicationModel(appModelResource);
 
-		System.out.println("Title " + doc.getTitle());
+		OutputSelectionDialog osd = new OutputSelectionDialog();
 
-		OutputterSelectionDialog osd = new OutputterSelectionDialog(PlatformUI.createDisplay().getActiveShell());
-		osd.setTitle("Select an Outputter");
-		osd.setInitialPattern("?");
 		int retVal = osd.open();
-
+		if(retVal!=Dialog.OK) return null;
 		
-		System.out.println(osd);
-		System.out.println("Could you please implement me?");
+		AbstractOutputter outputter = osd.getSelectedOutputter();
+		File outputLocation = osd.getSelectedOutputLocation();
+		
+		outputter.performOutput(doc, outputLocation);
 		
 		return null;
 	}

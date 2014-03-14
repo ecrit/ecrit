@@ -3,6 +3,7 @@
 package at.ecrit.document.model.ecritdocument;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -29,7 +30,7 @@ public interface ApplicationLayout extends EObject {
 	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedPerspective}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Perspective</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Perspective</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -45,7 +46,7 @@ public interface ApplicationLayout extends EObject {
 	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedPart}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Part</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Part</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -61,7 +62,7 @@ public interface ApplicationLayout extends EObject {
 	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedWindow}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Window</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Window</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

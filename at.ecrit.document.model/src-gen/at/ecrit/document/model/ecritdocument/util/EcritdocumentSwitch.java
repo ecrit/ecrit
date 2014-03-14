@@ -129,13 +129,6 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 				DocumentedPerspective documentedPerspective = (DocumentedPerspective)theEObject;
 				T result = caseDocumentedPerspective(documentedPerspective);
 				if (result == null) result = caseDocumentedElement(documentedPerspective);
-				if (result == null) result = caseDepictable(documentedPerspective);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EcritdocumentPackage.DEPICTABLE: {
-				Depictable depictable = (Depictable)theEObject;
-				T result = caseDepictable(depictable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -150,6 +143,12 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 				DocumentedWindow documentedWindow = (DocumentedWindow)theEObject;
 				T result = caseDocumentedWindow(documentedWindow);
 				if (result == null) result = caseDocumentedElement(documentedWindow);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EcritdocumentPackage.APPLICATION_PROPERTIES: {
+				ApplicationProperties applicationProperties = (ApplicationProperties)theEObject;
+				T result = caseApplicationProperties(applicationProperties);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -308,21 +307,6 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Depictable</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Depictable</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDepictable(Depictable object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Documented Part</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -349,6 +333,21 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDocumentedWindow(DocumentedWindow object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Application Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Application Properties</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseApplicationProperties(ApplicationProperties object) {
 		return null;
 	}
 

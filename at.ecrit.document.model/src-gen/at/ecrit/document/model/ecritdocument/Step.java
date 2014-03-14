@@ -3,6 +3,7 @@
 package at.ecrit.document.model.ecritdocument;
 
 import org.eclipse.e4.ui.model.application.commands.MKeyBinding;
+
 import org.eclipse.emf.common.util.EList;
 
 /**

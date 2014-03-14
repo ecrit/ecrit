@@ -3,8 +3,8 @@
 package at.ecrit.document.model.ecritdocument.impl;
 
 import at.ecrit.document.model.ecritdocument.ApplicationLayout;
+import at.ecrit.document.model.ecritdocument.ApplicationProperties;
 import at.ecrit.document.model.ecritdocument.CommandStep;
-import at.ecrit.document.model.ecritdocument.Depictable;
 import at.ecrit.document.model.ecritdocument.DirectStep;
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.ecritdocument.DocumentedElement;
@@ -20,14 +20,19 @@ import at.ecrit.document.model.ecritdocument.Step;
 import at.ecrit.document.model.ecritdocument.User;
 
 import java.io.IOException;
+
 import org.eclipse.e4.ui.model.application.commands.impl.CommandsPackageImpl;
 
 import org.eclipse.e4.ui.model.application.impl.ApplicationPackageImpl;
 
 import org.eclipse.e4.ui.model.application.ui.advanced.impl.AdvancedPackageImpl;
+
 import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicPackageImpl;
+
 import org.eclipse.e4.ui.model.application.ui.impl.UiPackageImpl;
+
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -120,13 +125,6 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass depictableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass documentedPartEClass = null;
 
 	/**
@@ -135,6 +133,13 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * @generated
 	 */
 	private EClass documentedWindowEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass applicationPropertiesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -345,8 +350,8 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDocument__FindOrCreateCommandStepByCommand__MCommand() {
-		return documentEClass.getEOperations().get(0);
+	public EReference getDocument_ApplicationProperties() {
+		return (EReference)documentEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -354,8 +359,8 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDocument__GenerateDepictableItemPNGImages__String() {
-		return documentEClass.getEOperations().get(1);
+	public EOperation getDocument__FindOrCreateCommandStepByCommand__MCommand() {
+		return documentEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -579,33 +584,6 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDepictable() {
-		return depictableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getDepictable__GeneratePNGDepictionImage() {
-		return depictableEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getDepictable__GetElementDepictionImageName() {
-		return depictableEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDocumentedPart() {
 		return documentedPartEClass;
 	}
@@ -653,6 +631,51 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 */
 	public EReference getDocumentedWindow_ContainedPerspective() {
 		return (EReference)documentedWindowEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getApplicationProperties() {
+		return applicationPropertiesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplicationProperties_RequiresLogin() {
+		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplicationProperties_RequiresInstallation() {
+		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplicationProperties_PerspectiveSwitcher() {
+		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplicationProperties_HasConceptOfMultipleUsers() {
+		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -717,8 +740,8 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEAttribute(documentEClass, DOCUMENT__DOCUMENT_VERSION);
 		createEAttribute(documentEClass, DOCUMENT__PRODUCT_VERSION);
 		createEReference(documentEClass, DOCUMENT__APPLICATION_LAYOUT);
+		createEReference(documentEClass, DOCUMENT__APPLICATION_PROPERTIES);
 		createEOperation(documentEClass, DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND);
-		createEOperation(documentEClass, DOCUMENT___GENERATE_DEPICTABLE_ITEM_PNG_IMAGES__STRING);
 
 		userEClass = createEClass(USER);
 
@@ -751,10 +774,6 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEReference(documentedPerspectiveEClass, DOCUMENTED_PERSPECTIVE__MODEL_ELEMENT);
 		createEReference(documentedPerspectiveEClass, DOCUMENTED_PERSPECTIVE__CONTAINED_PARTS);
 
-		depictableEClass = createEClass(DEPICTABLE);
-		createEOperation(depictableEClass, DEPICTABLE___GENERATE_PNG_DEPICTION_IMAGE);
-		createEOperation(depictableEClass, DEPICTABLE___GET_ELEMENT_DEPICTION_IMAGE_NAME);
-
 		documentedPartEClass = createEClass(DOCUMENTED_PART);
 		createEReference(documentedPartEClass, DOCUMENTED_PART__MODEL_ELEMENT);
 		createEReference(documentedPartEClass, DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE);
@@ -762,6 +781,12 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		documentedWindowEClass = createEClass(DOCUMENTED_WINDOW);
 		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__MODEL_ELEMENT);
 		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE);
+
+		applicationPropertiesEClass = createEClass(APPLICATION_PROPERTIES);
+		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__REQUIRES_LOGIN);
+		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__REQUIRES_INSTALLATION);
+		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__PERSPECTIVE_SWITCHER);
+		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS);
 
 		// Create enums
 		initiatableItemTypeEEnum = createEEnum(INITIATABLE_ITEM_TYPE);
@@ -810,7 +835,6 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		stepEClass.getESuperTypes().add(this.getDocumentedElement());
 		directStepEClass.getESuperTypes().add(this.getStep());
 		documentedPerspectiveEClass.getESuperTypes().add(this.getDocumentedElement());
-		documentedPerspectiveEClass.getESuperTypes().add(this.getDepictable());
 		documentedPartEClass.getESuperTypes().add(this.getDocumentedElement());
 		documentedWindowEClass.getESuperTypes().add(this.getDocumentedElement());
 
@@ -831,13 +855,10 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEAttribute(getDocument_DocumentVersion(), ecorePackage.getEString(), "documentVersion", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_ProductVersion(), ecorePackage.getEString(), "productVersion", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocument_ApplicationLayout(), this.getApplicationLayout(), null, "applicationLayout", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocument_ApplicationProperties(), this.getApplicationProperties(), null, "applicationProperties", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getDocument__FindOrCreateCommandStepByCommand__MCommand(), this.getCommandStep(), "findOrCreateCommandStepByCommand", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theCommandsPackage.getCommand(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getDocument__GenerateDepictableItemPNGImages__String(), null, "generateDepictableItemPNGImages", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "targetDirectory", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getIOException());
 
 		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -871,12 +892,6 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEReference(getDocumentedPerspective_ModelElement(), theAdvancedPackage.getPerspective(), null, "modelElement", null, 1, 1, DocumentedPerspective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedPerspective_ContainedParts(), this.getDocumentedPart(), null, "containedParts", null, 0, -1, DocumentedPerspective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(depictableEClass, Depictable.class, "Depictable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getDepictable__GeneratePNGDepictionImage(), ecorePackage.getEByteArray(), "generatePNGDepictionImage", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getDepictable__GetElementDepictionImageName(), ecorePackage.getEString(), "getElementDepictionImageName", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(documentedPartEClass, DocumentedPart.class, "DocumentedPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDocumentedPart_ModelElement(), theBasicPackage.getPart(), null, "modelElement", null, 1, 1, DocumentedPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedPart_ContainedInPerspective(), theAdvancedPackage.getPerspective(), null, "containedInPerspective", null, 0, -1, DocumentedPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -884,6 +899,12 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEClass(documentedWindowEClass, DocumentedWindow.class, "DocumentedWindow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDocumentedWindow_ModelElement(), theBasicPackage.getWindow(), null, "modelElement", null, 1, 1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedWindow_ContainedPerspective(), theAdvancedPackage.getPerspective(), null, "containedPerspective", null, 0, -1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(applicationPropertiesEClass, ApplicationProperties.class, "ApplicationProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getApplicationProperties_RequiresLogin(), ecorePackage.getEBoolean(), "requiresLogin", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplicationProperties_RequiresInstallation(), ecorePackage.getEString(), "requiresInstallation", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplicationProperties_PerspectiveSwitcher(), ecorePackage.getEString(), "perspectiveSwitcher", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplicationProperties_HasConceptOfMultipleUsers(), ecorePackage.getEBoolean(), "hasConceptOfMultipleUsers", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(initiatableItemTypeEEnum, InitiatableItemType.class, "InitiatableItemType");

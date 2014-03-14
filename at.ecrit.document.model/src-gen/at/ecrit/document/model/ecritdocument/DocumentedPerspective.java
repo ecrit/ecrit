@@ -3,6 +3,7 @@
 package at.ecrit.document.model.ecritdocument;
 
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface DocumentedPerspective extends DocumentedElement, Depictable {
+public interface DocumentedPerspective extends DocumentedElement {
 	/**
 	 * Returns the value of the '<em><b>Model Element</b></em>' reference.
 	 * <!-- begin-user-doc -->

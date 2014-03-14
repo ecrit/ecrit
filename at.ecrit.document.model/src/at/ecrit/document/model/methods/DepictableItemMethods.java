@@ -15,7 +15,7 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 
-import at.ecrit.document.model.ecritdocument.Depictable;
+
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
 
@@ -59,17 +59,17 @@ public class DepictableItemMethods {
 			String targetDirectory) throws IOException {
 		File targetDir = new File(targetDirectory);
 
-		for (TreeIterator<EObject> i = documentImpl.eAllContents(); i.hasNext();) {
-			EObject eObject = (EObject) i.next();
-			System.out.println(eObject);
-			if (eObject instanceof Depictable) {
-				Depictable depictable = (Depictable) eObject;
-				byte[] pngImage = depictable.generatePNGDepictionImage();
-				File outputFile = new File(targetDir,
-						depictable.getElementDepictionImageName() + ".png");
-				FileUtils.writeByteArrayToFile(outputFile, pngImage);
-			}
-		}
+//		for (TreeIterator<EObject> i = documentImpl.eAllContents(); i.hasNext();) {
+//			EObject eObject = (EObject) i.next();
+//			System.out.println(eObject);
+//		if (eObject instanceof Depictable) {
+//				Depictable depictable = (Depictable) eObject;
+//				byte[] pngImage = depictable.generatePNGDepictionImage();
+//				File outputFile = new File(targetDir,
+//						depictable.getElementDepictionImageName() + ".png");
+//				FileUtils.writeByteArrayToFile(outputFile, pngImage);
+//			}
+//		}
 
 	}
 

@@ -2,23 +2,25 @@
  */
 package at.ecrit.document.model.ecritdocument.impl;
 
-import at.ecrit.document.model.ecritdocument.Depictable;
 import at.ecrit.document.model.ecritdocument.DocumentedPart;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
-import at.ecrit.document.model.methods.DepictableItemMethods;
-
-import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
+
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -254,24 +256,6 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated not
-	 */
-	public byte[] generatePNGDepictionImage() {
-		return DepictableItemMethods.generatePNGDepictionImageForPerspective(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated not
-	 */
-	public String getElementDepictionImageName() {
-		return getModelElement().getElementId();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -368,39 +352,6 @@ public class DocumentedPerspectiveImpl extends MinimalEObjectImpl.Container impl
 				return containedParts != null && !containedParts.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Depictable.class) {
-			switch (baseOperationID) {
-				case EcritdocumentPackage.DEPICTABLE___GENERATE_PNG_DEPICTION_IMAGE: return EcritdocumentPackage.DOCUMENTED_PERSPECTIVE___GENERATE_PNG_DEPICTION_IMAGE;
-				case EcritdocumentPackage.DEPICTABLE___GET_ELEMENT_DEPICTION_IMAGE_NAME: return EcritdocumentPackage.DOCUMENTED_PERSPECTIVE___GET_ELEMENT_DEPICTION_IMAGE_NAME;
-				default: return -1;
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE___GENERATE_PNG_DEPICTION_IMAGE:
-				return generatePNGDepictionImage();
-			case EcritdocumentPackage.DOCUMENTED_PERSPECTIVE___GET_ELEMENT_DEPICTION_IMAGE_NAME:
-				return getElementDepictionImageName();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

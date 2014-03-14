@@ -112,6 +112,15 @@ public interface EcritdocumentFactory extends EFactory {
 	DocumentedWindow createDocumentedWindow();
 
 	/**
+	 * Returns a new object of class '<em>Application Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Application Properties</em>'.
+	 * @generated
+	 */
+	ApplicationProperties createApplicationProperties();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
