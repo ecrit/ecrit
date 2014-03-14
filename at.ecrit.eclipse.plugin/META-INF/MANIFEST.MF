@@ -21,4 +21,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.10.0",
  com.ibm.icu
 Bundle-Activator: at.ecrit.eclipse.plugin.internal.Activator
 Bundle-ActivationPolicy: lazy
-Export-Package: at.ecrit.eclipse.plugin.extension
+Export-Package: at.ecrit.eclipse.plugin.extension,
+ at.ecrit.eclipse.plugin.outputter.common
+Bundle-ClassPath: lib/guava-16.0.jar,
+ .

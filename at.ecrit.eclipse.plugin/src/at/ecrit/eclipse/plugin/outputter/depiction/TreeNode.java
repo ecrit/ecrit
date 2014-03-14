@@ -6,21 +6,25 @@
  * All Rights Reserved.
  * You must accept the terms of that agreement to use this software.
  */
-package at.ecrit.document.model.tree;
-
+package at.ecrit.eclipse.plugin.outputter.depiction;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import org.eclipse.swt.graphics.Point;
+
+import com.google.common.collect.TreeTraverser;
 
 /**
  * Tree Node for the for a general tree of Objects
  */
 public class TreeNode<T> {
 
-	private TreeNode<T> parent = null;
+	private TreeNode parent = null;
 	private List<TreeNode<T>> children = null;
 	private T reference;
+	private Point vertexOrigin, vertexBoundary;
 
 	/**
 	 * cTtor
@@ -31,7 +35,7 @@ public class TreeNode<T> {
 	public TreeNode(T obj) {
 		this.parent = null;
 		this.reference = obj;
-		this.children = new ArrayList<TreeNode<T>>();
+		this.children = new ArrayList();
 	}
 
 	/**
@@ -48,7 +52,7 @@ public class TreeNode<T> {
 	 * 
 	 * @param child
 	 */
-	private void removeChild(TreeNode<T> child) {
+	private void removeChild(TreeNode child) {
 		if (children.contains(child))
 			children.remove(child);
 
@@ -71,8 +75,8 @@ public class TreeNode<T> {
 	 * 
 	 * @return copy of TreeNode
 	 */
-	public TreeNode<T> deepCopy() {
-		TreeNode<T> newNode = new TreeNode<T>(reference);
+	public TreeNode deepCopy() {
+		TreeNode newNode = new TreeNode(reference);
 		for (Iterator iter = children.iterator(); iter.hasNext();) {
 			TreeNode child = (TreeNode) iter.next();
 			newNode.addChildNode(child.deepCopy());
@@ -105,17 +109,13 @@ public class TreeNode<T> {
 	 */
 	public int getLevel() {
 		int level = 0;
-		TreeNode<T> p = parent;
+		TreeNode p = parent;
 		while (p != null) {
 			++level;
 			p = p.parent;
 		}
 		return level;
 	}
-
-	public enum TraversalOrder {
-		PREORDER, INORDER, POSTORDER, LEVEL
-	};
 
 	/**
 	 * @return List of children
@@ -129,6 +129,22 @@ public class TreeNode<T> {
 	 */
 	public TreeNode<T> getParent() {
 		return parent;
+	}
+	
+	public Point getVertexOrigin() {
+		return vertexOrigin;
+	}
+	
+	public void setVertexOrigin(Point vertexOrigin) {
+		this.vertexOrigin = vertexOrigin;
+	}
+	
+	public Point getVertexBoundary() {
+		return vertexBoundary;
+	}
+	
+	public void setVertexBoundary(Point vertexBoundary) {
+		this.vertexBoundary = vertexBoundary;
 	}
 
 	/**
@@ -148,6 +164,29 @@ public class TreeNode<T> {
 		reference = object;
 	}
 
-	
+	/**
+	 * @param object
+	 * @return the node that references the provided object, or
+	 *         <code>null</code> if none found. Can only search itself and its
+	 *         children, so provide the root of the tree
+	 */
+	public TreeNode<T> getNodeReferencing(Object object) {
+		for (TreeNode tn : tt.breadthFirstTraversal(this)) {
+			if (tn.getReference().equals(object))
+				return tn;
+		}
+		return null;
+	}
 
+	private TreeTraverser<TreeNode> tt = new TreeTraverser<TreeNode>() {
+
+		@Override
+		public Iterable<TreeNode> children(TreeNode tn) {
+			return tn.getChildren();
+		}
+	};
+
+	public TreeTraverser<TreeNode> getTreeTraverser() {
+		return tt;
+	}
 }

@@ -41,7 +41,9 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		AbstractOutputter outputter = osd.getSelectedOutputter();
 		File outputLocation = osd.getSelectedOutputLocation();
 		
-		outputter.performOutput(doc, outputLocation);
+		outputter.performOutput(doc, outputLocation, appModelResource);
+		
+		appModelResource.unload();
 		
 		return null;
 	}
