@@ -1,6 +1,7 @@
 package at.ecrit.eclipse.plugin.outputter.common;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
@@ -54,16 +55,24 @@ public class OutputterMethods {
 		for(TreeNode<MUIElement> node : tree.getTreeTraverser().preOrderTraversal(tree)) {
 			List<TreeNode<MUIElement>> children = node.getChildren();
 			
-			if(node.getReference() instanceof MPerspective) {
-				for (int i = 0; i < children.size(); i++) {
-					TreeNode<MUIElement> child = children.get(i);
-					
-					float y = (node.getVertexBoundary().y/children.size())*i;
-					float y1 = (node.getVertexBoundary().y/children.size()*(i+1));
-
-					child.setVertexOrigin(new Point(node.getVertexOrigin().x, (int) y));
-					child.setVertexBoundary(new Point(node.getVertexBoundary().x, (int) y1));
+			MUIElement currentObject = node.getReference();
+			if(currentObject instanceof MPerspective) {
+				splitVertical(node, currentObject, children, null);
+				
+			} else if (currentObject instanceof MPartSashContainer) {
+				MPartSashContainer mpsc = (MPartSashContainer) currentObject;
+				String containerData = mpsc.getContainerData();
+				if(containerData != null) {
+					// split to int array
 				}
+				if(mpsc.isHorizontal()) {
+//					splitHorizontal(node currentObject, children, null);
+				} else {
+//					splitVertical(node, currentObject, children, null);
+				}
+				
+			} else {
+				
 			}
 
 
@@ -79,6 +88,51 @@ public class OutputterMethods {
 		// gc.dispose();
 		// image.dispose();
 		// display.dispose();
+	}
+
+	/**
+	 * 
+	 * @param node
+	 * @param currentObject
+	 * @param children
+	 * @param weight if <code>null</code> weight equally between all children
+	 */
+	private static void splitVertical(TreeNode<MUIElement> node, MUIElement currentObject,
+			List<TreeNode<MUIElement>> children, int[] weight) {
+		
+		if(children==null || children.size()==0) return;
+		
+		if(weight == null) {	
+			weight = new int[children.size()];
+			Arrays.fill(weight, 100/children.size());
+		} else {
+			if(weight.length>children.size()) throw new IllegalArgumentException();
+		}
+		
+		// define split locations
+		int splitPoints[] = new int[weight.length+1];
+		splitPoints[0] = node.getVertexOrigin().x;
+		float multiplier = node.getVertexBoundary().x/100;
+		for (int i = 1; i < splitPoints.length; i++) {
+			int newValue = (int) (sumUpTo(weight, i)*multiplier);
+			splitPoints[i] = newValue;
+		}
+		
+		// set respective points to child nodes
+		for (int i = 0; i < weight.length; i++) {
+			TreeNode<MUIElement> child = children.get(i);
+			
+			child.setVertexOrigin(new Point(node.getVertexOrigin().x, splitPoints[i]));
+			child.setVertexBoundary(new Point(node.getVertexBoundary().x, splitPoints[i+1]));
+		}
+	}
+
+	private static int sumUpTo(int[] splitPoints, int i) {
+		int ret = 0;
+		for (int j = 0; j < i; j++) {
+			ret+=splitPoints[j];
+		}
+		return ret;
 	}
 
 	private static TreeNode<MUIElement> generateUITreeForPerspective(
