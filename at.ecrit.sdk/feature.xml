@@ -8,14 +8,6 @@
       %description
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
-   </copyright>
-
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
-
    <includes
          id="at.ecrit.e4.tools.extension.feature"
          version="0.0.0"/>
@@ -23,5 +15,18 @@
    <includes
          id="at.ecrit.eclipse.plugin.feature"
          version="0.0.0"/>
+
+   <requires>
+      <import plugin="at.ecrit.document.model"/>
+      <import plugin="at.ecrit.document.model.outputter"/>
+      <import plugin="at.ecrit.e4.tools.extension.core"/>
+      <import plugin="at.ecrit.eclipse.plugin"/>
+      <import plugin="at.ecrit.eclipse.plugin.outputter.html"/>
+      <import plugin="at.medevit.ecrit.pharmacy_at.application"/>
+      <import plugin="at.medevit.ecrit.pharmacy_at.core"/>
+      <import plugin="at.medevit.ecrit.pharmacy_at.model"/>
+      <import plugin="at.medevit.ecrit.pharmacy_at.model.edit"/>
+      <import plugin="at.medevit.ecrit.pharmacy_at.model.editor"/>
+   </requires>
 
 </feature>
