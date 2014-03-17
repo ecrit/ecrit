@@ -16,17 +16,90 @@
          id="at.ecrit.eclipse.plugin.feature"
          version="0.0.0"/>
 
-   <requires>
-      <import plugin="at.ecrit.document.model"/>
-      <import plugin="at.ecrit.document.model.outputter"/>
-      <import plugin="at.ecrit.e4.tools.extension.core"/>
-      <import plugin="at.ecrit.eclipse.plugin"/>
-      <import plugin="at.ecrit.eclipse.plugin.outputter.html"/>
-      <import plugin="at.medevit.ecrit.pharmacy_at.application"/>
-      <import plugin="at.medevit.ecrit.pharmacy_at.core"/>
-      <import plugin="at.medevit.ecrit.pharmacy_at.model"/>
-      <import plugin="at.medevit.ecrit.pharmacy_at.model.edit"/>
-      <import plugin="at.medevit.ecrit.pharmacy_at.model.editor"/>
-   </requires>
+   <plugin
+         id="at.ecrit.document.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.ecrit.document.model.outputter"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.ecrit.document.model.outputter.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="at.ecrit.document.model.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="at.ecrit.e4.tools.extension.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.ecrit.eclipse.plugin"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.ecrit.eclipse.plugin.outputter.html"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.medevit.ecrit.pharmacy_at.application"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.medevit.ecrit.pharmacy_at.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.medevit.ecrit.pharmacy_at.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.medevit.ecrit.pharmacy_at.model.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.medevit.ecrit.pharmacy_at.model.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
