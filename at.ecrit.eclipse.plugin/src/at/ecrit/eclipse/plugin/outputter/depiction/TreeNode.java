@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.swt.graphics.Point;
-
 import com.google.common.collect.TreeTraverser;
 
 /**
@@ -21,10 +19,10 @@ import com.google.common.collect.TreeTraverser;
  */
 public class TreeNode<T> {
 
-	private TreeNode parent = null;
+	private TreeNode<T> parent = null;
 	private List<TreeNode<T>> children = null;
 	private T reference;
-	private Point vertexOrigin, vertexBoundary;
+	private Object data;
 
 	/**
 	 * cTtor
@@ -35,7 +33,7 @@ public class TreeNode<T> {
 	public TreeNode(T obj) {
 		this.parent = null;
 		this.reference = obj;
-		this.children = new ArrayList();
+		this.children = new ArrayList<TreeNode<T>>();
 	}
 
 	/**
@@ -109,7 +107,7 @@ public class TreeNode<T> {
 	 */
 	public int getLevel() {
 		int level = 0;
-		TreeNode p = parent;
+		TreeNode<T> p = parent;
 		while (p != null) {
 			++level;
 			p = p.parent;
@@ -129,22 +127,6 @@ public class TreeNode<T> {
 	 */
 	public TreeNode<T> getParent() {
 		return parent;
-	}
-	
-	public Point getVertexOrigin() {
-		return vertexOrigin;
-	}
-	
-	public void setVertexOrigin(Point vertexOrigin) {
-		this.vertexOrigin = vertexOrigin;
-	}
-	
-	public Point getVertexBoundary() {
-		return vertexBoundary;
-	}
-	
-	public void setVertexBoundary(Point vertexBoundary) {
-		this.vertexBoundary = vertexBoundary;
 	}
 
 	/**
@@ -188,5 +170,13 @@ public class TreeNode<T> {
 
 	public TreeTraverser<TreeNode> getTreeTraverser() {
 		return tt;
+	}
+	
+	public Object getData() {
+		return data;
+	}
+	
+	public void setData(Object data) {
+		this.data = data;
 	}
 }

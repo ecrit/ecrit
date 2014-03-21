@@ -12,7 +12,13 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageLoader;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Display;
 
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
@@ -34,6 +40,7 @@ public class OutputterMethods {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private static void createDepictionImageForPerspective(
 			MPerspective modelElement, Resource appModelResource,
 			File outputLocation, int width, int height) {
@@ -43,51 +50,68 @@ public class OutputterMethods {
 
 		System.out.println("[PERSPECTIVE]=======" + outputFileName);
 
-		// Display display = new Display();
-		// Image image = new Image(display, width, height);
-		// GC gc = new GC(image);
+		Display display = Display.getCurrent();
+		Image image = new Image(display, width, height);
+		GC gc = new GC(image);
 
-		TreeNode<MUIElement> tree = generateUITreeForPerspective(appModelResource, modelElement);
-		
-		tree.setVertexOrigin(new Point(0,0));
-		tree.setVertexBoundary(new Point(width, height));
-		
-		for(TreeNode<MUIElement> node : tree.getTreeTraverser().preOrderTraversal(tree)) {
+		TreeNode<MUIElement> tree = generateUITreeForPerspective(
+				appModelResource, modelElement);
+
+		tree.setData(new Rectangle(0, 0, width, height));
+
+		for (TreeNode<MUIElement> node : tree.getTreeTraverser()
+				.preOrderTraversal(tree)) {
 			List<TreeNode<MUIElement>> children = node.getChildren();
-			
+
 			MUIElement currentObject = node.getReference();
-			if(currentObject instanceof MPerspective) {
-				splitVertical(node, currentObject, children, null);
-				
+			if (currentObject instanceof MPerspective) {
+				// set value on children
+				arrangeHorizontal(node, currentObject, children, null);
+
 			} else if (currentObject instanceof MPartSashContainer) {
+				// set value on children
 				MPartSashContainer mpsc = (MPartSashContainer) currentObject;
+
 				String containerData = mpsc.getContainerData();
-				if(containerData != null) {
-					// split to int array
+				int[] weight = null;
+				if (containerData != null && containerData.length() > 0) {
+					String[] split = containerData.split(",");
+					weight = new int[split.length];
+					for (int i = 0; i < split.length; i++) {
+						weight[i] = Integer.parseInt(split[i]);
+					}
 				}
-				if(mpsc.isHorizontal()) {
-//					splitHorizontal(node currentObject, children, null);
+
+				if (mpsc.isHorizontal()) {
+					arrangeHorizontal(node, currentObject, children, weight);
 				} else {
-//					splitVertical(node, currentObject, children, null);
+					arrangeVertical(node, currentObject, children, weight);
 				}
-				
+
 			} else {
-				
+				drawRectangle((Rectangle) node.getData(), currentObject, gc);
 			}
 
-
-			
-			System.out.println(node.getLevel()+": "+node.getReference().getElementId()+" "+node.getVertexOrigin()+"-"+node.getVertexBoundary());
+			System.out
+					.println(node.getLevel() + ": "
+							+ node.getReference().getElementId() + " "
+							+ node.getData());
 		}
-		
 
-		// ImageLoader loader = new ImageLoader();
-		// loader.data = new ImageData[] { image.getImageData() };
-		// loader.save(outputFileName, SWT.IMAGE_PNG);
-		//
-		// gc.dispose();
-		// image.dispose();
-		// display.dispose();
+		ImageLoader loader = new ImageLoader();
+		loader.data = new ImageData[] { image.getImageData() };
+		loader.save(outputFileName, SWT.IMAGE_PNG);
+		System.out.println("Saved " + outputFileName);
+
+		gc.dispose();
+		image.dispose();
+	}
+
+	private static void drawRectangle(Rectangle data, MUIElement currentObject,
+			GC gc) {
+		gc.drawRectangle(data);
+		gc.drawText(currentObject.getElementId(), data.x + 10, data.y + 10);
+//		System.out.println("DRAW " + currentObject.getElementId() + " " + data);
 	}
 
 	/**
@@ -95,46 +119,108 @@ public class OutputterMethods {
 	 * @param node
 	 * @param currentObject
 	 * @param children
-	 * @param weight if <code>null</code> weight equally between all children
+	 * @param weight
+	 *            if <code>null</code> weight equally between all children
 	 */
-	private static void splitVertical(TreeNode<MUIElement> node, MUIElement currentObject,
-			List<TreeNode<MUIElement>> children, int[] weight) {
-		
-		if(children==null || children.size()==0) return;
-		
-		if(weight == null) {	
-			weight = new int[children.size()];
-			Arrays.fill(weight, 100/children.size());
-		} else {
-			if(weight.length>children.size()) throw new IllegalArgumentException();
-		}
-		
+	private static void arrangeVertical(TreeNode<MUIElement> node,
+			MUIElement currentObject, List<TreeNode<MUIElement>> children,
+			int[] weight) {
+
+		if (children == null || children.size() == 0)
+			return;
+
+		weight = ensureSaveWeight(node, children, weight);
+
 		// define split locations
-		int splitPoints[] = new int[weight.length+1];
-		splitPoints[0] = node.getVertexOrigin().x;
-		float multiplier = node.getVertexBoundary().x/100;
+		int splitPoints[] = new int[weight.length + 1];
+		splitPoints[0] = ((Rectangle) node.getData()).y;
+		float multiplier = ((Rectangle) node.getData()).height / 100f;
 		for (int i = 1; i < splitPoints.length; i++) {
-			int newValue = (int) (sumUpTo(weight, i)*multiplier);
+			int newValue = (int) (sumUpTo(weight, i) * multiplier);
 			splitPoints[i] = newValue;
 		}
-		
+
 		// set respective points to child nodes
 		for (int i = 0; i < weight.length; i++) {
 			TreeNode<MUIElement> child = children.get(i);
-			
-			child.setVertexOrigin(new Point(node.getVertexOrigin().x, splitPoints[i]));
-			child.setVertexBoundary(new Point(node.getVertexBoundary().x, splitPoints[i+1]));
+
+			Rectangle thisRectangle = (Rectangle) node.getData();
+			child.setData(new Rectangle(thisRectangle.x, sumUpTo(splitPoints,
+					i + 1), thisRectangle.width, (int) (multiplier * weight[i])));
 		}
 	}
 
-	private static int sumUpTo(int[] splitPoints, int i) {
-		int ret = 0;
-		for (int j = 0; j < i; j++) {
-			ret+=splitPoints[j];
+	private static void arrangeHorizontal(TreeNode<MUIElement> node,
+			MUIElement currentObject, List<TreeNode<MUIElement>> children,
+			int[] weight) {
+		// ok
+		if (children == null || children.size() == 0)
+			return;
+
+		weight = ensureSaveWeight(node, children, weight);
+
+		// define split locations
+		int splitPoints[] = new int[weight.length + 1];
+
+		splitPoints[0] = ((Rectangle) node.getData()).x;
+		float multiplier = ((Rectangle) node.getData()).width / 100f;
+		for (int i = 1; i < splitPoints.length; i++) {
+			int newValue = (int) (sumUpTo(weight, i) * multiplier);
+			splitPoints[i] = newValue;
+		}
+
+		// set respective points to child nodes
+		for (int i = 0; i < weight.length; i++) {
+			TreeNode<MUIElement> child = children.get(i);
+
+			Rectangle thisRectangle = (Rectangle) node.getData();
+			child.setData(new Rectangle(sumUpTo(splitPoints, i + 1),
+					thisRectangle.y, (int) (multiplier * weight[i]),
+					thisRectangle.height));
+		}
+	}
+
+	private static int[] ensureSaveWeight(TreeNode<MUIElement> node,
+			List<TreeNode<MUIElement>> children, int[] weight) {
+		int[] ret;
+		if (weight == null) {
+			ret = new int[children.size()];
+			Arrays.fill(ret, 100 / children.size());
+		} else {
+			if (weight.length > children.size()) {
+				ret = Arrays.copyOf(weight, children.size());
+				System.out
+						.println(node.getReference().getElementId()
+								+ " has more weight defined, than children. Truncating.");
+			} else {
+				ret = weight;
+			}
 		}
 		return ret;
 	}
 
+	/**
+	 * @param array
+	 * @param i
+	 * @return the sum of all values of the array up to index i
+	 */
+	private static int sumUpTo(int[] array, int i) {
+		int ret = 0;
+		for (int j = 0; j < i; j++) {
+			ret += array[j];
+		}
+		return ret;
+	}
+
+	/**
+	 * Generate a tree of a given perspective and all its children. Eases the
+	 * treatment of such, as the iteration in the application model is not
+	 * feasible in the required way.
+	 * 
+	 * @param appModelResource
+	 * @param modelElement
+	 * @return
+	 */
 	private static TreeNode<MUIElement> generateUITreeForPerspective(
 			Resource appModelResource, MPerspective modelElement) {
 		TreeNode<MUIElement> tree = null;
@@ -162,8 +248,8 @@ public class OutputterMethods {
 
 				if (node != null) {
 					node.addChildNode(new TreeNode<MUIElement>(muie));
-//					System.out.println(node.getReference().getElementId()
-//							+ " ---C---> " + muie.getElementId());
+					// System.out.println(node.getReference().getElementId()
+					// + " ---C---> " + muie.getElementId());
 				}
 			}
 		}
