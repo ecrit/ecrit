@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
+import org.eclipse.e4.ui.model.application.ui.MUILabel;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -17,28 +18,29 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 
 import at.ecrit.document.model.ecritdocument.Document;
+import at.ecrit.document.model.ecritdocument.DocumentedElement;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
 import at.ecrit.eclipse.plugin.outputter.depiction.TreeNode;
 
 public class DepictionImageGenerator {
-	
+
 	private Document document;
 	private Resource appModelResource;
 	private File outputLocation;
 	private int width, height;
-	
-	public DepictionImageGenerator(Document document,
-			File outputLocation, Resource appModelResource, int width,
-			int height) {
+
+	public DepictionImageGenerator(Document document, File outputLocation,
+			Resource appModelResource, int width, int height) {
 		this.document = document;
 		this.appModelResource = appModelResource;
 		this.outputLocation = outputLocation;
-		this.width=width;
-		this.height=height;
+		this.width = width;
+		this.height = height;
 	}
 
 	public void generate() {
@@ -51,8 +53,7 @@ public class DepictionImageGenerator {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void createDepictionImageForPerspective(
-			MPerspective modelElement) {
+	private void createDepictionImageForPerspective(MPerspective modelElement) {
 
 		String outputFileName = outputLocation.getAbsolutePath()
 				+ File.separator + modelElement.getElementId() + ".png";
@@ -130,25 +131,35 @@ public class DepictionImageGenerator {
 	 */
 	private Rectangle fixRectangleBoundaries(Rectangle windowRectangle,
 			Rectangle nodeRectangle) {
-		int nodeBorderHeight = nodeRectangle.y+nodeRectangle.height;
-		int nodeBorderWidth = nodeRectangle.x+nodeRectangle.width;
-		
-		int newWidth = (nodeBorderWidth>=windowRectangle.width) ? nodeRectangle.width-1 : nodeRectangle.width;
-		int newHeight = (nodeBorderHeight>=windowRectangle.height) ? nodeRectangle.height-1 : nodeRectangle.height;
-		
-		return new Rectangle(nodeRectangle.x, nodeRectangle.y, newWidth, newHeight);
+		int nodeBorderHeight = nodeRectangle.y + nodeRectangle.height;
+		int nodeBorderWidth = nodeRectangle.x + nodeRectangle.width;
+
+		int newWidth = (nodeBorderWidth >= windowRectangle.width) ? nodeRectangle.width - 1
+				: nodeRectangle.width;
+		int newHeight = (nodeBorderHeight >= windowRectangle.height) ? nodeRectangle.height - 1
+				: nodeRectangle.height;
+
+		return new Rectangle(nodeRectangle.x, nodeRectangle.y, newWidth,
+				newHeight);
 	}
 
-	private void drawRectangle(Rectangle data, MUIElement currentObject,
-			GC gc) {
+	private void drawRectangle(Rectangle data, MUIElement currentObject, GC gc) {
 		gc.drawRectangle(data);
 		gc.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_BLACK));
 		gc.fillRectangle(data.x, data.y, data.width, 10);
 		gc.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-		
-		
-		gc.drawText(currentObject.getElementId(), data.x + 10, data.y + 10);
 
+		String label;
+		if (currentObject instanceof MUILabel) {
+			label = ((MUILabel) currentObject).getLabel();
+		} else {
+			label = currentObject.getElementId();
+		}
+		Point size = gc.textExtent(label);
+		
+		Point center = new Point(data.x+(data.width/2), data.y+(data.height/2));
+		
+		gc.drawText(label, center.x-(size.x/2), center.y);
 	}
 
 	/**
@@ -257,7 +268,8 @@ public class DepictionImageGenerator {
 	 * @param modelElement
 	 * @return
 	 */
-	private TreeNode<MUIElement> generateUITreeForPerspective(MPerspective modelElement) {
+	private TreeNode<MUIElement> generateUITreeForPerspective(
+			MPerspective modelElement) {
 		TreeNode<MUIElement> tree = null;
 		for (TreeIterator<EObject> i = appModelResource.getAllContents(); i
 				.hasNext();) {
