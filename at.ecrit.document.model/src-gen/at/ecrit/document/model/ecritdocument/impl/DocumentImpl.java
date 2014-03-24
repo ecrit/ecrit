@@ -6,16 +6,15 @@ import at.ecrit.document.model.ecritdocument.ApplicationLayout;
 import at.ecrit.document.model.ecritdocument.ApplicationProperties;
 import at.ecrit.document.model.ecritdocument.CommandStep;
 import at.ecrit.document.model.ecritdocument.Document;
-import at.ecrit.document.model.ecritdocument.EcritdocumentFactory;
+import at.ecrit.document.model.ecritdocument.DocumentedElement;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
 import at.ecrit.document.model.ecritdocument.Step;
 import at.ecrit.document.model.methods.DocumentMethods;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Date;
-
 import org.eclipse.e4.ui.model.application.commands.MCommand;
+import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -364,6 +363,15 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated not
+	 */
+	public DocumentedElement getDocumentedElementByMUiElement(MUIElement mUiElement) {
+		return DocumentMethods.getDocumentedElementByMUiElement(mUiElement, this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -508,6 +516,8 @@ public class DocumentImpl extends MinimalEObjectImpl.Container implements Docume
 		switch (operationID) {
 			case EcritdocumentPackage.DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND:
 				return findOrCreateCommandStepByCommand((MCommand)arguments.get(0));
+			case EcritdocumentPackage.DOCUMENT___GET_DOCUMENTED_ELEMENT_BY_MUI_ELEMENT__MUIELEMENT:
+				return getDocumentedElementByMUiElement((MUIElement)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

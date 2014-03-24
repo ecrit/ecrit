@@ -397,13 +397,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND = 0;
 
 	/**
+	 * The operation id for the '<em>Get Documented Element By MUi Element</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___GET_DOCUMENTED_ELEMENT_BY_MUI_ELEMENT__MUIELEMENT = 1;
+
+	/**
 	 * The number of operations of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_OPERATION_COUNT = 1;
+	int DOCUMENT_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.UserImpl <em>User</em>}' class.
@@ -1193,6 +1202,16 @@ public interface EcritdocumentPackage extends EPackage {
 	EOperation getDocument__FindOrCreateCommandStepByCommand__MCommand();
 
 	/**
+	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Document#getDocumentedElementByMUiElement(org.eclipse.e4.ui.model.application.ui.MUIElement) <em>Get Documented Element By MUi Element</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Documented Element By MUi Element</em>' operation.
+	 * @see at.ecrit.document.model.ecritdocument.Document#getDocumentedElementByMUiElement(org.eclipse.e4.ui.model.application.ui.MUIElement)
+	 * @generated
+	 */
+	EOperation getDocument__GetDocumentedElementByMUiElement__MUIElement();
+
+	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.User <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1743,6 +1762,14 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND = eINSTANCE.getDocument__FindOrCreateCommandStepByCommand__MCommand();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Documented Element By MUi Element</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DOCUMENT___GET_DOCUMENTED_ELEMENT_BY_MUI_ELEMENT__MUIELEMENT = eINSTANCE.getDocument__GetDocumentedElementByMUiElement__MUIElement();
 
 		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.UserImpl <em>User</em>}' class.

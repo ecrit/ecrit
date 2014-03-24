@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 
+import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -212,5 +213,13 @@ public interface Document extends EObject {
 	 * @generated
 	 */
 	CommandStep findOrCreateCommandStepByCommand(MCommand command);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	DocumentedElement getDocumentedElementByMUiElement(MUIElement mUiElement);
 
 } // Document

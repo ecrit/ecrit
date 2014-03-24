@@ -368,6 +368,15 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getDocument__GetDocumentedElementByMUiElement__MUIElement() {
+		return documentEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUser() {
 		return userEClass;
 	}
@@ -742,6 +751,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEReference(documentEClass, DOCUMENT__APPLICATION_LAYOUT);
 		createEReference(documentEClass, DOCUMENT__APPLICATION_PROPERTIES);
 		createEOperation(documentEClass, DOCUMENT___FIND_OR_CREATE_COMMAND_STEP_BY_COMMAND__MCOMMAND);
+		createEOperation(documentEClass, DOCUMENT___GET_DOCUMENTED_ELEMENT_BY_MUI_ELEMENT__MUIELEMENT);
 
 		userEClass = createEClass(USER);
 
@@ -820,10 +830,10 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 
 		// Obtain other dependent packages
 		CommandsPackageImpl theCommandsPackage = (CommandsPackageImpl)EPackage.Registry.INSTANCE.getEPackage(CommandsPackageImpl.eNS_URI);
+		UiPackageImpl theUiPackage = (UiPackageImpl)EPackage.Registry.INSTANCE.getEPackage(UiPackageImpl.eNS_URI);
 		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackageImpl.eNS_URI);
 		MenuPackageImpl theMenuPackage = (MenuPackageImpl)EPackage.Registry.INSTANCE.getEPackage(MenuPackageImpl.eNS_URI);
 		BasicPackageImpl theBasicPackage = (BasicPackageImpl)EPackage.Registry.INSTANCE.getEPackage(BasicPackageImpl.eNS_URI);
-		UiPackageImpl theUiPackage = (UiPackageImpl)EPackage.Registry.INSTANCE.getEPackage(UiPackageImpl.eNS_URI);
 		AdvancedPackageImpl theAdvancedPackage = (AdvancedPackageImpl)EPackage.Registry.INSTANCE.getEPackage(AdvancedPackageImpl.eNS_URI);
 
 		// Create type parameters
@@ -859,6 +869,9 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 
 		EOperation op = initEOperation(getDocument__FindOrCreateCommandStepByCommand__MCommand(), this.getCommandStep(), "findOrCreateCommandStepByCommand", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theCommandsPackage.getCommand(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDocument__GetDocumentedElementByMUiElement__MUIElement(), this.getDocumentedElement(), "getDocumentedElementByMUiElement", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theUiPackage.getUIElement(), "mUiElement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
