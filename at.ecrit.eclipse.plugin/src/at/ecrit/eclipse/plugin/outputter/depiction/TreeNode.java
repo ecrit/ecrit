@@ -130,6 +130,18 @@ public class TreeNode<T> {
 	}
 
 	/**
+	 * 
+	 * @return the root of the tree
+	 */
+	public TreeNode<T> getRoot() {
+		TreeNode<T> node = this;
+		while(node.getParent()!=null) {
+			node = node.getParent();
+		}
+		return node;
+	}
+	
+	/**
 	 * @return reference object
 	 */
 	public T getReference() {

@@ -24,26 +24,35 @@ import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
 import at.ecrit.eclipse.plugin.outputter.depiction.TreeNode;
 
-public class OutputterMethods {
-
-	public static void generateDepictionImages(Document document,
+public class DepictionImageGenerator {
+	
+	private Document document;
+	private Resource appModelResource;
+	private File outputLocation;
+	private int width, height;
+	
+	public DepictionImageGenerator(Document document,
 			File outputLocation, Resource appModelResource, int width,
 			int height) {
+		this.document = document;
+		this.appModelResource = appModelResource;
+		this.outputLocation = outputLocation;
+		this.width=width;
+		this.height=height;
+	}
 
+	public void generate() {
 		// generate images for perspectives
 		for (DocumentedPerspective perspective : document
 				.getApplicationLayout().getPerspective()) {
 
-			createDepictionImageForPerspective(perspective.getModelElement(),
-					appModelResource, outputLocation, width, height);
-
+			createDepictionImageForPerspective(perspective.getModelElement());
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void createDepictionImageForPerspective(
-			MPerspective modelElement, Resource appModelResource,
-			File outputLocation, int width, int height) {
+	private void createDepictionImageForPerspective(
+			MPerspective modelElement) {
 
 		String outputFileName = outputLocation.getAbsolutePath()
 				+ File.separator + modelElement.getElementId() + ".png";
@@ -54,13 +63,12 @@ public class OutputterMethods {
 		Image image = new Image(display, width, height);
 		GC gc = new GC(image);
 
-		TreeNode<MUIElement> tree = generateUITreeForPerspective(
-				appModelResource, modelElement);
+		TreeNode<MUIElement> treeRoot = generateUITreeForPerspective(modelElement);
 
-		tree.setData(new Rectangle(0, 0, width, height));
+		treeRoot.setData(new Rectangle(0, 0, width, height));
 
-		for (TreeNode<MUIElement> node : tree.getTreeTraverser()
-				.preOrderTraversal(tree)) {
+		for (TreeNode<MUIElement> node : treeRoot.getTreeTraverser()
+				.preOrderTraversal(treeRoot)) {
 			List<TreeNode<MUIElement>> children = node.getChildren();
 
 			MUIElement currentObject = node.getReference();
@@ -89,7 +97,10 @@ public class OutputterMethods {
 				}
 
 			} else {
-				drawRectangle((Rectangle) node.getData(), currentObject, gc);
+				Rectangle rect = fixRectangleBoundaries(
+						(Rectangle) treeRoot.getData(),
+						(Rectangle) node.getData());
+				drawRectangle(rect, currentObject, gc);
 			}
 
 			System.out
@@ -107,11 +118,37 @@ public class OutputterMethods {
 		image.dispose();
 	}
 
-	private static void drawRectangle(Rectangle data, MUIElement currentObject,
+	/**
+	 * fix the boundaries of a rectangle, such that its width and height does
+	 * not overflow the overall image size.
+	 * 
+	 * @param windowRectangle
+	 *            the overall image rectangle
+	 * @param the
+	 *            apperture of of the windowRectangle for this node
+	 * @return the corrected rectangle
+	 */
+	private Rectangle fixRectangleBoundaries(Rectangle windowRectangle,
+			Rectangle nodeRectangle) {
+		int nodeBorderHeight = nodeRectangle.y+nodeRectangle.height;
+		int nodeBorderWidth = nodeRectangle.x+nodeRectangle.width;
+		
+		int newWidth = (nodeBorderWidth>=windowRectangle.width) ? nodeRectangle.width-1 : nodeRectangle.width;
+		int newHeight = (nodeBorderHeight>=windowRectangle.height) ? nodeRectangle.height-1 : nodeRectangle.height;
+		
+		return new Rectangle(nodeRectangle.x, nodeRectangle.y, newWidth, newHeight);
+	}
+
+	private void drawRectangle(Rectangle data, MUIElement currentObject,
 			GC gc) {
 		gc.drawRectangle(data);
+		gc.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_BLACK));
+		gc.fillRectangle(data.x, data.y, data.width, 10);
+		gc.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		
+		
 		gc.drawText(currentObject.getElementId(), data.x + 10, data.y + 10);
-//		System.out.println("DRAW " + currentObject.getElementId() + " " + data);
+
 	}
 
 	/**
@@ -122,7 +159,7 @@ public class OutputterMethods {
 	 * @param weight
 	 *            if <code>null</code> weight equally between all children
 	 */
-	private static void arrangeVertical(TreeNode<MUIElement> node,
+	private void arrangeVertical(TreeNode<MUIElement> node,
 			MUIElement currentObject, List<TreeNode<MUIElement>> children,
 			int[] weight) {
 
@@ -150,7 +187,7 @@ public class OutputterMethods {
 		}
 	}
 
-	private static void arrangeHorizontal(TreeNode<MUIElement> node,
+	private void arrangeHorizontal(TreeNode<MUIElement> node,
 			MUIElement currentObject, List<TreeNode<MUIElement>> children,
 			int[] weight) {
 		// ok
@@ -180,7 +217,7 @@ public class OutputterMethods {
 		}
 	}
 
-	private static int[] ensureSaveWeight(TreeNode<MUIElement> node,
+	private int[] ensureSaveWeight(TreeNode<MUIElement> node,
 			List<TreeNode<MUIElement>> children, int[] weight) {
 		int[] ret;
 		if (weight == null) {
@@ -204,7 +241,7 @@ public class OutputterMethods {
 	 * @param i
 	 * @return the sum of all values of the array up to index i
 	 */
-	private static int sumUpTo(int[] array, int i) {
+	private int sumUpTo(int[] array, int i) {
 		int ret = 0;
 		for (int j = 0; j < i; j++) {
 			ret += array[j];
@@ -217,12 +254,10 @@ public class OutputterMethods {
 	 * treatment of such, as the iteration in the application model is not
 	 * feasible in the required way.
 	 * 
-	 * @param appModelResource
 	 * @param modelElement
 	 * @return
 	 */
-	private static TreeNode<MUIElement> generateUITreeForPerspective(
-			Resource appModelResource, MPerspective modelElement) {
+	private TreeNode<MUIElement> generateUITreeForPerspective(MPerspective modelElement) {
 		TreeNode<MUIElement> tree = null;
 		for (TreeIterator<EObject> i = appModelResource.getAllContents(); i
 				.hasNext();) {

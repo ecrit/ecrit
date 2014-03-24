@@ -8,12 +8,11 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
 import org.eclipse.emf.ecore.resource.Resource;
 
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.eclipse.plugin.extension.AbstractOutputter;
-import at.ecrit.eclipse.plugin.outputter.common.OutputterMethods;
+import at.ecrit.eclipse.plugin.outputter.common.DepictionImageGenerator;
 import at.ecrit.eclipse.plugin.outputter.html.internal.Activator;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -26,16 +25,19 @@ public class HTMLOutputter extends AbstractOutputter {
 	}
 
 	@Override
-	public IStatus performOutput(Document document, File outputLocation, Resource appModelResource) {
+	public IStatus performOutput(Document document, File outputLocation,
+			Resource appModelResource) {
 		IStatus ret = Status.OK_STATUS;
 		try {
 			Template template = Activator.getFreemarkerConfig().getTemplate(
 					"htmlTemplate.ftl");
 
-			System.out.println("OUTPUT from "+appModelResource);
-			
+			System.out.println("OUTPUT from " + appModelResource);
+
 			if (outputLocation.exists() && outputLocation.isDirectory()) {
-				OutputterMethods.generateDepictionImages(document, outputLocation, appModelResource, 400, 250);
+				DepictionImageGenerator depictionImageGenerator = new DepictionImageGenerator(
+						document, outputLocation, appModelResource, 400, 250);
+				depictionImageGenerator.generate();
 				ret = generateHTMLDocument(document, template, outputLocation);
 			} else {
 				return new Status(Status.ERROR, Activator.PLUGIN_ID,
