@@ -656,7 +656,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getApplicationProperties_RequiresLogin() {
+	public EAttribute getApplicationProperties_About() {
 		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -665,7 +665,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getApplicationProperties_RequiresInstallation() {
+	public EAttribute getApplicationProperties_RequiresLogin() {
 		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -674,7 +674,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getApplicationProperties_PerspectiveSwitcher() {
+	public EAttribute getApplicationProperties_RequiresInstallation() {
 		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -683,8 +683,17 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getApplicationProperties_HasConceptOfMultipleUsers() {
+	public EAttribute getApplicationProperties_PerspectiveSwitcher() {
 		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplicationProperties_HasConceptOfMultipleUsers() {
+		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -793,6 +802,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE);
 
 		applicationPropertiesEClass = createEClass(APPLICATION_PROPERTIES);
+		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__ABOUT);
 		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__REQUIRES_LOGIN);
 		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__REQUIRES_INSTALLATION);
 		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__PERSPECTIVE_SWITCHER);
@@ -914,6 +924,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEReference(getDocumentedWindow_ContainedPerspective(), theAdvancedPackage.getPerspective(), null, "containedPerspective", null, 0, -1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(applicationPropertiesEClass, ApplicationProperties.class, "ApplicationProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getApplicationProperties_About(), ecorePackage.getEString(), "about", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplicationProperties_RequiresLogin(), ecorePackage.getEBoolean(), "requiresLogin", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplicationProperties_RequiresInstallation(), ecorePackage.getEString(), "requiresInstallation", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplicationProperties_PerspectiveSwitcher(), ecorePackage.getEString(), "perspectiveSwitcher", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

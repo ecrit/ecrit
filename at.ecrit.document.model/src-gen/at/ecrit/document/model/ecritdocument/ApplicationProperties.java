@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getAbout <em>About</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#isRequiresLogin <em>Requires Login</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getRequiresInstallation <em>Requires Installation</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getPerspectiveSwitcher <em>Perspective Switcher</em>}</li>
@@ -24,6 +25,32 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ApplicationProperties extends EObject {
+	/**
+	 * Returns the value of the '<em><b>About</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>About</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>About</em>' attribute.
+	 * @see #setAbout(String)
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationProperties_About()
+	 * @model
+	 * @generated
+	 */
+	String getAbout();
+
+	/**
+	 * Sets the value of the '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getAbout <em>About</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>About</em>' attribute.
+	 * @see #getAbout()
+	 * @generated
+	 */
+	void setAbout(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Requires Login</b></em>' attribute.
 	 * <!-- begin-user-doc -->

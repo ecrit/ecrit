@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#getAbout <em>About</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#isRequiresLogin <em>Requires Login</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#getRequiresInstallation <em>Requires Installation</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#getPerspectiveSwitcher <em>Perspective Switcher</em>}</li>
@@ -29,6 +30,26 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * @generated
  */
 public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container implements ApplicationProperties {
+	/**
+	 * The default value of the '{@link #getAbout() <em>About</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAbout()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ABOUT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAbout() <em>About</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAbout()
+	 * @generated
+	 * @ordered
+	 */
+	protected String about = ABOUT_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #isRequiresLogin() <em>Requires Login</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -133,6 +154,27 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getAbout() {
+		return about;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAbout(String newAbout) {
+		String oldAbout = about;
+		about = newAbout;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.APPLICATION_PROPERTIES__ABOUT, oldAbout, about));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isRequiresLogin() {
 		return requiresLogin;
 	}
@@ -220,6 +262,8 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__ABOUT:
+				return getAbout();
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__REQUIRES_LOGIN:
 				return isRequiresLogin();
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__REQUIRES_INSTALLATION:
@@ -240,6 +284,9 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__ABOUT:
+				setAbout((String)newValue);
+				return;
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__REQUIRES_LOGIN:
 				setRequiresLogin((Boolean)newValue);
 				return;
@@ -264,6 +311,9 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__ABOUT:
+				setAbout(ABOUT_EDEFAULT);
+				return;
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__REQUIRES_LOGIN:
 				setRequiresLogin(REQUIRES_LOGIN_EDEFAULT);
 				return;
@@ -288,6 +338,8 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__ABOUT:
+				return ABOUT_EDEFAULT == null ? about != null : !ABOUT_EDEFAULT.equals(about);
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__REQUIRES_LOGIN:
 				return requiresLogin != REQUIRES_LOGIN_EDEFAULT;
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__REQUIRES_INSTALLATION:
@@ -310,7 +362,9 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (requiresLogin: ");
+		result.append(" (about: ");
+		result.append(about);
+		result.append(", requiresLogin: ");
 		result.append(requiresLogin);
 		result.append(", requiresInstallation: ");
 		result.append(requiresInstallation);

@@ -955,13 +955,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int APPLICATION_PROPERTIES = 12;
 
 	/**
+	 * The feature id for the '<em><b>About</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_PROPERTIES__ABOUT = 0;
+
+	/**
 	 * The feature id for the '<em><b>Requires Login</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_PROPERTIES__REQUIRES_LOGIN = 0;
+	int APPLICATION_PROPERTIES__REQUIRES_LOGIN = 1;
 
 	/**
 	 * The feature id for the '<em><b>Requires Installation</b></em>' attribute.
@@ -970,7 +979,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_PROPERTIES__REQUIRES_INSTALLATION = 1;
+	int APPLICATION_PROPERTIES__REQUIRES_INSTALLATION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Perspective Switcher</b></em>' attribute.
@@ -979,7 +988,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_PROPERTIES__PERSPECTIVE_SWITCHER = 2;
+	int APPLICATION_PROPERTIES__PERSPECTIVE_SWITCHER = 3;
 
 	/**
 	 * The feature id for the '<em><b>Has Concept Of Multiple Users</b></em>' attribute.
@@ -988,7 +997,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS = 3;
+	int APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS = 4;
 
 	/**
 	 * The number of structural features of the '<em>Application Properties</em>' class.
@@ -997,7 +1006,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_PROPERTIES_FEATURE_COUNT = 4;
+	int APPLICATION_PROPERTIES_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Application Properties</em>' class.
@@ -1542,6 +1551,17 @@ public interface EcritdocumentPackage extends EPackage {
 	EClass getApplicationProperties();
 
 	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getAbout <em>About</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>About</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationProperties#getAbout()
+	 * @see #getApplicationProperties()
+	 * @generated
+	 */
+	EAttribute getApplicationProperties_About();
+
+	/**
 	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#isRequiresLogin <em>Requires Login</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2038,6 +2058,14 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EClass APPLICATION_PROPERTIES = eINSTANCE.getApplicationProperties();
+
+		/**
+		 * The meta object literal for the '<em><b>About</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION_PROPERTIES__ABOUT = eINSTANCE.getApplicationProperties_About();
 
 		/**
 		 * The meta object literal for the '<em><b>Requires Login</b></em>' attribute feature.

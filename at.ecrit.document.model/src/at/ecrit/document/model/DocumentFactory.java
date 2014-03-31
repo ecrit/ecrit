@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import at.ecrit.document.model.ecritdocument.ApplicationLayout;
+import at.ecrit.document.model.ecritdocument.ApplicationProperties;
 import at.ecrit.document.model.ecritdocument.CommandStep;
 import at.ecrit.document.model.ecritdocument.DirectStep;
 import at.ecrit.document.model.ecritdocument.Document;
@@ -38,6 +39,7 @@ import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
 import at.ecrit.document.model.ecritdocument.InitiatableItem;
 import at.ecrit.document.model.ecritdocument.InitiatableItemType;
 import at.ecrit.document.model.internal.AppModelHelper;
+import at.ecrit.document.model.internal.ApplicationDocumentation;
 import at.ecrit.document.model.internal.ElementDocumentation;
 import at.ecrit.document.model.outputconverter.AbstractOutputConverter;
 import at.ecrit.document.model.outputconverter.NullOutputConverter;
@@ -169,6 +171,16 @@ public class DocumentFactory {
 	
 	private static void setDocumentInformation(Document doc, MApplication app){
 		ElementDocumentation el = AppModelHelper.getElementDocumentation(app.getElementId());
+		ApplicationDocumentation al = AppModelHelper.getApplicationDocumentation();
+		
+		ApplicationProperties appProperties =
+			EcritdocumentFactory.eINSTANCE.createApplicationProperties();
+		appProperties.setAbout(al.getAbout());
+		appProperties.setRequiresInstallation(al.getInstall());
+		appProperties.setHasConceptOfMultipleUsers(al.getMultiUser());
+		appProperties.setRequiresLogin(al.getRequiresLogin());
+		doc.setApplicationProperties(appProperties);
+		
 		if (el.getDescription() != null) {
 			doc.setTitle(el.getDescription());
 		} else {
