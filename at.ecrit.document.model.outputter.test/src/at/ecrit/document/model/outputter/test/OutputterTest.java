@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import at.ecrit.document.model.DocumentFactory;
 import at.ecrit.document.model.ecritdocument.Document;
+import at.ecrit.document.model.outputconverter.NullOutputConverter;
 import at.ecrit.document.model.outputter.Activator;
 import at.ecrit.document.model.outputter.Outputter;
 import at.ecrit.document.model.outputter.TemplateConstants;
@@ -20,26 +21,26 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 
 public class OutputterTest {
-
+	
 	private static ResourceSet resourceSet = new ResourceSetImpl();
-
+	
 	@Test
-	public void testProcessOutput() {
-		URL applicationModelUrl = OutputterTest.class
-				.getResource("Application.e4xmi");
-
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("e4xmi", new E4XMIResourceFactory());
+	public void testProcessOutput(){
+		URL applicationModelUrl = OutputterTest.class.getResource("Application.e4xmi");
 		
-		Resource appModelResource = resourceSet.getResource(
-				URI.createURI(applicationModelUrl.toString()), true);
-
-		Document doc = DocumentFactory.createFromApplicationModel(appModelResource);
-
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+			.put("e4xmi", new E4XMIResourceFactory());
+		
+		Resource appModelResource =
+			resourceSet.getResource(URI.createURI(applicationModelUrl.toString()), true);
+		
+		// TODO change this
+		Document doc =
+			DocumentFactory.createFromApplicationModel(appModelResource, new NullOutputConverter());
+		
 		try {
 			Configuration cfg = Activator.getFreemarkerConfig();
-			Template template = cfg.getTemplate(
-					TemplateConstants.LATEX_TEMPLATE);
+			Template template = cfg.getTemplate(TemplateConstants.LATEX_TEMPLATE);
 			
 			Outputter.processOutput(doc, template, new File("/Users/marco/Desktop/book_2/"));
 		} catch (IOException e) {
@@ -47,5 +48,5 @@ public class OutputterTest {
 			e.printStackTrace();
 		}
 	}
-
+	
 }
