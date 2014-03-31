@@ -23,10 +23,13 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.editors.text.EditorsUI;
 import org.eclipse.ui.swt.IFocusService;
@@ -43,6 +46,7 @@ import at.ecrit.e4.tools.extension.core.listener.PersistedStateValueChangeListen
 public class MapEntryEditorComposite extends AbstractEditorComposite {
 	
 	final WritableValue value_description = new WritableValue("", String.class);
+	Text checked;
 	
 	/**
 	 * Create the composite.
@@ -69,7 +73,10 @@ public class MapEntryEditorComposite extends AbstractEditorComposite {
 		{
 			Label l = new Label(this, SWT.NONE);
 			l.setText(label);
-			l.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+			GridData gd_l = new GridData(GridData.HORIZONTAL_ALIGN_END);
+			gd_l.minimumWidth = 100;
+			gd_l.widthHint = 100;
+			l.setLayoutData(gd_l);
 			
 			// final Text text = new Text(this, SWT.BORDER | SWT.WRAP | SWT.MULTI);
 			// GridData gd_text = new GridData(GridData.FILL_BOTH);
@@ -81,7 +88,8 @@ public class MapEntryEditorComposite extends AbstractEditorComposite {
 			
 			TextViewer textViewer =
 				new TextViewer(this, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
-			GridData gd_Viewer = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+			GridData gd_Viewer = new GridData(GridData.FILL_BOTH);
+			gd_Viewer.horizontalSpan = 2;
 			textViewer.getTextWidget().setLayoutData(gd_Viewer);
 			textViewer.setDocument(new Document());
 			
@@ -102,6 +110,45 @@ public class MapEntryEditorComposite extends AbstractEditorComposite {
 			});
 			context.bindValue(textProp.observeDelayed(200, textViewer.getTextWidget()),
 				value_description);
+		}
+	}
+	
+	/**
+	 * @wbp.parser.constructor
+	 */
+	public MapEntryEditorComposite(Composite parent, int style, EMFDataBindingContext context,
+		WritableValue master, EditingDomain editingDomain, String label, String key,
+		boolean defaultValue){
+		super(parent, style);
+		setLayout(new GridLayout(3, false));
+		
+		{
+			Label l = new Label(this, SWT.NONE);
+			l.setText(label);
+			GridData gd_l = new GridData(GridData.HORIZONTAL_ALIGN_END);
+			gd_l.minimumWidth = 100;
+			gd_l.widthHint = 100;
+			l.setLayoutData(gd_l);
+			new Label(this, SWT.NONE);
+			
+			checked = new Text(this, SWT.NONE);
+			checked.setVisible(false);
+			checked.setText("");
+			new Label(this, SWT.NONE);
+			
+			Button btnCheck = new Button(this, SWT.CHECK);
+			btnCheck.setSelection(defaultValue);
+			btnCheck.addSelectionListener(new SelectionAdapter() {
+				public void widgetSelected(org.eclipse.swt.events.SelectionEvent e){
+					if (((Button) e.widget).getSelection()) {
+						checked.setText("true");
+					} else {
+						checked.setText("");
+					}
+				};
+			});
+			
+			context.bindValue(textProp.observeDelayed(200, checked), value_description);
 		}
 	}
 	

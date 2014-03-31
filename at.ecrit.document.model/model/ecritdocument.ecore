@@ -90,6 +90,7 @@
         eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/advanced/Perspective"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ApplicationProperties">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="about" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiresLogin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiresInstallation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="perspectiveSwitcher" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

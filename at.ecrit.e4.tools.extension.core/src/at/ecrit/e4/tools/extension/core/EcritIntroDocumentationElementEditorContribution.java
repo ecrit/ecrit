@@ -3,7 +3,7 @@ package at.ecrit.e4.tools.extension.core;
 import org.eclipse.core.databinding.observable.value.WritableValue;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.e4.tools.emf.ui.common.AbstractElementEditorContribution;
-import org.eclipse.e4.ui.model.application.MApplicationElement;
+import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.emf.databinding.EMFDataBindingContext;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.swt.SWT;
@@ -12,40 +12,47 @@ import org.eclipse.swt.widgets.Composite;
 
 import at.ecrit.e4.tools.extension.core.control.MapEntryEditorComposite;
 
-public class EcritDocumentationElementEditorContribution extends AbstractElementEditorContribution {
+public class EcritIntroDocumentationElementEditorContribution extends
+		AbstractElementEditorContribution {
 	
-	public EcritDocumentationElementEditorContribution(){
+	public EcritIntroDocumentationElementEditorContribution(){
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public Class<?> getContributableTo(){
-		return MApplicationElement.class;
+		return MApplication.class;
 	}
 	
 	@Override
 	public String getTabLabel(){
-		return "Documentation";
+		return "About";
 	}
 	
 	@Override
 	public void createContributedEditorTab(Composite parent, EMFDataBindingContext context,
 		final WritableValue master, final EditingDomain editingDomain, IProject project){
 		
-		Composite descEdComp =
-			new MapEntryEditorComposite(parent, SWT.None, context, master, editingDomain,
-				"description", Constants.PERSISTENT_STATE_DESCRIPTION);
+		Composite aboutComp =
+			new MapEntryEditorComposite(parent, SWT.None, context, master, editingDomain, "About",
+				Constants.PERSISTENT_STATE_ABOUT);
 		GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1);
-		descEdComp.setLayoutData(gd);
+		aboutComp.setLayoutData(gd);
 		
-		Composite preCondComp =
+		Composite installComp =
 			new MapEntryEditorComposite(parent, SWT.None, context, master, editingDomain,
-				"precondition", Constants.PERSISTENT_STATE_PRECONDITION);
-		preCondComp.setLayoutData(gd);
+				"Installation", Constants.PERSISTENT_STATE_INSTALL);
+		installComp.setLayoutData(gd);
 		
-		Composite postCondComp =
+		Composite multiUser =
 			new MapEntryEditorComposite(parent, SWT.None, context, master, editingDomain,
-				"postcondition", Constants.PERSISTENT_STATE_POSTCONDITION);
-		postCondComp.setLayoutData(gd);
+				"MultiUser", Constants.PERSISTENT_STATE_MULTIUSER, false);
+		GridData gd_Btn = new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1);
+		multiUser.setLayoutData(gd_Btn);
+		
+		Composite reqLoginComp =
+			new MapEntryEditorComposite(parent, SWT.None, context, master, editingDomain,
+				"RequiresLogin", Constants.PERSISTENT_STATE_REQUIRES_LOGIN, false);
+		reqLoginComp.setLayoutData(gd_Btn);
 	}
 }

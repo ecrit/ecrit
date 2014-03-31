@@ -6,6 +6,9 @@
       <editorTab
             contribution="at.ecrit.e4.tools.extension.core.EcritDocumentationElementEditorContribution">
       </editorTab>
+      <editorTab
+            contribution="at.ecrit.e4.tools.extension.core.EcritIntroDocumentationElementEditorContribution">
+      </editorTab>
    </extension>
 
 </plugin>
