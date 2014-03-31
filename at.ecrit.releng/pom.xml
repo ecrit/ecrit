@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -6,9 +7,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
-		<tycho-version>0.19.0</tycho-version>
+		<tycho-version>0.20.0</tycho-version>
 	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -27,7 +27,6 @@
 						<artifact>
 							<groupId>at.ecrit</groupId>
 							<artifactId>at.ecrit.target</artifactId>
-							<version>0.0.1-SNAPSHOT</version>
 						</artifact>
 					</target>
 				</configuration>
@@ -62,7 +61,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -72,19 +71,32 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<repositories>
+		<repository>
+			<id>Eclipse Luna</id>
+			<url>http://download.eclipse.org/releases/luna</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>Orbit</id>
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>e4 tools</id>
+			<url>http://download.vogella.com/luna/e4tools</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
 	<modules>
-		<module>
- 		../at.ecrit.e4.tools.extension.core
- 	</module>
+		<module>../at.ecrit.e4.tools.extension.core</module>
 		<module>../at.ecrit.e4.tools.extension.feature</module>
-
-		<module>../at.ecrit.p2site</module>
-		<module>../at.ecrit.target</module>
-		<module>
-			../at.ecrit.eclipse.plugin.feature
-		</module>
 		<module>../at.ecrit.eclipse.plugin</module>
+		<module>../at.ecrit.eclipse.plugin.feature</module>
+		<module>../at.ecrit.p2site</module>
 		<module>../at.ecrit.document.model</module>
 		<module>../at.ecrit.document.model.outputter</module>
+		
+		<module>../at.ecrit.eclipse.plugin.outputter.html</module>
 	</modules>
 </project>
