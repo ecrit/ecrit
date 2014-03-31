@@ -3,6 +3,10 @@
   <setupTasks xsi:type="setup:P2Task">
     <installableUnits id="org.eclipse.egit"/>
     <installableUnits id="net.jeeeyul.pdetools.feature.feature.group"/>
+    <installableUnits id="org.eclipse.emf.sdk.feature.group"/>
+    <installableUnits id="org.eclipse.emf.ecoretools.sdk.feature.group" versionRange="[1.0.0,2.0.0)"/>
+    <installableUnits id="org.eclipse.e4.core.tools.feature.feature.group" versionRange="0.14.0.v20140221-1650"/>
+    <installableUnits id="org.eclipse.e4.tools.css.spy.feature.feature.group" versionRange="0.14.0.v20140221-1650"/>
     <p2Repositories url="${train.url}"/>
     <p2Repositories url="http://jeeeyul.github.io/update/"/>
   </setupTasks>
