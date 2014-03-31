@@ -2,7 +2,8 @@
 <feature
       id="at.ecrit.sdk"
       label="%featureName"
-      version="1.0.0.qualifier">
+      version="0.0.1.qualifier"
+      provider-name="ecrit.at">
 
    <description url="http://www.ecrit.at">
       %description
@@ -100,6 +101,14 @@
          download-size="0"
          install-size="0"
          version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.ecrit.eclipse.plugin.outputter.html.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
          unpack="false"/>
 
 </feature>

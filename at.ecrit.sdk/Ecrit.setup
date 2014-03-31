@@ -35,7 +35,6 @@
       <workingSets name="Ecrit">
         <predicates xsi:type="predicates:AndPredicate">
           <operands xsi:type="predicates:NamePredicate" pattern="at\.ecrit.*"/>
-          <operands xsi:type="workingsets:ExclusionPredicate" excludedWorkingSets="//@branches[name='master']/@setupTasks.3/@workingSets.2 //@branches[name='master']/@setupTasks.3/@workingSets.3"/>
         </predicates>
       </workingSets>
       <workingSets name="Pharmacy_AT">
