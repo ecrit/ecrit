@@ -12,14 +12,19 @@
   <p>Document created on ${doc.creationDate?string("EEEE, MMMM dd, yyyy, hh:mm:ss a '('zzz')'")}</p>
   
   <h2>Introduction</h2>
+  <p>${doc.applicationProperties.about}</p>
   
-  <h2>Conventions used in this documentation</h2>
-  
+  <h2>Conventions used in this documentation</h2>  
   <h2>Concept of operations</h2>
   
   <h3>Software installation and uninstallation</h3>
+  <p>${doc.applicationProperties.requiresInstallation}</p>
+  
   <h3>Orientation to use the features of the graphical user interface</h3>
+  
   <h3>Access, or log-on and sign-off from the software</h3>
+  <p>${doc.applicationProperties.requiresLogin?string("Yes", "No login required!")}</p>
+  
   <h3>Navigation through the software to access and to exit from functions</h3>
   
   <#-- # Windows -->

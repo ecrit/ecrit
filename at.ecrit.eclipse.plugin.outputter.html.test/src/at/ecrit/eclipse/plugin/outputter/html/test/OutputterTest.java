@@ -15,17 +15,13 @@ import at.ecrit.document.model.DocumentFactory;
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.outputconverter.HTMLOutputConverter;
 import at.ecrit.eclipse.plugin.outputter.html.HTMLOutputter;
-import at.ecrit.eclipse.plugin.outputter.html.internal.Activator;
-import at.ecrit.eclipse.plugin.outputter.html.internal.TemplateConstants;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
 
 public class OutputterTest {
 	
 	private static ResourceSet resourceSet = new ResourceSetImpl();
 	
 	@Test
-	public void testProcessOutput(){
+	public void testProcessOutput() throws IOException{
 		URL applicationModelUrl = OutputterTest.class.getResource("Application.e4xmi");
 		
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
@@ -34,21 +30,14 @@ public class OutputterTest {
 		Resource appModelResource =
 			resourceSet.getResource(URI.createURI(applicationModelUrl.toString()), true);
 		
-		// TODO change this
 		Document doc =
 			DocumentFactory.createFromApplicationModel(appModelResource, new HTMLOutputConverter());
-		
-		try {
-			Configuration cfg = Activator.getFreemarkerConfig();
-			Template template = cfg.getTemplate(TemplateConstants.HTML_TEMPLATE);
-			
-			HTMLOutputter outputter = new HTMLOutputter();
-			outputter.performOutput(doc, new File("C:/Users/Lucia/Desktop/ecrit_doc/"),
-				appModelResource);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		File destFolder = new File(System.getProperty("user.dir") + "\\ecrit_doc");
+		if (!destFolder.exists()) {
+			destFolder.mkdir();
 		}
+		HTMLOutputter outputter = new HTMLOutputter();
+		outputter.performOutput(doc, destFolder, appModelResource);
 	}
 	
 }
