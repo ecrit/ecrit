@@ -4,7 +4,7 @@ Bundle-Name: Test
 Bundle-SymbolicName: at.ecrit.eclipse.plugin.outputter.html.test
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ecrit.at
-Fragment-Host: at.ecrit.eclipse.plugin.outputter.html;bundle-version="1.0.0.qualifier"
+Fragment-Host: at.ecrit.eclipse.plugin.outputter.html;bundle-version="0.0.1.qualifier"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.junit,
  org.eclipse.emf.ecore,
