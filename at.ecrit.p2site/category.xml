@@ -6,6 +6,6 @@
    <feature url="features/at.ecrit.eclipse.plugin.feature_0.0.1.qualifier.jar" id="at.ecrit.eclipse.plugin.feature" version="0.0.0">
       <category name="ecrit"/>
    </feature>
-   <category-def name="ecritE4Tooling" label="Eclipse e4 Tooling Extension"/>
+   <category-def name="ecritE4Tooling" label="Eclipse e4 tooling extension"/>
    <category-def name="ecrit" label="Ecrit"/>
 </site>
