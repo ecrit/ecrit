@@ -28,7 +28,7 @@
     <setupTasks xsi:type="setup:GitCloneTask" location="${ecrit.git.location}" remoteURI="https://github.com/ecrit/ecrit.git" userID="" checkoutBranch="master"/>
     <setupTasks xsi:type="setup:GitCloneTask" location="${pharmacy.git.location}" remoteURI="https://github.com/ecrit/pharmacy_at.git" userID="" checkoutBranch="master"/>
     <setupTasks xsi:type="setup:TargletTask" name="Ecrit">
-      <roots id="at.ecrit.sdk"/>
+      <roots id="at.ecrit.sdk.feature.group"/>
       <sourceLocators rootFolder="${ecrit.git.location}"/>
       <sourceLocators rootFolder="${pharmacy.git.location}"/>
       <repositoryLists name="Ecrit Repositories">
