@@ -21,9 +21,11 @@
   <p>${doc.applicationProperties.requiresInstallation}</p>
   
   <h3>Orientation to use the features of the graphical user interface</h3>
-  
-  <h3>Access, or log-on and sign-off from the software</h3>
-  <p>${doc.applicationProperties.requiresLogin?string("Yes", "No login required!")}</p>
+ 
+  <#if (doc.applicationProperties.requiresLogin)>
+  	  <h3>Access, or log-on and sign-off from the software</h3>
+  	  This application requires a login.
+  </#if>
   
   <h3>Navigation through the software to access and to exit from functions</h3>
   
@@ -39,14 +41,14 @@
   There are ${doc.applicationLayout.perspective?size} perspectives available to the user.
   
   <#list doc.applicationLayout.perspective as perspective>
-  	<h5>Perspective ${perspective.modelElement.label}</h5>
+  	<h5 id="${perspective.modelElement.elementId}">Perspective ${perspective.modelElement.label}</h5>
   	<img src="${perspective.modelElement.elementId}.png" alt="${perspective.modelElement.elementId}">
   	<p><i>Description</i> ${perspective.description}<p>
   	
   	<p><i>Parts</i>
   		<ul>
   		 <#list perspective.containedParts as containedPart>
-  		 	<li>${containedPart.modelElement.label}</li>
+  		 	<li><a href="#${containedPart.modelElement.elementId}">${containedPart.modelElement.label}</a></li>
   		 </#list>
   		</ul>
   	<p>
@@ -55,7 +57,7 @@
   <h4>Parts</h4>
   
   <#list doc.applicationLayout.part as part>
-  	<h5>Part ${part.modelElement.label}</h5>
+  	<h5 id="${part.modelElement.elementId}">Part ${part.modelElement.label}</h5>
   	<p><i>Description</i> ${part.description}<p>
   </#list>
   
@@ -65,7 +67,7 @@
 
   <h2>Information on software commands</h2>
     <#list doc.step as st>
-      <h3>${st.command.commandName}</h3>
+      <h3 id="${st.command.elementId}">${st.command.commandName}</h3>
       <p><i>Description</i> ${st.description!""}<p>
       <p><i>Requirements</i> ${st.precondition!""}</p>
       <p><i>Executable by</i>
@@ -79,8 +81,10 @@
     </#list>
     
     <h2>Error messages and problem resolution</h2>
+    Requires extension of the application model
     
     <h2>Glossary</h2>
+    Requires deeper connection to the EMF data model
     
     <h2>Related information sources</h2>
     
