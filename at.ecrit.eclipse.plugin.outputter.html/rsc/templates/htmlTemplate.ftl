@@ -40,6 +40,7 @@
   
   <#list doc.applicationLayout.perspective as perspective>
   	<h5>Perspective ${perspective.modelElement.label}</h5>
+  	<img src="${perspective.modelElement.elementId}.png" alt="${perspective.modelElement.elementId}">
   	<p><i>Description</i> ${perspective.description}<p>
   	
   	<p><i>Parts</i>

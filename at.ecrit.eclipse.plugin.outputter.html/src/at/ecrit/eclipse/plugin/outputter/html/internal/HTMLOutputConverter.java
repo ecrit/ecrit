@@ -1,8 +1,10 @@
-package at.ecrit.document.model.outputconverter;
+package at.ecrit.eclipse.plugin.outputter.html.internal;
 
 import java.io.StringWriter;
 
 import org.eclipse.mylyn.wikitext.core.parser.builder.HtmlDocumentBuilder;
+
+import at.ecrit.document.model.outputconverter.AbstractOutputConverter;
 
 public class HTMLOutputConverter extends AbstractOutputConverter {
 	
