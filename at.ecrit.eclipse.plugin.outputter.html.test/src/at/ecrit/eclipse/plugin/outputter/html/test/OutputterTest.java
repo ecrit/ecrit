@@ -13,8 +13,8 @@ import org.junit.Test;
 
 import at.ecrit.document.model.DocumentFactory;
 import at.ecrit.document.model.ecritdocument.Document;
-import at.ecrit.document.model.outputconverter.HTMLOutputConverter;
 import at.ecrit.eclipse.plugin.outputter.html.HTMLOutputter;
+import at.ecrit.eclipse.plugin.outputter.html.internal.HTMLOutputConverter;
 
 public class OutputterTest {
 	
