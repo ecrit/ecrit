@@ -13,6 +13,7 @@ html {
 }
 body {
   margin: 15;
+  counter-reset: h2counter;
 }
 article,
 aside,
@@ -63,7 +64,17 @@ dfn {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  counter-reset: h2counter;
 }
+h2:before {
+        content: counter(h2counter) ".\0000a0\0000a0";
+        counter-increment: h2counter;
+        counter-reset: h3counter;
+}
+h3:before {
+        content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+        counter-increment: h3counter;
+    }
 mark {
   background: #ff0;
   color: #000;
@@ -5880,4 +5891,27 @@ button.close {
 }
 .affix {
   position: fixed;
+}
+#content { width:80%; }
+#toc a { display:block; color:#0094FF;}
+        
+#toc a[title=H1] { font-size:120%;}
+#toc a[title=H2] {
+ 	font-size:115%;
+ 	margin: 10px;
+}
+
+#toc a[title=H3] { 
+   	font-size:110%;
+   	margin-left: 30px;
+}
+
+#toc a[title=H4] { 
+  	font-size:105%;
+   	margin-left: 50px;
+}
+
+#toc a[title=H5] { 
+ 	font-size:100%;
+ 	margin-left: 70px;
 }

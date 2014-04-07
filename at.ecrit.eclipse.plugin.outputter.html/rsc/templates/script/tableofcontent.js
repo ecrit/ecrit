@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("h1, h2, h3").each(function(i) {
+    $("h1, h2, h3, h4, h5").each(function(i) {
     	var current = $(this);
     	current.attr("id", "title" + i);
     	
