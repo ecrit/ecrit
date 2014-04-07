@@ -6,10 +6,15 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.StatusDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import at.ecrit.document.model.DocumentFactory;
@@ -47,7 +52,11 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		Document doc = DocumentFactory.createFromApplicationModel(
 				appModelResource, aoc);
 
-		outputter.performOutput(doc, outputLocation, appModelResource);
+		IStatus performOutput = outputter.performOutput(doc, outputLocation, appModelResource);
+		if(!performOutput.isOK()) {
+			ErrorDialog ed = new ErrorDialog(Display.getCurrent().getActiveShell(), "Error on output", performOutput.getMessage(), performOutput, performOutput.getSeverity());
+			ed.open();
+		}
 
 		appModelResource.unload();
 

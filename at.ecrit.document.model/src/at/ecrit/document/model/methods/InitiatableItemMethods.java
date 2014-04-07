@@ -21,6 +21,7 @@ public class InitiatableItemMethods {
 			sb.append("Toolbar LEFT/RIGHT/UP/DOWN?? "+ii.getItem().getLocalizedLabel());
 			break;
 		default:
+			sb.append("NOT YET DEFINED ITEM TYPE"+ii);
 			break;
 		}
 		
