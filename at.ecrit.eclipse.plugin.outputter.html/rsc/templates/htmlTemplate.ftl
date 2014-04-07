@@ -1,10 +1,7 @@
 <html>
 
-<style>
-	<#include "css/light_blue.css">
-</style>
-
 <head>
+ <link rel="stylesheet" type="text/css" href="css/light_blue.css">
   <title>${doc.title}</title>
 </head>
 <body>

@@ -3,12 +3,18 @@ package at.ecrit.eclipse.plugin.outputter.html;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.osgi.framework.Bundle;
 
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.outputconverter.AbstractOutputConverter;
@@ -21,6 +27,8 @@ import freemarker.template.TemplateException;
 
 public class HTMLOutputter extends AbstractOutputter {
 
+	private static final String TEMPLATE_LOCATION = "/rsc/templates";
+	
 	@Override
 	public String getOutputterLabel() {
 		return "HTML Output";
@@ -40,6 +48,7 @@ public class HTMLOutputter extends AbstractOutputter {
 				DepictionImageGenerator depictionImageGenerator = new DepictionImageGenerator(
 						document, outputLocation, appModelResource, 400, 250);
 				depictionImageGenerator.generate();
+				copyResourceFilesToOutputLocation(outputLocation);
 				ret = generateHTMLDocument(document, template, outputLocation);
 			} else {
 				return new Status(Status.ERROR, Activator.PLUGIN_ID,
@@ -52,6 +61,21 @@ public class HTMLOutputter extends AbstractOutputter {
 		}
 
 		return ret;
+	}
+
+	private void copyResourceFilesToOutputLocation(File outputLocation) throws IOException {
+		Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+		Enumeration<URL> rscEntries = bundle.findEntries(TEMPLATE_LOCATION, "*", true);
+		while (rscEntries.hasMoreElements()) {
+			URL url = (URL) rscEntries.nextElement();
+			
+			// skip the template files and directories
+			if(url.getFile().contains("ftl") || url.getFile().endsWith("/")) continue;
+		
+			InputStream in = url.openStream();
+			File outputFile = new File(outputLocation, url.getFile().replaceFirst(TEMPLATE_LOCATION, ""));
+			FileUtils.copyInputStreamToFile(in, outputFile);
+		}
 	}
 
 	private IStatus generateHTMLDocument(Document doc, Template template,
@@ -73,7 +97,6 @@ public class HTMLOutputter extends AbstractOutputter {
 			return new Status(Status.ERROR, Activator.PLUGIN_ID,
 					"Exception in output", e);
 		}
-
 	}
 
 	@Override
