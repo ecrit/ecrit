@@ -17,7 +17,18 @@ public class HTMLOutputConverter extends AbstractOutputConverter {
 		parser.setBuilder(htmlDocBuilder);
 		parser.parse(textile, false);
 		
-		return writer.toString();
+		String parserOutput = removeAutoCreatedParagraphTags(writer.toString());
+		return parserOutput;
 	}
 	
+	private String removeAutoCreatedParagraphTags(String parserOutput){
+		if (parserOutput != null && !parserOutput.isEmpty()) {
+			if (parserOutput.contains("<p>") && parserOutput.contains("</p>")) {
+				int pStartTag = parserOutput.indexOf("<p>") + 3;
+				int pEndTag = parserOutput.lastIndexOf("</p>");
+				parserOutput = parserOutput.substring(pStartTag, pEndTag);
+			}
+		}
+		return parserOutput;
+	}
 }
