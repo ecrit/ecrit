@@ -41,9 +41,12 @@
   
   <#list doc.applicationLayout.perspective as perspective>
   	<h5 id="${perspective.modelElement.elementId}">Perspective ${perspective.modelElement.label}</h5>
-  	<img src="${perspective.modelElement.elementId}.png" alt="${perspective.modelElement.elementId}">
-  	<p><i>Description</i> ${perspective.description}<p>
+   	 <div class="content">
+   	 	<div class="leftSide"><img src="${perspective.modelElement.elementId}.png" alt="${perspective.modelElement.elementId}"></div>
+        <div class="rightSide"><p><i>Description</i> ${perspective.description}<p></div>
+    </div>
   	
+  	<div class="content">
   	<p><i>Parts</i>
   		<ul>
   		 <#list perspective.containedParts as containedPart>
@@ -51,10 +54,10 @@
   		 </#list>
   		</ul>
   	<p>
+  	</div>
   </#list>
   
   <h4>Parts</h4>
-  
   <#list doc.applicationLayout.part as part>
   	<h5 id="${part.modelElement.elementId}">Part ${part.modelElement.label}</h5>
   	<p><i>Description</i> ${part.description}<p>
@@ -90,6 +93,7 @@
     <h2>Navigational features</h2>
     
     <h2>Index</h2>
-    <div id="toc"></div>
+   <div id="toc"></div>
+   
 </body>
 </html> 
