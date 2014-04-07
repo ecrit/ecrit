@@ -10,9 +10,6 @@
   <h1>Application Documentation - ${doc.title}</h1>
   <p>Document created on ${doc.creationDate?string("EEEE, MMMM dd, yyyy, hh:mm:ss a '('zzz')'")}</p>
   
-  <h2>In this documentation</h2> 
-  <div id="toc"></div>
-  
   <h2>Introduction</h2>
   <p>${doc.applicationProperties.about}</p>
   
@@ -93,5 +90,6 @@
     <h2>Navigational features</h2>
     
     <h2>Index</h2>
+    <div id="toc"></div>
 </body>
 </html> 
