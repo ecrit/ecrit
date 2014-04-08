@@ -95,5 +95,6 @@
   <module>../at.ecrit.p2site</module>
   <module>../at.ecrit.document.model</module>
   <module>../at.ecrit.eclipse.plugin.outputter.html</module>
+  <module>../at.ecrit.eclipse.plugin.outputter.html.test</module>
 </modules>
 </project>
