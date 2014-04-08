@@ -17,27 +17,29 @@ import at.ecrit.eclipse.plugin.outputter.html.HTMLOutputter;
 import at.ecrit.eclipse.plugin.outputter.html.internal.HTMLOutputConverter;
 
 public class OutputterTest {
-	
+
 	private static ResourceSet resourceSet = new ResourceSetImpl();
-	
+
 	@Test
-	public void testProcessOutput() throws IOException{
-		URL applicationModelUrl = OutputterTest.class.getResource("Application.e4xmi");
-		
+	public void testProcessOutput() throws IOException {
+		URL applicationModelUrl = OutputterTest.class
+				.getResource("Application.e4xmi");
+
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-			.put("e4xmi", new E4XMIResourceFactory());
-		
-		Resource appModelResource =
-			resourceSet.getResource(URI.createURI(applicationModelUrl.toString()), true);
-		
-		Document doc =
-			DocumentFactory.createFromApplicationModel(appModelResource, new HTMLOutputConverter());
-		File destFolder = new File(System.getProperty("user.dir") + "\\ecrit_doc");
+				.put("e4xmi", new E4XMIResourceFactory());
+
+		Resource appModelResource = resourceSet.getResource(
+				URI.createURI(applicationModelUrl.toString()), true);
+
+		Document doc = DocumentFactory.createFromApplicationModel(
+				appModelResource, new HTMLOutputConverter());
+		File destFolder = new File(System.getProperty("user.dir")
+				+ File.separator + "ecrit_doc");
 		if (!destFolder.exists()) {
 			destFolder.mkdir();
 		}
 		HTMLOutputter outputter = new HTMLOutputter();
 		outputter.performOutput(doc, destFolder, appModelResource);
 	}
-	
+
 }
