@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link at.ecrit.document.model.ecritdocument.InitiatableItem#getContainingMenu <em>Containing Menu</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.InitiatableItem#getContainingToolbar <em>Containing Toolbar</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.InitiatableItem#getVisibleWhen <em>Visible When</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.InitiatableItem#getAssociatedStep <em>Associated Step</em>}</li>
  * </ul>
  * </p>
  *
@@ -220,6 +221,34 @@ public interface InitiatableItem extends EObject {
 	 * @generated
 	 */
 	void setVisibleWhen(MExpression value);
+
+	/**
+	 * Returns the value of the '<em><b>Associated Step</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link at.ecrit.document.model.ecritdocument.Step#getInitiatableBy <em>Initiatable By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Associated Step</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Associated Step</em>' reference.
+	 * @see #setAssociatedStep(Step)
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getInitiatableItem_AssociatedStep()
+	 * @see at.ecrit.document.model.ecritdocument.Step#getInitiatableBy
+	 * @model opposite="initiatableBy"
+	 * @generated
+	 */
+	Step getAssociatedStep();
+
+	/**
+	 * Sets the value of the '{@link at.ecrit.document.model.ecritdocument.InitiatableItem#getAssociatedStep <em>Associated Step</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Associated Step</em>' reference.
+	 * @see #getAssociatedStep()
+	 * @generated
+	 */
+	void setAssociatedStep(Step value);
 
 	/**
 	 * <!-- begin-user-doc -->

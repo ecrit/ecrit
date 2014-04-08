@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getModelElement <em>Model Element</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getContainedInPerspective <em>Contained In Perspective</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getInitiatableItems <em>Initiatable Items</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,5 +68,21 @@ public interface DocumentedPart extends DocumentedElement {
 	 * @generated
 	 */
 	EList<MPerspective> getContainedInPerspective();
+
+	/**
+	 * Returns the value of the '<em><b>Initiatable Items</b></em>' reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.InitiatableItem}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Initiatable Items</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Initiatable Items</em>' reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getDocumentedPart_InitiatableItems()
+	 * @model
+	 * @generated
+	 */
+	EList<InitiatableItem> getInitiatableItems();
 
 } // DocumentedPart

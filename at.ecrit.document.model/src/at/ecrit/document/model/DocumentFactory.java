@@ -234,8 +234,10 @@ public class DocumentFactory {
 					
 					// find part contribution is associated to
 					for (DocumentedPart part : doc.getApplicationLayout().getPart()) {
-						if (part.getModelElement().getMenus().contains(parent))
+						if (part.getModelElement().getMenus().contains(parent)) {
 							ii.setContainingPart(part.getModelElement());
+							part.getInitiatableItems().add(ii);
+						}
 					}
 				} else {
 					ii.setItemType(InitiatableItemType.TOOLBAR);

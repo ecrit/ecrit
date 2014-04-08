@@ -287,6 +287,15 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getStep__IsCommandStep() {
+		return stepEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDocument() {
 		return documentEClass;
 	}
@@ -485,6 +494,15 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getInitiatableItem_AssociatedStep() {
+		return (EReference)initiatableItemEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getInitiatableItem__GetLocationDescription() {
 		return initiatableItemEClass.getEOperations().get(0);
 	}
@@ -613,6 +631,15 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 */
 	public EReference getDocumentedPart_ContainedInPerspective() {
 		return (EReference)documentedPartEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedPart_InitiatableItems() {
+		return (EReference)documentedPartEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -750,6 +777,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEReference(stepEClass, STEP__INITIATABLE_BY);
 		createEReference(stepEClass, STEP__POSSIBLE_ERROR);
 		createEReference(stepEClass, STEP__KEYBINDING);
+		createEOperation(stepEClass, STEP___IS_COMMAND_STEP);
 
 		documentEClass = createEClass(DOCUMENT);
 		createEReference(documentEClass, DOCUMENT__STEP);
@@ -777,6 +805,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEReference(initiatableItemEClass, INITIATABLE_ITEM__CONTAINING_MENU);
 		createEReference(initiatableItemEClass, INITIATABLE_ITEM__CONTAINING_TOOLBAR);
 		createEReference(initiatableItemEClass, INITIATABLE_ITEM__VISIBLE_WHEN);
+		createEReference(initiatableItemEClass, INITIATABLE_ITEM__ASSOCIATED_STEP);
 		createEOperation(initiatableItemEClass, INITIATABLE_ITEM___GET_LOCATION_DESCRIPTION);
 
 		applicationLayoutEClass = createEClass(APPLICATION_LAYOUT);
@@ -796,6 +825,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		documentedPartEClass = createEClass(DOCUMENTED_PART);
 		createEReference(documentedPartEClass, DOCUMENTED_PART__MODEL_ELEMENT);
 		createEReference(documentedPartEClass, DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE);
+		createEReference(documentedPartEClass, DOCUMENTED_PART__INITIATABLE_ITEMS);
 
 		documentedWindowEClass = createEClass(DOCUMENTED_WINDOW);
 		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__MODEL_ELEMENT);
@@ -864,9 +894,11 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 
 		initEClass(stepEClass, Step.class, "Step", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStep_ExecutableBy(), this.getUser(), null, "executableBy", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_InitiatableBy(), this.getInitiatableItem(), null, "initiatableBy", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStep_InitiatableBy(), this.getInitiatableItem(), this.getInitiatableItem_AssociatedStep(), "initiatableBy", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStep_PossibleError(), this.getErrorMessage(), null, "possibleError", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStep_Keybinding(), theCommandsPackage.getKeyBinding(), null, "keybinding", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getStep__IsCommandStep(), ecorePackage.getEBoolean(), "isCommandStep", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDocument_Step(), this.getStep(), null, "step", null, 0, -1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -898,6 +930,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEReference(getInitiatableItem_ContainingMenu(), theMenuPackage.getMenu(), null, "containingMenu", null, 0, 1, InitiatableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInitiatableItem_ContainingToolbar(), theMenuPackage.getToolBar(), null, "containingToolbar", null, 0, 1, InitiatableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInitiatableItem_VisibleWhen(), theUiPackage.getExpression(), null, "visibleWhen", null, 0, 1, InitiatableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInitiatableItem_AssociatedStep(), this.getStep(), this.getStep_InitiatableBy(), "associatedStep", null, 0, 1, InitiatableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getInitiatableItem__GetLocationDescription(), ecorePackage.getEString(), "getLocationDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -918,6 +951,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEClass(documentedPartEClass, DocumentedPart.class, "DocumentedPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDocumentedPart_ModelElement(), theBasicPackage.getPart(), null, "modelElement", null, 1, 1, DocumentedPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedPart_ContainedInPerspective(), theAdvancedPackage.getPerspective(), null, "containedInPerspective", null, 0, -1, DocumentedPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedPart_InitiatableItems(), this.getInitiatableItem(), null, "initiatableItems", null, 0, -1, DocumentedPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentedWindowEClass, DocumentedWindow.class, "DocumentedWindow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDocumentedWindow_ModelElement(), theBasicPackage.getWindow(), null, "modelElement", null, 1, 1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

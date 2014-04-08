@@ -5,6 +5,7 @@ package at.ecrit.document.model.ecritdocument.impl;
 import at.ecrit.document.model.ecritdocument.DocumentedPart;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
 
+import at.ecrit.document.model.ecritdocument.InitiatableItem;
 import java.util.Collection;
 
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
@@ -36,6 +37,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getPostcondition <em>Postcondition</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getModelElement <em>Model Element</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getContainedInPerspective <em>Contained In Perspective</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getInitiatableItems <em>Initiatable Items</em>}</li>
  * </ul>
  * </p>
  *
@@ -121,6 +123,16 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected EList<MPerspective> containedInPerspective;
+
+	/**
+	 * The cached value of the '{@link #getInitiatableItems() <em>Initiatable Items</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInitiatableItems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<InitiatableItem> initiatableItems;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -259,6 +271,18 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<InitiatableItem> getInitiatableItems() {
+		if (initiatableItems == null) {
+			initiatableItems = new EObjectResolvingEList<InitiatableItem>(InitiatableItem.class, this, EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS);
+		}
+		return initiatableItems;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -273,6 +297,8 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 				return basicGetModelElement();
 			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
 				return getContainedInPerspective();
+			case EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS:
+				return getInitiatableItems();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -302,6 +328,10 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 				getContainedInPerspective().clear();
 				getContainedInPerspective().addAll((Collection<? extends MPerspective>)newValue);
 				return;
+			case EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS:
+				getInitiatableItems().clear();
+				getInitiatableItems().addAll((Collection<? extends InitiatableItem>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -329,6 +359,9 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
 				getContainedInPerspective().clear();
 				return;
+			case EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS:
+				getInitiatableItems().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -351,6 +384,8 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 				return modelElement != null;
 			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
 				return containedInPerspective != null && !containedInPerspective.isEmpty();
+			case EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS:
+				return initiatableItems != null && !initiatableItems.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

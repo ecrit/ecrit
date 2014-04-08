@@ -54,6 +54,7 @@ public interface Step extends DocumentedElement {
 	/**
 	 * Returns the value of the '<em><b>Initiatable By</b></em>' reference list.
 	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.InitiatableItem}.
+	 * It is bidirectional and its opposite is '{@link at.ecrit.document.model.ecritdocument.InitiatableItem#getAssociatedStep <em>Associated Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Initiatable By</em>' reference list isn't clear,
@@ -62,7 +63,8 @@ public interface Step extends DocumentedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Initiatable By</em>' reference list.
 	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getStep_InitiatableBy()
-	 * @model
+	 * @see at.ecrit.document.model.ecritdocument.InitiatableItem#getAssociatedStep
+	 * @model opposite="associatedStep"
 	 * @generated
 	 */
 	EList<InitiatableItem> getInitiatableBy();
@@ -108,5 +110,13 @@ public interface Step extends DocumentedElement {
 	 * @generated
 	 */
 	void setKeybinding(MKeyBinding value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	boolean isCommandStep();
 
 } // Step

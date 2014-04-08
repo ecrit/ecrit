@@ -5,6 +5,7 @@ package at.ecrit.document.model.ecritdocument.impl;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
 import at.ecrit.document.model.ecritdocument.InitiatableItem;
 import at.ecrit.document.model.ecritdocument.InitiatableItemType;
+import at.ecrit.document.model.ecritdocument.Step;
 import at.ecrit.document.model.methods.InitiatableItemMethods;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,6 +17,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -37,6 +39,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.InitiatableItemImpl#getContainingMenu <em>Containing Menu</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.InitiatableItemImpl#getContainingToolbar <em>Containing Toolbar</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.InitiatableItemImpl#getVisibleWhen <em>Visible When</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.InitiatableItemImpl#getAssociatedStep <em>Associated Step</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,6 +125,16 @@ public class InitiatableItemImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected MExpression visibleWhen;
+
+	/**
+	 * The cached value of the '{@link #getAssociatedStep() <em>Associated Step</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAssociatedStep()
+	 * @generated
+	 * @ordered
+	 */
+	protected Step associatedStep;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -394,10 +407,100 @@ public class InitiatableItemImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Step getAssociatedStep() {
+		if (associatedStep != null && associatedStep.eIsProxy()) {
+			InternalEObject oldAssociatedStep = (InternalEObject)associatedStep;
+			associatedStep = (Step)eResolveProxy(oldAssociatedStep);
+			if (associatedStep != oldAssociatedStep) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP, oldAssociatedStep, associatedStep));
+			}
+		}
+		return associatedStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Step basicGetAssociatedStep() {
+		return associatedStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAssociatedStep(Step newAssociatedStep, NotificationChain msgs) {
+		Step oldAssociatedStep = associatedStep;
+		associatedStep = newAssociatedStep;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP, oldAssociatedStep, newAssociatedStep);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAssociatedStep(Step newAssociatedStep) {
+		if (newAssociatedStep != associatedStep) {
+			NotificationChain msgs = null;
+			if (associatedStep != null)
+				msgs = ((InternalEObject)associatedStep).eInverseRemove(this, EcritdocumentPackage.STEP__INITIATABLE_BY, Step.class, msgs);
+			if (newAssociatedStep != null)
+				msgs = ((InternalEObject)newAssociatedStep).eInverseAdd(this, EcritdocumentPackage.STEP__INITIATABLE_BY, Step.class, msgs);
+			msgs = basicSetAssociatedStep(newAssociatedStep, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP, newAssociatedStep, newAssociatedStep));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated not
 	 */
 	public String getLocationDescription() {
 		return InitiatableItemMethods.getLocationDescription(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP:
+				if (associatedStep != null)
+					msgs = ((InternalEObject)associatedStep).eInverseRemove(this, EcritdocumentPackage.STEP__INITIATABLE_BY, Step.class, msgs);
+				return basicSetAssociatedStep((Step)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP:
+				return basicSetAssociatedStep(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -428,6 +531,9 @@ public class InitiatableItemImpl extends MinimalEObjectImpl.Container implements
 			case EcritdocumentPackage.INITIATABLE_ITEM__VISIBLE_WHEN:
 				if (resolve) return getVisibleWhen();
 				return basicGetVisibleWhen();
+			case EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP:
+				if (resolve) return getAssociatedStep();
+				return basicGetAssociatedStep();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -460,6 +566,9 @@ public class InitiatableItemImpl extends MinimalEObjectImpl.Container implements
 				return;
 			case EcritdocumentPackage.INITIATABLE_ITEM__VISIBLE_WHEN:
 				setVisibleWhen((MExpression)newValue);
+				return;
+			case EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP:
+				setAssociatedStep((Step)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -494,6 +603,9 @@ public class InitiatableItemImpl extends MinimalEObjectImpl.Container implements
 			case EcritdocumentPackage.INITIATABLE_ITEM__VISIBLE_WHEN:
 				setVisibleWhen((MExpression)null);
 				return;
+			case EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP:
+				setAssociatedStep((Step)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -520,6 +632,8 @@ public class InitiatableItemImpl extends MinimalEObjectImpl.Container implements
 				return containingToolbar != null;
 			case EcritdocumentPackage.INITIATABLE_ITEM__VISIBLE_WHEN:
 				return visibleWhen != null;
+			case EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP:
+				return associatedStep != null;
 		}
 		return super.eIsSet(featureID);
 	}

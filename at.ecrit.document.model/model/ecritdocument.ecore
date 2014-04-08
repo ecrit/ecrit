@@ -12,10 +12,11 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="&lt;b>&#xA;ISO/IEC2008&#xA;&lt;/b>&#xA;A step: One element (numbered list item) in a procedure that tells a user to perform an action&#xA;(or actions)&#xA;&lt;/p>"/>
     </eAnnotations>
+    <eOperations name="isCommandStep" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="executableBy" upperBound="-1"
         eType="#//User"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initiatableBy" upperBound="-1"
-        eType="#//InitiatableItem"/>
+        eType="#//InitiatableItem" eOpposite="#//InitiatableItem/associatedStep"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="possibleError" upperBound="-1"
         eType="#//ErrorMessage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="keybinding" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//commands/KeyBinding"/>
@@ -52,6 +53,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containingMenu" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/menu/Menu"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containingToolbar" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/menu/ToolBar"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="visibleWhen" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="associatedStep" eType="#//Step"
+        eOpposite="#//Step/initiatableBy"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InitiatableItemType">
     <eLiterals name="MENU"/>
@@ -82,6 +85,8 @@
         eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Part"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedInPerspective"
         upperBound="-1" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/advanced/Perspective"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initiatableItems" upperBound="-1"
+        eType="#//InitiatableItem"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DocumentedWindow" eSuperTypes="#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" lowerBound="1"

@@ -197,13 +197,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int STEP_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Is Command Step</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP___IS_COMMAND_STEP = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STEP_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+	int STEP_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.CommandStepImpl <em>Command Step</em>}' class.
@@ -295,6 +304,15 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMAND_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Is Command Step</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_STEP___IS_COMMAND_STEP = STEP___IS_COMMAND_STEP;
 
 	/**
 	 * The number of operations of the '<em>Command Step</em>' class.
@@ -562,6 +580,15 @@ public interface EcritdocumentPackage extends EPackage {
 	int DIRECT_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Is Command Step</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECT_STEP___IS_COMMAND_STEP = STEP___IS_COMMAND_STEP;
+
+	/**
 	 * The number of operations of the '<em>Direct Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -644,13 +671,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int INITIATABLE_ITEM__VISIBLE_WHEN = 6;
 
 	/**
+	 * The feature id for the '<em><b>Associated Step</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIATABLE_ITEM__ASSOCIATED_STEP = 7;
+
+	/**
 	 * The number of structural features of the '<em>Initiatable Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INITIATABLE_ITEM_FEATURE_COUNT = 7;
+	int INITIATABLE_ITEM_FEATURE_COUNT = 8;
 
 	/**
 	 * The operation id for the '<em>Get Location Description</em>' operation.
@@ -854,13 +890,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Initiatable Items</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PART__INITIATABLE_ITEMS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Documented Part</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENTED_PART_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int DOCUMENTED_PART_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Documented Part</em>' class.
@@ -1114,6 +1159,16 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getStep_Keybinding();
 
 	/**
+	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.Step#isCommandStep() <em>Is Command Step</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Command Step</em>' operation.
+	 * @see at.ecrit.document.model.ecritdocument.Step#isCommandStep()
+	 * @generated
+	 */
+	EOperation getStep__IsCommandStep();
+
+	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.Document <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1349,6 +1404,17 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getInitiatableItem_VisibleWhen();
 
 	/**
+	 * Returns the meta object for the reference '{@link at.ecrit.document.model.ecritdocument.InitiatableItem#getAssociatedStep <em>Associated Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Associated Step</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.InitiatableItem#getAssociatedStep()
+	 * @see #getInitiatableItem()
+	 * @generated
+	 */
+	EReference getInitiatableItem_AssociatedStep();
+
+	/**
 	 * Returns the meta object for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItem#getLocationDescription() <em>Get Location Description</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1507,6 +1573,17 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDocumentedPart_ContainedInPerspective();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getInitiatableItems <em>Initiatable Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Initiatable Items</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedPart#getInitiatableItems()
+	 * @see #getDocumentedPart()
+	 * @generated
+	 */
+	EReference getDocumentedPart_InitiatableItems();
 
 	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedWindow <em>Documented Window</em>}'.
@@ -1710,6 +1787,14 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference STEP__KEYBINDING = eINSTANCE.getStep_Keybinding();
 
 		/**
+		 * The meta object literal for the '<em><b>Is Command Step</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STEP___IS_COMMAND_STEP = eINSTANCE.getStep__IsCommandStep();
+
+		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentImpl <em>Document</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1896,6 +1981,14 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference INITIATABLE_ITEM__VISIBLE_WHEN = eINSTANCE.getInitiatableItem_VisibleWhen();
 
 		/**
+		 * The meta object literal for the '<em><b>Associated Step</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INITIATABLE_ITEM__ASSOCIATED_STEP = eINSTANCE.getInitiatableItem_AssociatedStep();
+
+		/**
 		 * The meta object literal for the '<em><b>Get Location Description</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2022,6 +2115,14 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE = eINSTANCE.getDocumentedPart_ContainedInPerspective();
+
+		/**
+		 * The meta object literal for the '<em><b>Initiatable Items</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_PART__INITIATABLE_ITEMS = eINSTANCE.getDocumentedPart_InitiatableItems();
 
 		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl <em>Documented Window</em>}' class.

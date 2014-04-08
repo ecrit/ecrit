@@ -2,28 +2,28 @@
  */
 package at.ecrit.document.model.ecritdocument.impl;
 
+import at.ecrit.document.model.ecritdocument.CommandStep;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
 import at.ecrit.document.model.ecritdocument.ErrorMessage;
 import at.ecrit.document.model.ecritdocument.InitiatableItem;
 import at.ecrit.document.model.ecritdocument.Step;
 import at.ecrit.document.model.ecritdocument.User;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.e4.ui.model.application.commands.MKeyBinding;
-
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -246,7 +246,7 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 	 */
 	public EList<InitiatableItem> getInitiatableBy() {
 		if (initiatableBy == null) {
-			initiatableBy = new EObjectResolvingEList<InitiatableItem>(InitiatableItem.class, this, EcritdocumentPackage.STEP__INITIATABLE_BY);
+			initiatableBy = new EObjectWithInverseResolvingEList<InitiatableItem>(InitiatableItem.class, this, EcritdocumentPackage.STEP__INITIATABLE_BY, EcritdocumentPackage.INITIATABLE_ITEM__ASSOCIATED_STEP);
 		}
 		return initiatableBy;
 	}
@@ -299,6 +299,44 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 		keybinding = newKeybinding;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.STEP__KEYBINDING, oldKeybinding, keybinding));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated not
+	 */
+	public boolean isCommandStep() {
+		return (this instanceof CommandStep);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EcritdocumentPackage.STEP__INITIATABLE_BY:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInitiatableBy()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EcritdocumentPackage.STEP__INITIATABLE_BY:
+				return ((InternalEList<?>)getInitiatableBy()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -422,6 +460,20 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 				return keybinding != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case EcritdocumentPackage.STEP___IS_COMMAND_STEP:
+				return isCommandStep();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
