@@ -61,6 +61,17 @@
   <#list doc.applicationLayout.part as part>
   	<h5 id="${part.modelElement.elementId}">Part ${part.modelElement.label}</h5>
   	<p><i>Description</i> ${part.description}<p>
+  	<p><i>Executable tasks</i>
+  	<ul>
+  	<#list part.initiatableItems as ii>
+  	<li><#if ii.associatedStep.commandStep>
+  			<a href="#${ii.associatedStep.command.elementId}">${ii.associatedStep.command.commandName}</a>
+  		<#else>
+  			Direct Step
+  		</#if></li>
+  	</#list>
+  	</ul>
+  	</p>
   </#list>
   
   <h2>Procedures</h2>
