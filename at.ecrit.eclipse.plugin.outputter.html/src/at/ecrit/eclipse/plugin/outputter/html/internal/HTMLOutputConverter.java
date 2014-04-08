@@ -23,7 +23,7 @@ public class HTMLOutputConverter extends AbstractOutputConverter {
 	
 	private String removeAutoCreatedParagraphTags(String parserOutput){
 		if (parserOutput != null && !parserOutput.isEmpty()) {
-			if (parserOutput.contains("<p>") && parserOutput.contains("</p>")) {
+			if (parserOutput.startsWith("<p>") && parserOutput.endsWith("</p>")) {
 				int pStartTag = parserOutput.indexOf("<p>") + 3;
 				int pEndTag = parserOutput.lastIndexOf("</p>");
 				parserOutput = parserOutput.substring(pStartTag, pEndTag);
