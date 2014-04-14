@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Mon Apr 14 10:52:05 CEST 2014
+markTmpDer=true
+builderNum=2
+outputDir=ecrit_doc/
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=ecrit_doc
+mainTexFile=main.tex
+outputFile=main.pdf
+langSpell=
+markDer=true
+srcDir=ecrit_doc/
