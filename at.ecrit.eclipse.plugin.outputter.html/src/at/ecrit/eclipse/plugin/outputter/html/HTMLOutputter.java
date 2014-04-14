@@ -21,7 +21,6 @@ import at.ecrit.document.model.outputconverter.AbstractOutputConverter;
 import at.ecrit.eclipse.plugin.extension.AbstractOutputter;
 import at.ecrit.eclipse.plugin.outputter.common.DepictionImageGenerator;
 import at.ecrit.eclipse.plugin.outputter.html.internal.Activator;
-import at.ecrit.eclipse.plugin.outputter.html.internal.HTMLOutputConverter;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 

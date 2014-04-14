@@ -1,4 +1,4 @@
-package at.ecrit.eclipse.plugin.outputter.html.internal;
+package at.ecrit.eclipse.plugin.outputter.html;
 
 import java.io.StringWriter;
 
