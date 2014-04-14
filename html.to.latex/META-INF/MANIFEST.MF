@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ecrit.at
+Bundle-SymbolicName: html.to.latex
+Bundle-Version: 0.0.1.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.apache.commons.io,
+ org.eclipse.equinox.registry
+Export-Package: html.to.latex.converter,
+ html.to.latex.exception,
+ html.to.latex.io,
+ html.to.latex.main,
+ html.to.latex.parser
