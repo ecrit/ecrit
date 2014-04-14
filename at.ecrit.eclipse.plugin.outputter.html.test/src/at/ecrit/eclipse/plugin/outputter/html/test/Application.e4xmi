@@ -355,7 +355,7 @@
     <parameters xmi:id="_f52XYKChEeOwTIKbo73Sog" elementId="commandparameter.printRefund" name="Prescriptions for refund form" typeId="commandparameter.type.prescription" optional="false"/>
   </commands>
   <commands xmi:id="_ljLXkKDGEeOoudDAbXzmGA" elementId="command.printInventory" commandName="Print Inventory">
-    <persistedState key="description" value="This command offers a plain inventory form.&#xD;&#xA;It writes the entire inventory to a PDF but leaves out the number on stock. At this place there are empty fields that can be filled out by the staff."/>
+    <persistedState key="description" value="This command offers a plain inventory form.&#xD;&#xA;It writes the entire inventory to a PDF but leaves out the number on stock. At this place there are empty fields that can be filled out by the staff.&#xD;&#xA;| On Stock | Article Name |&#xD;&#xA;| -&#x9; | Aspirin |&#xD;&#xA;| - | MexaVit C |"/>
     <persistedState key="precondition" value="* logged in as clerk"/>
     <persistedState key="postcondition" value="A quick and easy printout of the entire inventory"/>
   </commands>

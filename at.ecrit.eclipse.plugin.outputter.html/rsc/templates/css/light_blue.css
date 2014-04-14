@@ -191,10 +191,18 @@ optgroup {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  font-size: 14px;
 }
-td,
-th {
-  padding: 0;
+td, th {
+  border: 1px solid #317EAC;
+  padding: 3px 7px 2px 7px;
+}
+th{
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  background-color: #C2DEEE;
+  color: black;
 }
 @media print {
   * {
@@ -250,7 +258,8 @@ th {
   }
   .table td,
   .table th {
-    background-color: #fff !important;
+    background-color: #C2DEEE;
+    /*background-color: #fff !important;*/
   }
   .btn > .caret,
   .dropup > .btn > .caret {
@@ -1416,6 +1425,7 @@ table {
 }
 th {
   text-align: left;
+  background-color: #C2DEEE;
 }
 .table {
   width: 100%;
