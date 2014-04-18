@@ -418,7 +418,7 @@
     </element>
     <element name='table'>
         <start>@NL\begin{tabular}</start>
-        <end>@NL\end{tabular}</end>
+        <end>@NL\end{tabular}</end> 
     </element>  
     <element name='tr'>
         <start></start>
@@ -429,7 +429,7 @@
         <end></end>
     </element>
     <element name='th'>
-        <start>\textbf{</start>
+    	<start>\textbf{</start>
         <end>}</end>
     </element>
     <element name='thead'>

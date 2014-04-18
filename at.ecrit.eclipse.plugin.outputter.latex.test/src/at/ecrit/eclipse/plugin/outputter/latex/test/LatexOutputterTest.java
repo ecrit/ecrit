@@ -33,7 +33,7 @@ public class LatexOutputterTest {
 		Document doc =
 			DocumentFactory
 				.createFromApplicationModel(appModelResource, new LatexOutputConverter());
-		File destFolder = new File(System.getProperty("user.dir") + "\\ecrit_doc");
+		File destFolder = new File(System.getProperty("user.dir") + "\\ecrit_latex_doc");
 		if (!destFolder.exists()) {
 			destFolder.mkdir();
 		}

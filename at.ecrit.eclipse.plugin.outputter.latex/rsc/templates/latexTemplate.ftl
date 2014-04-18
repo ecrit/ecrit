@@ -125,27 +125,36 @@ ${doc.creationDate?string("EEEE, MMMM dd, yyyy, hh:mm:ss a '('zzz')'")}
 %----------------------------------------------------------------------------------------
 
 \chapterimage{img/chapter_head_2.pdf} % Chapter heading image
+\chapter{Introduction}
+\section{About ${doc.title}}\index{About ${doc.title} }
+${doc.applicationProperties.about}
 
 \chapter{Concept of operations}
 
 \section{Software un/installation}\index{Software un/installation}
+\mbox{}
 ${doc.applicationProperties.requiresInstallation}
 
-\section{GUI feature orientation}\index{Feature orientation}
+\section{Orientation to use the features of the graphical user interface}\index{Feature orientation}
 General usage; extract from Eclipse documentation
 
+<#if (doc.applicationProperties.requiresLogin)>
 \section{Access, or log-on and sign-off from the software}
+This application requires a login.
+</#if>
 
 \section{Navigation through the software to access and to exit from functions}
-
+ <#if (doc.applicationLayout.window?size > 1)>
+  The application consists of ${doc.applicationLayout.window?size} window(s).
+ <#else>
+  The application has one main window presented to the user on startup.
+ </#if> 
 %------------------------------------------------
 
-\subsection{Perspectives}\index{Lists!Numbered List}
-
+\subsection{Perspectives}\index{Perspectives}
 There are ${doc.applicationLayout.perspective?size} perspectives available to the user.
-Perspectives can be switched by using the ?WHAT? selecting the respective perspective
+Perspectives can be switched by using the tabs, selecting the respective perspective
 item.
-
 
 <#list doc.applicationLayout.perspective as perspective>
 \subsubsection{Perspective ${perspective.modelElement.label}}
@@ -166,17 +175,16 @@ This perspective contains the following parts
 \end{itemize}
 </#list>
 
-\subsection{Parts}
-
+\subsection{Parts}\index{Parts}
  <#list doc.applicationLayout.part as part>
- 	\subsubsection{Part  ${part.modelElement.label}}
- 	${part.description}
+	 \subsubsection{${part.modelElement.label}} 
+	 ${part.description}
  </#list>
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER - Procedures
 %----------------------------------------------------------------------------------------
-%\chapterimage{img/chapter_head_2.pdf} % Chapter heading image
+%\chapterimage{chapter_head_2.pdf} % Chapter heading image
 %\chapter{Procedures}
 %	Not available. Requires cheat-sheets.
 	
@@ -184,195 +192,51 @@ This perspective contains the following parts
 %	CHAPTER - Information on software commands
 %----------------------------------------------------------------------------------------
 \chapterimage{img/chapter_head_2.pdf} % Chapter heading image
-\chapter{Commands}
-\section{}
+\chapter{Information on Software commands}
+\section{Commands}\index{Commands}
+
+%----------------------------------------------------------------------------------------
 <#list doc.step as st>
- 	\subsubsection{${st.command.commandName!"asdf"}}
- 	${st.description}
+ 	\subsection{${st.command.commandName!""}}
+ 	${st.description!""} \\[2ex]
+ 	\textsf{Requirements}
+ 		${st.precondition!""} \\[2ex]
+ 	\textsf{Executable by}
+	 	<#list st.initiatableBy as it>
+	 	\begin{itemize}
+	 		<#list it.locationDescription?split("|") as loc>
+	 			 \item ${loc}
+	 		</#list>
+	 	\end{itemize}
+		</#list>
+	\\[2ex]
+    \textsf{Completion information}
+    ${st.postcondition!""}
  </#list>
 
+%----------------------------------------------------------------------------------------
+%	CHAPTER - Error messages and problem resolution
+%----------------------------------------------------------------------------------------
+\chapter{Error messages and problem resolution}
+
 
 %----------------------------------------------------------------------------------------
-%	CHAPTER 2
+%	CHAPTER - Glossary
 %----------------------------------------------------------------------------------------
+\chapter{Glossary}
 
-\chapter{In-text Elements}
-
-\section{Theorems}\index{Theorems}
-
-This is an example of theorems.
-
-\subsection{Several equations}\index{Theorems!Several Equations}
-This is a theorem consisting of several equations.
-
-\begin{theorem}[Name of the theorem]
-In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
-\begin{align}
-& \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||\\
-&  ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-\end{align}
-\end{theorem}
-
-\subsection{Single Line}\index{Theorems!Single Line}
-This is a theorem consisting of just one line.
-
-\begin{theorem}
-A set $\mathcal{D}(G)$ in dense in $L^2(G)$, $|\cdot|_0$. 
-\end{theorem}
-
-%------------------------------------------------
-
-\section{Definitions}\index{Definitions}
-
-This is an example of a definition. A definition could be mathematical or it could define a concept.
-
-\begin{definition}[Definition name]
-Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
-\begin{align}
-& ||\mathbf{x}||=0\ \Rightarrow\ \mathbf{x}=\mathbf{0}\\
-& ||\lambda \mathbf{x}||=|\lambda|\cdot ||\mathbf{x}||\\
-& ||\mathbf{x}+\mathbf{y}||\leq ||\mathbf{x}||+||\mathbf{y}||
-\end{align}
-\end{definition}
-
-%------------------------------------------------
-
-\section{Notations}\index{Notations}
-
-\begin{notation}
-Given an open subset $G$ of $\mathbb{R}^n$, the set of functions $\varphi$ are:
-\begin{enumerate}
-\item Bounded support $G$;
-\item Infinitely differentiable;
-\end{enumerate}
-a vector space is denoted by $\mathcal{D}(G)$. 
-\end{notation}
-
-%------------------------------------------------
-
-\section{Remarks}\index{Remarks}
-
-This is an example of a remark.
-
-\begin{remark}
-The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
-\end{remark}
-
-%------------------------------------------------
-
-\section{Corollaries}\index{Corollaries}
-
-This is an example of a corollary.
-
-\begin{corollary}[Corollary name]
-The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
-\end{corollary}
-
-%------------------------------------------------
-
-\section{Propositions}\index{Propositions}
-
-This is an example of propositions.
-
-\subsection{Several equations}\index{Propositions!Several Equations}
-
-\begin{proposition}[Proposition name]
-It has the properties:
-\begin{align}
-& \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||\\
-&  ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-\end{align}
-\end{proposition}
-
-\subsection{Single Line}\index{Propositions!Single Line}
-
-\begin{proposition} 
-Let $f,g\in L^2(G)$; if $\forall \varphi\in\mathcal{D}(G)$, $(f,\varphi)_0=(g,\varphi)_0$ then $f = g$. 
-\end{proposition}
-
-%------------------------------------------------
-
-\section{Examples}\index{Examples}
-
-This is an example of examples.
-
-\subsection{Equation and Text}\index{Examples!Equation and Text}
-
-\begin{example}
-Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
-\begin{equation}
-f(x)=\left\{\begin{aligned} & \mathrm{e}^{|x|} & & \text{si $|x-x^0|\leq 1/2$}\\
-& 0 & & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
-\end{equation}
-The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\intoo{0}{5/2-\sqrt{2}}$.
-\end{example}
-
-\subsection{Paragraph of Text}\index{Examples!Paragraph of Text}
-
-\begin{example}[Example name]
-\lipsum[2]
-\end{example}
-
-%------------------------------------------------
-
-\section{Exercises}\index{Exercises}
-
-This is an example of an exercise.
-
-\begin{exercise}
-This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
-\end{exercise}
-
-%------------------------------------------------
-
-\section{Problems}\index{Problems}
-
-\begin{problem}
-What is the average airspeed velocity of an unladen swallow?
-\end{problem}
-
-%------------------------------------------------
-
-\section{Vocabulary}\index{Vocabulary}
-
-Define a word to improve a students' vocabulary.
-
-\begin{vocabulary}[Word]
-Definition of word.
-\end{vocabulary}
 
 %----------------------------------------------------------------------------------------
-%	CHAPTER 3
+%	CHAPTER - Related information sources
 %----------------------------------------------------------------------------------------
+\chapter{Related information sources}
 
-\chapterimage{img/chapter_head_1.pdf} % Chapter heading image
 
-\chapter{Presenting Information}
+%----------------------------------------------------------------------------------------
+%	CHAPTER - Navigational features
+%----------------------------------------------------------------------------------------
+\chapter{Navigational features}
 
-\section{Table}\index{Table}
-
-\begin{table}[h]
-\centering
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-
-%------------------------------------------------
-
-\section{Figure}\index{Figure}
-
-\begin{figure}[h]
-\centering\includegraphics[scale=0.5]{img/placeholder}
-\caption{Figure caption}
-\end{figure}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
@@ -394,6 +258,7 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \cleardoublepage
 \setlength{\columnsep}{0.75cm}
 \addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
+\addcontentsline{toc}{section}{\textcolot{black}{Index}}
 \printindex
 
 %----------------------------------------------------------------------------------------
