@@ -5,16 +5,16 @@ Bundle-SymbolicName: at.ecrit.eclipse.plugin.outputter.latex;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Bundle-Vendor: ecrit.at
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Bundle-Activator: at.ecrit.eclipse.plugin.outputter.latex.internal.Activator
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.0",
  at.ecrit.eclipse.plugin;bundle-version="0.0.1",
  org.eclipse.osgi,
- at.ecrit.document.model;bundle-version="0.0.1",
+ at.ecrit.document.model,
  org.eclipse.mylyn.wikitext.core,
  at.ecrit.eclipse.plugin.outputter.html,
  html.to.latex,
  org.apache.commons.io
-Bundle-ClassPath: .,
- lib/freemarker.jar
 Import-Package: org.eclipse.core.runtime
+Bundle-ClassPath: lib/freemarker.jar,
+ .
 Bundle-ActivationPolicy: lazy
+Bundle-Activator: at.ecrit.eclipse.plugin.outputter.latex.internal.Activator
