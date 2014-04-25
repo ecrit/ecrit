@@ -26,6 +26,9 @@
     <setupTasks xsi:type="setup:TargletTask" name="Ecrit">
       <roots id="at.ecrit.sdk.feature.group"/>
       <roots id="org.eclipse.platform.feature.group"/>
+      <roots id="org.eclipse.e4.core.tools.feature.feature.group" versionRange="0.14.0.v20140320-1549"/>
+      <roots id="org.eclipse.jdt.feature.group"/>
+      <roots id="org.eclipse.pde.feature.group"/>
       <sourceLocators rootFolder="${git.clone.ecrit}"/>
       <sourceLocators rootFolder="${git.clone.pharmacy}"/>
       <repositoryLists name="Ecrit Repositories">
@@ -52,6 +55,11 @@
       </workingSets>
       <workingSets name="Features">
         <predicates xsi:type="predicates:NaturePredicate" nature="org.eclipse.pde.FeatureNature"/>
+      </workingSets>
+      <workingSets name="Launch">
+        <predicates xsi:type="predicates:AndPredicate">
+          <operands xsi:type="predicates:NamePredicate" pattern=".*\.launch"/>
+        </predicates>
       </workingSets>
     </setupTasks>
   </branches>
