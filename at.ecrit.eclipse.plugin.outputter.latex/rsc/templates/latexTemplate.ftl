@@ -67,6 +67,7 @@
 \usepackage{makeidx} % Required to make an index
 \makeindex % Tells LaTeX to create the files required for indexing
 
+\usepackage{enumitem}
 %----------------------------------------------------------------------------------------
 
 \input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
@@ -153,8 +154,8 @@ This application requires a login.
 
 \subsection{Perspectives}\index{Perspectives}
 There are ${doc.applicationLayout.perspective?size} perspectives available to the user.
-Perspectives can be switched by using the tabs, selecting the respective perspective
-item.
+\subsubsection{Switch Perspectives}
+${doc.applicationProperties.perspectiveSwitcher}
 
 <#list doc.applicationLayout.perspective as perspective>
 \subsubsection{Perspective ${perspective.modelElement.label}}
@@ -204,7 +205,7 @@ This perspective contains the following parts
  	\textsf{Executable by}
 	 	<#list st.initiatableBy as it>
 	 	\begin{itemize}
-	 		<#list it.locationDescription?split("|") as loc>
+	 		<#list it.locationDescription?split("| ") as loc>
 	 			 \item ${loc}
 	 		</#list>
 	 	\end{itemize}
@@ -258,7 +259,7 @@ This perspective contains the following parts
 \cleardoublepage
 \setlength{\columnsep}{0.75cm}
 \addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
-\addcontentsline{toc}{section}{\textcolot{black}{Index}}
+\addcontentsline{toc}{section}{\textcolor{black}{Index}}
 \printindex
 
 %----------------------------------------------------------------------------------------

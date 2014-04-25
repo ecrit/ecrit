@@ -26,26 +26,10 @@ public class AppModelHelper {
 			throw new IllegalArgumentException();
 		
 		// modelService only finds MUIElements not, all MApplicationElements
-		MApplicationElement mae = modelService.find(elementId, application);
-		
+		MApplicationElement mae = findMUIElement(elementId);
 		if (mae == null) {
-			System.out.println("Reverting to iterate search for " + elementId);
-			
-			for (TreeIterator<EObject> i = appModelResource.getAllContents(); i.hasNext();) {
-				EObject object = i.next();
-				if (object instanceof MApplicationElement) {
-					MApplicationElement maeTemp = (MApplicationElement) object;
-					if (maeTemp.getElementId().equalsIgnoreCase(elementId)) {
-						mae = maeTemp;
-					}
-				}
-			}
-			
-			if (mae == null) {
-				System.out.println("Could not find element " + elementId);
-				return new ElementDocumentation("", "", "");
-			}
-			
+			System.out.println("Could not find element " + elementId);
+			return new ElementDocumentation("", "", "");
 		}
 		
 		Map<String, String> persistedState = mae.getPersistedState();
@@ -62,6 +46,49 @@ public class AppModelHelper {
 		return new ApplicationDocumentation(persistedState.get(Constants.PERSISTENT_STATE_ABOUT),
 			persistedState.get(Constants.PERSISTENT_STATE_INSTALL),
 			persistedState.get(Constants.PERSISTENT_STATE_MULTIUSER),
-			persistedState.get(Constants.PERSISTENT_STATE_REQUIRES_LOGIN));
+			persistedState.get(Constants.PERSISTENT_STATE_REQUIRES_LOGIN),
+			persistedState.get(Constants.PERSISTENT_STATE_PERSPECTIVE_SWITCH));
 	}
+	
+	public static PerspectiveStackDocumentation getPerspectiveStackDocumentation(String elementId){
+		if (elementId == null || elementId.length() == 0) {
+			throw new IllegalArgumentException();
+		}
+		
+		// modelService only finds MUIElements not, all MApplicationElements
+		MApplicationElement mae = findMUIElement(elementId);
+		if (mae == null) {
+			System.out.println("Could not find element " + elementId);
+			return new PerspectiveStackDocumentation("");
+		}
+		
+		Map<String, String> persistedState = mae.getPersistedState();
+		return new PerspectiveStackDocumentation(
+			persistedState.get(Constants.PERSISTENT_STATE_PERSPECTIVE_SWITCH));
+	}
+	
+	private static MApplicationElement findMUIElement(String elementId){
+		// modelService only finds MUIElements not, all MApplicationElements
+		MApplicationElement mae = modelService.find(elementId, application);
+		
+		if (mae == null) {
+			System.out.println("Reverting to iterate search for " + elementId);
+			
+			for (TreeIterator<EObject> i = appModelResource.getAllContents(); i.hasNext();) {
+				EObject object = i.next();
+				if (object instanceof MApplicationElement) {
+					MApplicationElement maeTemp = (MApplicationElement) object;
+					if (maeTemp.getElementId().equalsIgnoreCase(elementId)) {
+						mae = maeTemp;
+					}
+				}
+			}
+// if (mae == null) {
+// System.out.println("Could not find element " + elementId);
+// return new ElementDocumentation("", "", "");
+// }
+		}
+		return mae;
+	}
+	
 }

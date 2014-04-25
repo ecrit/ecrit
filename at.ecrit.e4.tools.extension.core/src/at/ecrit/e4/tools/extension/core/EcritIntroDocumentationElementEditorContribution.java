@@ -17,6 +17,7 @@ public class EcritIntroDocumentationElementEditorContribution extends
 	
 	public EcritIntroDocumentationElementEditorContribution(){
 		// TODO Auto-generated constructor stub
+		
 	}
 	
 	@Override

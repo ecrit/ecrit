@@ -17,7 +17,6 @@ public class ElementDocumentation {
 			description = "";
 		}
 		return DocumentFactory.outputConverter.parse(description);
-		// return (description != null) ? description : "";
 	}
 	
 	public String getPostcondition(){
@@ -25,7 +24,6 @@ public class ElementDocumentation {
 			postcondition = "";
 		}
 		return DocumentFactory.outputConverter.parse(postcondition);
-		// return (postcondition != null) ? postcondition : "";
 	}
 	
 	public String getPrecondition(){
@@ -33,6 +31,5 @@ public class ElementDocumentation {
 			precondition = "";
 		}
 		return DocumentFactory.outputConverter.parse(precondition);
-		// return (precondition != null) ? precondition : "";
 	}
 }

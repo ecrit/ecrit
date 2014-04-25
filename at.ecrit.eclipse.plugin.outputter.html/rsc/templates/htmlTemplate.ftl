@@ -36,8 +36,9 @@
   </#if> 
   
   <h4>Perspectives</h4>
-  
-  There are ${doc.applicationLayout.perspective?size} perspectives available to the user.
+  There are ${doc.applicationLayout.perspective?size} perspectives available to the user. <br>
+  <h5>Switch Perspectives</h5>
+  ${doc.applicationProperties.perspectiveSwitcher}
   
   <#list doc.applicationLayout.perspective as perspective>
   	<h5 id="${perspective.modelElement.elementId}">Perspective ${perspective.modelElement.label}</h5>

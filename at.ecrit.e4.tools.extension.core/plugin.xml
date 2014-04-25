@@ -9,6 +9,9 @@
       <editorTab
             contribution="at.ecrit.e4.tools.extension.core.EcritIntroDocumentationElementEditorContribution">
       </editorTab>
+      <editorTab
+            contribution="at.ecrit.e4.tools.extension.core.EcritPerspectiveStackDocumentationElementEditorContribution">
+      </editorTab>      
    </extension>
 
 </plugin>

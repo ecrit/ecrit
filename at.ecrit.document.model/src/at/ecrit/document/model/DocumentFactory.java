@@ -13,6 +13,7 @@ import org.eclipse.e4.ui.model.application.MContribution;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledItem;
@@ -41,6 +42,7 @@ import at.ecrit.document.model.ecritdocument.InitiatableItemType;
 import at.ecrit.document.model.internal.AppModelHelper;
 import at.ecrit.document.model.internal.ApplicationDocumentation;
 import at.ecrit.document.model.internal.ElementDocumentation;
+import at.ecrit.document.model.internal.PerspectiveStackDocumentation;
 import at.ecrit.document.model.outputconverter.AbstractOutputConverter;
 import at.ecrit.document.model.outputconverter.NullOutputConverter;
 
@@ -127,7 +129,6 @@ public class DocumentFactory {
 		}
 		
 		doc.setApplicationLayout(al);
-		
 	}
 	
 	/**
@@ -179,6 +180,7 @@ public class DocumentFactory {
 		appProperties.setRequiresInstallation(al.getInstall());
 		appProperties.setHasConceptOfMultipleUsers(al.getMultiUser());
 		appProperties.setRequiresLogin(al.getRequiresLogin());
+		appProperties.setPerspectiveSwitcher(loadPerspectiveSwitchInformation());
 		doc.setApplicationProperties(appProperties);
 		
 		if (el.getDescription() != null) {
@@ -187,6 +189,27 @@ public class DocumentFactory {
 			doc.setTitle(app.getElementId());
 		}
 		doc.setCreationDate(new Date());
+	}
+	
+	private static String loadPerspectiveSwitchInformation(){
+		// Collect all perspective stack elements
+		List<MPerspectiveStack> perspectiveStacks =
+			modelService.findElements(application, null, MPerspectiveStack.class, null);
+		StringBuilder sb = new StringBuilder();
+		int psElements = perspectiveStacks.size();
+		
+		for (MPerspectiveStack perspectiveStack : perspectiveStacks) {
+			PerspectiveStackDocumentation psDocu =
+				AppModelHelper.getPerspectiveStackDocumentation(perspectiveStack.getElementId());
+			if (psElements <= 1) {
+				sb.append(psDocu.getPerspectiveSwitcher());
+			} else {
+				sb.append(perspectiveStack.getElementId() + ":\n");
+				sb.append(psDocu.getPerspectiveSwitcher());
+				sb.append("\n\n");
+			}
+		}
+		return sb.toString();
 	}
 	
 	private static void initCommandSteps(MApplication application, Document doc){
