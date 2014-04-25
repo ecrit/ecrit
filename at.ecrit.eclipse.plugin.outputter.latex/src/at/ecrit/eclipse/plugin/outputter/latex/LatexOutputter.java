@@ -1,5 +1,6 @@
 package at.ecrit.eclipse.plugin.outputter.latex;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -85,6 +86,8 @@ public class LatexOutputter extends AbstractOutputter {
 		input.put("doc", doc);
 		
 		try {
+			File readme = new File(targetDirectory, "README.txt");
+			writeReadMe(readme);
 			File outputFile = new File(targetDirectory, "main.tex");
 			FileWriter fileWriter = new FileWriter(outputFile);
 			template.process(input, fileWriter);
@@ -95,6 +98,31 @@ public class LatexOutputter extends AbstractOutputter {
 			
 		} catch (IOException | TemplateException e) {
 			return new Status(Status.ERROR, Activator.PLUGIN_ID, "Exception in output", e);
+		}
+	}
+	
+	private void writeReadMe(File readme){
+		try {
+			String content =
+				"READ ME\n"
+					+ "****************************************************************************************\n"
+					+ "Copy or import the entire content of this folder into the latex editor of your choice!\n"
+					+ "Proceed as usual to receive your desired output format!\n";
+			
+			// if file doesnt exists, then create it
+			if (!readme.exists()) {
+				readme.createNewFile();
+			}
+			
+			FileWriter fw = new FileWriter(readme.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(content);
+			bw.close();
+			
+			System.out.println("Done writing readme");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
