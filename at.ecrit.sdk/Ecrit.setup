@@ -25,6 +25,7 @@
     <setupTasks xsi:type="setup:GitCloneTask" location="${git.clone.pharmacy}" remoteURI="https://github.com/ecrit/pharmacy_at.git" userID="" checkoutBranch="master"/>
     <setupTasks xsi:type="setup:TargletTask" name="Ecrit">
       <roots id="at.ecrit.sdk.feature.group"/>
+      <roots id="org.eclipse.platform.feature.group"/>
       <sourceLocators rootFolder="${git.clone.ecrit}"/>
       <sourceLocators rootFolder="${git.clone.pharmacy}"/>
       <repositoryLists name="Ecrit Repositories">
