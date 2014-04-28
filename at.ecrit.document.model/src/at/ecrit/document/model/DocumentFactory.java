@@ -199,6 +199,11 @@ public class DocumentFactory {
 		int psElements = perspectiveStacks.size();
 		
 		for (MPerspectiveStack perspectiveStack : perspectiveStacks) {
+			if(perspectiveStack.getElementId()== null) {
+				log.error("Skipping perspectiveStack due to null ID "+perspectiveStack);
+				continue;
+			}
+			
 			PerspectiveStackDocumentation psDocu =
 				AppModelHelper.getPerspectiveStackDocumentation(perspectiveStack.getElementId());
 			if (psElements <= 1) {
