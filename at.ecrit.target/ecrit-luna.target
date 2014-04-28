@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="Luna SDK" sequenceNumber="10">
+<?pde version="3.8"?><target name="Luna SDK" sequenceNumber="0">
 <locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.sdk.ide" version="4.4.0.I20140306-1200"/>
+<unit id="org.eclipse.mylyn.wikitext_feature.feature.group" version="2.0.0.v20140303-2119"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.10.0.v20140310-0546"/>
+<unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.8.0.201403111732"/>
+<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.8.0.201403111711"/>
+<unit id="org.eclipse.emf.compare.feature.group" version="3.0.0.201403111515"/>
+<unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="3.0.0.201403111515"/>
+<unit id="org.eclipse.jdt.feature.group" version="3.10.0.v20140306-1200"/>
+<unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.3.0.v20140312-0617"/>
+<unit id="org.eclipse.mylyn.ide_feature.feature.group" version="3.11.0.v20131021-1909"/>
+<unit id="org.eclipse.acceleo.feature.group" version="3.5.0.201403120947"/>
+<unit id="org.eclipse.rcp.sdk.id" version="4.4.0.I20140306-1200"/>
+<repository location="http://download.eclipse.org/releases/luna"/>
+</location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="com.google.guava" version="12.0.0.v201212092141"/>
 <unit id="org.mozilla.javascript" version="1.7.4.v201209142200"/>
@@ -9,21 +24,7 @@
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.sdk.ide" version="4.4.0.I20140123-1600"/>
-<unit id="org.eclipse.mylyn.wikitext_feature.feature.group" version="2.0.0.20131219-0024"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.10.0.v20140127-0448"/>
-<unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.8.0.201401271944"/>
-<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.8.0.201401271716"/>
-<unit id="org.eclipse.emf.compare.feature.group" version="2.2.0.201401281325"/>
-<unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="2.2.0.201401281325"/>
-<unit id="org.eclipse.jdt.feature.group" version="3.10.0.v20140123-1600"/>
-<unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.3.0.v20140129-1702"/>
-<unit id="org.eclipse.mylyn.ide_feature.feature.group" version="3.11.0.20131021-1909"/>
-<unit id="org.eclipse.acceleo.feature.group" version="3.5.0.201401281458"/>
-<repository location="http://download.eclipse.org/releases/luna"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.e4.core.tools.feature.feature.group" version="0.14.0.v20140404-0910"/>
+<unit id="org.eclipse.e4.core.tools.feature.feature.group" version="0.14.0.v20140424-1317"/>
 <repository location="http://download.vogella.com/luna/e4tools"/>
 </location>
 </locations>
