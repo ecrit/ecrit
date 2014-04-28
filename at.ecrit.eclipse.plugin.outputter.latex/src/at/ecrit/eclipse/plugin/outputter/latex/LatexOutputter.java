@@ -50,6 +50,7 @@ public class LatexOutputter extends AbstractOutputter {
 						250);
 				depictionImageGenerator.generate();
 				copyResourceFilesToOutputLocation(outputLocation);
+				writeReadMe(outputLocation);
 				ret = generateLatexDocument(document, template, outputLocation);
 			} else {
 				return new Status(Status.ERROR, Activator.PLUGIN_ID, "Invalid Output Location ["
@@ -80,28 +81,7 @@ public class LatexOutputter extends AbstractOutputter {
 		}
 	}
 	
-	private IStatus generateLatexDocument(Document doc, Template template, File targetDirectory)
-		throws InstantiationException, IllegalAccessException{
-		Map<String, Object> input = new HashMap<String, Object>();
-		input.put("doc", doc);
-		
-		try {
-			File readme = new File(targetDirectory, "README.txt");
-			writeReadMe(readme);
-			File outputFile = new File(targetDirectory, "main.tex");
-			FileWriter fileWriter = new FileWriter(outputFile);
-			template.process(input, fileWriter);
-			fileWriter.close();
-			
-			return new Status(Status.OK, Activator.PLUGIN_ID, "[DONE] Written to "
-				+ outputFile.getAbsolutePath());
-			
-		} catch (IOException | TemplateException e) {
-			return new Status(Status.ERROR, Activator.PLUGIN_ID, "Exception in output", e);
-		}
-	}
-	
-	private void writeReadMe(File readme){
+	private void writeReadMe(File targetDirectory){
 		try {
 			String content =
 				"READ ME\n"
@@ -110,6 +90,7 @@ public class LatexOutputter extends AbstractOutputter {
 					+ "Proceed as usual to receive your desired output format!\n";
 			
 			// if file doesnt exists, then create it
+			File readme = new File(targetDirectory, "README.txt");
 			if (!readme.exists()) {
 				readme.createNewFile();
 			}
@@ -123,6 +104,25 @@ public class LatexOutputter extends AbstractOutputter {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private IStatus generateLatexDocument(Document doc, Template template, File targetDirectory)
+		throws InstantiationException, IllegalAccessException{
+		Map<String, Object> input = new HashMap<String, Object>();
+		input.put("doc", doc);
+		
+		try {
+			File outputFile = new File(targetDirectory, "main.tex");
+			FileWriter fileWriter = new FileWriter(outputFile);
+			template.process(input, fileWriter);
+			fileWriter.close();
+			
+			return new Status(Status.OK, Activator.PLUGIN_ID, "[DONE] Written to "
+				+ outputFile.getAbsolutePath());
+			
+		} catch (IOException | TemplateException e) {
+			return new Status(Status.ERROR, Activator.PLUGIN_ID, "Exception in output", e);
 		}
 	}
 	
