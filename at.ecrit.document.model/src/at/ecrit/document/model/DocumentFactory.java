@@ -191,6 +191,12 @@ public class DocumentFactory {
 		doc.setCreationDate(new Date());
 	}
 	
+	/**
+	 * load perspective switching information
+	 * 
+	 * @return string with info from perspective switch tab or empty string if no information was
+	 *         found.
+	 */
 	private static String loadPerspectiveSwitchInformation(){
 		// Collect all perspective stack elements
 		List<MPerspectiveStack> perspectiveStacks =
@@ -199,8 +205,8 @@ public class DocumentFactory {
 		int psElements = perspectiveStacks.size();
 		
 		for (MPerspectiveStack perspectiveStack : perspectiveStacks) {
-			if(perspectiveStack.getElementId()== null) {
-				log.error("Skipping perspectiveStack due to null ID "+perspectiveStack);
+			if (perspectiveStack.getElementId() == null) {
+				log.error("Skipping perspectiveStack due to null ID " + perspectiveStack);
 				continue;
 			}
 			
