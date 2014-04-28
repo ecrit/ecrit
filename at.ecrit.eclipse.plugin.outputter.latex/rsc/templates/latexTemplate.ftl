@@ -67,10 +67,17 @@
 \usepackage{makeidx} % Required to make an index
 \makeindex % Tells LaTeX to create the files required for indexing
 
-\usepackage{enumitem}
 %----------------------------------------------------------------------------------------
 
 \input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+\usepackage{hyperref}
+\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor= blue,bookmarks=true,bookmarksopen=false,pdftitle={book title},pdfauthor={book author}}
+% compression pdf
+\pdfminorversion=5
+\pdfobjcompresslevel=6
+\pdfcompresslevel=9
+
 
 \begin{document}
 
@@ -136,7 +143,7 @@ ${doc.applicationProperties.about}
 \mbox{}
 ${doc.applicationProperties.requiresInstallation}
 
-\section{Orientation to use the features of the graphical user interface}\index{Feature orientation}
+\section{Orientation to use the features of the graphical user interface}
 General usage; extract from Eclipse documentation
 
 <#if (doc.applicationProperties.requiresLogin)>
@@ -164,7 +171,6 @@ ${doc.applicationProperties.perspectiveSwitcher}
 		\includegraphics[scale=0.6]{{${perspective.modelElement.elementId}}.png}
 	\caption{Perspective ${perspective.modelElement.label}}
 \end{figure}
-\newline
 ${perspective.description}
 
 This perspective contains the following parts
@@ -181,13 +187,6 @@ This perspective contains the following parts
 	 \subsubsection{${part.modelElement.label}} 
 	 ${part.description}
  </#list>
-
-%----------------------------------------------------------------------------------------
-%	CHAPTER - Procedures
-%----------------------------------------------------------------------------------------
-%\chapterimage{chapter_head_2.pdf} % Chapter heading image
-%\chapter{Procedures}
-%	Not available. Requires cheat-sheets.
 	
 %----------------------------------------------------------------------------------------
 %	CHAPTER - Information on software commands
@@ -201,7 +200,7 @@ This perspective contains the following parts
  	\subsection{${st.command.commandName!""}}
  	${st.description!""} \\[2ex]
  	\textsf{Requirements}
- 		${st.precondition!""} \\[2ex]
+ 		${st.precondition!""} \\
  	\textsf{Executable by}
 	 	<#list st.initiatableBy as it>
 	 	\begin{itemize}
@@ -209,8 +208,7 @@ This perspective contains the following parts
 	 			 \item ${loc}
 	 		</#list>
 	 	\end{itemize}
-		</#list>
-	\\[2ex]
+		</#list>\\
     \textsf{Completion information}
     ${st.postcondition!""}
  </#list>
@@ -219,25 +217,25 @@ This perspective contains the following parts
 %	CHAPTER - Error messages and problem resolution
 %----------------------------------------------------------------------------------------
 \chapter{Error messages and problem resolution}
-
+Document any error messages an problem resolutions in this chapter.
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER - Glossary
 %----------------------------------------------------------------------------------------
 \chapter{Glossary}
-
+Room for the glossary.
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER - Related information sources
 %----------------------------------------------------------------------------------------
 \chapter{Related information sources}
-
+Put any relatd information sources in this chapter.
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER - Navigational features
 %----------------------------------------------------------------------------------------
 \chapter{Navigational features}
-
+Add information to navigational features here.
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
@@ -259,9 +257,9 @@ This perspective contains the following parts
 \cleardoublepage
 \setlength{\columnsep}{0.75cm}
 \addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
-\addcontentsline{toc}{section}{\textcolor{black}{Index}}
 \printindex
 
 %----------------------------------------------------------------------------------------
+
 
 \end{document}

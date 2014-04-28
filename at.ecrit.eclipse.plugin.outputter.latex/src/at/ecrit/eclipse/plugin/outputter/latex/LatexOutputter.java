@@ -86,8 +86,10 @@ public class LatexOutputter extends AbstractOutputter {
 			String content =
 				"READ ME\n"
 					+ "****************************************************************************************\n"
-					+ "Copy or import the entire content of this folder into the latex editor of your choice!\n"
-					+ "Proceed as usual to receive your desired output format!\n";
+					+ "Copy or import the entire content of this folder into the latex editor of your choice.\n\n"
+					+ "IMPORTANT:\n"
+					+ "Please recompile twice, just to make sure everything was loaded correctly.\n\n"
+					+ "Proceed as usual to receive your desired output format!";
 			
 			// if file doesnt exists, then create it
 			File readme = new File(targetDirectory, "README.txt");
