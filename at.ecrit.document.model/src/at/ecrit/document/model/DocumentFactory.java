@@ -144,7 +144,8 @@ public class DocumentFactory {
 		DocumentedPart documentedPart = null;
 		
 		for (DocumentedPart dp : al.getPart()) {
-			if (dp.getModelElement().getElementId().equals(mPart.getElementId()))
+			String partElementId = (mPart.getElementId()!=null) ? mPart.getElementId() : "";
+			if ((dp.getModelElement().getElementId()!=null) && dp.getModelElement().getElementId().equals(partElementId))
 				documentedPart = dp;
 		}
 		
