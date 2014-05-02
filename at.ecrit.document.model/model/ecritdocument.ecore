@@ -45,7 +45,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="contribution" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//Contribution"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InitiatableItem">
-    <eOperations name="getLocationDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getLocationDescription">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+        <eTypeArguments/>
+        <eTypeArguments/>
+      </eGenericType>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/menu/Item"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="itemType" eType="#//InitiatableItemType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containingWindow" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Window"/>

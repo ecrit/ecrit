@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -932,7 +933,13 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEReference(getInitiatableItem_VisibleWhen(), theUiPackage.getExpression(), null, "visibleWhen", null, 0, 1, InitiatableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInitiatableItem_AssociatedStep(), this.getStep(), this.getStep_InitiatableBy(), "associatedStep", null, 0, 1, InitiatableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getInitiatableItem__GetLocationDescription(), ecorePackage.getEString(), "getLocationDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInitiatableItem__GetLocationDescription(), null, "getLocationDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
 
 		initEClass(applicationLayoutEClass, ApplicationLayout.class, "ApplicationLayout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApplicationLayout_Perspective(), this.getDocumentedPerspective(), null, "perspective", null, 0, -1, ApplicationLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

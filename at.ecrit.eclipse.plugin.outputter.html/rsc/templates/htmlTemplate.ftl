@@ -87,7 +87,20 @@
       <p><i>Executable by</i>
       	<ul>
       	<#list st.initiatableBy as it>
-      		<li>${it.locationDescription}</li>
+      		<#assign map = it.locationDescription>
+      		<#list map?keys as key>
+      				<#if map[key]??>
+      					<#if map[key]?contains("Menu")>  
+      						<li>${key}</li>
+      					<#elseif key == st.command.elementId>
+      						 <#-- # Skip - we don't want the command to show itself -->
+      					<#else>
+ 	     					<li><a href="#${key}">${map[key]}</a></li>      					
+      					</#if>
+      				<#else>
+      					<li>${key}</li>
+      				</#if>
+			</#list>
       	</#list>
       	</ul>
       </p>

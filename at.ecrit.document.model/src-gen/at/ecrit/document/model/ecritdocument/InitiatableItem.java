@@ -2,6 +2,7 @@
  */
 package at.ecrit.document.model.ecritdocument;
 
+import java.util.Map;
 import org.eclipse.e4.ui.model.application.ui.MExpression;
 
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -256,6 +257,6 @@ public interface InitiatableItem extends EObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	String getLocationDescription();
+	Map<?, ?> getLocationDescription();
 
 } // InitiatableItem
