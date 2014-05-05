@@ -102,6 +102,10 @@
         eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Window"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedPerspective" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/advanced/Perspective"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedMenus" upperBound="-1"
+        eType="#//DocumentedMenu"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedTrimElements"
+        upperBound="-1" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/TrimElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ApplicationProperties">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="about" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -116,5 +120,9 @@
         eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/menu/Menu"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedInPart" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Part"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedInWindow" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Window"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedMenuItems" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/menu/MenuElement"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -3,9 +3,9 @@
 package at.ecrit.document.model.ecritdocument;
 
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
-
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
-
+import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedMenu#getModelElement <em>Model Element</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedMenu#getContainedInPart <em>Contained In Part</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedMenu#getContainedInWindow <em>Contained In Window</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedMenu#getContainedMenuItems <em>Contained Menu Items</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,5 +69,37 @@ public interface DocumentedMenu extends DocumentedElement {
 	 * @generated
 	 */
 	EList<MPart> getContainedInPart();
+
+	/**
+	 * Returns the value of the '<em><b>Contained In Window</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.e4.ui.model.application.ui.basic.MWindow}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Contained In Window</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contained In Window</em>' reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getDocumentedMenu_ContainedInWindow()
+	 * @model
+	 * @generated
+	 */
+	EList<MWindow> getContainedInWindow();
+
+	/**
+	 * Returns the value of the '<em><b>Contained Menu Items</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.e4.ui.model.application.ui.menu.MMenuElement}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Contained Menu Items</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contained Menu Items</em>' reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getDocumentedMenu_ContainedMenuItems()
+	 * @model
+	 * @generated
+	 */
+	EList<MMenuElement> getContainedMenuItems();
 
 } // DocumentedMenu

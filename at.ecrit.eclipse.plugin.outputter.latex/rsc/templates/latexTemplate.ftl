@@ -157,6 +157,28 @@ This application requires a login.
  <#else>
   The application has one main window presented to the user on startup.
  </#if> 
+ 
+ <#list doc.applicationLayout.window as win>
+ 	\subsection{${win.modelElement.label} Main Menus}
+ 	<#if win.containedMenus?has_content>
+ 		<#list win.containedMenus as mainMenu>
+ 			\begin{itemize}
+ 				<#list mainMenu.containedMenuItems as menu>
+ 					\item ${menu.label}
+ 				</#list>
+ 			\end{itemize}
+ 		</#list>
+ 	</#if>
+ 	<#if win.containedTrimElements?has_content>
+ 		\subsection{${win.modelElement.label} Toolbar}
+ 		\begin{itemize}
+	 		<#list win.containedTrimElements as element>
+	 				\item ${element.elementId}
+	 		</#list>
+ 		\end{itemize}
+ 	</#if>
+ </#list>
+ 
 %------------------------------------------------
 
 \subsection{Perspectives}\index{Perspectives}

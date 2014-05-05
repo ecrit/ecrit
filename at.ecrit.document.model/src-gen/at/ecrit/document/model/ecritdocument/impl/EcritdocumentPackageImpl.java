@@ -701,6 +701,24 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDocumentedWindow_ContainedMenus() {
+		return (EReference)documentedWindowEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedWindow_ContainedTrimElements() {
+		return (EReference)documentedWindowEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getApplicationProperties() {
 		return applicationPropertiesEClass;
 	}
@@ -775,6 +793,24 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 */
 	public EReference getDocumentedMenu_ContainedInPart() {
 		return (EReference)documentedMenuEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedMenu_ContainedInWindow() {
+		return (EReference)documentedMenuEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedMenu_ContainedMenuItems() {
+		return (EReference)documentedMenuEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -886,6 +922,8 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		documentedWindowEClass = createEClass(DOCUMENTED_WINDOW);
 		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__MODEL_ELEMENT);
 		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE);
+		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__CONTAINED_MENUS);
+		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__CONTAINED_TRIM_ELEMENTS);
 
 		applicationPropertiesEClass = createEClass(APPLICATION_PROPERTIES);
 		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__ABOUT);
@@ -897,6 +935,8 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		documentedMenuEClass = createEClass(DOCUMENTED_MENU);
 		createEReference(documentedMenuEClass, DOCUMENTED_MENU__MODEL_ELEMENT);
 		createEReference(documentedMenuEClass, DOCUMENTED_MENU__CONTAINED_IN_PART);
+		createEReference(documentedMenuEClass, DOCUMENTED_MENU__CONTAINED_IN_WINDOW);
+		createEReference(documentedMenuEClass, DOCUMENTED_MENU__CONTAINED_MENU_ITEMS);
 
 		// Create enums
 		initiatableItemTypeEEnum = createEEnum(INITIATABLE_ITEM_TYPE);
@@ -1025,6 +1065,8 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEClass(documentedWindowEClass, DocumentedWindow.class, "DocumentedWindow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDocumentedWindow_ModelElement(), theBasicPackage.getWindow(), null, "modelElement", null, 1, 1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedWindow_ContainedPerspective(), theAdvancedPackage.getPerspective(), null, "containedPerspective", null, 0, -1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedWindow_ContainedMenus(), this.getDocumentedMenu(), null, "containedMenus", null, 0, -1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedWindow_ContainedTrimElements(), theBasicPackage.getTrimElement(), null, "containedTrimElements", null, 0, -1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(applicationPropertiesEClass, ApplicationProperties.class, "ApplicationProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getApplicationProperties_About(), ecorePackage.getEString(), "about", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1036,6 +1078,8 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEClass(documentedMenuEClass, DocumentedMenu.class, "DocumentedMenu", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDocumentedMenu_ModelElement(), theMenuPackage.getMenu(), null, "modelElement", null, 1, 1, DocumentedMenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedMenu_ContainedInPart(), theBasicPackage.getPart(), null, "containedInPart", null, 0, -1, DocumentedMenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedMenu_ContainedInWindow(), theBasicPackage.getWindow(), null, "containedInWindow", null, 0, -1, DocumentedMenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedMenu_ContainedMenuItems(), theMenuPackage.getMenuElement(), null, "containedMenuItems", null, 0, -1, DocumentedMenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(initiatableItemTypeEEnum, InitiatableItemType.class, "InitiatableItemType");

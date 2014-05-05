@@ -15,10 +15,15 @@ import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
+import org.eclipse.e4.ui.model.application.ui.basic.MTrimElement;
+import org.eclipse.e4.ui.model.application.ui.basic.MTrimmedWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
+import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
+import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -109,6 +114,34 @@ public class DocumentFactory {
 			dw.setModelElement(mWindow);
 			addElementDocumentation(dw, mWindow);
 			al.getWindow().add(dw);
+			
+			// Collect windows mainmenu items
+			MMenu mainMenu = mWindow.getMainMenu();
+			DocumentedMenu dMainMenu = findOrCreateMenuInApplicationLayout(al, mainMenu);
+			
+			// add menus to documented main menu
+			List<MMenuElement> menuElements = mainMenu.getChildren();
+			for (MMenuElement mMenuElement : menuElements) {
+				if (!(mMenuElement instanceof MMenuSeparator)) {
+					dMainMenu.getContainedMenuItems().add(mMenuElement);
+				}
+			}
+			
+			// set connection between the Window and it's MainMenu
+			dMainMenu.getContainedInWindow().add(mWindow);
+			dw.getContainedMenus().add(dMainMenu);
+			
+			// Collect trimBar elements (Toolbar and ToolControl)
+			if (mWindow instanceof MTrimmedWindow) {
+				MTrimmedWindow trimWindow = (MTrimmedWindow) mWindow;
+				
+				for (MTrimBar mTrimBar : trimWindow.getTrimBars()) {
+					List<MTrimElement> trimElements = mTrimBar.getChildren();
+					for (MTrimElement mTrimElem : trimElements) {
+						dw.getContainedTrimElements().add(mTrimElem);
+					}
+				}
+			}
 		}
 		
 		// Collect all perspective elements
@@ -152,8 +185,9 @@ public class DocumentFactory {
 		DocumentedPart documentedPart = null;
 		
 		for (DocumentedPart dp : al.getPart()) {
-			String partElementId = (mPart.getElementId()!=null) ? mPart.getElementId() : "";
-			if ((dp.getModelElement().getElementId()!=null)	&& dp.getModelElement().getElementId().equals(partElementId))
+			String partElementId = (mPart.getElementId() != null) ? mPart.getElementId() : "";
+			if ((dp.getModelElement().getElementId() != null)
+				&& dp.getModelElement().getElementId().equals(partElementId))
 				documentedPart = dp;
 		}
 		

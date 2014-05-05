@@ -34,6 +34,27 @@
   <#else>
   The application has one main window presented to the user on startup.
   </#if> 
+	
+	<#list doc.applicationLayout.window as win>
+		  <h4>${win.modelElement.label} Main Menus</h4>
+		  <#if win.containedMenus?has_content>
+			  <#list win.containedMenus as mainMenu>
+			  	<ul>
+			  		<#list mainMenu.containedMenuItems as menu>
+			  			<li>${menu.label}</li>
+			  		</#list>
+				</ul>
+			  </#list>
+		  </#if>
+		  <#if win.containedTrimElements?has_content>
+		  <h4>${win.modelElement.label} Toolbar</h4>
+		  	<#list win.containedTrimElements as element>
+		  		<ul>
+		  			<li>${element.elementId}</li>
+		  		</ul>
+		  	</#list>
+		  </#if>
+	</#list>
   
   <h4>Perspectives</h4>
   There are ${doc.applicationLayout.perspective?size} perspectives available to the user. <br>

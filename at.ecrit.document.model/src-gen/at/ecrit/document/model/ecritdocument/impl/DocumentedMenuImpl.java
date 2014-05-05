@@ -4,24 +4,18 @@ package at.ecrit.document.model.ecritdocument.impl;
 
 import at.ecrit.document.model.ecritdocument.DocumentedMenu;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
-
 import java.util.Collection;
-
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
-
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
-
+import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -36,6 +30,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getPostcondition <em>Postcondition</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getModelElement <em>Model Element</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getContainedInPart <em>Contained In Part</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getContainedInWindow <em>Contained In Window</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getContainedMenuItems <em>Contained Menu Items</em>}</li>
  * </ul>
  * </p>
  *
@@ -121,6 +117,26 @@ public class DocumentedMenuImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected EList<MPart> containedInPart;
+
+	/**
+	 * The cached value of the '{@link #getContainedInWindow() <em>Contained In Window</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedInWindow()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MWindow> containedInWindow;
+
+	/**
+	 * The cached value of the '{@link #getContainedMenuItems() <em>Contained Menu Items</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedMenuItems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MMenuElement> containedMenuItems;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -259,6 +275,30 @@ public class DocumentedMenuImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<MWindow> getContainedInWindow() {
+		if (containedInWindow == null) {
+			containedInWindow = new EObjectResolvingEList<MWindow>(MWindow.class, this, EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_WINDOW);
+		}
+		return containedInWindow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<MMenuElement> getContainedMenuItems() {
+		if (containedMenuItems == null) {
+			containedMenuItems = new EObjectResolvingEList<MMenuElement>(MMenuElement.class, this, EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_MENU_ITEMS);
+		}
+		return containedMenuItems;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -273,6 +313,10 @@ public class DocumentedMenuImpl extends MinimalEObjectImpl.Container implements 
 				return basicGetModelElement();
 			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_PART:
 				return getContainedInPart();
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_WINDOW:
+				return getContainedInWindow();
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_MENU_ITEMS:
+				return getContainedMenuItems();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -302,6 +346,14 @@ public class DocumentedMenuImpl extends MinimalEObjectImpl.Container implements 
 				getContainedInPart().clear();
 				getContainedInPart().addAll((Collection<? extends MPart>)newValue);
 				return;
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_WINDOW:
+				getContainedInWindow().clear();
+				getContainedInWindow().addAll((Collection<? extends MWindow>)newValue);
+				return;
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_MENU_ITEMS:
+				getContainedMenuItems().clear();
+				getContainedMenuItems().addAll((Collection<? extends MMenuElement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -329,6 +381,12 @@ public class DocumentedMenuImpl extends MinimalEObjectImpl.Container implements 
 			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_PART:
 				getContainedInPart().clear();
 				return;
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_WINDOW:
+				getContainedInWindow().clear();
+				return;
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_MENU_ITEMS:
+				getContainedMenuItems().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -351,6 +409,10 @@ public class DocumentedMenuImpl extends MinimalEObjectImpl.Container implements 
 				return modelElement != null;
 			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_PART:
 				return containedInPart != null && !containedInPart.isEmpty();
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_WINDOW:
+				return containedInWindow != null && !containedInWindow.isEmpty();
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_MENU_ITEMS:
+				return containedMenuItems != null && !containedMenuItems.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

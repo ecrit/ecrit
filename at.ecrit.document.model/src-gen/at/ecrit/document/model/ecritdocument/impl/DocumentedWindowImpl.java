@@ -2,26 +2,20 @@
  */
 package at.ecrit.document.model.ecritdocument.impl;
 
+import at.ecrit.document.model.ecritdocument.DocumentedMenu;
 import at.ecrit.document.model.ecritdocument.DocumentedWindow;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
-
 import java.util.Collection;
-
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
-
+import org.eclipse.e4.ui.model.application.ui.basic.MTrimElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -36,6 +30,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getPostcondition <em>Postcondition</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getModelElement <em>Model Element</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getContainedPerspective <em>Contained Perspective</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getContainedMenus <em>Contained Menus</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getContainedTrimElements <em>Contained Trim Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -121,6 +117,26 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected EList<MPerspective> containedPerspective;
+
+	/**
+	 * The cached value of the '{@link #getContainedMenus() <em>Contained Menus</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedMenus()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DocumentedMenu> containedMenus;
+
+	/**
+	 * The cached value of the '{@link #getContainedTrimElements() <em>Contained Trim Elements</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedTrimElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MTrimElement> containedTrimElements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -259,6 +275,30 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<DocumentedMenu> getContainedMenus() {
+		if (containedMenus == null) {
+			containedMenus = new EObjectResolvingEList<DocumentedMenu>(DocumentedMenu.class, this, EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS);
+		}
+		return containedMenus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<MTrimElement> getContainedTrimElements() {
+		if (containedTrimElements == null) {
+			containedTrimElements = new EObjectResolvingEList<MTrimElement>(MTrimElement.class, this, EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_ELEMENTS);
+		}
+		return containedTrimElements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -273,6 +313,10 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 				return basicGetModelElement();
 			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE:
 				return getContainedPerspective();
+			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS:
+				return getContainedMenus();
+			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_ELEMENTS:
+				return getContainedTrimElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -302,6 +346,14 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 				getContainedPerspective().clear();
 				getContainedPerspective().addAll((Collection<? extends MPerspective>)newValue);
 				return;
+			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS:
+				getContainedMenus().clear();
+				getContainedMenus().addAll((Collection<? extends DocumentedMenu>)newValue);
+				return;
+			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_ELEMENTS:
+				getContainedTrimElements().clear();
+				getContainedTrimElements().addAll((Collection<? extends MTrimElement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -329,6 +381,12 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE:
 				getContainedPerspective().clear();
 				return;
+			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS:
+				getContainedMenus().clear();
+				return;
+			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_ELEMENTS:
+				getContainedTrimElements().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -351,6 +409,10 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 				return modelElement != null;
 			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE:
 				return containedPerspective != null && !containedPerspective.isEmpty();
+			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS:
+				return containedMenus != null && !containedMenus.isEmpty();
+			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_ELEMENTS:
+				return containedTrimElements != null && !containedTrimElements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
