@@ -9,6 +9,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Shell;
+import org.junit.Before;
 import org.junit.Test;
 
 import at.ecrit.document.model.DocumentFactory;
@@ -17,29 +20,46 @@ import at.ecrit.eclipse.plugin.outputter.html.HTMLOutputConverter;
 import at.ecrit.eclipse.plugin.outputter.html.HTMLOutputter;
 
 public class OutputterTest {
-
+	
 	private static ResourceSet resourceSet = new ResourceSetImpl();
-
-	@Test
-	public void testProcessOutput() throws IOException {
-		URL applicationModelUrl = OutputterTest.class
-				.getResource("Application.e4xmi");
-
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("e4xmi", new E4XMIResourceFactory());
-
-		Resource appModelResource = resourceSet.getResource(
-				URI.createURI(applicationModelUrl.toString()), true);
-
-		Document doc = DocumentFactory.createFromApplicationModel(
-				appModelResource, new HTMLOutputConverter());
-		File destFolder = new File(System.getProperty("user.dir")
-				+ File.separator + "ecrit_doc");
-		if (!destFolder.exists()) {
-			destFolder.mkdir();
-		}
-		HTMLOutputter outputter = new HTMLOutputter();
-		outputter.performOutput(doc, destFolder, appModelResource);
+	private File appModelFile;
+	
+	@Before
+	public void selectAppModelFile(){
+		FileDialog fd = new FileDialog(new Shell());
+		fd.setText("Select AppModel test  file");
+		fd.setFilterExtensions(new String[] {
+			"*.e4xmi"
+		});
+		fd.setFilterNames(new String[] {
+			"ApplicationModelFile (*.e4xmi)"
+		});
+		String selectedFile = fd.open();
+		appModelFile = new File(selectedFile);
 	}
-
+	
+	@Test
+	public void testProcessOutput() throws IOException{
+		if (appModelFile == null || !appModelFile.exists()) {
+			System.out.println("Application Model File not set");
+		} else {
+			// URL applicationModelUrl = OutputterTest.class.getResource("Application.e4xmi");
+			URL applicationModelUrl = appModelFile.toURL();
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put("e4xmi", new E4XMIResourceFactory());
+			Resource appModelResource =
+				resourceSet.getResource(URI.createURI(applicationModelUrl.toString()), true);
+			
+			Document doc =
+				DocumentFactory.createFromApplicationModel(appModelResource,
+					new HTMLOutputConverter());
+			File destFolder =
+				new File(System.getProperty("user.dir") + File.separator + "ecrit_doc");
+			if (!destFolder.exists()) {
+				destFolder.mkdir();
+			}
+			HTMLOutputter outputter = new HTMLOutputter();
+			outputter.performOutput(doc, destFolder, appModelResource);
+		}
+	}
 }
