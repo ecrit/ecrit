@@ -13,7 +13,7 @@ html {
 }
 body {
   margin: 15;
-  counter-reset: h2counter;
+  counter-reset: section;
 }
 article,
 aside,
@@ -64,16 +64,18 @@ dfn {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
-  counter-reset: h2counter;
+  counter-reset: section;
+}
+h2 {
+        counter-reset: subsection;
 }
 h2:before {
-        content: counter(h2counter) ".\0000a0\0000a0";
-        counter-increment: h2counter;
-        counter-reset: h3counter;
+        counter-increment: section;
+        content: counter(section) ".\0000a0\0000a0";
 }
 h3:before {
-        content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
-        counter-increment: h3counter;
+        counter-increment: subsection;
+        content: counter(section) "." counter(subsection) ".\0000a0\0000a0";
     }
 mark {
   background: #ff0;
@@ -458,7 +460,7 @@ h5 .small,
 .h5 .small,
 h6 .small,
 .h6 .small {
-  font-size: 75%;
+  font-size: 80%;
 }
 h1,
 .h1 {
@@ -5934,6 +5936,11 @@ button.close {
 #toc a[title=H5] {
   font-size:100%;
   margin-left: 70px;
+}
+
+#toc a[title=h6] {
+  font-size: 95%;
+  margin-left: 90px;
 }
 
 .content{

@@ -72,6 +72,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="window" upperBound="-1"
         eType="#//DocumentedWindow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="menu" upperBound="-1" eType="#//DocumentedMenu"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DocumentedElement" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -92,6 +94,8 @@
         upperBound="-1" eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/advanced/Perspective"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initiatableItems" upperBound="-1"
         eType="#//InitiatableItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedMenus" upperBound="-1"
+        eType="#//DocumentedMenu"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DocumentedWindow" eSuperTypes="#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" lowerBound="1"
@@ -106,5 +110,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="perspectiveSwitcher" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasConceptOfMultipleUsers"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DocumentedMenu" eSuperTypes="#//DocumentedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/menu/Menu"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedInPart" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.e4.ui.model.workbench/model/UIElements.ecore#//ui/basic/Part"/>
   </eClassifiers>
 </ecore:EPackage>

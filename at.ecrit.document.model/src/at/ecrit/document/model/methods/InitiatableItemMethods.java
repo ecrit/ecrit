@@ -22,7 +22,7 @@ public class InitiatableItemMethods {
 			boolean hasContainingMenu = (ii.getContainingMenu() != null);
 			if (hasContainingPart) {
 				String elementId = ii.getContainingPart().getElementId();
-				String label = "Part " + ii.getContainingPart().getLabel();
+				String label = "Part: " + ii.getContainingPart().getLabel();
 				idLabelMap.put(elementId, label);
 			}
 			
@@ -32,7 +32,7 @@ public class InitiatableItemMethods {
 				if (label == null) {
 					label = elementId;
 				}
-				idLabelMap.put(elementId, "Menu " + label);
+				idLabelMap.put(elementId, "Menu: " + label);
 			}
 			
 			HandledMenuItemImpl mmi = (HandledMenuItemImpl) ii.getItem();

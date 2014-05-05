@@ -744,13 +744,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int APPLICATION_LAYOUT__WINDOW = 2;
 
 	/**
+	 * The feature id for the '<em><b>Menu</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_LAYOUT__MENU = 3;
+
+	/**
 	 * The number of structural features of the '<em>Application Layout</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_LAYOUT_FEATURE_COUNT = 3;
+	int APPLICATION_LAYOUT_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Application Layout</em>' class.
@@ -899,13 +908,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENTED_PART__INITIATABLE_ITEMS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Contained Menus</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_PART__CONTAINED_MENUS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Documented Part</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENTED_PART_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int DOCUMENTED_PART_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Documented Part</em>' class.
@@ -1063,6 +1081,79 @@ public interface EcritdocumentPackage extends EPackage {
 	int APPLICATION_PROPERTIES_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl <em>Documented Menu</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedMenu()
+	 * @generated
+	 */
+	int DOCUMENTED_MENU = 13;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_MENU__DESCRIPTION = DOCUMENTED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_MENU__PRECONDITION = DOCUMENTED_ELEMENT__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_MENU__POSTCONDITION = DOCUMENTED_ELEMENT__POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_MENU__MODEL_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contained In Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_MENU__CONTAINED_IN_PART = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Documented Menu</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_MENU_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Documented Menu</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_MENU_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1070,7 +1161,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getInitiatableItemType()
 	 * @generated
 	 */
-	int INITIATABLE_ITEM_TYPE = 13;
+	int INITIATABLE_ITEM_TYPE = 14;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -1080,7 +1171,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 14;
+	int IO_EXCEPTION = 15;
 
 
 	/**
@@ -1468,6 +1559,17 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getApplicationLayout_Window();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getMenu <em>Menu</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Menu</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getMenu()
+	 * @see #getApplicationLayout()
+	 * @generated
+	 */
+	EReference getApplicationLayout_Menu();
+
+	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedElement <em>Documented Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1586,6 +1688,17 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getDocumentedPart_InitiatableItems();
 
 	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getContainedMenus <em>Contained Menus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained Menus</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedPart#getContainedMenus()
+	 * @see #getDocumentedPart()
+	 * @generated
+	 */
+	EReference getDocumentedPart_ContainedMenus();
+
+	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedWindow <em>Documented Window</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1681,6 +1794,38 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getApplicationProperties_HasConceptOfMultipleUsers();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedMenu <em>Documented Menu</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Documented Menu</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedMenu
+	 * @generated
+	 */
+	EClass getDocumentedMenu();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.ecrit.document.model.ecritdocument.DocumentedMenu#getModelElement <em>Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Model Element</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedMenu#getModelElement()
+	 * @see #getDocumentedMenu()
+	 * @generated
+	 */
+	EReference getDocumentedMenu_ModelElement();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedMenu#getContainedInPart <em>Contained In Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained In Part</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedMenu#getContainedInPart()
+	 * @see #getDocumentedMenu()
+	 * @generated
+	 */
+	EReference getDocumentedMenu_ContainedInPart();
 
 	/**
 	 * Returns the meta object for enum '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}'.
@@ -2031,6 +2176,14 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference APPLICATION_LAYOUT__WINDOW = eINSTANCE.getApplicationLayout_Window();
 
 		/**
+		 * The meta object literal for the '<em><b>Menu</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION_LAYOUT__MENU = eINSTANCE.getApplicationLayout_Menu();
+
+		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.DocumentedElement <em>Documented Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2125,6 +2278,14 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference DOCUMENTED_PART__INITIATABLE_ITEMS = eINSTANCE.getDocumentedPart_InitiatableItems();
 
 		/**
+		 * The meta object literal for the '<em><b>Contained Menus</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_PART__CONTAINED_MENUS = eINSTANCE.getDocumentedPart_ContainedMenus();
+
+		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl <em>Documented Window</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2199,6 +2360,32 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS = eINSTANCE.getApplicationProperties_HasConceptOfMultipleUsers();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl <em>Documented Menu</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedMenu()
+		 * @generated
+		 */
+		EClass DOCUMENTED_MENU = eINSTANCE.getDocumentedMenu();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_MENU__MODEL_ELEMENT = eINSTANCE.getDocumentedMenu_ModelElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained In Part</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_MENU__CONTAINED_IN_PART = eINSTANCE.getDocumentedMenu_ContainedInPart();
 
 		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.

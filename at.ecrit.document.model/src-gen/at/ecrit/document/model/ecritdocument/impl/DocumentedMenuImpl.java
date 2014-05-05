@@ -3,15 +3,13 @@
 package at.ecrit.document.model.ecritdocument.impl;
 
 import at.ecrit.document.model.ecritdocument.DocumentedMenu;
-import at.ecrit.document.model.ecritdocument.DocumentedPart;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
 
-import at.ecrit.document.model.ecritdocument.InitiatableItem;
 import java.util.Collection;
 
-import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
-
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+
+import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -28,24 +26,22 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Documented Part</b></em>'.
+ * An implementation of the model object '<em><b>Documented Menu</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getPrecondition <em>Precondition</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getPostcondition <em>Postcondition</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getModelElement <em>Model Element</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getContainedInPerspective <em>Contained In Perspective</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getInitiatableItems <em>Initiatable Items</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedPartImpl#getContainedMenus <em>Contained Menus</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getPrecondition <em>Precondition</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getPostcondition <em>Postcondition</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getModelElement <em>Model Element</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl#getContainedInPart <em>Contained In Part</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements DocumentedPart {
+public class DocumentedMenuImpl extends MinimalEObjectImpl.Container implements DocumentedMenu {
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -114,44 +110,24 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected MPart modelElement;
+	protected MMenu modelElement;
 
 	/**
-	 * The cached value of the '{@link #getContainedInPerspective() <em>Contained In Perspective</em>}' reference list.
+	 * The cached value of the '{@link #getContainedInPart() <em>Contained In Part</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getContainedInPerspective()
+	 * @see #getContainedInPart()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<MPerspective> containedInPerspective;
-
-	/**
-	 * The cached value of the '{@link #getInitiatableItems() <em>Initiatable Items</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInitiatableItems()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<InitiatableItem> initiatableItems;
-
-	/**
-	 * The cached value of the '{@link #getContainedMenus() <em>Contained Menus</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContainedMenus()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<DocumentedMenu> containedMenus;
+	protected EList<MPart> containedInPart;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DocumentedPartImpl() {
+	protected DocumentedMenuImpl() {
 		super();
 	}
 
@@ -162,7 +138,7 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcritdocumentPackage.Literals.DOCUMENTED_PART;
+		return EcritdocumentPackage.Literals.DOCUMENTED_MENU;
 	}
 
 	/**
@@ -183,7 +159,7 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_MENU__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -204,7 +180,7 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 		String oldPrecondition = precondition;
 		precondition = newPrecondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION, oldPrecondition, precondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_MENU__PRECONDITION, oldPrecondition, precondition));
 	}
 
 	/**
@@ -225,7 +201,7 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 		String oldPostcondition = postcondition;
 		postcondition = newPostcondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION, oldPostcondition, postcondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_MENU__POSTCONDITION, oldPostcondition, postcondition));
 	}
 
 	/**
@@ -233,13 +209,13 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MPart getModelElement() {
+	public MMenu getModelElement() {
 		if (modelElement != null && ((EObject)modelElement).eIsProxy()) {
 			InternalEObject oldModelElement = (InternalEObject)modelElement;
-			modelElement = (MPart)eResolveProxy(oldModelElement);
+			modelElement = (MMenu)eResolveProxy(oldModelElement);
 			if (modelElement != oldModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT, oldModelElement, modelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcritdocumentPackage.DOCUMENTED_MENU__MODEL_ELEMENT, oldModelElement, modelElement));
 			}
 		}
 		return modelElement;
@@ -250,7 +226,7 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MPart basicGetModelElement() {
+	public MMenu basicGetModelElement() {
 		return modelElement;
 	}
 
@@ -259,11 +235,11 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setModelElement(MPart newModelElement) {
-		MPart oldModelElement = modelElement;
+	public void setModelElement(MMenu newModelElement) {
+		MMenu oldModelElement = modelElement;
 		modelElement = newModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT, oldModelElement, modelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_MENU__MODEL_ELEMENT, oldModelElement, modelElement));
 	}
 
 	/**
@@ -271,35 +247,11 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<MPerspective> getContainedInPerspective() {
-		if (containedInPerspective == null) {
-			containedInPerspective = new EObjectResolvingEList<MPerspective>(MPerspective.class, this, EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE);
+	public EList<MPart> getContainedInPart() {
+		if (containedInPart == null) {
+			containedInPart = new EObjectResolvingEList<MPart>(MPart.class, this, EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_PART);
 		}
-		return containedInPerspective;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<InitiatableItem> getInitiatableItems() {
-		if (initiatableItems == null) {
-			initiatableItems = new EObjectResolvingEList<InitiatableItem>(InitiatableItem.class, this, EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS);
-		}
-		return initiatableItems;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<DocumentedMenu> getContainedMenus() {
-		if (containedMenus == null) {
-			containedMenus = new EObjectResolvingEList<DocumentedMenu>(DocumentedMenu.class, this, EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_MENUS);
-		}
-		return containedMenus;
+		return containedInPart;
 	}
 
 	/**
@@ -310,21 +262,17 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__DESCRIPTION:
 				return getDescription();
-			case EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__PRECONDITION:
 				return getPrecondition();
-			case EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__POSTCONDITION:
 				return getPostcondition();
-			case EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT:
+			case EcritdocumentPackage.DOCUMENTED_MENU__MODEL_ELEMENT:
 				if (resolve) return getModelElement();
 				return basicGetModelElement();
-			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
-				return getContainedInPerspective();
-			case EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS:
-				return getInitiatableItems();
-			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_MENUS:
-				return getContainedMenus();
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_PART:
+				return getContainedInPart();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -338,29 +286,21 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__PRECONDITION:
 				setPrecondition((String)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__POSTCONDITION:
 				setPostcondition((String)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT:
-				setModelElement((MPart)newValue);
+			case EcritdocumentPackage.DOCUMENTED_MENU__MODEL_ELEMENT:
+				setModelElement((MMenu)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
-				getContainedInPerspective().clear();
-				getContainedInPerspective().addAll((Collection<? extends MPerspective>)newValue);
-				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS:
-				getInitiatableItems().clear();
-				getInitiatableItems().addAll((Collection<? extends InitiatableItem>)newValue);
-				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_MENUS:
-				getContainedMenus().clear();
-				getContainedMenus().addAll((Collection<? extends DocumentedMenu>)newValue);
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_PART:
+				getContainedInPart().clear();
+				getContainedInPart().addAll((Collection<? extends MPart>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -374,26 +314,20 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__PRECONDITION:
 				setPrecondition(PRECONDITION_EDEFAULT);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__POSTCONDITION:
 				setPostcondition(POSTCONDITION_EDEFAULT);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT:
-				setModelElement((MPart)null);
+			case EcritdocumentPackage.DOCUMENTED_MENU__MODEL_ELEMENT:
+				setModelElement((MMenu)null);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
-				getContainedInPerspective().clear();
-				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS:
-				getInitiatableItems().clear();
-				return;
-			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_MENUS:
-				getContainedMenus().clear();
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_PART:
+				getContainedInPart().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -407,20 +341,16 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_PART__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case EcritdocumentPackage.DOCUMENTED_PART__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__PRECONDITION:
 				return PRECONDITION_EDEFAULT == null ? precondition != null : !PRECONDITION_EDEFAULT.equals(precondition);
-			case EcritdocumentPackage.DOCUMENTED_PART__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_MENU__POSTCONDITION:
 				return POSTCONDITION_EDEFAULT == null ? postcondition != null : !POSTCONDITION_EDEFAULT.equals(postcondition);
-			case EcritdocumentPackage.DOCUMENTED_PART__MODEL_ELEMENT:
+			case EcritdocumentPackage.DOCUMENTED_MENU__MODEL_ELEMENT:
 				return modelElement != null;
-			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_IN_PERSPECTIVE:
-				return containedInPerspective != null && !containedInPerspective.isEmpty();
-			case EcritdocumentPackage.DOCUMENTED_PART__INITIATABLE_ITEMS:
-				return initiatableItems != null && !initiatableItems.isEmpty();
-			case EcritdocumentPackage.DOCUMENTED_PART__CONTAINED_MENUS:
-				return containedMenus != null && !containedMenus.isEmpty();
+			case EcritdocumentPackage.DOCUMENTED_MENU__CONTAINED_IN_PART:
+				return containedInPart != null && !containedInPart.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -445,4 +375,4 @@ public class DocumentedPartImpl extends MinimalEObjectImpl.Container implements 
 		return result.toString();
 	}
 
-} //DocumentedPartImpl
+} //DocumentedMenuImpl

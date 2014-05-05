@@ -32,6 +32,7 @@ import at.ecrit.document.model.ecritdocument.CommandStep;
 import at.ecrit.document.model.ecritdocument.DirectStep;
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.ecritdocument.DocumentedElement;
+import at.ecrit.document.model.ecritdocument.DocumentedMenu;
 import at.ecrit.document.model.ecritdocument.DocumentedPart;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
 import at.ecrit.document.model.ecritdocument.DocumentedWindow;
@@ -125,6 +126,13 @@ public class DocumentFactory {
 				DocumentedPart dpart = findOrCreatePartInApplicationLayout(al, mPart);
 				dpart.getContainedInPerspective().add(perspective);
 				dp.getContainedParts().add(dpart);
+				
+				List<MMenu> menuE = mPart.getMenus();
+				for (MMenu mMenu : menuE) {
+					DocumentedMenu dmenu = findOrCreateMenuInApplicationLayout(al, mMenu);
+					dmenu.getContainedInPart().add(mPart);
+					dpart.getContainedMenus().add(dmenu);
+				}
 			}
 		}
 		
@@ -145,7 +153,7 @@ public class DocumentFactory {
 		
 		for (DocumentedPart dp : al.getPart()) {
 			String partElementId = (mPart.getElementId()!=null) ? mPart.getElementId() : "";
-			if ((dp.getModelElement().getElementId()!=null) && dp.getModelElement().getElementId().equals(partElementId))
+			if ((dp.getModelElement().getElementId()!=null)	&& dp.getModelElement().getElementId().equals(partElementId))
 				documentedPart = dp;
 		}
 		
@@ -158,6 +166,28 @@ public class DocumentFactory {
 		}
 		
 		return documentedPart;
+	}
+	
+	private static DocumentedMenu findOrCreateMenuInApplicationLayout(ApplicationLayout al,
+		MMenu mMenu){
+		DocumentedMenu documentedMenu = null;
+		
+		for (DocumentedMenu dm : al.getMenu()) {
+			String menuElementId = (mMenu.getElementId() != null) ? mMenu.getElementId() : "";
+			if ((dm.getModelElement().getElementId() != null)
+				&& dm.getModelElement().getElementId().equals(menuElementId))
+				documentedMenu = dm;
+		}
+		
+		if (documentedMenu == null) {
+			documentedMenu =
+				(DocumentedMenu) EcoreUtil.create(EcritdocumentPackage.Literals.DOCUMENTED_MENU);
+			documentedMenu.setModelElement(mMenu);
+			addElementDocumentation(documentedMenu, mMenu);
+			al.getMenu().add(documentedMenu);
+		}
+		
+		return documentedMenu;
 	}
 	
 	private static void addElementDocumentation(DocumentedElement de, MApplicationElement ma){

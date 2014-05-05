@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getModelElement <em>Model Element</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getContainedInPerspective <em>Contained In Perspective</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getInitiatableItems <em>Initiatable Items</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedPart#getContainedMenus <em>Contained Menus</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,5 +85,21 @@ public interface DocumentedPart extends DocumentedElement {
 	 * @generated
 	 */
 	EList<InitiatableItem> getInitiatableItems();
+
+	/**
+	 * Returns the value of the '<em><b>Contained Menus</b></em>' reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedMenu}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Contained Menus</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contained Menus</em>' reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getDocumentedPart_ContainedMenus()
+	 * @model
+	 * @generated
+	 */
+	EList<DocumentedMenu> getContainedMenus();
 
 } // DocumentedPart

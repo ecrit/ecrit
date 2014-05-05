@@ -120,6 +120,10 @@ public class EcritdocumentAdapterFactory extends AdapterFactoryImpl {
 				return createApplicationPropertiesAdapter();
 			}
 			@Override
+			public Adapter caseDocumentedMenu(DocumentedMenu object) {
+				return createDocumentedMenuAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -318,6 +322,20 @@ public class EcritdocumentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createApplicationPropertiesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.DocumentedMenu <em>Documented Menu</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedMenu
+	 * @generated
+	 */
+	public Adapter createDocumentedMenuAdapter() {
 		return null;
 	}
 

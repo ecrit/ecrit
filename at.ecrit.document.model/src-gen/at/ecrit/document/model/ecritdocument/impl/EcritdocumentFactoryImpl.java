@@ -70,6 +70,7 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 			case EcritdocumentPackage.DOCUMENTED_PART: return createDocumentedPart();
 			case EcritdocumentPackage.DOCUMENTED_WINDOW: return createDocumentedWindow();
 			case EcritdocumentPackage.APPLICATION_PROPERTIES: return createApplicationProperties();
+			case EcritdocumentPackage.DOCUMENTED_MENU: return createDocumentedMenu();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -217,6 +218,16 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 	public ApplicationProperties createApplicationProperties() {
 		ApplicationPropertiesImpl applicationProperties = new ApplicationPropertiesImpl();
 		return applicationProperties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DocumentedMenu createDocumentedMenu() {
+		DocumentedMenuImpl documentedMenu = new DocumentedMenuImpl();
+		return documentedMenu;
 	}
 
 	/**

@@ -8,7 +8,7 @@
 </head>
 <body>
   <h1>Application Documentation - Pharmacy Austria</h1>
-  <p>Document created on Freitag, April 25, 2014, 08:46:30 AM (MESZ)</p>
+  <p>Document created on Samstag, Mai 03, 2014, 02:45:25 AM (MESZ)</p>
   
   <h2>Introduction</h2>
   <p><p>Pharmacy AT is an application that allows to manage a strongly limited set of aspects of an Austrian Pharmacy. Its main purporse is, to act as a sample application for the development of the <a href="http://www.ecrit.at">Ecrit User Manual creation project</a>.</p><p>The application provides an interface for 4 different kinds of users:</p><ul><li><strong>Seller</strong> the person selling articles to customers</li><li><strong>Stockist</strong> responsible for managing the stock and the respective orders</li><li><strong>Clerk</strong> responsible for accounting and balance of the pharmacy</li><li><strong>Admin</strong> responsible for defining access rights within the application</li></ul></p>
@@ -121,11 +121,25 @@
 </li>
   	</ul>
   	</p>
+  	<p><i>Menus</i>
+  		<ul>
+		  			<li>
+		  				<h6 id="popupmenu.articlelist">Popupmenu-ArticleList</h6>
+		  				This menu will pop up when right clicking on the article list table.
+		  			</li>
+	
+	  	</ul>
+  	</p>
   	<h5 id="part.properties">Part Properties</h5>
   	<p><i>Description</i> Displays a description on the currently selected article of the <a href="#part.articlelist">ArticleList</a> .<p>
   	<p><i>Executable tasks</i>
   	<ul>
   	</ul>
+  	</p>
+  	<p><i>Menus</i>
+  		<ul>
+	  		 	<li>No part specific menus defined.</li>
+	  	</ul>
   	</p>
   	<h5 id="part.invoiceData">Part Invoice Data</h5>
   	<p><i>Description</i> Here the articles to be sold are collected during the purchase by a customer. The seller selects an article in the <a href="#part.articlelist">ArticleList</a> to be included in this part by either <em>double-clicking</em> on it or <em>drag&amp;drop</em> it to this part.</p><p>The selling process will be completed and stored by pressing the <em>Cash up</em> button. <br/>In case you&#8217;d like to revert the selling procedur press the <em>Cancel Cash up</em> button. <p>
@@ -142,6 +156,19 @@
 </li>
   	</ul>
   	</p>
+  	<p><i>Menus</i>
+  		<ul>
+		  			<li>
+		  				<h6 id="popupmenu.invoiceData">Popupmenu-InvoiceData</h6>
+		  				It will pop up via right click inside the invoice data table.
+		  			</li>
+		  			<li>
+		  				<h6 id="viewmenu.invoiceData">ViewMenu-InvoiceData</h6>
+		  				This is the invoice data&#8217;s view menu.
+		  			</li>
+	
+	  	</ul>
+  	</p>
   	<h5 id="part.prescription">Part Prescription</h5>
   	<p><i>Description</i> In this part all the prescriptions connected to the current invoice are displayed. <br/>By the <em>Executable tasks</em> can be called by <em>double clicking</em> or calling the <em>popup menu</em>.<p>
   	<p><i>Executable tasks</i>
@@ -157,17 +184,36 @@
 </li>
   	</ul>
   	</p>
+  	<p><i>Menus</i>
+  		<ul>
+		  			<li>
+		  				<h6 id="popupmenu.prescritption">Popupmenu-Prescription</h6>
+		  				Right click anywhere in the prescription table to make this menu pop up.
+		  			</li>
+	
+	  	</ul>
+  	</p>
   	<h5 id="part.invoice">Part Invoice</h5>
   	<p><i>Description</i> <p>This part gives an overview of the final invoice. Including:</p><ul><li>article(s) to sell </li><li>prescriptions to those articles</li><li>total costs</li></ul><p>
   	<p><i>Executable tasks</i>
   	<ul>
   	</ul>
   	</p>
+  	<p><i>Menus</i>
+  		<ul>
+	  		 	<li>No part specific menus defined.</li>
+	  	</ul>
+  	</p>
   	<h5 id="part.stockorder">Part Stock Order</h5>
   	<p><i>Description</i> This part offers the functionality to create a new stock order.<br/>Articles can be added via <em>drag&amp;drop</em>  from the <a href="#part.articlelist">ArticleList</a> part.<br/>Or calling the popup menu there and selecting the whished command.</p><p>Moreover this part offers the ability to adapt the various articles units, the issuing enterprise and finally complete and place an order by pressing <em>PlaceOrder</em> .<p>
   	<p><i>Executable tasks</i>
   	<ul>
   	</ul>
+  	</p>
+  	<p><i>Menus</i>
+  		<ul>
+	  		 	<li>No part specific menus defined.</li>
+	  	</ul>
   	</p>
   	<h5 id="part.stockOrderOverview">Part Stock Order Overview</h5>
   	<p><i>Description</i> This part will give you an overview about the StockOrders.<br/>With the help of the search field you can search for a specific order. <br/>To  change the orders status simply click in the appropriate status cell and select the desired order status and press enter.<p>
@@ -178,6 +224,15 @@
 </li>
   	</ul>
   	</p>
+  	<p><i>Menus</i>
+  		<ul>
+		  			<li>
+		  				<h6 id="popupmenu.stockorder.overview">Popupmenu-StockOrderOverview</h6>
+		  				Call this menu via right click in the <a href="#part.stockOrderOverview">StockOrderOverview</a> table.
+		  			</li>
+	
+	  	</ul>
+  	</p>
   	<h5 id="part.inventory">Part Inventory</h5>
   	<p><i>Description</i> This part gives an overview of the entire inventory and supports the clerk in evaluating the inventory.<p>
   	<p><i>Executable tasks</i>
@@ -186,6 +241,15 @@
   			<a href="#command.checkInventory">Check Inventory</a>
 </li>
   	</ul>
+  	</p>
+  	<p><i>Menus</i>
+  		<ul>
+		  			<li>
+		  				<h6 id="popupmenu.inventory">Popupmenu-Inventory</h6>
+		  				This popup opens right clicking in the inventory.
+		  			</li>
+	
+	  	</ul>
   	</p>
   	<h5 id="part.InvoicePrescriptionOverview">Part Invoice Prescription Overview</h5>
   	<p><i>Description</i> This part shows all the saved invoices and relating prescriptions.<br/>By applying the date filters only the invoices (and prescriptions) in between the selected timespan will be shown.<p>
@@ -196,17 +260,36 @@
 </li>
   	</ul>
   	</p>
+  	<p><i>Menus</i>
+  		<ul>
+		  			<li>
+		  				<h6 id="popupmenu.ipOverview">Popupmenu-InvoicePrescriptionOverview</h6>
+		  				Right click in a table to call this menu.
+		  			</li>
+	
+	  	</ul>
+  	</p>
   	<h5 id="part.user">Part User</h5>
   	<p><i>Description</i> This part is used to display user relevant information.<p>
   	<p><i>Executable tasks</i>
   	<ul>
   	</ul>
   	</p>
+  	<p><i>Menus</i>
+  		<ul>
+	  		 	<li>No part specific menus defined.</li>
+	  	</ul>
+  	</p>
   	<h5 id="part.userdata">Part User Data</h5>
   	<p><i>Description</i> The UserData part shows further information about the users.<p>
   	<p><i>Executable tasks</i>
   	<ul>
   	</ul>
+  	</p>
+  	<p><i>Menus</i>
+  		<ul>
+	  		 	<li>No part specific menus defined.</li>
+	  	</ul>
   	</p>
   
   <h2>Procedures</h2>
@@ -216,11 +299,13 @@
   <h2>Information on software commands</h2>
       <h3 id="command.addAsPrescritption">Add as Prescription</h3>
       <p><i>Description</i> By this command the selected article can be added to the invoice as <i>prescripted article</i>.<br/>Whenever it&#8217;s called a <strong>PrescriptionDialog</strong> will automatically apear on your screen and <br/>ask you for more details about the prescription (number, issuing practitioner).<br/>This command can be used as well via <em>drag&amp;drop</em> from the <a href="#part.articlelist">ArticleList</a> to the <a href="#part.prescription">Prescription</a> part.<p>
-      <p><i>Requirements</i> <ul><li>logged in as seller.</li><li>select the article you&#8217;d like to prescribe on the <a href="#part.articlelist">ArticleList</a> part </li></ul></p>
+      <p><i>Requirements</i> <ul><li>logged in as seller.</li><li>select the article you&#8217;d like to prescribe on the <a href="#part.articlelist">ArticleList</a> part</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.articlelist | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.articlelist | Add as Prescription</li>
-      		<li>Part part.prescription | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.prescritption | Add Prescription</li>
+ 	     					<li><a href="#popupmenu.articlelist">Menu: Popupmenu-ArticleList</a></li>      					
+ 	     					<li><a href="#part.articlelist">Part: Article List</a></li>      					
+ 	     					<li><a href="#popupmenu.prescritption">Menu: Popupmenu-Prescription</a></li>      					
+ 	     					<li><a href="#part.prescription">Part: Prescription</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> </p> 
@@ -229,7 +314,8 @@
       <p><i>Requirements</i> <ul><li>logged in as a seller.</li><li>a selection on the <a href="#part.articlelist">ArticleList</a></li><li>an existing prescription</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.articlelist | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.articlelist | Add to Prescription</li>
+ 	     					<li><a href="#popupmenu.articlelist">Menu: Popupmenu-ArticleList</a></li>      					
+ 	     					<li><a href="#part.articlelist">Part: Article List</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> Besides the prescription, the article will be added to the invoice with an apropriate <em>refund</em> entry.</p> 
@@ -238,7 +324,8 @@
       <p><i>Requirements</i> <ul><li>logged in as seller</li><li>a prescription selection</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.prescription | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.prescritption | Edit Prescription</li>
+ 	     					<li><a href="#popupmenu.prescritption">Menu: Popupmenu-Prescription</a></li>      					
+ 	     					<li><a href="#part.prescription">Part: Prescription</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> The prescription will be up to date (in case you confirmed your changes).</p> 
@@ -247,7 +334,8 @@
       <p><i>Requirements</i> <ul><li>logged in as seller.</li><li>the prescription you&#8217;d like to delete needs to be selected.</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.prescription | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.prescritption | Delete Prescription</li>
+ 	     					<li><a href="#popupmenu.prescritption">Menu: Popupmenu-Prescription</a></li>      					
+ 	     					<li><a href="#part.prescription">Part: Prescription</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> The selected prescription is no longer existent.</p> 
@@ -256,7 +344,8 @@
       <p><i>Requirements</i> <ul><li>logged in as seller</li><li>a selection on the <a href="#part.articlelist">ArticleList</a> part</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.articlelist | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.articlelist | Add To Invoice</li>
+ 	     					<li><a href="#popupmenu.articlelist">Menu: Popupmenu-ArticleList</a></li>      					
+ 	     					<li><a href="#part.articlelist">Part: Article List</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> The article(s) selected are now part of the invoice.</p> 
@@ -265,7 +354,8 @@
       <p><i>Requirements</i> <ul><li>logged in as seller</li><li>a selection on the <a href="#part.invoiceData">InvoiceData</a></li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.invoiceData | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.invoiceData | Delete from Invoice</li>
+ 	     					<li><a href="#part.invoiceData">Part: Invoice Data</a></li>      					
+ 	     					<li><a href="#popupmenu.invoiceData">Menu: Popupmenu-InvoiceData</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> </p> 
@@ -274,7 +364,8 @@
       <p><i>Requirements</i> <ul><li>logged in as seller</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.invoiceData | Menu at.medevit.ecrit.pharmacy_at.application.menu.2 | Cancel Invoice</li>
+ 	     					<li><a href="#viewmenu.invoiceData">Menu: ViewMenu-InvoiceData</a></li>      					
+ 	     					<li><a href="#part.invoiceData">Part: Invoice Data</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> <p>You can start over with fresh and empty cleaned up parts of,</p><ul><li><a href="#part.invoiceData">InvoiceData</a></li><li><a href="#part.prescription">Prescription</a></li><li><a href="#part.invoice">Invoice</a></li></ul></p> 
@@ -283,7 +374,8 @@
       <p><i>Requirements</i> <ul><li>logged in as stockist</li><li>the article you&#8217;d like to order needs to be selected</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.articlelist | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.articlelist | Add to StockOrder</li>
+ 	     					<li><a href="#popupmenu.articlelist">Menu: Popupmenu-ArticleList</a></li>      					
+ 	     					<li><a href="#part.articlelist">Part: Article List</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> When all the needed articles are placed on the stock order, the order creating process can be completed by pressing <em>PlaceOrder</em>.</p> 
@@ -300,7 +392,8 @@
       <p><i>Requirements</i> <ul><li>logged in as stockist</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.articlelist | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.articlelist | Add new Article</li>
+ 	     					<li><a href="#popupmenu.articlelist">Menu: Popupmenu-ArticleList</a></li>      					
+ 	     					<li><a href="#part.articlelist">Part: Article List</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> A new article is now part of the system.</p> 
@@ -309,7 +402,8 @@
       <p><i>Requirements</i> <ul><li>logged in as stockist</li><li>the article you&#8217;d like to delete is selected</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.articlelist | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.articlelist | Delete from Stock</li>
+ 	     					<li><a href="#popupmenu.articlelist">Menu: Popupmenu-ArticleList</a></li>      					
+ 	     					<li><a href="#part.articlelist">Part: Article List</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> The previously selected article was removed from the system.</p> 
@@ -318,8 +412,10 @@
       <p><i>Requirements</i> <ul><li>logged in as stockist</li><li>a selection of a stock article</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.articlelist | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.articlelist | Edit StockArticle</li>
-      		<li>Part part.stockOrderOverview | Menu popupmenu.stockorder.overview | Change order status</li>
+ 	     					<li><a href="#popupmenu.articlelist">Menu: Popupmenu-ArticleList</a></li>      					
+ 	     					<li><a href="#part.articlelist">Part: Article List</a></li>      					
+ 	     					<li><a href="#part.stockOrderOverview">Part: Stock Order Overview</a></li>      					
+ 	     					<li><a href="#popupmenu.stockorder.overview">Menu: Popupmenu-StockOrderOverview</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> The adapted article should now contain all the updated information.</p> 
@@ -336,7 +432,8 @@
       <p><i>Requirements</i> <ul><li>logged in as clerk</li><li>a print-out of the current articles on stock<ul><li>with manually filled out quantities</li></ul></li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.inventory | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.0 | Check Inventory</li>
+ 	     					<li><a href="#part.inventory">Part: Inventory</a></li>      					
+ 	     					<li><a href="#popupmenu.inventory">Menu: Popupmenu-Inventory</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> Any discrepancies of the inventory should be documented.</p> 
@@ -377,7 +474,8 @@
       <p><i>Requirements</i> <ul><li>logged in as clerk</li><li><em>optional:</em> slect a timespan (from-to) and confirm it, so only invoices/prescriptions inside this timespan are being displayed.</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.InvoicePrescriptionOverview | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.1 | Print Refund Form</li>
+ 	     					<li><a href="#popupmenu.ipOverview">Menu: Popupmenu-InvoicePrescriptionOverview</a></li>      					
+ 	     					<li><a href="#part.InvoicePrescriptionOverview">Part: Invoice Prescription Overview</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> A PDF refund form was created. The only thing left to do is send it to the appropriate authority.</p> 
@@ -394,7 +492,8 @@
       <p><i>Requirements</i> <ul><li>logged in as seller</li><li>a non-empty invoice</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
-      		<li>Part part.invoiceData | Menu at.medevit.ecrit.pharmacy_at.application.popupmenu.invoiceData | Print Invoice</li>
+ 	     					<li><a href="#part.invoiceData">Part: Invoice Data</a></li>      					
+ 	     					<li><a href="#popupmenu.invoiceData">Menu: Popupmenu-InvoiceData</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> The articles that were just sold and prescribed are put together and written to the PDF file.</p> 

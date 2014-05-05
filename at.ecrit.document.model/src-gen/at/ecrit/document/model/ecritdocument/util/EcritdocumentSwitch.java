@@ -152,6 +152,13 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EcritdocumentPackage.DOCUMENTED_MENU: {
+				DocumentedMenu documentedMenu = (DocumentedMenu)theEObject;
+				T result = caseDocumentedMenu(documentedMenu);
+				if (result == null) result = caseDocumentedElement(documentedMenu);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -348,6 +355,21 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseApplicationProperties(ApplicationProperties object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Documented Menu</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Documented Menu</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocumentedMenu(DocumentedMenu object) {
 		return null;
 	}
 

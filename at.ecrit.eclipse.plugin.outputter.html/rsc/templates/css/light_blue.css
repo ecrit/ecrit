@@ -460,7 +460,7 @@ h5 .small,
 .h5 .small,
 h6 .small,
 .h6 .small {
-  font-size: 75%;
+  font-size: 80%;
 }
 h1,
 .h1 {
@@ -5936,6 +5936,11 @@ button.close {
 #toc a[title=H5] {
   font-size:100%;
   margin-left: 70px;
+}
+
+#toc a[title=h6] {
+  font-size: 95%;
+  margin-left: 90px;
 }
 
 .content{

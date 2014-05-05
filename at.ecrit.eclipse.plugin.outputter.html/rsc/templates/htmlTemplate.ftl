@@ -73,6 +73,21 @@
   	</#list>
   	</ul>
   	</p>
+  	<p><i>Menus</i>
+  		<ul>
+	  		<#if part.containedMenus?has_content>
+		  		<#list part.containedMenus as containedMenu>
+		  			<li>
+		  				<h6 id="${containedMenu.modelElement.elementId}">${containedMenu.modelElement.label}</h6>
+		  				${containedMenu.description}
+		  			</li>
+		  		 </#list>
+	
+	  		 <#else>
+	  		 	<li>No part specific menus defined.</li>
+	  		 </#if>
+	  	</ul>
+  	</p>
   </#list>
   
   <h2>Procedures</h2>
@@ -90,9 +105,9 @@
       		<#assign map = it.locationDescription>
       		<#list map?keys as key>
       				<#if map[key]??>
-      					<#if map[key]?contains("Menu")>  
-      						<li>${key}</li>
-      					<#elseif key == st.command.elementId>
+      					<#-- <#if map[key]?contains("Menu")>  
+      						<li>${key}</li> -->
+      					<#if key == st.command.elementId>
       						 <#-- # Skip - we don't want the command to show itself -->
       					<#else>
  	     					<li><a href="#${key}">${map[key]}</a></li>      					

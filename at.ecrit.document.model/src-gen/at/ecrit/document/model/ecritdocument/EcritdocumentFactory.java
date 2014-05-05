@@ -121,6 +121,15 @@ public interface EcritdocumentFactory extends EFactory {
 	ApplicationProperties createApplicationProperties();
 
 	/**
+	 * Returns a new object of class '<em>Documented Menu</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Documented Menu</em>'.
+	 * @generated
+	 */
+	DocumentedMenu createDocumentedMenu();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

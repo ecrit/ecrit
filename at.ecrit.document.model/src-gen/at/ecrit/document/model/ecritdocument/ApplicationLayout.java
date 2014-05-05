@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getPerspective <em>Perspective</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getPart <em>Part</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getWindow <em>Window</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getMenu <em>Menu</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,5 +73,21 @@ public interface ApplicationLayout extends EObject {
 	 * @generated
 	 */
 	EList<DocumentedWindow> getWindow();
+
+	/**
+	 * Returns the value of the '<em><b>Menu</b></em>' containment reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedMenu}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Menu</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Menu</em>' containment reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationLayout_Menu()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<DocumentedMenu> getMenu();
 
 } // ApplicationLayout
