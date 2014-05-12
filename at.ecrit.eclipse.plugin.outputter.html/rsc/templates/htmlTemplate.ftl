@@ -129,7 +129,7 @@
       					<#-- <#if map[key]?contains("Menu")>  
       						<li>${key}</li> -->
       					<#if key == st.command.elementId>
-      						 <#-- # Skip - we don't want the command to show itself -->
+      						 <#-- # Skip - we don't want the command to show itself! -->
       					<#else>
  	     					<li><a href="#${key}">${map[key]}</a></li>      					
       					</#if>
