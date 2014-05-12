@@ -11,6 +11,7 @@ import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.MContribution;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
+import org.eclipse.e4.ui.model.application.commands.MHandler;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
@@ -311,49 +312,75 @@ public class DocumentFactory {
 		
 		for (TreeIterator<EObject> i = appModelResource.getAllContents(); i.hasNext();) {
 			EObject eObject = (EObject) i.next();
-			
 			if (eObject instanceof MHandledItem) {
 				MHandledItem mmi = (MHandledItem) eObject;
 				MCommand command = mmi.getCommand();
+				
 				if (command == null) {
 					log.warn("HandledItem without associated command found " + mmi);
 					continue;
 				}
-				
 				CommandStep cStep = doc.findOrCreateCommandStepByCommand(command);
 				log.debug("Added " + mmi + " to " + cStep);
 				
 				InitiatableItem ii = EcritdocumentFactory.eINSTANCE.createInitiatableItem();
 				ii.setItem(mmi);
-				
-				MElementContainer<?> parent = mmi.getParent();
-				if (parent instanceof MMenu) {
-					ii.setItemType(InitiatableItemType.MENU);
-					ii.setContainingMenu((MMenu) parent);
-					
-					// find part contribution is associated to
-					for (DocumentedPart part : doc.getApplicationLayout().getPart()) {
-						if (part.getModelElement().getMenus().contains(parent)) {
-							ii.setContainingPart(part.getModelElement());
-							part.getInitiatableItems().add(ii);
-						}
-					}
-				} else {
-					ii.setItemType(InitiatableItemType.TOOLBAR);
-					ii.setContainingToolbar((MToolBar) parent);
-				}
+				ii = setMenusPartsAndToolbar(ii, mmi.getParent(), doc);
 				
 				cStep.getInitiatableBy().add(ii);
 				
 			} else if (eObject instanceof MItem && eObject instanceof MContribution) {
 				// Direct[x]Item
+				MItem mi = (MItem) eObject;
+				
+				// find belonging command
+				String handlerId = ((MContribution) eObject).getContributionURI();
+				MCommand cmd = null;
+				for (MHandler mHandler : application.getHandlers()) {
+					if (handlerId.equalsIgnoreCase(mHandler.getContributionURI())) {
+						cmd = mHandler.getCommand();
+					}
+				}
+				if (cmd == null) {
+					log.warn("DirectItem without associated command found " + mi);
+					continue;
+				}
+				
+				InitiatableItem ii = EcritdocumentFactory.eINSTANCE.createInitiatableItem();
+				ii.setItem(mi);
+				ii = setMenusPartsAndToolbar(ii, mi.getParent(), doc);
+				
 				DirectStep dStep = EcritdocumentFactory.eINSTANCE.createDirectStep();
 				dStep.setContribution((MContribution) eObject);
 				log.debug("Added direct contribution " + dStep);
+				dStep.getInitiatableBy().add(ii);
+				
+				CommandStep cStep = doc.findOrCreateCommandStepByCommand(cmd);
+				log.debug("Added " + mi + " to " + cStep);
+				cStep.getInitiatableBy().add(ii);
 			}
-			
 			previousObject = eObject;
 		}
 		
+	}
+	
+	private static InitiatableItem setMenusPartsAndToolbar(InitiatableItem ii,
+		MElementContainer<?> parent, Document doc){
+		if (parent instanceof MMenu) {
+			ii.setItemType(InitiatableItemType.MENU);
+			ii.setContainingMenu((MMenu) parent);
+			
+			// find part contribution is associated to
+			for (DocumentedPart part : doc.getApplicationLayout().getPart()) {
+				if (part.getModelElement().getMenus().contains(parent)) {
+					ii.setContainingPart(part.getModelElement());
+					part.getInitiatableItems().add(ii);
+				}
+			}
+		} else {
+			ii.setItemType(InitiatableItemType.TOOLBAR);
+			ii.setContainingToolbar((MToolBar) parent);
+		}
+		return ii;
 	}
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
   <h1>Application Documentation - Pharmacy Austria</h1>
-  <p>Document created on Montag, Mai 05, 2014, 04:26:54 PM (MESZ)</p>
+  <p>Document created on Montag, Mai 12, 2014, 03:35:08 PM (MESZ)</p>
   
   <h2>Introduction</h2>
   <p><p>Pharmacy AT is an application that allows to manage a strongly limited set of aspects of an Austrian Pharmacy. Its main purporse is, to act as a sample application for the development of the <a href="http://www.ecrit.at">Ecrit User Manual creation project</a>.</p><p>The application provides an interface for 4 different kinds of users:</p><ul><li><strong>Seller</strong> the person selling articles to customers</li><li><strong>Stockist</strong> responsible for managing the stock and the respective orders</li><li><strong>Clerk</strong> responsible for accounting and balance of the pharmacy</li><li><strong>Admin</strong> responsible for defining access rights within the application</li></ul></p>
@@ -28,15 +28,15 @@
 	
 		  <h4>PharmAT Main Menus</h4>
 			  	<ul>
-			  			<li>Report</li>
-			  			<li>Stock management</li>
+			  			<li><a href="#mainmenu.report">Report</a></li>
+			  			<li><a href="#mainmenu.maintenance">Stock management</a></li>
 				</ul>
 		  <h4>PharmAT Toolbar</h4>
 		  		<ul>
-		  			<li>ToolbarPerspectiveSwitch</li>
+		  			<li><a href="#ToolbarPerspectiveSwitch">ToolbarPerspectiveSwitch</a></li>
 		  		</ul>
 		  		<ul>
-		  			<li>Toolcontrol Sample</li>
+		  			<li><a href="#Toolcontrol Sample">Toolcontrol Sample</a></li>
 		  		</ul>
   
   <h4>Perspectives</h4>
@@ -233,7 +233,7 @@
   	<p><i>Executable tasks</i>
   	<ul>
   	<li>
-  			<a href="#command.editStockArticle">Edit StockArticle</a>
+  			<a href="#command.editStockOrderStatus">Edit StockOrder Status</a>
 </li>
   	</ul>
   	</p>
@@ -377,8 +377,8 @@
       <p><i>Requirements</i> <ul><li>logged in as seller</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
- 	     					<li><a href="#viewmenu.invoiceData">Menu: ViewMenu-InvoiceData</a></li>      					
  	     					<li><a href="#part.invoiceData">Part: Invoice Data</a></li>      					
+ 	     					<li><a href="#viewmenu.invoiceData">Menu: ViewMenu-InvoiceData</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> <p>You can start over with fresh and empty cleaned up parts of,</p><ul><li><a href="#part.invoiceData">InvoiceData</a></li><li><a href="#part.prescription">Prescription</a></li><li><a href="#part.invoice">Invoice</a></li></ul></p> 
@@ -427,8 +427,6 @@
       	<ul>
  	     					<li><a href="#popupmenu.articlelist">Menu: Popupmenu-ArticleList</a></li>      					
  	     					<li><a href="#part.articlelist">Part: Article List</a></li>      					
- 	     					<li><a href="#part.stockOrderOverview">Part: Stock Order Overview</a></li>      					
- 	     					<li><a href="#popupmenu.stockorder.overview">Menu: Popupmenu-StockOrderOverview</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> The adapted article should now contain all the updated information.</p> 
@@ -437,6 +435,8 @@
       <p><i>Requirements</i> <ul><li>logged in as stockist</li><li>a stock order that needs a status update</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
+ 	     					<li><a href="#part.stockOrderOverview">Part: Stock Order Overview</a></li>      					
+ 	     					<li><a href="#popupmenu.stockorder.overview">Menu: Popupmenu-StockOrderOverview</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> The stock orders status is updated.<br/>In case the status was set to <em>RECEIVED</em> all the articles that have been ordered by this specific order get a update (the corresponding articles number on stock will be updated and the order status changed).</p> 
@@ -463,6 +463,7 @@
       <p><i>Requirements</i> <ul><li> logged in as stockist</li><li>a new article catalogue in digital form</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
+ 	     					<li><a href="#mainmenu.maintenance">Menu: Stock management</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> <p>An up to date listing of all the available articles.</p><ul><li>new articles: added</li><li>no longer available articles<ol><li>not on stock: deleted</li><li>on stock: status is set to <em>Black</em></li></ol></li></ul></p> 
@@ -471,6 +472,7 @@
       <p><i>Requirements</i> <ul><li>any report worthy issue</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
+ 	     					<li><a href="#mainmenu.report">Menu: Report</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> A report is added to the report list. Reports can be examined and used to improve the system and the staffs daily routine.</p> 
@@ -497,6 +499,7 @@
       <p><i>Requirements</i> <ul><li>logged in as clerk</li></ul></p>
       <p><i>Executable by</i>
       	<ul>
+ 	     					<li><a href="#mainmenu.maintenance">Menu: Stock management</a></li>      					
       	</ul>
       </p>
       <p><i>Completion information</i> A quick and easy printout of the entire inventory</p> 

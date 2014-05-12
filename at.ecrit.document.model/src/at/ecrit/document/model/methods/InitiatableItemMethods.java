@@ -3,8 +3,6 @@ package at.ecrit.document.model.methods;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.e4.ui.model.application.ui.menu.impl.HandledMenuItemImpl;
-
 import at.ecrit.document.model.ecritdocument.InitiatableItem;
 
 public class InitiatableItemMethods {
@@ -14,7 +12,6 @@ public class InitiatableItemMethods {
 	@SuppressWarnings("restriction")
 	public static Map<String, String> getLocationDescription(InitiatableItem ii){
 		idLabelMap = new HashMap<String, String>();
-		boolean oneWindowOnly; // consider if we have only one window
 		
 		switch (ii.getItemType()) {
 		case MENU:
@@ -34,12 +31,6 @@ public class InitiatableItemMethods {
 				}
 				idLabelMap.put(elementId, "Menu: " + label);
 			}
-			
-			HandledMenuItemImpl mmi = (HandledMenuItemImpl) ii.getItem();
-			String elementId = mmi.getCommand().getElementId();
-			String label = "Command " + mmi.getCommand().getCommandName();
-			idLabelMap.put(elementId, label);
-			
 			break;
 		case TOOLBAR:
 			idLabelMap.put(ii.getItem().getElementId(), "Toolbar LEFT/RIGHT/UP/DOWN?? "

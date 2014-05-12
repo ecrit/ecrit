@@ -41,7 +41,7 @@
 			  <#list win.containedMenus as mainMenu>
 			  	<ul>
 			  		<#list mainMenu.containedMenuItems as menu>
-			  			<li>${menu.label}</li>
+			  			<li id="${menu.elementId}">${menu.label}</li>
 			  		</#list>
 				</ul>
 			  </#list>
@@ -50,7 +50,7 @@
 		  <h4>${win.modelElement.label} Toolbar</h4>
 		  	<#list win.containedTrimElements as element>
 		  		<ul>
-		  			<li>${element.elementId}</li>
+		  			<li id="${element.elementId}">${element.elementId}</li>
 		  		</ul>
 		  	</#list>
 		  </#if>
