@@ -234,26 +234,30 @@ This perspective contains the following parts
  	\textsf{Requirements}
  		${st.precondition!""} \\
  	\textsf{Executable by}
-	 	<#list st.initiatableBy as it>
-	 	<#assign map = it.locationDescription>
-		 	\begin{itemize}
-		 		<#if map?has_content>
-			 		<#list map?keys as key>
-			 			<#if map[key]??>
-			 				<#if key == st.command.elementId>
-			 					<#-- # Skip - we don't want the command to show itself -->
-			 				<#else>
-			 					\item ${map[key]}				
-		      				</#if>
-			 			<#else>
-			 				\item ${key}
-			 			</#if>
-			 		</#list>
-			 	<#else>
-			 		\item unknown
-			 	</#if>
-		 	\end{itemize}
-		</#list>\\
+ 		\begin{itemize}
+		 	<#list st.initiatableBy as it>
+		 	<#assign map = it.locationDescription>
+			 	
+			 		<#if map?has_content>
+				 		<#list map?keys as key>
+				 			<#if map[key]??>
+				 				<#if key == st.command.elementId>
+				 					<#-- # Skip - we don't want the command to show itself -->
+				 				<#else>
+				 					\item ${map[key]}				
+			      				</#if>
+				 			<#else>
+				 				\item ${key}
+				 			</#if>
+				 		</#list>
+				 	<#else>
+				 		\item unknown
+				 	</#if>
+			</#list>
+			<#if st.keybinding??>
+				\item KeySqeuence: ${st.keybinding.keySequence}
+			</#if>
+		\end{itemize}\\
     \textsf{Completion information}
     ${st.postcondition!""}
  </#list>
