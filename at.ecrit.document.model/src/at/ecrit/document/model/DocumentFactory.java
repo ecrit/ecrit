@@ -1,6 +1,7 @@
 package at.ecrit.document.model;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -10,8 +11,10 @@ import org.eclipse.e4.ui.internal.workbench.swt.E4Application;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.MContribution;
+import org.eclipse.e4.ui.model.application.commands.MBindingTable;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.commands.MHandler;
+import org.eclipse.e4.ui.model.application.commands.MKeyBinding;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
@@ -59,6 +62,7 @@ public class DocumentFactory {
 	protected static IEclipseContext applicationContext;
 	protected static MApplication application;
 	private static EModelService modelService;
+	private static HashMap<MCommand, MKeyBinding> keyBindings;
 	
 	private static Log log = LogFactory.getLog(DocumentFactory.class);
 	
@@ -91,6 +95,7 @@ public class DocumentFactory {
 		
 		setDocumentInformation(doc, application);
 		collectApplicationLayout(doc, appModelResource);
+		initBindings(application);
 		initCommandSteps(application, doc);
 		populateStepsWithContributions(appModelResource, doc);
 		
@@ -302,7 +307,26 @@ public class DocumentFactory {
 			temp.setPostcondition(ed.getPostcondition());
 			temp.setPrecondition(ed.getPrecondition());
 			
+			if (keyBindings.containsKey(mCommand)) {
+				temp.setKeybinding(keyBindings.get(mCommand));
+			}
 			doc.getStep().add(temp);
+		}
+	}
+	
+	private static void initBindings(MApplication application){
+		keyBindings = new HashMap<MCommand, MKeyBinding>();
+		
+		List<MBindingTable> tables = application.getBindingTables();
+		for (MBindingTable mbTable : tables) {
+			List<MKeyBinding> bindings = mbTable.getBindings();
+			
+			for (MKeyBinding mkBinding : bindings) {
+				keyBindings.put(mkBinding.getCommand(), mkBinding);
+				
+				System.out.println("Command: " + mkBinding.getCommand().getElementId()
+					+ "\nKeySeq: " + mkBinding.getKeySequence());
+			}
 		}
 	}
 	

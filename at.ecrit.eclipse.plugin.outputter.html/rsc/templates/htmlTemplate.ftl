@@ -136,8 +136,11 @@
       				<#else>
       					<li>${key}</li>
       				</#if>
-			</#list>
+		      </#list>
       	</#list>
+        <#if st.keybinding??>
+          <li>KeySqeuence: ${st.keybinding.keySequence}</li>
+        </#if>
       	</ul>
       </p>
       <p><i>Completion information</i> ${st.postcondition!""}</p> 
