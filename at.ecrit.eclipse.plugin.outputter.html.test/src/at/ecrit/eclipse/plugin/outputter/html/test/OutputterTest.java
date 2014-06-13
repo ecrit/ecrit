@@ -1,16 +1,17 @@
 package at.ecrit.eclipse.plugin.outputter.html.test;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.e4.ui.internal.workbench.E4XMIResourceFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Shell;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,17 +26,29 @@ public class OutputterTest {
 	private File appModelFile;
 	
 	@Before
-	public void selectAppModelFile(){
-		FileDialog fd = new FileDialog(new Shell());
-		fd.setText("Select AppModel test  file");
-		fd.setFilterExtensions(new String[] {
-			"*.e4xmi"
-		});
-		fd.setFilterNames(new String[] {
-			"ApplicationModelFile (*.e4xmi)"
-		});
-		String selectedFile = fd.open();
-		appModelFile = new File(selectedFile);
+	public void selectAppModelFile() throws IOException{
+		String filePath = "";
+		
+		// allow inserting of path of any application.e4xmi
+		System.out
+			.println("Would you like to test another Apllication Model file than the usual? Enter it's path:");
+		
+		BufferedReader bReader = new BufferedReader(new InputStreamReader(System.in));
+		long elapsed = System.currentTimeMillis() + 7000; // wait 7seconds for user input
+		
+		while (System.currentTimeMillis() < elapsed) {
+			if (bReader.ready())
+				filePath += bReader.readLine();
+		}
+		bReader.close();
+		
+		// if path is empty use default file
+		if (filePath.isEmpty()) {
+			URL applicationModelUrl = OutputterTest.class.getResource("Application.e4xmi");
+			applicationModelUrl = FileLocator.toFileURL(applicationModelUrl);
+			filePath = applicationModelUrl.getPath();
+		}
+		appModelFile = new File(filePath);
 	}
 	
 	@Test
