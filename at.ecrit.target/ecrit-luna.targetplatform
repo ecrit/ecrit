@@ -1,9 +1,10 @@
 target "Luna SDK"
 
 // Eclipse plugins dependencies
+// 	org.eclipse.sdk.ide	
 location "http://download.eclipse.org/releases/luna" {
 	with source, requirements
-	org.eclipse.sdk.ide	
+	org.eclipse.sdk.ide
 	org.eclipse.mylyn.wikitext_feature.feature.group	
 	org.eclipse.emf.sdk.feature.group
 	org.eclipse.emf.transaction.sdk.feature.group
@@ -14,6 +15,7 @@ location "http://download.eclipse.org/releases/luna" {
 	org.eclipse.emf.cdo.sdk.feature.group
 	org.eclipse.mylyn.ide_feature.feature.group
 	org.eclipse.acceleo.feature.group
+	org.eclipse.rcp.sdk.id
 }
 
 // Orbit dependencies
@@ -23,6 +25,12 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2014011414271
 	org.mozilla.javascript
 	org.junit
 	com.lowagie.text
+}
+
+location "http://download.vogella.com/luna/e4tools" {
+	with source, requirements
+	org.eclipse.e4.core.tools.feature.feature.group
+	org.eclipse.e4.tools.css.spy.feature.feature.group
 }
 
 
