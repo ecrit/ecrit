@@ -21,6 +21,10 @@ import org.eclipse.e4.ui.model.fragment.MModelFragment;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.pde.internal.core.FeatureModelManager;
+import org.eclipse.pde.internal.core.PDECore;
+import org.eclipse.pde.internal.core.ifeature.IFeatureModel;
+import org.eclipse.pde.internal.core.ifeature.IFeaturePlugin;
 import org.osgi.framework.Bundle;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -58,6 +62,12 @@ public class ProductProcessor {
 		return URI.createURI(e4xmi.toURI().toString());
 	}
 	
+	/**
+	 * collect the basic informations from the product file
+	 * 
+	 * @param uri
+	 *            location of the product file
+	 */
 	private void readBasicProductInformation(URI uri){
 		try {
 			featureIds = new ArrayList<String>();
@@ -152,8 +162,8 @@ public class ProductProcessor {
 		E4Application.initializeServices(application);
 		application.getContext().get(EModelService.class);
 		
-		for (MModelFragment mmf : modelFragments) {
-			mmf.merge(application);
+		for (MModelFragment fragment : modelFragments) {
+			fragment.merge(application);
 		}
 	}
 	
@@ -171,13 +181,24 @@ public class ProductProcessor {
 			}
 		}
 		System.out.println("Found [" + mFragments.size() + "] fragments");
-		
 		return mFragments;
 	}
 	
 	private List<MModelFragment> loadFragmentsFeatureBased(){
-		// TODO Auto-generated method stub
-		return null;
+		FeatureModelManager manager = PDECore.getDefault().getFeatureModelManager();
+		
+		for (String fId : featureIds) {
+			IFeatureModel fModel = manager.findFeatureModel(fId);
+			
+			if (fModel != null) {
+				for (IFeaturePlugin plugin : fModel.getFeature().getPlugins()) {
+					if (!pluginIds.contains(plugin.getId())) {
+						pluginIds.add(plugin.getId());
+					}
+				}
+			}
+		}
+		return loadFragmentsPluginBased();
 	}
 	
 	/**
