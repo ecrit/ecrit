@@ -46,9 +46,8 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 			uri = product.getApplicationModelUri();
 			
 		}
-		// String result = Platform.getBundle(project.getName()).getHeaders().get("Bundle-Version");
 		Resource appModelResource = Activator.getResourceSet().getResource(uri, true);
-		OutputSelectionDialog osd = new OutputSelectionDialog();
+		OutputSelectionDialog osd = new OutputSelectionDialog(uri);
 		
 		int retVal = osd.open();
 		if (retVal != Dialog.OK)
@@ -75,5 +74,4 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		
 		return null;
 	}
-	
 }

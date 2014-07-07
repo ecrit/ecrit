@@ -11,6 +11,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.databinding.viewers.ViewerProperties;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -52,6 +53,7 @@ public class OutputSelectionDialog extends TitleAreaDialog {
 	private ComboViewer comboViewer;
 	private IDialogSettings settings;
 	private boolean useExisting;
+	private URI uri;
 	
 	private static final String SETTINGS_DIRECTORY = "outputDirectory";
 	private static final String SETTINGS_USE_EXISTING = "useExistingDirectory";
@@ -72,8 +74,9 @@ public class OutputSelectionDialog extends TitleAreaDialog {
 		useExisting = settings.getBoolean(SETTINGS_USE_EXISTING);
 	}
 	
-	public OutputSelectionDialog(){
+	public OutputSelectionDialog(URI uri){
 		this(PlatformUI.createDisplay().getActiveShell());
+		this.uri = uri;
 	}
 	
 	/**
@@ -174,7 +177,8 @@ public class OutputSelectionDialog extends TitleAreaDialog {
 	 */
 	private File autoCreateOutputLocation(){
 		String label = getSelectedOutputter().getOutputterLabel().replace(" ", ".");
-		label = "ecrit." + (label.toLowerCase()).trim();
+		String[] uriSegments = uri.segments();
+		label = uriSegments[uriSegments.length - 2] + "." + (label.toLowerCase()).trim();
 		
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IProject project = root.getProject(label);
