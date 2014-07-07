@@ -38,11 +38,12 @@ public class FragmentExtensionPoint {
 						MModelFragments modelFragment =
 							(MModelFragments) appModelResource.getContents().get(0);
 						ret.addAll(modelFragment.getFragments());
+						
+						appModelResource.unload();
 					}
 				}
 			}
 		} catch (InvalidRegistryObjectException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ret;
