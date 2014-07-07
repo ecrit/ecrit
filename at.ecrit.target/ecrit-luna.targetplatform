@@ -1,9 +1,10 @@
 target "Luna SDK"
 
+with source, requirements
+
 // Eclipse plugins dependencies
 // 	org.eclipse.sdk.ide	
 location "http://download.eclipse.org/releases/luna" {
-	with source, requirements
 	org.eclipse.sdk.ide
 	org.eclipse.mylyn.wikitext_feature.feature.group	
 	org.eclipse.emf.sdk.feature.group
@@ -19,18 +20,23 @@ location "http://download.eclipse.org/releases/luna" {
 }
 
 // Orbit dependencies
-location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/" {
-	with source, requirements	
-	com.google.guava;version="[11.0.0,16.0.0)"
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/" {	
+	com.google.guava;version=[11.0.0,16.0.0)
 	org.mozilla.javascript
 	org.junit
 	com.lowagie.text
 }
 
 location "http://download.vogella.com/luna/e4tools" {
-	with source, requirements
 	org.eclipse.e4.core.tools.feature.feature.group
 	org.eclipse.e4.tools.css.spy.feature.feature.group
 }
 
+location "http://download.eclipse.org/intent/updates/releases/0.9" {
+	org.eclipse.mylyn.docs.intent.feature.feature.group
+	org.eclipse.mylyn.docs.intent.exporter.feature.feature.group
+	org.eclipse.mylyn.docs.intent.bridge.java.feature.feature.group
+	org.eclipse.mylyn.docs.intent.workspace.feature.feature.group
+	org.eclipse.mylyn.docs.intent.markup.feature.feature.group
+}
 
