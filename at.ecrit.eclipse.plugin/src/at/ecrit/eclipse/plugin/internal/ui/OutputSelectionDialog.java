@@ -178,8 +178,10 @@ public class OutputSelectionDialog extends TitleAreaDialog {
 		
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IProject project = root.getProject(label);
-		
 		try {
+			if (project.exists()) {
+				project.delete(true, null);
+			}
 			project.create(null);
 			project.open(null);
 		} catch (CoreException e) {
