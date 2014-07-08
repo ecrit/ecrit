@@ -16,6 +16,7 @@ import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.commands.MHandler;
 import org.eclipse.e4.ui.model.application.commands.MKeyBinding;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.ui.MUILabel;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -31,6 +32,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -58,10 +60,12 @@ import at.ecrit.document.model.outputconverter.NullOutputConverter;
 
 public class DocumentFactory {
 	
+	private static final String ID_SEPARATOR = ".";
 	public static AbstractOutputConverter outputConverter;
 	protected static IEclipseContext applicationContext;
 	protected static MApplication application;
 	private static EModelService modelService;
+	private static URI uri;
 	private static HashMap<MCommand, MKeyBinding> keyBindings;
 	
 	private static Log log = LogFactory.getLog(DocumentFactory.class);
@@ -85,6 +89,7 @@ public class DocumentFactory {
 		Document doc = EcritdocumentFactory.eINSTANCE.createDocument();
 		
 		application = (MApplication) appModelResource.getContents().get(0);
+		uri = appModelResource.getURI();
 		applicationContext = E4Application.createDefaultContext();
 		application.setContext(applicationContext);
 		applicationContext.set(MApplication.class, application);
@@ -129,6 +134,7 @@ public class DocumentFactory {
 			List<MMenuElement> menuElements = mainMenu.getChildren();
 			for (MMenuElement mMenuElement : menuElements) {
 				if (!(mMenuElement instanceof MMenuSeparator)) {
+					findOrCreateElementId(mMenuElement);
 					dMainMenu.getContainedMenuItems().add(mMenuElement);
 				}
 			}
@@ -144,6 +150,7 @@ public class DocumentFactory {
 				for (MTrimBar mTrimBar : trimWindow.getTrimBars()) {
 					List<MTrimElement> trimElements = mTrimBar.getChildren();
 					for (MTrimElement mTrimElem : trimElements) {
+						findOrCreateElementId(mTrimElem);
 						dw.getContainedTrimElements().add(mTrimElem);
 					}
 				}
@@ -191,7 +198,7 @@ public class DocumentFactory {
 		DocumentedPart documentedPart = null;
 		
 		for (DocumentedPart dp : al.getPart()) {
-			String partElementId = (mPart.getElementId() != null) ? mPart.getElementId() : "";
+			String partElementId = findOrCreateElementId(mPart);
 			if ((dp.getModelElement().getElementId() != null)
 				&& dp.getModelElement().getElementId().equals(partElementId))
 				documentedPart = dp;
@@ -213,7 +220,7 @@ public class DocumentFactory {
 		DocumentedMenu documentedMenu = null;
 		
 		for (DocumentedMenu dm : al.getMenu()) {
-			String menuElementId = (mMenu.getElementId() != null) ? mMenu.getElementId() : "";
+			String menuElementId = findOrCreateElementId(mMenu);
 			if ((dm.getModelElement().getElementId() != null)
 				&& dm.getModelElement().getElementId().equals(menuElementId))
 				documentedMenu = dm;
@@ -231,11 +238,12 @@ public class DocumentFactory {
 	}
 	
 	private static void addElementDocumentation(DocumentedElement de, MApplicationElement ma){
-		if (ma.getElementId() == null || ma.getElementId().length() == 0) {
+		String elementId = findOrCreateElementId(ma);
+		if (elementId == null || elementId.isEmpty()) {
 			System.out.println("No element id for " + ma);
 			return;
 		}
-		ElementDocumentation ed = AppModelHelper.getElementDocumentation(ma.getElementId());
+		ElementDocumentation ed = AppModelHelper.getElementDocumentation(elementId);
 		de.setDescription(ed.getDescription());
 		de.setPostcondition(ed.getPostcondition());
 		de.setPrecondition(ed.getPrecondition());
@@ -277,6 +285,7 @@ public class DocumentFactory {
 		
 		for (MPerspectiveStack perspectiveStack : perspectiveStacks) {
 			if (perspectiveStack.getElementId() == null) {
+				findOrCreateElementId(perspectiveStack);
 				log.error("Skipping perspectiveStack due to null ID " + perspectiveStack);
 				continue;
 			}
@@ -302,7 +311,7 @@ public class DocumentFactory {
 			temp.setCommand(mCommand);
 			
 			ElementDocumentation ed =
-				AppModelHelper.getElementDocumentation(mCommand.getElementId());
+				AppModelHelper.getElementDocumentation(findOrCreateElementId(mCommand));
 			temp.setDescription(ed.getDescription());
 			temp.setPostcondition(ed.getPostcondition());
 			temp.setPrecondition(ed.getPrecondition());
@@ -319,13 +328,14 @@ public class DocumentFactory {
 		
 		List<MBindingTable> tables = application.getBindingTables();
 		for (MBindingTable mbTable : tables) {
-			List<MKeyBinding> bindings = mbTable.getBindings();
+			findOrCreateElementId(mbTable);
 			
-			for (MKeyBinding mkBinding : bindings) {
+			for (MKeyBinding mkBinding : mbTable.getBindings()) {
+				findOrCreateElementId(mkBinding);
 				keyBindings.put(mkBinding.getCommand(), mkBinding);
 				
-				System.out.println("Command: " + mkBinding.getCommand().getElementId()
-					+ "\nKeySeq: " + mkBinding.getKeySequence());
+				System.out.println("Command: " + mkBinding.getCommand().getCommandName()
+					+ " -- KeySeq: " + mkBinding.getKeySequence());
 			}
 		}
 	}
@@ -338,6 +348,7 @@ public class DocumentFactory {
 			EObject eObject = (EObject) i.next();
 			if (eObject instanceof MHandledItem) {
 				MHandledItem mmi = (MHandledItem) eObject;
+				findOrCreateElementId(mmi);
 				MCommand command = mmi.getCommand();
 				
 				if (command == null) {
@@ -356,6 +367,7 @@ public class DocumentFactory {
 			} else if (eObject instanceof MItem && eObject instanceof MContribution) {
 				// Direct[x]Item
 				MItem mi = (MItem) eObject;
+				findOrCreateElementId(mi);
 				
 				// find belonging command
 				String handlerId = ((MContribution) eObject).getContributionURI();
@@ -406,5 +418,83 @@ public class DocumentFactory {
 			ii.setContainingToolbar((MToolBar) parent);
 		}
 		return ii;
+	}
+	
+	/**
+	 * gets the set id or generates and sets (temporary) an id for this element
+	 * 
+	 * @param mAppElement
+	 *            the element to get the id from
+	 * @return the defined elementId or a auto-created elementId
+	 * 
+	 */
+	private static String findOrCreateElementId(MApplicationElement mAppElement){
+		String elementId = mAppElement.getElementId();
+		
+		if (elementId == null) {
+			int counter = 0;
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append(uri.segment(uri.segments().length - 2));
+			sb.append(ID_SEPARATOR);
+			sb.append(mAppElement.getClass().getSimpleName().toLowerCase());
+			sb.append(ID_SEPARATOR);
+			sb.append(getDescribingName(mAppElement));
+			sb.append(counter + "");
+			
+			List<? extends MApplicationElement> existingId =
+				modelService.findElements(application, sb.toString(), mAppElement.getClass(), null);
+			while (existingId.size() > 0) {
+				counter++;
+				int lastDot = sb.lastIndexOf(ID_SEPARATOR);
+				sb.replace(lastDot + 1, sb.length(), counter + "");
+				
+				// check if the id is already taken by some element
+				existingId =
+					modelService.findElements(application, sb.toString(), mAppElement.getClass(),
+						null);
+			}
+			
+			elementId = sb.toString();
+			mAppElement.setElementId(elementId);
+		}
+		return elementId;
+	}
+	
+	/**
+	 * searches for a label, referred command or contribution in the MApplicationElement
+	 * 
+	 * @param mAppElement
+	 *            the element to evaluate
+	 * @return label, name of the refering command, contribution class name or an empty string if
+	 *         nothing was found
+	 */
+	private static String getDescribingName(MApplicationElement mAppElement){
+		String label = null;
+		
+		if (mAppElement instanceof MCommand) {
+			label = ((MCommand) mAppElement).getCommandName();
+		} else if (mAppElement instanceof MKeyBinding) {
+			label = ((MKeyBinding) mAppElement).getCommand().getCommandName();
+		} else if (mAppElement instanceof MHandler) {
+			label = ((MHandler) mAppElement).getCommand().getCommandName();
+		} else if (mAppElement instanceof MHandledItem) {
+			label = ((MHandledItem) mAppElement).getCommand().getCommandName();
+		} else if (mAppElement instanceof MUILabel) {
+			label = ((MUILabel) mAppElement).getLabel();
+		}
+		
+		if (label == null || label.isEmpty()) {
+			String contrURI = mAppElement.getContributorURI();
+			if (contrURI != null && !contrURI.isEmpty()) {
+				int lastDot = contrURI.lastIndexOf(".");
+				label = contrURI.substring(lastDot + 1, contrURI.length()).toLowerCase();
+			} else {
+				return "";
+			}
+		}
+		
+		label = label.replace(" ", "") + ID_SEPARATOR;
+		return label.toLowerCase();
 	}
 }
