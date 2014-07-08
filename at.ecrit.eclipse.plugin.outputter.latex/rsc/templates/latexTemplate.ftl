@@ -164,7 +164,11 @@ This application requires a login.
  		<#list win.containedMenus as mainMenu>
  			\begin{itemize}
  				<#list mainMenu.containedMenuItems as menu>
- 					\item ${menu.label}
+ 					<#if menu.label??>
+ 						\item ${menu.label}
+ 					<#else>
+ 						\item ${menu.elementId}
+ 					</#if>
  				</#list>
  			\end{itemize}
  		</#list>
@@ -187,11 +191,19 @@ There are ${doc.applicationLayout.perspective?size} perspectives available to th
 ${doc.applicationProperties.perspectiveSwitcher}
 
 <#list doc.applicationLayout.perspective as perspective>
-\subsubsection{Perspective ${perspective.modelElement.label}}
+<#if perspective.modelElement.label??>
+	\subsubsection{Perspective ${perspective.modelElement.label}}
+<#else>
+	\subsubsection{Perspective ${perspective.modelElement.elementId}}
+</#if>
 \begin{figure}[h]
 	\centering
 		\includegraphics[scale=0.6]{{${perspective.modelElement.elementId}}.png}
-	\caption{Perspective ${perspective.modelElement.label}}
+	<#if perspective.modelElement.label??>
+		\caption{Perspective ${perspective.modelElement.label}}
+	<#else>
+		\caption{Perspective ${perspective.modelElement.elementId}}
+	</#if>
 \end{figure}
 ${perspective.description}
 
@@ -199,20 +211,33 @@ This perspective contains the following parts
 
 \begin{itemize}
 <#list perspective.containedParts as containedPart>
-	\item ${containedPart.modelElement.label}
+	<#if containedPart.modelElement.label??>
+		\item ${containedPart.modelElement.label}
+	<#else>
+		\item ${containedPart.modelElement.elementId}
+	</#if>
  </#list>
 \end{itemize}
 </#list>
 
 \subsection{Parts}\index{Parts}
  <#list doc.applicationLayout.part as part>
-	 \subsubsection{${part.modelElement.label}} 
+ 	<#if part.modelElement.label??>
+	 	\subsubsection{${part.modelElement.label}}
+	<#else>
+		\subsubsection{${part.modelElement.elementId}}
+	</#if>
 	 ${part.description}\\[2ex]	 
 	 \textsf{Menus}
 	 \begin{itemize}
 		 <#if part.containedMenus?has_content>
 			 	<#list part.containedMenus as containedMenu>
-			 		\item ${containedMenu.modelElement.label}\\${containedMenu.description}
+			 		<#if containedMenu.modelElement.label??>
+			 			\item ${containedMenu.modelElement.label}\\
+			 		<#else>
+			 			\item ${containedMenu.modelElement.elementId}\\
+			 		</#if>
+			 		${containedMenu.description}
 			 	</#list>
 		 <#else>
 		 	\item No part specific menus defined.

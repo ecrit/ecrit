@@ -41,7 +41,11 @@
 			  <#list win.containedMenus as mainMenu>
 			  	<ul>
 			  		<#list mainMenu.containedMenuItems as menu>
-			  			<li id="${menu.elementId}">${menu.label}</li>
+			  			<#if menu.label??>
+			  				<li id="${menu.elementId}">${menu.label}</li>
+			  			<#else>
+			  				<li id="${menu.elementId}">${menu.elementId}</li>
+			  			</#if>
 			  		</#list>
 				</ul>
 			  </#list>
@@ -62,7 +66,11 @@
   ${doc.applicationProperties.perspectiveSwitcher}
   
   <#list doc.applicationLayout.perspective as perspective>
-  	<h5 id="${perspective.modelElement.elementId}">Perspective ${perspective.modelElement.label}</h5>
+  	<#if perspective.modelElement.label??>
+  		<h5 id="${perspective.modelElement.elementId}">Perspective ${perspective.modelElement.label}</h5>
+  	<#else>
+  		<h5 id="${perspective.modelElement.elementId}">Perspective ${perspective.modelElement.elementId}</h5>
+  	</#if>
    	 <div class="content">
    	 	<div class="leftSide"><img src="${perspective.modelElement.elementId}.png" alt="${perspective.modelElement.elementId}"></div>
         <div class="rightSide"><p><i>Description</i> ${perspective.description}<p></div>
@@ -72,7 +80,11 @@
   	<p><i>Parts</i>
   		<ul>
   		 <#list perspective.containedParts as containedPart>
-  		 	<li><a href="#${containedPart.modelElement.elementId}">${containedPart.modelElement.label}</a></li>
+  		 	<#if containedPart.modelElement.label??>
+  		 		<li><a href="#${containedPart.modelElement.elementId}">${containedPart.modelElement.label}</a></li>
+  		 	<#else>
+  		 		<li><a href="#${containedPart.modelElement.elementId}">${containedPart.modelElement.elementId}</a></li>
+  		 	</#if>
   		 </#list>
   		</ul>
   	<p>
@@ -81,7 +93,11 @@
   
   <h4>Parts</h4>
   <#list doc.applicationLayout.part as part>
-  	<h5 id="${part.modelElement.elementId}">Part ${part.modelElement.label}</h5>
+  	<#if part.modelElement.label??>
+  		<h5 id="${part.modelElement.elementId}">Part ${part.modelElement.label}</h5>
+  	<#else>
+  		<h5 id="${part.modelElement.elementId}">Part ${part.modelElement.elementId}</h5>
+  	</#if>
   	<p><i>Description</i> ${part.description}<p>
   	<p><i>Executable tasks</i>
   	<ul>
@@ -99,7 +115,11 @@
 	  		<#if part.containedMenus?has_content>
 		  		<#list part.containedMenus as containedMenu>
 		  			<li>
-		  				<h6 id="${containedMenu.modelElement.elementId}">${containedMenu.modelElement.label}</h6>
+		  				<#if containedMenu.modelElement.label??>
+		  					<h6 id="${containedMenu.modelElement.elementId}">${containedMenu.modelElement.label}</h6>
+		  				<#else>
+		  					<h6 id="${containedMenu.modelElement.elementId}">${containedMenu.modelElement.elementId}</h6>
+		  				</#if>
 		  				${containedMenu.description}
 		  			</li>
 		  		 </#list>
