@@ -128,30 +128,32 @@ public class DocumentFactory {
 			
 			// Collect windows mainmenu items
 			MMenu mainMenu = mWindow.getMainMenu();
-			DocumentedMenu dMainMenu = findOrCreateMenuInApplicationLayout(al, mainMenu);
-			
-			// add menus to documented main menu
-			List<MMenuElement> menuElements = mainMenu.getChildren();
-			for (MMenuElement mMenuElement : menuElements) {
-				if (!(mMenuElement instanceof MMenuSeparator)) {
-					findOrCreateElementId(mMenuElement);
-					dMainMenu.getContainedMenuItems().add(mMenuElement);
-				}
-			}
-			
-			// set connection between the Window and it's MainMenu
-			dMainMenu.getContainedInWindow().add(mWindow);
-			dw.getContainedMenus().add(dMainMenu);
-			
-			// Collect trimBar elements (Toolbar and ToolControl)
-			if (mWindow instanceof MTrimmedWindow) {
-				MTrimmedWindow trimWindow = (MTrimmedWindow) mWindow;
+			if (mainMenu != null) {
+				DocumentedMenu dMainMenu = findOrCreateMenuInApplicationLayout(al, mainMenu);
 				
-				for (MTrimBar mTrimBar : trimWindow.getTrimBars()) {
-					List<MTrimElement> trimElements = mTrimBar.getChildren();
-					for (MTrimElement mTrimElem : trimElements) {
-						findOrCreateElementId(mTrimElem);
-						dw.getContainedTrimElements().add(mTrimElem);
+				// add menus to documented main menu
+				List<MMenuElement> menuElements = mainMenu.getChildren();
+				for (MMenuElement mMenuElement : menuElements) {
+					if (!(mMenuElement instanceof MMenuSeparator)) {
+						findOrCreateElementId(mMenuElement);
+						dMainMenu.getContainedMenuItems().add(mMenuElement);
+					}
+				}
+				
+				// set connection between the Window and it's MainMenu
+				dMainMenu.getContainedInWindow().add(mWindow);
+				dw.getContainedMenus().add(dMainMenu);
+				
+				// Collect trimBar elements (Toolbar and ToolControl)
+				if (mWindow instanceof MTrimmedWindow) {
+					MTrimmedWindow trimWindow = (MTrimmedWindow) mWindow;
+					
+					for (MTrimBar mTrimBar : trimWindow.getTrimBars()) {
+						List<MTrimElement> trimElements = mTrimBar.getChildren();
+						for (MTrimElement mTrimElem : trimElements) {
+							findOrCreateElementId(mTrimElem);
+							dw.getContainedTrimElements().add(mTrimElem);
+						}
 					}
 				}
 			}
@@ -332,6 +334,11 @@ public class DocumentFactory {
 			
 			for (MKeyBinding mkBinding : mbTable.getBindings()) {
 				findOrCreateElementId(mkBinding);
+				if (mkBinding.getCommand() == null) {
+					log.error("Skipping keybinding due to null command reference "
+						+ mkBinding.getElementId());
+					continue;
+				}
 				keyBindings.put(mkBinding.getCommand(), mkBinding);
 				
 				System.out.println("Command: " + mkBinding.getCommand().getCommandName()
@@ -473,13 +480,13 @@ public class DocumentFactory {
 		String label = null;
 		
 		if (mAppElement instanceof MCommand) {
-			label = ((MCommand) mAppElement).getCommandName();
+			label = getCommandNameSave(((MCommand) mAppElement));
 		} else if (mAppElement instanceof MKeyBinding) {
-			label = ((MKeyBinding) mAppElement).getCommand().getCommandName();
+			label = getCommandNameSave(((MKeyBinding) mAppElement).getCommand());
 		} else if (mAppElement instanceof MHandler) {
-			label = ((MHandler) mAppElement).getCommand().getCommandName();
+			label = getCommandNameSave(((MHandler) mAppElement).getCommand());
 		} else if (mAppElement instanceof MHandledItem) {
-			label = ((MHandledItem) mAppElement).getCommand().getCommandName();
+			label = getCommandNameSave(((MHandledItem) mAppElement).getCommand());
 		} else if (mAppElement instanceof MUILabel) {
 			label = ((MUILabel) mAppElement).getLabel();
 		}
@@ -496,5 +503,13 @@ public class DocumentFactory {
 		
 		label = label.replace(" ", "") + ID_SEPARATOR;
 		return label.toLowerCase();
+	}
+	
+	private static String getCommandNameSave(MCommand cmd){
+		if (cmd != null) {
+			return cmd.getCommandName();
+		} else {
+			return "";
+		}
 	}
 }
