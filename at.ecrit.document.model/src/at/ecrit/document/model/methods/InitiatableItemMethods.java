@@ -3,6 +3,9 @@ package at.ecrit.document.model.methods;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.e4.ui.model.application.ui.menu.MHandledToolItem;
+import org.eclipse.e4.ui.model.application.ui.menu.MItem;
+
 import at.ecrit.document.model.ecritdocument.InitiatableItem;
 
 public class InitiatableItemMethods {
@@ -33,8 +36,17 @@ public class InitiatableItemMethods {
 			}
 			break;
 		case TOOLBAR:
-			idLabelMap.put(ii.getItem().getElementId(), "Toolbar LEFT/RIGHT/UP/DOWN?? "
-				+ ii.getItem().getLocalizedLabel());
+			MItem item = ii.getItem();
+			String label = item.getLabel();
+			if (label == null || label.isEmpty()) {
+				if (item instanceof MHandledToolItem) {
+					label = ((MHandledToolItem) item).getCommand().getCommandName();
+				} else {
+					label = "";
+				}
+			}
+			idLabelMap.put(ii.getItem().getElementId(), "Toolbar " + label);
+			
 			break;
 		default:
 			idLabelMap.put(ii + "", "NOT YET DEFINED ITEM TYPE " + ii);
