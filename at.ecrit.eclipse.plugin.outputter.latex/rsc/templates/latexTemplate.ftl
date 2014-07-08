@@ -165,19 +165,19 @@ This application requires a login.
  			\begin{itemize}
  				<#list mainMenu.containedMenuItems as menu>
  					<#if menu.label??>
- 						\item ${menu.label}
+ 						\item ${menu.label?replace("%","")}
  					<#else>
- 						\item ${menu.elementId}
+ 						\item ${menu.elementId?replace("%","")}
  					</#if>
  				</#list>
  			\end{itemize}
  		</#list>
  	</#if>
  	<#if win.containedTrimElements?has_content>
- 		\subsection{${win.modelElement.label} Toolbar}
+ 		\subsection{${win.modelElement.label?replace("%","")} Toolbar}
  		\begin{itemize}
 	 		<#list win.containedTrimElements as element>
-	 				\item ${element.elementId}
+	 				\item ${element.elementId?replace("%","")}
 	 		</#list>
  		\end{itemize}
  	</#if>
@@ -192,17 +192,17 @@ ${doc.applicationProperties.perspectiveSwitcher}
 
 <#list doc.applicationLayout.perspective as perspective>
 <#if perspective.modelElement.label??>
-	\subsubsection{Perspective ${perspective.modelElement.label}}
+	\subsubsection{Perspective ${perspective.modelElement.label?replace("%","")}}
 <#else>
-	\subsubsection{Perspective ${perspective.modelElement.elementId}}
+	\subsubsection{Perspective ${perspective.modelElement.elementId?replace("%","")}}
 </#if>
 \begin{figure}[h]
 	\centering
-		\includegraphics[scale=0.6]{{${perspective.modelElement.elementId}}.png}
+		\includegraphics[scale=0.6]{{${perspective.modelElement.elementId?replace("%","")}}.png}
 	<#if perspective.modelElement.label??>
-		\caption{Perspective ${perspective.modelElement.label}}
+		\caption{Perspective ${perspective.modelElement.label?replace("%","")}}
 	<#else>
-		\caption{Perspective ${perspective.modelElement.elementId}}
+		\caption{Perspective ${perspective.modelElement.elementId?replace("%","")}}
 	</#if>
 \end{figure}
 ${perspective.description}
@@ -212,9 +212,9 @@ This perspective contains the following parts
 \begin{itemize}
 <#list perspective.containedParts as containedPart>
 	<#if containedPart.modelElement.label??>
-		\item ${containedPart.modelElement.label}
+		\item ${containedPart.modelElement.label?replace("%","")}
 	<#else>
-		\item ${containedPart.modelElement.elementId}
+		\item ${containedPart.modelElement.elementId?replace("%","")}
 	</#if>
  </#list>
 \end{itemize}
@@ -223,9 +223,9 @@ This perspective contains the following parts
 \subsection{Parts}\index{Parts}
  <#list doc.applicationLayout.part as part>
  	<#if part.modelElement.label??>
-	 	\subsubsection{${part.modelElement.label}}
+	 	\subsubsection{${part.modelElement.label?replace("%","")}}
 	<#else>
-		\subsubsection{${part.modelElement.elementId}}
+		\subsubsection{${part.modelElement.elementId?replace("%","")}}
 	</#if>
 	 ${part.description}\\[2ex]	 
 	 \textsf{Menus}
@@ -233,9 +233,9 @@ This perspective contains the following parts
 		 <#if part.containedMenus?has_content>
 			 	<#list part.containedMenus as containedMenu>
 			 		<#if containedMenu.modelElement.label??>
-			 			\item ${containedMenu.modelElement.label}\\
+			 			\item ${containedMenu.modelElement.label?replace("%","")}\\
 			 		<#else>
-			 			\item ${containedMenu.modelElement.elementId}\\
+			 			\item ${containedMenu.modelElement.elementId?replace("%","")}\\
 			 		</#if>
 			 		${containedMenu.description}
 			 	</#list>
@@ -254,7 +254,7 @@ This perspective contains the following parts
 
 %----------------------------------------------------------------------------------------
 <#list doc.step as st>
- 	\subsection{${st.command.commandName!""}}
+ 	\subsection{${st.command.commandName?replace("%","")!""}}
  	${st.description!""} \\[2ex]
  	\textsf{Requirements}
  		${st.precondition!""} \\
@@ -266,7 +266,7 @@ This perspective contains the following parts
 			 		<#if map?has_content>
 				 		<#list map?keys as key>
 				 			<#if map[key]??>
-				 				<#if key == st.command.elementId>
+				 				<#if key == st.command.elementId?replace("%","")>
 				 					<#-- # Skip - we don't want the command to show itself -->
 				 				<#else>
 				 					\item ${map[key]}				

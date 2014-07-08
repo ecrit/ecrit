@@ -500,7 +500,7 @@ public class DocumentFactory {
 				return "";
 			}
 		}
-		
+		label = label.replace("%", "");
 		label = label.replace(" ", "") + ID_SEPARATOR;
 		return label.toLowerCase();
 	}
