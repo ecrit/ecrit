@@ -21,12 +21,14 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.ide.IDE;
+import org.eclipse.ui.part.ISetSelectionTarget;
 
 import at.ecrit.document.model.DocumentFactory;
 import at.ecrit.document.model.ecritdocument.Document;
@@ -70,10 +72,10 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		AbstractOutputter outputter = osd.getSelectedOutputter();
 		File outputLocation = osd.getSelectedOutputLocation();
 		
-		if(outputLocation == null) {
+		if (outputLocation == null) {
 			outputLocation = createOutputLocation(outputter, uri);
 		} else {
-			// TODO 
+			// TODO
 			// workspaceRoot.getProject(name) how to find?
 		}
 		
@@ -100,8 +102,13 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 			e.printStackTrace();
 		}
 		
-		// open the main file for editing
+		// try to expand the project folder in the package explorer
 		IWorkbenchPage page = window.getActivePage();
+		IViewPart packageExplorer = page.findView("org.eclipse.jdt.ui.PackageExplorer");
+		((ISetSelectionTarget) packageExplorer).selectReveal(new StructuredSelection(outputProject
+			.getFile(outputter.getMainDocumentationFileName())));
+		
+		// open the main file for editing
 		String mainOutputFile = outputter.getMainDocumentationFileName();
 		try {
 			IDE.openEditor(page, outputProject.getFile(mainOutputFile));
@@ -115,8 +122,9 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 	
 	/**
 	 * generate a new project where the documentation will be stored.
-	 * @param outputter 
-	 * @param uri 
+	 * 
+	 * @param outputter
+	 * @param uri
 	 * 
 	 * @return the project directory
 	 */
@@ -124,7 +132,7 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		String label = outputter.getOutputterLabel().replace(" ", ".");
 		String[] uriSegments = uri.segments();
 		label = uriSegments[uriSegments.length - 2] + "." + (label.toLowerCase()).trim();
-
+		
 		outputProject = workspaceRoot.getProject(label);
 		try {
 			if (outputProject.exists()) {
