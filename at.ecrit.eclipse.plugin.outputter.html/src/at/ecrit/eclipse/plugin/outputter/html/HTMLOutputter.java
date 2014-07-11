@@ -28,6 +28,8 @@ public class HTMLOutputter extends AbstractOutputter {
 
 	private static final String TEMPLATE_LOCATION = "/rsc/templates";
 	
+	public static final String OUTPUT_FILE = "index.html";
+	
 	@Override
 	public String getOutputterLabel() {
 		return "HTML Output";
@@ -84,7 +86,7 @@ public class HTMLOutputter extends AbstractOutputter {
 		input.put("doc", doc);
 
 		try {
-			File outputFile = new File(targetDirectory, "index.html");
+			File outputFile = new File(targetDirectory, OUTPUT_FILE);
 			FileWriter fileWriter = new FileWriter(outputFile);
 			template.process(input, fileWriter);
 			fileWriter.close();
@@ -101,6 +103,11 @@ public class HTMLOutputter extends AbstractOutputter {
 	@Override
 	public AbstractOutputConverter getOutputConverter() {
 		return new HTMLOutputConverter();
+	}
+
+	@Override
+	public String getMainDocumentationFileName() {
+		return OUTPUT_FILE;
 	}
 
 }

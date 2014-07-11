@@ -32,4 +32,8 @@ public abstract class AbstractOutputter {
 	 */
 	public abstract AbstractOutputConverter getOutputConverter();
 	
+	/**
+	 * @return the main document filename for editing after creation
+	 */
+	public abstract String getMainDocumentationFileName();
 }

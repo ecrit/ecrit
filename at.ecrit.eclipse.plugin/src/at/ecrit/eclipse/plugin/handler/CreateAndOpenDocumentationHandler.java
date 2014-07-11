@@ -21,8 +21,12 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.ide.IDE;
 
 import at.ecrit.document.model.DocumentFactory;
 import at.ecrit.document.model.ecritdocument.Document;
@@ -39,6 +43,7 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 	@Inject
 	IExtensionRegistry registry;
 	
+	private IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 	private IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
 	private IProject outputProject;
 	
@@ -88,9 +93,19 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		
 		appModelResource.unload();
 		
+		// refresh the created project
 		try {
 			outputProject.refreshLocal(IProject.DEPTH_INFINITE, new NullProgressMonitor());
 		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+		
+		// open the main file for editing
+		IWorkbenchPage page = window.getActivePage();
+		String mainOutputFile = outputter.getMainDocumentationFileName();
+		try {
+			IDE.openEditor(page, outputProject.getFile(mainOutputFile));
+		} catch (PartInitException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
