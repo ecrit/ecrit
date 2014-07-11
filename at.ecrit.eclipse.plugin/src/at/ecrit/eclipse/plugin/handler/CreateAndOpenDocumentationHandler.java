@@ -8,14 +8,20 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import at.ecrit.document.model.DocumentFactory;
@@ -32,6 +38,9 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 	
 	@Inject
 	IExtensionRegistry registry;
+	
+	private IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+	private IProject outputProject;
 	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException{
@@ -56,6 +65,13 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		AbstractOutputter outputter = osd.getSelectedOutputter();
 		File outputLocation = osd.getSelectedOutputLocation();
 		
+		if(outputLocation == null) {
+			outputLocation = createOutputLocation(outputter, uri);
+		} else {
+			// TODO 
+			// workspaceRoot.getProject(name) how to find?
+		}
+		
 		AbstractOutputConverter aoc =
 			(outputter.getOutputConverter() == null) ? aoc = new NullOutputConverter() : outputter
 				.getOutputConverter();
@@ -72,6 +88,38 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		
 		appModelResource.unload();
 		
+		try {
+			outputProject.refreshLocal(IProject.DEPTH_INFINITE, new NullProgressMonitor());
+		} catch (CoreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
+	}
+	
+	/**
+	 * generate a new project where the documentation will be stored.
+	 * @param outputter 
+	 * @param uri 
+	 * 
+	 * @return the project directory
+	 */
+	private File createOutputLocation(AbstractOutputter outputter, URI uri){
+		String label = outputter.getOutputterLabel().replace(" ", ".");
+		String[] uriSegments = uri.segments();
+		label = uriSegments[uriSegments.length - 2] + "." + (label.toLowerCase()).trim();
+
+		outputProject = workspaceRoot.getProject(label);
+		try {
+			if (outputProject.exists()) {
+				outputProject.delete(true, null);
+			}
+			outputProject.create(null);
+			outputProject.open(null);
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+		return outputProject.getLocation().toFile();
 	}
 }

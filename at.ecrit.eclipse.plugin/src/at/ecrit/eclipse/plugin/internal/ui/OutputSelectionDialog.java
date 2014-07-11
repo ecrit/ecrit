@@ -173,30 +173,6 @@ public class OutputSelectionDialog extends TitleAreaDialog {
 	}
 	
 	/**
-	 * generate a new project where the documentation will be stored.
-	 * 
-	 * @return the project directory
-	 */
-	private File autoCreateOutputLocation(){
-		String label = getSelectedOutputter().getOutputterLabel().replace(" ", ".");
-		String[] uriSegments = uri.segments();
-		label = uriSegments[uriSegments.length - 2] + "." + (label.toLowerCase()).trim();
-		
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		IProject project = root.getProject(label);
-		try {
-			if (project.exists()) {
-				project.delete(true, null);
-			}
-			project.create(null);
-			project.open(null);
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-		return project.getLocation().toFile();
-	}
-	
-	/**
 	 * Create contents of the button bar.
 	 * 
 	 * @param parent
@@ -224,7 +200,7 @@ public class OutputSelectionDialog extends TitleAreaDialog {
 		if (useExisting) {
 			return (File) outputDirectory.getValue();
 		}
-		return autoCreateOutputLocation();
+		return null;
 	}
 	
 	protected DataBindingContext initDataBindings(){
