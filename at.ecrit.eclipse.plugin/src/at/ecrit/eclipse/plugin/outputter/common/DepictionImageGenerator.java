@@ -1,6 +1,7 @@
 package at.ecrit.eclipse.plugin.outputter.common;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -21,9 +23,11 @@ import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.wb.swt.ResourceManager;
+
+import com.google.common.base.Joiner;
 
 import at.ecrit.document.model.ecritdocument.Document;
-import at.ecrit.document.model.ecritdocument.DocumentedElement;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
 import at.ecrit.eclipse.plugin.outputter.depiction.TreeNode;
 
@@ -33,7 +37,10 @@ public class DepictionImageGenerator {
 	private Resource appModelResource;
 	private File outputLocation;
 	private int width, height;
-
+	
+	private Image applicationImage = ResourceManager.getPluginImage("at.ecrit.eclipse.plugin", "rsc/icons/application_small.png");
+	private Image stackImage = ResourceManager.getPluginImage("at.ecrit.eclipse.plugin", "rsc/icons/applications-stack_small.png");
+	
 	public DepictionImageGenerator(Document document, File outputLocation,
 			Resource appModelResource, int width, int height) {
 		this.document = document;
@@ -97,11 +104,13 @@ public class DepictionImageGenerator {
 					arrangeVertical(node, currentObject, children, weight);
 				}
 
+			} else if (currentObject instanceof MPartStack) {
+				arrangeStacked(node, currentObject, children);
 			} else {
 				Rectangle rect = fixRectangleBoundaries(
 						(Rectangle) treeRoot.getData(),
 						(Rectangle) node.getData());
-				drawRectangle(rect, currentObject, gc);
+				drawRectangle(rect, currentObject, gc, node);
 			}
 
 			System.out
@@ -143,23 +152,47 @@ public class DepictionImageGenerator {
 				newHeight);
 	}
 
-	private void drawRectangle(Rectangle data, MUIElement currentObject, GC gc) {
+	/**
+	 * draws the leaf rectangle, i.e. the single part description element
+	 * @param data
+	 * @param currentObject
+	 * @param gc
+	 * @param node 
+	 */
+	private void drawRectangle(Rectangle data, MUIElement currentObject, GC gc, TreeNode<MUIElement> node) {
 		gc.drawRectangle(data);
 		gc.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_BLACK));
 		gc.fillRectangle(data.x, data.y, data.width, 10);
+		
+		System.out.println("Drawing "+currentObject);
+		
+		String label;
+		if(node.getParent().getReference() instanceof MPartStack) {
+			gc.drawImage(stackImage, data.x+2, data.y+1);
+			List<String> labels = new ArrayList<String>();
+			List<TreeNode<MUIElement>> children = node.getParent().getChildren();
+			for (TreeNode<MUIElement> treeNode : children) {
+				String lab = ((MUILabel)treeNode.getReference()).getLabel();
+				labels.add(lab);
+			}
+			label = Joiner.on(", ").join(labels);
+		} else {
+			gc.drawImage(applicationImage, data.x+2, data.y+1);
+			if (currentObject instanceof MUILabel) {
+				label = ((MUILabel) currentObject).getLabel();
+			} else {
+				label = currentObject.getElementId();
+			}
+		}
+
 		gc.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 
-		String label;
-		if (currentObject instanceof MUILabel) {
-			label = ((MUILabel) currentObject).getLabel();
-		} else {
-			label = currentObject.getElementId();
-		}
 		Point size = gc.textExtent(label);
-		
-		Point center = new Point(data.x+(data.width/2), data.y+(data.height/2));
-		
-		gc.drawText(label, center.x-(size.x/2), center.y);
+
+		Point center = new Point(data.x + (data.width / 2), data.y
+				+ (data.height / 2));
+
+		gc.drawText(label, center.x - (size.x / 2), center.y);
 	}
 
 	/**
@@ -228,6 +261,24 @@ public class DepictionImageGenerator {
 		}
 	}
 
+	/**
+	 * arrange the childs s.t. they are presented within a part stack
+	 * @param node
+	 * @param currentObject
+	 * @param children
+	 */
+	private void arrangeStacked(TreeNode<MUIElement> node,
+			MUIElement currentObject, List<TreeNode<MUIElement>> children) {
+		if (children == null || children.size() == 0)
+			return;
+		for (TreeNode<MUIElement> child : children) {
+			Rectangle thisRectangle = (Rectangle) node.getData();
+			child.setData(thisRectangle);
+		}
+		
+		
+	}
+
 	private int[] ensureSaveWeight(TreeNode<MUIElement> node,
 			List<TreeNode<MUIElement>> children, int[] weight) {
 		int[] ret;
@@ -281,7 +332,8 @@ public class DepictionImageGenerator {
 				}
 			} else if (tree != null
 					&& (eObject instanceof MPartSashContainer
-							|| eObject instanceof MPlaceholder || eObject instanceof MPart)) {
+							|| eObject instanceof MPlaceholder
+							|| eObject instanceof MPart || eObject instanceof MPartStack)) {
 				MUIElement muie;
 				TreeNode<MUIElement> node;
 				if (eObject instanceof MPlaceholder) {
