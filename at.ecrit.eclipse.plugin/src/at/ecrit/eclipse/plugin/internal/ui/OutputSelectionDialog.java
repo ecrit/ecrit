@@ -42,6 +42,7 @@ import org.eclipse.ui.PlatformUI;
 import at.ecrit.eclipse.plugin.extension.AbstractOutputter;
 import at.ecrit.eclipse.plugin.internal.Activator;
 import at.ecrit.eclipse.plugin.internal.OutputExtensionPoint;
+import org.eclipse.wb.swt.ResourceManager;
 
 public class OutputSelectionDialog extends TitleAreaDialog {
 	private DataBindingContext m_bindingContext;
@@ -86,6 +87,7 @@ public class OutputSelectionDialog extends TitleAreaDialog {
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent){
+		setTitleImage(ResourceManager.getPluginImage("at.ecrit.eclipse.plugin", "rsc/icons/ecrit_logo.png"));
 		setTitle("Selection output and destination");
 		
 		Composite area = (Composite) super.createDialogArea(parent);
