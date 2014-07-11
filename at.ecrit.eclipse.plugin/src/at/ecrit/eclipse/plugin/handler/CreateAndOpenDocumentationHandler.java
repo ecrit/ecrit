@@ -9,6 +9,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -40,7 +41,11 @@ import at.ecrit.eclipse.plugin.internal.ProductProcessor;
 import at.ecrit.eclipse.plugin.internal.ui.OutputSelectionDialog;
 
 public class CreateAndOpenDocumentationHandler extends AbstractHandler {
-	private static final String EXTENSION_PRODUCT = "product";
+	private static final String PRODUCT_EXTENSION = "product";
+	private static final String LATEX_EXTENSION = ".tex";
+	private static final String ID_TEXLIPSE_NATURE =
+		"net.sourceforge.texlipse.builder.TexlipseNature";
+	private static final String ID_PACKAGE_EXPLORER = "org.eclipse.jdt.ui.PackageExplorer";
 	
 	@Inject
 	IExtensionRegistry registry;
@@ -56,7 +61,7 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		IFile e4xmiFile = (IFile) selection.getFirstElement();
 		URI uri = URI.createURI(e4xmiFile.getLocationURI().toString());
 		
-		if (e4xmiFile.getFileExtension().equals(EXTENSION_PRODUCT)) {
+		if (e4xmiFile.getFileExtension().equals(PRODUCT_EXTENSION)) {
 			ProductProcessor product = new ProductProcessor(uri);
 			product.mergeApplicationWithFragments();
 			uri = product.getApplicationModelUri();
@@ -102,18 +107,18 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 			e.printStackTrace();
 		}
 		
-		// try to expand the project folder in the package explorer
 		IWorkbenchPage page = window.getActivePage();
-		IViewPart packageExplorer = page.findView("org.eclipse.jdt.ui.PackageExplorer");
+		String mainOutputFile = outputter.getMainDocumentationFileName();
+		
+		// try to expand the project folder in the package explorer
+		IViewPart packageExplorer = page.findView(ID_PACKAGE_EXPLORER);
 		((ISetSelectionTarget) packageExplorer).selectReveal(new StructuredSelection(outputProject
-			.getFile(outputter.getMainDocumentationFileName())));
+			.getFile(mainOutputFile)));
 		
 		// open the main file for editing
-		String mainOutputFile = outputter.getMainDocumentationFileName();
 		try {
 			IDE.openEditor(page, outputProject.getFile(mainOutputFile));
 		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -134,15 +139,49 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		label = uriSegments[uriSegments.length - 2] + "." + (label.toLowerCase()).trim();
 		
 		outputProject = workspaceRoot.getProject(label);
+		
 		try {
 			if (outputProject.exists()) {
 				outputProject.delete(true, null);
 			}
 			outputProject.create(null);
 			outputProject.open(null);
+			
+			// set latex nature for latex outputs
+			if (outputter.getMainDocumentationFileName().endsWith(LATEX_EXTENSION)) {
+				IProjectDescription desc = createLatexNature(outputProject);
+				outputProject.setDescription(desc, null);
+			}
+			
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
 		return outputProject.getLocation().toFile();
+	}
+	
+	/**
+	 * creates the texlipse nature for latex output project
+	 * 
+	 * @param outputProject
+	 * @return
+	 */
+	private IProjectDescription createLatexNature(IProject outputProject){
+		IProjectDescription desc =
+			outputProject.getWorkspace().newProjectDescription(outputProject.getName());
+		
+		String[] natures = desc.getNatureIds();
+		for (int i = 0; i < natures.length; i++) {
+			// don't add if already there
+			if (ID_TEXLIPSE_NATURE.equals(natures[i])) {
+				return desc;
+			}
+		}
+		
+		String[] newNatures = new String[natures.length + 1];
+		System.arraycopy(natures, 0, newNatures, 1, natures.length);
+		newNatures[0] = ID_TEXLIPSE_NATURE;
+		desc.setNatureIds(newNatures);
+		
+		return desc;
 	}
 }

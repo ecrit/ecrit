@@ -29,6 +29,7 @@ import freemarker.template.TemplateException;
 
 public class LatexOutputter extends AbstractOutputter {
 	private static final String TEMPLATE_LOCATION = "/rsc/templates";
+	public static final String OUTPUT_FILE = "main.tex";
 	
 	@Override
 	public String getOutputterLabel(){
@@ -115,7 +116,7 @@ public class LatexOutputter extends AbstractOutputter {
 		input.put("doc", doc);
 		
 		try {
-			File outputFile = new File(targetDirectory, "main.tex");
+			File outputFile = new File(targetDirectory, OUTPUT_FILE);
 			FileWriter fileWriter = new FileWriter(outputFile);
 			template.process(input, fileWriter);
 			fileWriter.close();
@@ -131,5 +132,10 @@ public class LatexOutputter extends AbstractOutputter {
 	@Override
 	public AbstractOutputConverter getOutputConverter(){
 		return new LatexOutputConverter();
+	}
+	
+	@Override
+	public String getMainDocumentationFileName(){
+		return OUTPUT_FILE;
 	}
 }
