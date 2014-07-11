@@ -13,5 +13,43 @@
             contribution="at.ecrit.e4.tools.extension.core.EcritPerspectiveStackDocumentationElementEditorContribution">
       </editorTab>      
    </extension>
-
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="at.ecrit.e4.tools.extension.core.command.cut"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+X">
+      </key>
+      <key
+            commandId="at.ecrit.e4.tools.extension.core.command.copy"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+C">
+      </key>
+      <key
+            commandId="at.ecrit.e4.tools.extension.core.command.paste"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+V">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="at.ecrit.e4.tools.extension.core.commands.CutHandler"
+            id="at.ecrit.e4.tools.extension.core.command.cut"
+            name="Cut">
+      </command>
+      <command
+            defaultHandler="at.ecrit.e4.tools.extension.core.commands.CopyHandler"
+            id="at.ecrit.e4.tools.extension.core.command.copy"
+            name="Copy">
+      </command>
+      <command
+            defaultHandler="at.ecrit.e4.tools.extension.core.commands.PasteHandler"
+            id="at.ecrit.e4.tools.extension.core.command.paste"
+            name="Paste">
+      </command>
+   </extension>
 </plugin>
