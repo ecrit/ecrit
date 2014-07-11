@@ -11,14 +11,18 @@ import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 
 import at.ecrit.e4.tools.extension.core.assistance.TextileContentAssistProcessor;
@@ -67,20 +71,62 @@ public class MapEntryEditorComposite extends AbstractEditorComposite {
 			viewer.getControl().setLayoutData(gd_Viewer);
 			viewer.setDocument(new Document());
 			viewer.setEditable(true);
+			viewer.enableOperation(ISourceViewer.CONTENTASSIST_PROPOSALS, true);
+			viewer.enableOperation(ISourceViewer.QUICK_ASSIST, true);
+			viewer.enableOperation(ISourceViewer.CONTENTASSIST_CONTEXT_INFORMATION, true);
 			viewer.configure(new TextileSourceViewerConfiguration());
 			viewer.getControl().addKeyListener(new KeyAdapter() {
 				public void keyPressed(KeyEvent e){
-					if ((e.character == SWT.SPACE) && ((e.stateMask & SWT.CTRL) != 0)) {
+					if ((e.character == SWT.SPACE) && ((e.stateMask & SWT.MOD1) != 0)) {
 						viewer.doOperation(ISourceViewer.CONTENTASSIST_PROPOSALS);
-					} else {
-						// ignore
 					}
 				}
 			});
-			
+			StyledText styledTxt = viewer.getTextWidget();
+			initStyledTextMenu(styledTxt);
 			context.bindValue(textProp.observeDelayed(200, viewer.getTextWidget()),
 				value_description);
 		}
+	}
+	
+	private void initStyledTextMenu(final StyledText styledTxt){
+		Menu stMenu = new Menu(styledTxt);
+		
+		MenuItem cutMenu = new MenuItem(stMenu, SWT.NONE);
+		cutMenu.setText("Cut\tCtrl+X");
+		cutMenu.setAccelerator(SWT.MOD1 + 'X');
+		cutMenu.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e){
+				styledTxt.cut();
+				styledTxt.redraw();
+				System.out.println("done the cut");
+			}
+		});
+		
+		MenuItem copyMenu = new MenuItem(stMenu, SWT.NONE);
+		copyMenu.setText("Copy\tCtrl+C");
+		copyMenu.setAccelerator(SWT.MOD1 + 'C');
+		copyMenu.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e){
+				styledTxt.copy();
+				System.out.println("done the copy");
+			}
+		});
+		
+		MenuItem pasteMenu = new MenuItem(stMenu, SWT.NONE);
+		pasteMenu.setText("Paste\tCtrl+P");
+		pasteMenu.setAccelerator(SWT.MOD1 + 'V');
+		pasteMenu.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e){
+				styledTxt.paste();
+				styledTxt.redraw();
+				System.out.println("done the paste");
+			}
+		});
+		styledTxt.setMenu(stMenu);
 	}
 	
 	/**
