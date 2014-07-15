@@ -178,6 +178,8 @@ public class ProductProcessor {
 				File pluginFile = new File(location);
 				
 				mFragments.addAll(FragmentExtensionPoint.getContributedFragments(pluginFile));
+			} else {
+				System.out.println("Could not resolve bundle by id "+id);
 			}
 		}
 		System.out.println("Found [" + mFragments.size() + "] fragments");
