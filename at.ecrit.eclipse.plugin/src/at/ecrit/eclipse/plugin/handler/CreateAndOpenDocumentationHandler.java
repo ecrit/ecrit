@@ -9,7 +9,6 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -42,9 +41,6 @@ import at.ecrit.eclipse.plugin.internal.ui.OutputSelectionDialog;
 
 public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 	private static final String PRODUCT_EXTENSION = "product";
-	private static final String LATEX_EXTENSION = ".tex";
-	private static final String ID_TEXLIPSE_NATURE =
-		"net.sourceforge.texlipse.builder.TexlipseNature";
 	private static final String ID_PACKAGE_EXPLORER = "org.eclipse.jdt.ui.PackageExplorer";
 	
 	@Inject
@@ -146,12 +142,7 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 			}
 			outputProject.create(null);
 			outputProject.open(null);
-			
-			// set latex nature for latex outputs
-			if (outputter.getMainDocumentationFileName().endsWith(LATEX_EXTENSION)) {
-				IProjectDescription desc = createLatexNature(outputProject);
-				outputProject.setDescription(desc, null);
-			}
+			outputter.setProjectDescription(outputProject);
 			
 		} catch (CoreException e) {
 			e.printStackTrace();
@@ -159,29 +150,4 @@ public class CreateAndOpenDocumentationHandler extends AbstractHandler {
 		return outputProject.getLocation().toFile();
 	}
 	
-	/**
-	 * creates the texlipse nature for latex output project
-	 * 
-	 * @param outputProject
-	 * @return
-	 */
-	private IProjectDescription createLatexNature(IProject outputProject){
-		IProjectDescription desc =
-			outputProject.getWorkspace().newProjectDescription(outputProject.getName());
-		
-		String[] natures = desc.getNatureIds();
-		for (int i = 0; i < natures.length; i++) {
-			// don't add if already there
-			if (ID_TEXLIPSE_NATURE.equals(natures[i])) {
-				return desc;
-			}
-		}
-		
-		String[] newNatures = new String[natures.length + 1];
-		System.arraycopy(natures, 0, newNatures, 1, natures.length);
-		newNatures[0] = ID_TEXLIPSE_NATURE;
-		desc.setNatureIds(newNatures);
-		
-		return desc;
-	}
 }

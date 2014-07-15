@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
@@ -30,6 +33,8 @@ import freemarker.template.TemplateException;
 public class LatexOutputter extends AbstractOutputter {
 	private static final String TEMPLATE_LOCATION = "/rsc/templates";
 	public static final String OUTPUT_FILE = "main.tex";
+	private static final String ID_TEXLIPSE_NATURE =
+		"net.sourceforge.texlipse.builder.TexlipseNature";
 	
 	@Override
 	public String getOutputterLabel(){
@@ -137,5 +142,30 @@ public class LatexOutputter extends AbstractOutputter {
 	@Override
 	public String getMainDocumentationFileName(){
 		return OUTPUT_FILE;
+	}
+	
+	@Override
+	public void setProjectDescription(IProject project){
+		IProjectDescription desc = project.getWorkspace().newProjectDescription(project.getName());
+		
+		try {
+			String[] natures = desc.getNatureIds();
+			for (int i = 0; i < natures.length; i++) {
+				// don't add if already there
+				if (ID_TEXLIPSE_NATURE.equals(natures[i])) {
+					project.setDescription(desc, null);
+					return;
+				}
+			}
+			
+			String[] newNatures = new String[natures.length + 1];
+			System.arraycopy(natures, 0, newNatures, 1, natures.length);
+			newNatures[0] = ID_TEXLIPSE_NATURE;
+			desc.setNatureIds(newNatures);
+			
+			project.setDescription(desc, null);
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
 	}
 }

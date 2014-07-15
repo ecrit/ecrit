@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.0",
  org.eclipse.mylyn.wikitext.core,
  at.ecrit.eclipse.plugin.outputter.html,
  html.to.latex,
- org.apache.commons.io
+ org.apache.commons.io,
+ org.eclipse.core.resources
 Import-Package: org.eclipse.core.runtime
 Bundle-ClassPath: lib/freemarker.jar,
  .
