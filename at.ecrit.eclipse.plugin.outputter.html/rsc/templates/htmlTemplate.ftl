@@ -23,7 +23,7 @@
  
   <#if (doc.applicationProperties.requiresLogin)>
   	  <h3>Access, or log-on and sign-off from the software</h3>
-  	  This application requires a login.
+  	  This application requires a login.w
   </#if>
   
   <h3>Navigation through the software to access and to exit from functions</h3>
@@ -50,12 +50,61 @@
 				</ul>
 			  </#list>
 		  </#if>
-		  <#if win.containedTrimElements?has_content>
-		  <h4>${win.modelElement.label} Toolbar</h4>
-		  	<#list win.containedTrimElements as element>
-		  		<ul>
-		  			<li id="${element.elementId}">${element.elementId}</li>
-		  		</ul>
+		 
+		  <#if win.containedTrimBars?has_content>
+		  <h4>${win.modelElement.label} Toolbars</h4>
+		  	<#list win.containedTrimBars as trimBar>
+		  		<h5>${trimBar.modelElement.side}</h5>
+		  		<p><i>Description</i> ${trimBar.description}<p>
+		  		<#if trimBar.containedTrimElements?has_content>
+		  			<#list trimBar.containedTrimElements as trimElement>
+		  				<ul>
+	  						<li id="${trimElement.modelElement.elementId}">${trimElement.modelElement.elementId}</li>
+	  						<#if trimElement.description?has_content>
+	  							<p><i>Description</i> ${trimElement.description}<p>
+	  						</#if>
+		  				</ul>
+		  			</#list>
+		  		</#if>
+		  		
+	  			<#if trimBar.containedToolBars?has_content>
+		  			<#list trimBar.containedToolBars as toolBar>
+		  				<ul>
+		  					<li>
+		  						<h5>${toolBar.elementId}</h5>
+		  					</li>
+		  					<#if trimBar.containedToolBarElements?has_content>
+			  					<#list trimBar.containedToolBarElements as toolBarElement>
+			  						<#if toolBarElement.containedInToolBar?has_content>
+			  							<ul>
+				  							<#list toolBarElement.containedInToolBar as contToolBar>
+				  								<#if toolBar.elementId == contToolBar.elementId>
+				  									<#if toolBarElement.modelElement.class.simpleName == "HandledToolItemImpl" || toolBarElement.modelElement.class.simpleName == "DirectToolItemImpl">
+				  										<li id="${toolBarElement.modelElement.elementId}">
+				  											${toolBarElement.modelElement.label}
+				  										</li>
+				  										<p>
+				  											<i>Description</i>
+				  											${toolBarElement.description}
+				  										</p>
+				  									<#else>
+				  										<li id="${toolBarElement.modelElement.elementId}">
+				  											${toolBarElement.modelElement.elementId}
+				  										</li>
+				  										<p>
+				  											<i>Description</i>
+				  											${toolBarElement.description}
+				  										</p>
+				  									</#if>
+				  								</#if>
+				  							</#list>
+				  						</ul>
+			  						</#if>
+			  					</#list>
+		  					</#if>
+		  				</ul>
+		  			</#list>
+	  			</#if>
 		  	</#list>
 		  </#if>
 	</#list>
