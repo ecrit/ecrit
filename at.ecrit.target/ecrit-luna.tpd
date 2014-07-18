@@ -25,6 +25,7 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2014011414271
 	org.mozilla.javascript
 	org.junit
 	com.lowagie.text
+	org.apache.commons.io
 }
 
 location "http://download.vogella.com/luna/e4tools" {
