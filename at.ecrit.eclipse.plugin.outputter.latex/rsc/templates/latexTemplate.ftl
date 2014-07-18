@@ -227,15 +227,16 @@ This perspective contains the following parts
 	<#else>
 		\subsubsection{${part.modelElement.elementId?replace("%","")}}
 	</#if>
-	 ${part.description}\\[2ex]	 
+	 ${part.description}
+	 \vspace{2ex}	 
 	 \textsf{Menus}
 	 \begin{itemize}
 		 <#if part.containedMenus?has_content>
 			 	<#list part.containedMenus as containedMenu>
 			 		<#if containedMenu.modelElement.label??>
-			 			\item ${containedMenu.modelElement.label?replace("%","")}\\
+			 			\item ${containedMenu.modelElement.label?replace("%","")}
 			 		<#else>
-			 			\item ${containedMenu.modelElement.elementId?replace("%","")}\\
+			 			\item ${containedMenu.modelElement.elementId?replace("%","")}
 			 		</#if>
 			 		${containedMenu.description}
 			 	</#list>
@@ -255,9 +256,10 @@ This perspective contains the following parts
 %----------------------------------------------------------------------------------------
 <#list doc.step as st>
  	\subsection{${st.command.commandName?replace("%","")!""}}
- 	${st.description!""} \\[2ex]
+ 	${st.description!""}
+ 	\vspace{2ex}
  	\textsf{Requirements}
- 		${st.precondition!""} \\
+ 		${st.precondition!""}
  	\textsf{Executable by}
  		\begin{itemize}
 		 	<#list st.initiatableBy as it>
@@ -282,7 +284,7 @@ This perspective contains the following parts
 			<#if st.keybinding??>
 				\item KeySqeuence: ${st.keybinding.keySequence}
 			</#if>
-		\end{itemize}\\
+		\end{itemize}
     \textsf{Completion information}
     ${st.postcondition!""}
  </#list>
