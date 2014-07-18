@@ -1,6 +1,6 @@
 target "Luna SDK"
 
-with source, requirements
+with source, allEnvironments
 
 // Eclipse plugins dependencies
 // 	org.eclipse.sdk.ide	
