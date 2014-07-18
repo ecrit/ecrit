@@ -71,6 +71,9 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 			case EcritdocumentPackage.DOCUMENTED_WINDOW: return createDocumentedWindow();
 			case EcritdocumentPackage.APPLICATION_PROPERTIES: return createApplicationProperties();
 			case EcritdocumentPackage.DOCUMENTED_MENU: return createDocumentedMenu();
+			case EcritdocumentPackage.DOCUMENTED_TRIM_BAR: return createDocumentedTrimBar();
+			case EcritdocumentPackage.DOCUMENTED_TRIM: return createDocumentedTrim();
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR: return createDocumentedToolBar();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -228,6 +231,36 @@ public class EcritdocumentFactoryImpl extends EFactoryImpl implements Ecritdocum
 	public DocumentedMenu createDocumentedMenu() {
 		DocumentedMenuImpl documentedMenu = new DocumentedMenuImpl();
 		return documentedMenu;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DocumentedTrimBar createDocumentedTrimBar() {
+		DocumentedTrimBarImpl documentedTrimBar = new DocumentedTrimBarImpl();
+		return documentedTrimBar;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DocumentedTrim createDocumentedTrim() {
+		DocumentedTrimImpl documentedTrim = new DocumentedTrimImpl();
+		return documentedTrim;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DocumentedToolBar createDocumentedToolBar() {
+		DocumentedToolBarImpl documentedToolBar = new DocumentedToolBarImpl();
+		return documentedToolBar;
 	}
 
 	/**

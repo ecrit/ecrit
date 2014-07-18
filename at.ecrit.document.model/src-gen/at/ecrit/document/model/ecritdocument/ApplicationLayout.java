@@ -18,6 +18,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getPart <em>Part</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getWindow <em>Window</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getMenu <em>Menu</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getTrimBar <em>Trim Bar</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getTrim <em>Trim</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getToolBar <em>Tool Bar</em>}</li>
  * </ul>
  * </p>
  *
@@ -89,5 +92,53 @@ public interface ApplicationLayout extends EObject {
 	 * @generated
 	 */
 	EList<DocumentedMenu> getMenu();
+
+	/**
+	 * Returns the value of the '<em><b>Trim Bar</b></em>' containment reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedTrimBar}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Trim Bar</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trim Bar</em>' containment reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationLayout_TrimBar()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<DocumentedTrimBar> getTrimBar();
+
+	/**
+	 * Returns the value of the '<em><b>Trim</b></em>' reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedTrim}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Trim</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trim</em>' reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationLayout_Trim()
+	 * @model
+	 * @generated
+	 */
+	EList<DocumentedTrim> getTrim();
+
+	/**
+	 * Returns the value of the '<em><b>Tool Bar</b></em>' reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedToolBar}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Tool Bar</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Tool Bar</em>' reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationLayout_ToolBar()
+	 * @model
+	 * @generated
+	 */
+	EList<DocumentedToolBar> getToolBar();
 
 } // ApplicationLayout

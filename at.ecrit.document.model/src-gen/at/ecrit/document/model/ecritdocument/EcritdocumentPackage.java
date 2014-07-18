@@ -753,13 +753,40 @@ public interface EcritdocumentPackage extends EPackage {
 	int APPLICATION_LAYOUT__MENU = 3;
 
 	/**
+	 * The feature id for the '<em><b>Trim Bar</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_LAYOUT__TRIM_BAR = 4;
+
+	/**
+	 * The feature id for the '<em><b>Trim</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_LAYOUT__TRIM = 5;
+
+	/**
+	 * The feature id for the '<em><b>Tool Bar</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_LAYOUT__TOOL_BAR = 6;
+
+	/**
 	 * The number of structural features of the '<em>Application Layout</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_LAYOUT_FEATURE_COUNT = 4;
+	int APPLICATION_LAYOUT_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Application Layout</em>' class.
@@ -999,13 +1026,13 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENTED_WINDOW__CONTAINED_MENUS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Contained Trim Elements</b></em>' reference list.
+	 * The feature id for the '<em><b>Contained Trim Bars</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENTED_WINDOW__CONTAINED_TRIM_ELEMENTS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int DOCUMENTED_WINDOW__CONTAINED_TRIM_BARS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Documented Window</em>' class.
@@ -1190,6 +1217,261 @@ public interface EcritdocumentPackage extends EPackage {
 	int DOCUMENTED_MENU_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedTrimBarImpl <em>Documented Trim Bar</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedTrimBarImpl
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedTrimBar()
+	 * @generated
+	 */
+	int DOCUMENTED_TRIM_BAR = 14;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR__DESCRIPTION = DOCUMENTED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR__PRECONDITION = DOCUMENTED_ELEMENT__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR__POSTCONDITION = DOCUMENTED_ELEMENT__POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR__MODEL_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contained In Window</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR__CONTAINED_IN_WINDOW = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Contained Trim Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR__CONTAINED_TRIM_ELEMENTS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Contained Tool Bars</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR__CONTAINED_TOOL_BARS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Contained Tool Bar Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR__CONTAINED_TOOL_BAR_ELEMENTS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Documented Trim Bar</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>Documented Trim Bar</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_BAR_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedTrimImpl <em>Documented Trim</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedTrimImpl
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedTrim()
+	 * @generated
+	 */
+	int DOCUMENTED_TRIM = 15;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM__DESCRIPTION = DOCUMENTED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM__PRECONDITION = DOCUMENTED_ELEMENT__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM__POSTCONDITION = DOCUMENTED_ELEMENT__POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM__MODEL_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contained In Trim Bar</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM__CONTAINED_IN_TRIM_BAR = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Documented Trim</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Documented Trim</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TRIM_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl <em>Documented Tool Bar</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl
+	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedToolBar()
+	 * @generated
+	 */
+	int DOCUMENTED_TOOL_BAR = 16;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TOOL_BAR__DESCRIPTION = DOCUMENTED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TOOL_BAR__PRECONDITION = DOCUMENTED_ELEMENT__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TOOL_BAR__POSTCONDITION = DOCUMENTED_ELEMENT__POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TOOL_BAR__MODEL_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contained In Trim Bar</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TOOL_BAR__CONTAINED_IN_TRIM_BAR = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Contained In Tool Bar</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TOOL_BAR__CONTAINED_IN_TOOL_BAR = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Documented Tool Bar</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TOOL_BAR_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Documented Tool Bar</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENTED_TOOL_BAR_OPERATION_COUNT = DOCUMENTED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1197,7 +1479,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getInitiatableItemType()
 	 * @generated
 	 */
-	int INITIATABLE_ITEM_TYPE = 14;
+	int INITIATABLE_ITEM_TYPE = 17;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -1207,7 +1489,7 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 15;
+	int IO_EXCEPTION = 18;
 
 
 	/**
@@ -1606,6 +1888,39 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getApplicationLayout_Menu();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getTrimBar <em>Trim Bar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Trim Bar</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getTrimBar()
+	 * @see #getApplicationLayout()
+	 * @generated
+	 */
+	EReference getApplicationLayout_TrimBar();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getTrim <em>Trim</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Trim</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getTrim()
+	 * @see #getApplicationLayout()
+	 * @generated
+	 */
+	EReference getApplicationLayout_Trim();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.ApplicationLayout#getToolBar <em>Tool Bar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Tool Bar</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationLayout#getToolBar()
+	 * @see #getApplicationLayout()
+	 * @generated
+	 */
+	EReference getApplicationLayout_ToolBar();
+
+	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedElement <em>Documented Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1778,15 +2093,15 @@ public interface EcritdocumentPackage extends EPackage {
 	EReference getDocumentedWindow_ContainedMenus();
 
 	/**
-	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedTrimElements <em>Contained Trim Elements</em>}'.
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedTrimBars <em>Contained Trim Bars</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Contained Trim Elements</em>'.
-	 * @see at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedTrimElements()
+	 * @return the meta object for the reference list '<em>Contained Trim Bars</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedTrimBars()
 	 * @see #getDocumentedWindow()
 	 * @generated
 	 */
-	EReference getDocumentedWindow_ContainedTrimElements();
+	EReference getDocumentedWindow_ContainedTrimBars();
 
 	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties <em>Application Properties</em>}'.
@@ -1906,6 +2221,146 @@ public interface EcritdocumentPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDocumentedMenu_ContainedMenuItems();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedTrimBar <em>Documented Trim Bar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Documented Trim Bar</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrimBar
+	 * @generated
+	 */
+	EClass getDocumentedTrimBar();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getModelElement <em>Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Model Element</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getModelElement()
+	 * @see #getDocumentedTrimBar()
+	 * @generated
+	 */
+	EReference getDocumentedTrimBar_ModelElement();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getContainedInWindow <em>Contained In Window</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained In Window</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getContainedInWindow()
+	 * @see #getDocumentedTrimBar()
+	 * @generated
+	 */
+	EReference getDocumentedTrimBar_ContainedInWindow();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getContainedTrimElements <em>Contained Trim Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained Trim Elements</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getContainedTrimElements()
+	 * @see #getDocumentedTrimBar()
+	 * @generated
+	 */
+	EReference getDocumentedTrimBar_ContainedTrimElements();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getContainedToolBars <em>Contained Tool Bars</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained Tool Bars</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getContainedToolBars()
+	 * @see #getDocumentedTrimBar()
+	 * @generated
+	 */
+	EReference getDocumentedTrimBar_ContainedToolBars();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getContainedToolBarElements <em>Contained Tool Bar Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained Tool Bar Elements</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrimBar#getContainedToolBarElements()
+	 * @see #getDocumentedTrimBar()
+	 * @generated
+	 */
+	EReference getDocumentedTrimBar_ContainedToolBarElements();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedTrim <em>Documented Trim</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Documented Trim</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrim
+	 * @generated
+	 */
+	EClass getDocumentedTrim();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.ecrit.document.model.ecritdocument.DocumentedTrim#getModelElement <em>Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Model Element</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrim#getModelElement()
+	 * @see #getDocumentedTrim()
+	 * @generated
+	 */
+	EReference getDocumentedTrim_ModelElement();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedTrim#getContainedInTrimBar <em>Contained In Trim Bar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained In Trim Bar</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrim#getContainedInTrimBar()
+	 * @see #getDocumentedTrim()
+	 * @generated
+	 */
+	EReference getDocumentedTrim_ContainedInTrimBar();
+
+	/**
+	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedToolBar <em>Documented Tool Bar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Documented Tool Bar</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedToolBar
+	 * @generated
+	 */
+	EClass getDocumentedToolBar();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.ecrit.document.model.ecritdocument.DocumentedToolBar#getModelElement <em>Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Model Element</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedToolBar#getModelElement()
+	 * @see #getDocumentedToolBar()
+	 * @generated
+	 */
+	EReference getDocumentedToolBar_ModelElement();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedToolBar#getContainedInTrimBar <em>Contained In Trim Bar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained In Trim Bar</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedToolBar#getContainedInTrimBar()
+	 * @see #getDocumentedToolBar()
+	 * @generated
+	 */
+	EReference getDocumentedToolBar_ContainedInTrimBar();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.ecrit.document.model.ecritdocument.DocumentedToolBar#getContainedInToolBar <em>Contained In Tool Bar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contained In Tool Bar</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedToolBar#getContainedInToolBar()
+	 * @see #getDocumentedToolBar()
+	 * @generated
+	 */
+	EReference getDocumentedToolBar_ContainedInToolBar();
 
 	/**
 	 * Returns the meta object for enum '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}'.
@@ -2264,6 +2719,30 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference APPLICATION_LAYOUT__MENU = eINSTANCE.getApplicationLayout_Menu();
 
 		/**
+		 * The meta object literal for the '<em><b>Trim Bar</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION_LAYOUT__TRIM_BAR = eINSTANCE.getApplicationLayout_TrimBar();
+
+		/**
+		 * The meta object literal for the '<em><b>Trim</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION_LAYOUT__TRIM = eINSTANCE.getApplicationLayout_Trim();
+
+		/**
+		 * The meta object literal for the '<em><b>Tool Bar</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION_LAYOUT__TOOL_BAR = eINSTANCE.getApplicationLayout_ToolBar();
+
+		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.DocumentedElement <em>Documented Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2400,12 +2879,12 @@ public interface EcritdocumentPackage extends EPackage {
 		EReference DOCUMENTED_WINDOW__CONTAINED_MENUS = eINSTANCE.getDocumentedWindow_ContainedMenus();
 
 		/**
-		 * The meta object literal for the '<em><b>Contained Trim Elements</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Contained Trim Bars</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DOCUMENTED_WINDOW__CONTAINED_TRIM_ELEMENTS = eINSTANCE.getDocumentedWindow_ContainedTrimElements();
+		EReference DOCUMENTED_WINDOW__CONTAINED_TRIM_BARS = eINSTANCE.getDocumentedWindow_ContainedTrimBars();
 
 		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl <em>Application Properties</em>}' class.
@@ -2498,6 +2977,116 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOCUMENTED_MENU__CONTAINED_MENU_ITEMS = eINSTANCE.getDocumentedMenu_ContainedMenuItems();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedTrimBarImpl <em>Documented Trim Bar</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedTrimBarImpl
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedTrimBar()
+		 * @generated
+		 */
+		EClass DOCUMENTED_TRIM_BAR = eINSTANCE.getDocumentedTrimBar();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TRIM_BAR__MODEL_ELEMENT = eINSTANCE.getDocumentedTrimBar_ModelElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained In Window</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TRIM_BAR__CONTAINED_IN_WINDOW = eINSTANCE.getDocumentedTrimBar_ContainedInWindow();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Trim Elements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TRIM_BAR__CONTAINED_TRIM_ELEMENTS = eINSTANCE.getDocumentedTrimBar_ContainedTrimElements();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Tool Bars</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TRIM_BAR__CONTAINED_TOOL_BARS = eINSTANCE.getDocumentedTrimBar_ContainedToolBars();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Tool Bar Elements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TRIM_BAR__CONTAINED_TOOL_BAR_ELEMENTS = eINSTANCE.getDocumentedTrimBar_ContainedToolBarElements();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedTrimImpl <em>Documented Trim</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedTrimImpl
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedTrim()
+		 * @generated
+		 */
+		EClass DOCUMENTED_TRIM = eINSTANCE.getDocumentedTrim();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TRIM__MODEL_ELEMENT = eINSTANCE.getDocumentedTrim_ModelElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained In Trim Bar</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TRIM__CONTAINED_IN_TRIM_BAR = eINSTANCE.getDocumentedTrim_ContainedInTrimBar();
+
+		/**
+		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl <em>Documented Tool Bar</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl
+		 * @see at.ecrit.document.model.ecritdocument.impl.EcritdocumentPackageImpl#getDocumentedToolBar()
+		 * @generated
+		 */
+		EClass DOCUMENTED_TOOL_BAR = eINSTANCE.getDocumentedToolBar();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TOOL_BAR__MODEL_ELEMENT = eINSTANCE.getDocumentedToolBar_ModelElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained In Trim Bar</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TOOL_BAR__CONTAINED_IN_TRIM_BAR = eINSTANCE.getDocumentedToolBar_ContainedInTrimBar();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained In Tool Bar</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENTED_TOOL_BAR__CONTAINED_IN_TOOL_BAR = eINSTANCE.getDocumentedToolBar_ContainedInToolBar();
 
 		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.InitiatableItemType <em>Initiatable Item Type</em>}' enum.
