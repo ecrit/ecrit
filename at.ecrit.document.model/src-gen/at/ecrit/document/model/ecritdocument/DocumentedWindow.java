@@ -3,7 +3,6 @@
 package at.ecrit.document.model.ecritdocument;
 
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
-import org.eclipse.e4.ui.model.application.ui.basic.MTrimElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.emf.common.util.EList;
 
@@ -18,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedWindow#getModelElement <em>Model Element</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedPerspective <em>Contained Perspective</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedMenus <em>Contained Menus</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedTrimElements <em>Contained Trim Elements</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.DocumentedWindow#getContainedTrimBars <em>Contained Trim Bars</em>}</li>
  * </ul>
  * </p>
  *
@@ -86,19 +85,19 @@ public interface DocumentedWindow extends DocumentedElement {
 	EList<DocumentedMenu> getContainedMenus();
 
 	/**
-	 * Returns the value of the '<em><b>Contained Trim Elements</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.e4.ui.model.application.ui.basic.MTrimElement}.
+	 * Returns the value of the '<em><b>Contained Trim Bars</b></em>' reference list.
+	 * The list contents are of type {@link at.ecrit.document.model.ecritdocument.DocumentedTrimBar}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Contained Trim Elements</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Contained Trim Bars</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Trim Elements</em>' reference list.
-	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getDocumentedWindow_ContainedTrimElements()
+	 * @return the value of the '<em>Contained Trim Bars</em>' reference list.
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getDocumentedWindow_ContainedTrimBars()
 	 * @model
 	 * @generated
 	 */
-	EList<MTrimElement> getContainedTrimElements();
+	EList<DocumentedTrimBar> getContainedTrimBars();
 
 } // DocumentedWindow

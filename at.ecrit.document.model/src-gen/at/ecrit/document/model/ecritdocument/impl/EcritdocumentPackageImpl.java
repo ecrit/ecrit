@@ -11,6 +11,9 @@ import at.ecrit.document.model.ecritdocument.DocumentedElement;
 import at.ecrit.document.model.ecritdocument.DocumentedMenu;
 import at.ecrit.document.model.ecritdocument.DocumentedPart;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
+import at.ecrit.document.model.ecritdocument.DocumentedToolBar;
+import at.ecrit.document.model.ecritdocument.DocumentedTrim;
+import at.ecrit.document.model.ecritdocument.DocumentedTrimBar;
 import at.ecrit.document.model.ecritdocument.DocumentedWindow;
 import at.ecrit.document.model.ecritdocument.EcritdocumentFactory;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
@@ -149,6 +152,27 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * @generated
 	 */
 	private EClass documentedMenuEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass documentedTrimBarEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass documentedTrimEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass documentedToolBarEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -566,6 +590,33 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getApplicationLayout_TrimBar() {
+		return (EReference)applicationLayoutEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplicationLayout_Trim() {
+		return (EReference)applicationLayoutEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplicationLayout_ToolBar() {
+		return (EReference)applicationLayoutEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDocumentedElement() {
 		return documentedElementEClass;
 	}
@@ -710,7 +761,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDocumentedWindow_ContainedTrimElements() {
+	public EReference getDocumentedWindow_ContainedTrimBars() {
 		return (EReference)documentedWindowEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -818,6 +869,123 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDocumentedTrimBar() {
+		return documentedTrimBarEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedTrimBar_ModelElement() {
+		return (EReference)documentedTrimBarEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedTrimBar_ContainedInWindow() {
+		return (EReference)documentedTrimBarEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedTrimBar_ContainedTrimElements() {
+		return (EReference)documentedTrimBarEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedTrimBar_ContainedToolBars() {
+		return (EReference)documentedTrimBarEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedTrimBar_ContainedToolBarElements() {
+		return (EReference)documentedTrimBarEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDocumentedTrim() {
+		return documentedTrimEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedTrim_ModelElement() {
+		return (EReference)documentedTrimEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedTrim_ContainedInTrimBar() {
+		return (EReference)documentedTrimEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDocumentedToolBar() {
+		return documentedToolBarEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedToolBar_ModelElement() {
+		return (EReference)documentedToolBarEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedToolBar_ContainedInTrimBar() {
+		return (EReference)documentedToolBarEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentedToolBar_ContainedInToolBar() {
+		return (EReference)documentedToolBarEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getInitiatableItemType() {
 		return initiatableItemTypeEEnum;
 	}
@@ -903,6 +1071,9 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEReference(applicationLayoutEClass, APPLICATION_LAYOUT__PART);
 		createEReference(applicationLayoutEClass, APPLICATION_LAYOUT__WINDOW);
 		createEReference(applicationLayoutEClass, APPLICATION_LAYOUT__MENU);
+		createEReference(applicationLayoutEClass, APPLICATION_LAYOUT__TRIM_BAR);
+		createEReference(applicationLayoutEClass, APPLICATION_LAYOUT__TRIM);
+		createEReference(applicationLayoutEClass, APPLICATION_LAYOUT__TOOL_BAR);
 
 		documentedElementEClass = createEClass(DOCUMENTED_ELEMENT);
 		createEAttribute(documentedElementEClass, DOCUMENTED_ELEMENT__DESCRIPTION);
@@ -923,7 +1094,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__MODEL_ELEMENT);
 		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE);
 		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__CONTAINED_MENUS);
-		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__CONTAINED_TRIM_ELEMENTS);
+		createEReference(documentedWindowEClass, DOCUMENTED_WINDOW__CONTAINED_TRIM_BARS);
 
 		applicationPropertiesEClass = createEClass(APPLICATION_PROPERTIES);
 		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__ABOUT);
@@ -937,6 +1108,22 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEReference(documentedMenuEClass, DOCUMENTED_MENU__CONTAINED_IN_PART);
 		createEReference(documentedMenuEClass, DOCUMENTED_MENU__CONTAINED_IN_WINDOW);
 		createEReference(documentedMenuEClass, DOCUMENTED_MENU__CONTAINED_MENU_ITEMS);
+
+		documentedTrimBarEClass = createEClass(DOCUMENTED_TRIM_BAR);
+		createEReference(documentedTrimBarEClass, DOCUMENTED_TRIM_BAR__MODEL_ELEMENT);
+		createEReference(documentedTrimBarEClass, DOCUMENTED_TRIM_BAR__CONTAINED_IN_WINDOW);
+		createEReference(documentedTrimBarEClass, DOCUMENTED_TRIM_BAR__CONTAINED_TRIM_ELEMENTS);
+		createEReference(documentedTrimBarEClass, DOCUMENTED_TRIM_BAR__CONTAINED_TOOL_BARS);
+		createEReference(documentedTrimBarEClass, DOCUMENTED_TRIM_BAR__CONTAINED_TOOL_BAR_ELEMENTS);
+
+		documentedTrimEClass = createEClass(DOCUMENTED_TRIM);
+		createEReference(documentedTrimEClass, DOCUMENTED_TRIM__MODEL_ELEMENT);
+		createEReference(documentedTrimEClass, DOCUMENTED_TRIM__CONTAINED_IN_TRIM_BAR);
+
+		documentedToolBarEClass = createEClass(DOCUMENTED_TOOL_BAR);
+		createEReference(documentedToolBarEClass, DOCUMENTED_TOOL_BAR__MODEL_ELEMENT);
+		createEReference(documentedToolBarEClass, DOCUMENTED_TOOL_BAR__CONTAINED_IN_TRIM_BAR);
+		createEReference(documentedToolBarEClass, DOCUMENTED_TOOL_BAR__CONTAINED_IN_TOOL_BAR);
 
 		// Create enums
 		initiatableItemTypeEEnum = createEEnum(INITIATABLE_ITEM_TYPE);
@@ -988,6 +1175,9 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		documentedPartEClass.getESuperTypes().add(this.getDocumentedElement());
 		documentedWindowEClass.getESuperTypes().add(this.getDocumentedElement());
 		documentedMenuEClass.getESuperTypes().add(this.getDocumentedElement());
+		documentedTrimBarEClass.getESuperTypes().add(this.getDocumentedElement());
+		documentedTrimEClass.getESuperTypes().add(this.getDocumentedElement());
+		documentedToolBarEClass.getESuperTypes().add(this.getDocumentedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(commandStepEClass, CommandStep.class, "CommandStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1046,6 +1236,9 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEReference(getApplicationLayout_Part(), this.getDocumentedPart(), null, "part", null, 0, -1, ApplicationLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationLayout_Window(), this.getDocumentedWindow(), null, "window", null, 0, -1, ApplicationLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationLayout_Menu(), this.getDocumentedMenu(), null, "menu", null, 0, -1, ApplicationLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplicationLayout_TrimBar(), this.getDocumentedTrimBar(), null, "trimBar", null, 0, -1, ApplicationLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplicationLayout_Trim(), this.getDocumentedTrim(), null, "trim", null, 0, -1, ApplicationLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplicationLayout_ToolBar(), this.getDocumentedToolBar(), null, "toolBar", null, 0, -1, ApplicationLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentedElementEClass, DocumentedElement.class, "DocumentedElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDocumentedElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, DocumentedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1066,7 +1259,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEReference(getDocumentedWindow_ModelElement(), theBasicPackage.getWindow(), null, "modelElement", null, 1, 1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedWindow_ContainedPerspective(), theAdvancedPackage.getPerspective(), null, "containedPerspective", null, 0, -1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedWindow_ContainedMenus(), this.getDocumentedMenu(), null, "containedMenus", null, 0, -1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDocumentedWindow_ContainedTrimElements(), theBasicPackage.getTrimElement(), null, "containedTrimElements", null, 0, -1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedWindow_ContainedTrimBars(), this.getDocumentedTrimBar(), null, "containedTrimBars", null, 0, -1, DocumentedWindow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(applicationPropertiesEClass, ApplicationProperties.class, "ApplicationProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getApplicationProperties_About(), ecorePackage.getEString(), "about", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1080,6 +1273,22 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEReference(getDocumentedMenu_ContainedInPart(), theBasicPackage.getPart(), null, "containedInPart", null, 0, -1, DocumentedMenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedMenu_ContainedInWindow(), theBasicPackage.getWindow(), null, "containedInWindow", null, 0, -1, DocumentedMenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentedMenu_ContainedMenuItems(), theMenuPackage.getMenuElement(), null, "containedMenuItems", null, 0, -1, DocumentedMenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(documentedTrimBarEClass, DocumentedTrimBar.class, "DocumentedTrimBar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDocumentedTrimBar_ModelElement(), theBasicPackage.getTrimBar(), null, "modelElement", null, 1, 1, DocumentedTrimBar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedTrimBar_ContainedInWindow(), theBasicPackage.getWindow(), null, "containedInWindow", null, 0, -1, DocumentedTrimBar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedTrimBar_ContainedTrimElements(), this.getDocumentedTrim(), null, "containedTrimElements", null, 0, -1, DocumentedTrimBar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedTrimBar_ContainedToolBars(), theMenuPackage.getToolBar(), null, "containedToolBars", null, 0, -1, DocumentedTrimBar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedTrimBar_ContainedToolBarElements(), this.getDocumentedToolBar(), null, "containedToolBarElements", null, 0, -1, DocumentedTrimBar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(documentedTrimEClass, DocumentedTrim.class, "DocumentedTrim", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDocumentedTrim_ModelElement(), theBasicPackage.getTrimElement(), null, "modelElement", null, 1, 1, DocumentedTrim.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedTrim_ContainedInTrimBar(), theBasicPackage.getTrimBar(), null, "containedInTrimBar", null, 0, -1, DocumentedTrim.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(documentedToolBarEClass, DocumentedToolBar.class, "DocumentedToolBar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDocumentedToolBar_ModelElement(), theMenuPackage.getToolBarElement(), null, "modelElement", null, 1, 1, DocumentedToolBar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedToolBar_ContainedInTrimBar(), theBasicPackage.getTrimBar(), null, "containedInTrimBar", null, 0, -1, DocumentedToolBar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentedToolBar_ContainedInToolBar(), theMenuPackage.getToolBar(), null, "containedInToolBar", null, 0, -1, DocumentedToolBar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(initiatableItemTypeEEnum, InitiatableItemType.class, "InitiatableItemType");

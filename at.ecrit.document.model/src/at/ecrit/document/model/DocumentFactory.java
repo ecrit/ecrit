@@ -30,6 +30,8 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolBarSeparator;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -46,6 +48,9 @@ import at.ecrit.document.model.ecritdocument.DocumentedElement;
 import at.ecrit.document.model.ecritdocument.DocumentedMenu;
 import at.ecrit.document.model.ecritdocument.DocumentedPart;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
+import at.ecrit.document.model.ecritdocument.DocumentedToolBar;
+import at.ecrit.document.model.ecritdocument.DocumentedTrim;
+import at.ecrit.document.model.ecritdocument.DocumentedTrimBar;
 import at.ecrit.document.model.ecritdocument.DocumentedWindow;
 import at.ecrit.document.model.ecritdocument.EcritdocumentFactory;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
@@ -149,11 +154,34 @@ public class DocumentFactory {
 					MTrimmedWindow trimWindow = (MTrimmedWindow) mWindow;
 					
 					for (MTrimBar mTrimBar : trimWindow.getTrimBars()) {
+						DocumentedTrimBar dTrimBar =
+							findOrCreateTrimBarsInApplication(al, mTrimBar);
+						
 						List<MTrimElement> trimElements = mTrimBar.getChildren();
-						for (MTrimElement mTrimElem : trimElements) {
-							findOrCreateElementId(mTrimElem);
-							dw.getContainedTrimElements().add(mTrimElem);
+						for (MTrimElement mTrimElement : trimElements) {
+							// if its a toolbar
+							if (mTrimElement instanceof MToolBar) {
+								MToolBar mToolBar = (MToolBar) mTrimElement;
+								dTrimBar.getContainedToolBars().add(mToolBar);
+								
+								for (MToolBarElement mToolBarElement : mToolBar.getChildren()) {
+									DocumentedToolBar dToolBar =
+										findOrCreateToolBarInApplication(al, mToolBarElement);
+									dToolBar.getContainedInToolBar().add(mToolBar);
+									dToolBar.getContainedInTrimBar().add(mTrimBar);
+									dTrimBar.getContainedToolBarElements().add(dToolBar);
+								}
+							}
+							// everything apart form toolbar separators
+							else if (!(mTrimElement instanceof MToolBarSeparator)) {
+								DocumentedTrim dTrimElement =
+									findOrcreateTrimElementInApplication(al, mTrimElement);
+								dTrimElement.getContainedInTrimBar().add(mTrimBar);
+								dTrimBar.getContainedTrimElements().add(dTrimElement);
+							}
 						}
+						dTrimBar.getContainedInWindow().add(mWindow);
+						dw.getContainedTrimBars().add(dTrimBar);
 					}
 				}
 			}
@@ -185,6 +213,28 @@ public class DocumentFactory {
 		}
 		
 		doc.setApplicationLayout(al);
+	}
+	
+	private static DocumentedTrim findOrcreateTrimElementInApplication(ApplicationLayout al,
+		MTrimElement mTrimElement){
+		DocumentedTrim documentedTrim = null;
+		
+		for (DocumentedTrim dt : al.getTrim()) {
+			String trimElementId = findOrCreateElementId(mTrimElement);
+			if ((dt.getModelElement().getElementId() != null)
+				&& dt.getModelElement().getElementId().equals(trimElementId)) {
+				documentedTrim = dt;
+			}
+		}
+		
+		if (documentedTrim == null) {
+			documentedTrim =
+				(DocumentedTrim) EcoreUtil.create(EcritdocumentPackage.Literals.DOCUMENTED_TRIM);
+			documentedTrim.setModelElement(mTrimElement);
+			addElementDocumentation(documentedTrim, mTrimElement);
+			al.getTrim().add(documentedTrim);
+		}
+		return documentedTrim;
 	}
 	
 	/**
@@ -237,6 +287,53 @@ public class DocumentFactory {
 		}
 		
 		return documentedMenu;
+	}
+	
+	private static DocumentedTrimBar findOrCreateTrimBarsInApplication(ApplicationLayout al,
+		MTrimBar mTrimBar){
+		DocumentedTrimBar documentedTrimBar = null;
+		
+		for (DocumentedTrimBar dtb : al.getTrimBar()) {
+			String trimElementId = findOrCreateElementId(mTrimBar);
+			if ((dtb.getModelElement().getElementId() != null)
+				&& dtb.getModelElement().getElementId().equals(trimElementId)) {
+				documentedTrimBar = dtb;
+			}
+		}
+		
+		if (documentedTrimBar == null) {
+			documentedTrimBar =
+				(DocumentedTrimBar) EcoreUtil
+					.create(EcritdocumentPackage.Literals.DOCUMENTED_TRIM_BAR);
+			documentedTrimBar.setModelElement(mTrimBar);
+			addElementDocumentation(documentedTrimBar, mTrimBar);
+			al.getTrimBar().add(documentedTrimBar);
+			
+		}
+		return documentedTrimBar;
+	}
+	
+	private static DocumentedToolBar findOrCreateToolBarInApplication(ApplicationLayout al,
+		MToolBarElement mToolBarElement){
+		DocumentedToolBar documentedToolBar = null;
+		
+		for (DocumentedToolBar dtb : al.getToolBar()) {
+			String toolBarElementId = findOrCreateElementId(mToolBarElement);
+			if ((dtb.getModelElement().getElementId() != null)
+				&& dtb.getModelElement().getElementId().equals(toolBarElementId)) {
+				documentedToolBar = dtb;
+			}
+		}
+		
+		if (documentedToolBar == null) {
+			documentedToolBar =
+				(DocumentedToolBar) EcoreUtil
+					.create(EcritdocumentPackage.Literals.DOCUMENTED_TOOL_BAR);
+			documentedToolBar.setModelElement(mToolBarElement);
+			addElementDocumentation(documentedToolBar, mToolBarElement);
+			al.getToolBar().add(documentedToolBar);
+		}
+		return documentedToolBar;
 	}
 	
 	private static void addElementDocumentation(DocumentedElement de, MApplicationElement ma){
@@ -350,7 +447,6 @@ public class DocumentFactory {
 	private static EObject previousObject = null;
 	
 	private static void populateStepsWithContributions(Resource appModelResource, Document doc){
-		
 		for (TreeIterator<EObject> i = appModelResource.getAllContents(); i.hasNext();) {
 			EObject eObject = (EObject) i.next();
 			if (eObject instanceof MHandledItem) {

@@ -124,6 +124,18 @@ public class EcritdocumentAdapterFactory extends AdapterFactoryImpl {
 				return createDocumentedMenuAdapter();
 			}
 			@Override
+			public Adapter caseDocumentedTrimBar(DocumentedTrimBar object) {
+				return createDocumentedTrimBarAdapter();
+			}
+			@Override
+			public Adapter caseDocumentedTrim(DocumentedTrim object) {
+				return createDocumentedTrimAdapter();
+			}
+			@Override
+			public Adapter caseDocumentedToolBar(DocumentedToolBar object) {
+				return createDocumentedToolBarAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -336,6 +348,48 @@ public class EcritdocumentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDocumentedMenuAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.DocumentedTrimBar <em>Documented Trim Bar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrimBar
+	 * @generated
+	 */
+	public Adapter createDocumentedTrimBarAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.DocumentedTrim <em>Documented Trim</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedTrim
+	 * @generated
+	 */
+	public Adapter createDocumentedTrimAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.ecrit.document.model.ecritdocument.DocumentedToolBar <em>Documented Tool Bar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.ecrit.document.model.ecritdocument.DocumentedToolBar
+	 * @generated
+	 */
+	public Adapter createDocumentedToolBarAdapter() {
 		return null;
 	}
 

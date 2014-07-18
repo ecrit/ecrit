@@ -159,6 +159,27 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EcritdocumentPackage.DOCUMENTED_TRIM_BAR: {
+				DocumentedTrimBar documentedTrimBar = (DocumentedTrimBar)theEObject;
+				T result = caseDocumentedTrimBar(documentedTrimBar);
+				if (result == null) result = caseDocumentedElement(documentedTrimBar);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EcritdocumentPackage.DOCUMENTED_TRIM: {
+				DocumentedTrim documentedTrim = (DocumentedTrim)theEObject;
+				T result = caseDocumentedTrim(documentedTrim);
+				if (result == null) result = caseDocumentedElement(documentedTrim);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR: {
+				DocumentedToolBar documentedToolBar = (DocumentedToolBar)theEObject;
+				T result = caseDocumentedToolBar(documentedToolBar);
+				if (result == null) result = caseDocumentedElement(documentedToolBar);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -370,6 +391,51 @@ public class EcritdocumentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDocumentedMenu(DocumentedMenu object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Documented Trim Bar</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Documented Trim Bar</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocumentedTrimBar(DocumentedTrimBar object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Documented Trim</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Documented Trim</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocumentedTrim(DocumentedTrim object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Documented Tool Bar</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Documented Tool Bar</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocumentedToolBar(DocumentedToolBar object) {
 		return null;
 	}
 

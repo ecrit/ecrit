@@ -130,6 +130,33 @@ public interface EcritdocumentFactory extends EFactory {
 	DocumentedMenu createDocumentedMenu();
 
 	/**
+	 * Returns a new object of class '<em>Documented Trim Bar</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Documented Trim Bar</em>'.
+	 * @generated
+	 */
+	DocumentedTrimBar createDocumentedTrimBar();
+
+	/**
+	 * Returns a new object of class '<em>Documented Trim</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Documented Trim</em>'.
+	 * @generated
+	 */
+	DocumentedTrim createDocumentedTrim();
+
+	/**
+	 * Returns a new object of class '<em>Documented Tool Bar</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Documented Tool Bar</em>'.
+	 * @generated
+	 */
+	DocumentedToolBar createDocumentedToolBar();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

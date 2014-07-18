@@ -2,42 +2,48 @@
  */
 package at.ecrit.document.model.ecritdocument.impl;
 
-import at.ecrit.document.model.ecritdocument.DocumentedMenu;
-import at.ecrit.document.model.ecritdocument.DocumentedTrimBar;
-import at.ecrit.document.model.ecritdocument.DocumentedWindow;
+import at.ecrit.document.model.ecritdocument.DocumentedToolBar;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
+
 import java.util.Collection;
-import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
-import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+
+import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
+
+import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Documented Window</b></em>'.
+ * An implementation of the model object '<em><b>Documented Tool Bar</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getPrecondition <em>Precondition</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getPostcondition <em>Postcondition</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getModelElement <em>Model Element</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getContainedPerspective <em>Contained Perspective</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getContainedMenus <em>Contained Menus</em>}</li>
- *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedWindowImpl#getContainedTrimBars <em>Contained Trim Bars</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl#getPrecondition <em>Precondition</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl#getPostcondition <em>Postcondition</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl#getModelElement <em>Model Element</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl#getContainedInTrimBar <em>Contained In Trim Bar</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.DocumentedToolBarImpl#getContainedInToolBar <em>Contained In Tool Bar</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implements DocumentedWindow {
+public class DocumentedToolBarImpl extends MinimalEObjectImpl.Container implements DocumentedToolBar {
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -106,44 +112,34 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 * @ordered
 	 */
-	protected MWindow modelElement;
+	protected MToolBarElement modelElement;
 
 	/**
-	 * The cached value of the '{@link #getContainedPerspective() <em>Contained Perspective</em>}' reference list.
+	 * The cached value of the '{@link #getContainedInTrimBar() <em>Contained In Trim Bar</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getContainedPerspective()
+	 * @see #getContainedInTrimBar()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<MPerspective> containedPerspective;
+	protected EList<MTrimBar> containedInTrimBar;
 
 	/**
-	 * The cached value of the '{@link #getContainedMenus() <em>Contained Menus</em>}' reference list.
+	 * The cached value of the '{@link #getContainedInToolBar() <em>Contained In Tool Bar</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getContainedMenus()
+	 * @see #getContainedInToolBar()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DocumentedMenu> containedMenus;
-
-	/**
-	 * The cached value of the '{@link #getContainedTrimBars() <em>Contained Trim Bars</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContainedTrimBars()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<DocumentedTrimBar> containedTrimBars;
+	protected EList<MToolBar> containedInToolBar;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DocumentedWindowImpl() {
+	protected DocumentedToolBarImpl() {
 		super();
 	}
 
@@ -154,7 +150,7 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcritdocumentPackage.Literals.DOCUMENTED_WINDOW;
+		return EcritdocumentPackage.Literals.DOCUMENTED_TOOL_BAR;
 	}
 
 	/**
@@ -175,7 +171,7 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_WINDOW__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_TOOL_BAR__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -196,7 +192,7 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 		String oldPrecondition = precondition;
 		precondition = newPrecondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_WINDOW__PRECONDITION, oldPrecondition, precondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_TOOL_BAR__PRECONDITION, oldPrecondition, precondition));
 	}
 
 	/**
@@ -217,7 +213,7 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 		String oldPostcondition = postcondition;
 		postcondition = newPostcondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_WINDOW__POSTCONDITION, oldPostcondition, postcondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_TOOL_BAR__POSTCONDITION, oldPostcondition, postcondition));
 	}
 
 	/**
@@ -225,13 +221,13 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MWindow getModelElement() {
+	public MToolBarElement getModelElement() {
 		if (modelElement != null && ((EObject)modelElement).eIsProxy()) {
 			InternalEObject oldModelElement = (InternalEObject)modelElement;
-			modelElement = (MWindow)eResolveProxy(oldModelElement);
+			modelElement = (MToolBarElement)eResolveProxy(oldModelElement);
 			if (modelElement != oldModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcritdocumentPackage.DOCUMENTED_WINDOW__MODEL_ELEMENT, oldModelElement, modelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcritdocumentPackage.DOCUMENTED_TOOL_BAR__MODEL_ELEMENT, oldModelElement, modelElement));
 			}
 		}
 		return modelElement;
@@ -242,7 +238,7 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MWindow basicGetModelElement() {
+	public MToolBarElement basicGetModelElement() {
 		return modelElement;
 	}
 
@@ -251,11 +247,11 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setModelElement(MWindow newModelElement) {
-		MWindow oldModelElement = modelElement;
+	public void setModelElement(MToolBarElement newModelElement) {
+		MToolBarElement oldModelElement = modelElement;
 		modelElement = newModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_WINDOW__MODEL_ELEMENT, oldModelElement, modelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.DOCUMENTED_TOOL_BAR__MODEL_ELEMENT, oldModelElement, modelElement));
 	}
 
 	/**
@@ -263,11 +259,11 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<MPerspective> getContainedPerspective() {
-		if (containedPerspective == null) {
-			containedPerspective = new EObjectResolvingEList<MPerspective>(MPerspective.class, this, EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE);
+	public EList<MTrimBar> getContainedInTrimBar() {
+		if (containedInTrimBar == null) {
+			containedInTrimBar = new EObjectResolvingEList<MTrimBar>(MTrimBar.class, this, EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TRIM_BAR);
 		}
-		return containedPerspective;
+		return containedInTrimBar;
 	}
 
 	/**
@@ -275,23 +271,11 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DocumentedMenu> getContainedMenus() {
-		if (containedMenus == null) {
-			containedMenus = new EObjectResolvingEList<DocumentedMenu>(DocumentedMenu.class, this, EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS);
+	public EList<MToolBar> getContainedInToolBar() {
+		if (containedInToolBar == null) {
+			containedInToolBar = new EObjectResolvingEList<MToolBar>(MToolBar.class, this, EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TOOL_BAR);
 		}
-		return containedMenus;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<DocumentedTrimBar> getContainedTrimBars() {
-		if (containedTrimBars == null) {
-			containedTrimBars = new EObjectResolvingEList<DocumentedTrimBar>(DocumentedTrimBar.class, this, EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_BARS);
-		}
-		return containedTrimBars;
+		return containedInToolBar;
 	}
 
 	/**
@@ -302,21 +286,19 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__DESCRIPTION:
 				return getDescription();
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__PRECONDITION:
 				return getPrecondition();
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__POSTCONDITION:
 				return getPostcondition();
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__MODEL_ELEMENT:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__MODEL_ELEMENT:
 				if (resolve) return getModelElement();
 				return basicGetModelElement();
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE:
-				return getContainedPerspective();
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS:
-				return getContainedMenus();
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_BARS:
-				return getContainedTrimBars();
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TRIM_BAR:
+				return getContainedInTrimBar();
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TOOL_BAR:
+				return getContainedInToolBar();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -330,29 +312,25 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__PRECONDITION:
 				setPrecondition((String)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__POSTCONDITION:
 				setPostcondition((String)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__MODEL_ELEMENT:
-				setModelElement((MWindow)newValue);
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__MODEL_ELEMENT:
+				setModelElement((MToolBarElement)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE:
-				getContainedPerspective().clear();
-				getContainedPerspective().addAll((Collection<? extends MPerspective>)newValue);
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TRIM_BAR:
+				getContainedInTrimBar().clear();
+				getContainedInTrimBar().addAll((Collection<? extends MTrimBar>)newValue);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS:
-				getContainedMenus().clear();
-				getContainedMenus().addAll((Collection<? extends DocumentedMenu>)newValue);
-				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_BARS:
-				getContainedTrimBars().clear();
-				getContainedTrimBars().addAll((Collection<? extends DocumentedTrimBar>)newValue);
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TOOL_BAR:
+				getContainedInToolBar().clear();
+				getContainedInToolBar().addAll((Collection<? extends MToolBar>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -366,26 +344,23 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__PRECONDITION:
 				setPrecondition(PRECONDITION_EDEFAULT);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__POSTCONDITION:
 				setPostcondition(POSTCONDITION_EDEFAULT);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__MODEL_ELEMENT:
-				setModelElement((MWindow)null);
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__MODEL_ELEMENT:
+				setModelElement((MToolBarElement)null);
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE:
-				getContainedPerspective().clear();
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TRIM_BAR:
+				getContainedInTrimBar().clear();
 				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS:
-				getContainedMenus().clear();
-				return;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_BARS:
-				getContainedTrimBars().clear();
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TOOL_BAR:
+				getContainedInToolBar().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -399,20 +374,18 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__DESCRIPTION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__PRECONDITION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__PRECONDITION:
 				return PRECONDITION_EDEFAULT == null ? precondition != null : !PRECONDITION_EDEFAULT.equals(precondition);
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__POSTCONDITION:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__POSTCONDITION:
 				return POSTCONDITION_EDEFAULT == null ? postcondition != null : !POSTCONDITION_EDEFAULT.equals(postcondition);
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__MODEL_ELEMENT:
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__MODEL_ELEMENT:
 				return modelElement != null;
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_PERSPECTIVE:
-				return containedPerspective != null && !containedPerspective.isEmpty();
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_MENUS:
-				return containedMenus != null && !containedMenus.isEmpty();
-			case EcritdocumentPackage.DOCUMENTED_WINDOW__CONTAINED_TRIM_BARS:
-				return containedTrimBars != null && !containedTrimBars.isEmpty();
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TRIM_BAR:
+				return containedInTrimBar != null && !containedInTrimBar.isEmpty();
+			case EcritdocumentPackage.DOCUMENTED_TOOL_BAR__CONTAINED_IN_TOOL_BAR:
+				return containedInToolBar != null && !containedInToolBar.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -437,4 +410,4 @@ public class DocumentedWindowImpl extends MinimalEObjectImpl.Container implement
 		return result.toString();
 	}
 
-} //DocumentedWindowImpl
+} //DocumentedToolBarImpl

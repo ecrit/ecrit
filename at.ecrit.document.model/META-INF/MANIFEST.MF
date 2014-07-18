@@ -15,7 +15,7 @@ Export-Package: at.ecrit.document.model,
  at.ecrit.document.model.outputconverter,
  at.ecrit.document.model.tree
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.e4.ui.model.workbench;visibility:=reexport,
  org.apache.commons.logging;bundle-version="1.1.1",
  org.eclipse.e4.ui.workbench,
