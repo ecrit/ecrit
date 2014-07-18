@@ -171,16 +171,21 @@ public class ProductProcessor {
 		List<MModelFragment> mFragments = new ArrayList<MModelFragment>();
 		
 		for (String id : pluginIds) {
-			Bundle plugin = Platform.getBundle(id);
-			if (plugin != null) {
-				String location = plugin.getLocation();
-				location = location.replace("reference:file:/", "");
-				File pluginFile = new File(location);
-				
-				mFragments.addAll(FragmentExtensionPoint.getContributedFragments(pluginFile));
+			if (Platform.isRunning()) {
+				Bundle plugin = Platform.getBundle(id);
+				if (plugin != null) {
+					String location = plugin.getLocation();
+					location = location.replace("reference:file:/", "");
+					File pluginFile = new File(location);
+					
+					mFragments.addAll(FragmentExtensionPoint.getContributedFragments(pluginFile));
+				} else {
+					System.out.println("Could not resolve bundle by id " + id);
+				}
 			} else {
-				System.out.println("Could not resolve bundle by id "+id);
+				System.out.println("Platform not running!");
 			}
+			
 		}
 		System.out.println("Found [" + mFragments.size() + "] fragments");
 		return mFragments;
