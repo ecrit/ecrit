@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="at.ecrit.eclipse.plugin.outputter.latex.feature"
+      label="LaTeX Outputter"
+      version="0.0.1.qualifier"
+      provider-name="ecrit.at">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import feature="at.ecrit.eclipse.plugin.feature" version="0.0.1.qualifier"/>
+   </requires>
+
+   <plugin
+         id="at.ecrit.eclipse.plugin.outputter.latex"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="html.to.latex"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

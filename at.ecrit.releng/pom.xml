@@ -116,5 +116,9 @@
     <module>../at.ecrit.document.model</module>
     <module>../at.ecrit.eclipse.plugin.outputter.html</module>
     <module>../at.ecrit.eclipse.plugin.outputter.html.test</module>
+    <module>../at.ecrit.eclipse.plugin.outputter.latex</module>
+    
+    <module>../at.ecrit.eclipse.plugin.outputter.latex.feature</module>
+    <module>../html.to.latex</module>
   </modules>
 </project>
