@@ -173,14 +173,54 @@ This application requires a login.
  			\end{itemize}
  		</#list>
  	</#if>
- 	<#if win.containedTrimElements?has_content>
- 		\subsection{${win.modelElement.label?replace("%","")} Toolbar}
- 		\begin{itemize}
-	 		<#list win.containedTrimElements as element>
-	 				\item ${element.elementId?replace("%","")}
-	 		</#list>
- 		\end{itemize}
- 	</#if>
+ 	<#if win.containedTrimBars?has_content>
+ 	\subsection{${win.modelElement.label} Toolbars}
+ 		<#list win.containedTrimBars as trimBar>
+ 			\subsubsection{${trimBar.modelElement.side}}
+ 			\textsf{Description }${trimBar.description}
+ 			<#if trimBar.containedTrimElements?has_content>
+ 				<#list trimBar.containedTrimElements as trimElement>
+ 					\begin{itemize}
+ 						\item ${trimElement.modelElement.elementId}\\
+ 						<#if trimElement.description?has_content>
+ 							\textsf{Description }${trimElement.description}
+ 						</#if>
+ 					\end{itemize}
+		  		</#list>
+		  	</#if>
+		  	<#if trimBar.containedToolBars?has_content>
+		  		<#list trimBar.containedToolBars as toolBar>
+		  			\begin{itemize}
+		  				\item \textbf{${toolBar.elementId}}
+		  			<#if trimBar.containedToolBarElements?has_content>
+		  				<#list trimBar.containedToolBarElements as toolBarElement>
+		  					<#if toolBarElement.containedInToolBar?has_content>
+		  						\begin{itemize}
+		  							<#list toolBarElement.containedInToolBar as contToolBar>
+		  								<#if toolBar.elementId == contToolBar.elementId>
+		  									<#if toolBarElement.modelElement.class.simpleName == "HandledToolItemImpl" || toolBarElement.modelElement.class.simpleName == "DirectToolItemImpl">
+		  										<#if toolBarElement.modelElement.label??>
+		  											\item ${toolBarElement.modelElement.label}\\
+				  								<#else>
+				  									\item ${toolBarElement.modelElement.elementId}\\
+				  								</#if>
+				  								\textsf{Description }
+				  								${toolBarElement.description}
+				  							<#else>
+				  								\item ${toolBarElement.modelElement.elementId}\\
+				  								\textsf{Description }${toolBarElement.description}
+				  							</#if>
+				  						</#if>
+				  					</#list>
+				  				\end{itemize}
+				  			</#if>
+				  		</#list>
+				  	</#if>
+				  \end{itemize}
+		  		</#list>
+			</#if>
+		</#list>
+	</#if>
  </#list>
  
 %------------------------------------------------
