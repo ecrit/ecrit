@@ -28,58 +28,67 @@ public class FragmentExtensionPoint {
 	private static final String ATTR_URI = "uri";
 	final static String FRAGMENT = "fragment";
 	
-	public static List<MModelFragment> getContributedFragments(File appFile){
-		String application = appFile.getName();
+	public static List<MModelFragment> getContributedFragments(IProject iProject){
 		List<MModelFragment> ret = new ArrayList<MModelFragment>();
 		
-// IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects(IProject.NONE);
-		IProject iProject = ResourcesPlugin.getWorkspace().getRoot().getProject(application);
-		try {
-			if (!iProject.isOpen())
-				return ret;
-			if (!iProject.hasNature(IBundleProjectDescription.PLUGIN_NATURE))
-				return ret;
-			
-			IFile pluginXml = PDEProject.getPluginXml(iProject);
-			IFile manifest = PDEProject.getManifest(iProject);
-			WorkspaceBundlePluginModel fModel = new WorkspaceBundlePluginModel(manifest, pluginXml);
-			fModel.setBundleDescription(PluginRegistry.findModel(iProject).getBundleDescription());
-			// fModel.load();
-			
-			for (IPluginExtension iPluginExtension : fModel.getPluginBase().getExtensions()) {
-				// if o.e.e4.workbench.model extension point
-				if (EP_ID.equalsIgnoreCase(iPluginExtension.getPoint())) {
-					for (IPluginObject child : iPluginExtension.getChildren()) {
-						// get fragment part
-						if (FRAGMENT.equalsIgnoreCase(child.getName())) {
-							// resolve fragment file location
-							IPluginAttribute attribute =
-								((PluginElement) child).getAttribute(ATTR_URI);
-							String fragmentUri = attribute.getValue();
-							IFile file = iProject.getFile(fragmentUri);
-							System.out.println("Found fragment " + iProject.getName() + ", Uri: "
-								+ file.getLocation().toString());
-							
-							Resource appModelResource =
-								Activator.getResourceSet().getResource(
-									URI.createURI(file.getLocationURI().toString()), true);
-							EList<EObject> contents = appModelResource.getContents();
-							
-							// check if contents actually has content
-							if (contents != null && !contents.isEmpty()) {
-								// add all fragments to the list
-								MModelFragments modelFragment = (MModelFragments) contents.get(0);
-								ret.addAll(modelFragment.getFragments());
-							}
-							appModelResource.unload();
+		WorkspaceBundlePluginModel fModel = initWorkspaceBundlePluginModel(iProject);
+		if (fModel == null) {
+			return ret;
+		}
+		
+		for (IPluginExtension iPluginExtension : fModel.getPluginBase().getExtensions()) {
+			if (EP_ID.equalsIgnoreCase(iPluginExtension.getPoint())) {
+				for (IPluginObject child : iPluginExtension.getChildren()) {
+					// get fragment part
+					if (FRAGMENT.equalsIgnoreCase(child.getName())) {
+						// resolve fragment file location
+						IPluginAttribute attribute = ((PluginElement) child).getAttribute(ATTR_URI);
+						IFile file = iProject.getFile(attribute.getValue());
+						System.out.println("Found fragment " + iProject.getName() + ", Uri: "
+							+ file.getLocation().toString());
+						
+						Resource appModelResource =
+							Activator.getResourceSet().getResource(
+								URI.createURI(file.getLocationURI().toString()), true);
+						EList<EObject> contents = appModelResource.getContents();
+						
+						// check if contents actually has content
+						if (contents != null && !contents.isEmpty()) {
+							// add all fragments to the list
+							MModelFragments modelFragment = (MModelFragments) contents.get(0);
+							ret.addAll(modelFragment.getFragments());
 						}
+						appModelResource.unload();
 					}
 				}
 			}
+		}
+		return ret;
+	}
+	
+	public static List<MModelFragment> getContributedFragments(File appFile){
+		String application = appFile.getName();
+		IProject iProject = ResourcesPlugin.getWorkspace().getRoot().getProject(application);
+		
+		return getContributedFragments(iProject);
+	}
+	
+	private static WorkspaceBundlePluginModel initWorkspaceBundlePluginModel(IProject iProject){
+		WorkspaceBundlePluginModel fModel = null;
+		try {
+			if (!iProject.isOpen())
+				return fModel;
 			
+			if (!iProject.hasNature(IBundleProjectDescription.PLUGIN_NATURE))
+				return fModel;
+			
+			IFile pluginXml = PDEProject.getPluginXml(iProject);
+			IFile manifest = PDEProject.getManifest(iProject);
+			fModel = new WorkspaceBundlePluginModel(manifest, pluginXml);
+			fModel.setBundleDescription(PluginRegistry.findModel(iProject).getBundleDescription());
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
-		return ret;
+		return fModel;
 	}
 }

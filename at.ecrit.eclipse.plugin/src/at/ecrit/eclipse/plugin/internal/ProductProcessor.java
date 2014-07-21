@@ -172,12 +172,8 @@ public class ProductProcessor {
 		
 		for (String id : pluginIds) {
 			IProject project = ResourcesPlugin.getPlugin().getWorkspace().getRoot().getProject(id);
-			if (project != null) {
-				IPath location = project.getLocation();
-				if (location != null) {
-					File file = location.toFile();
-					mFragments.addAll(FragmentExtensionPoint.getContributedFragments(file));
-				}
+			if (project != null && project.exists()) {
+				mFragments.addAll(FragmentExtensionPoint.getContributedFragments(project));
 			} else {
 				System.out.println("Could not resolve bundle by id " + id);
 			}
