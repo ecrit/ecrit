@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="Luna SDK" sequenceNumber="1405664748">
+<target name="Luna SDK" sequenceNumber="1405666188">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sdk.ide" version="4.4.0.I20140606-1215"/>
@@ -38,6 +38,11 @@
       <unit id="org.eclipse.mylyn.docs.intent.workspace.feature.feature.group" version="0.9.0.201406051437"/>
       <unit id="org.eclipse.mylyn.docs.intent.markup.feature.feature.group" version="0.9.0.201406051437"/>
       <repository location="http://download.eclipse.org/intent/updates/releases/0.9"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="net.sourceforge.texlipse.feature.group" version="1.5.0"/>
+      <unit id="org.bibsonomy.texlipseExtension.feature.group" version="0.1.0"/>
+      <repository location="http://texlipse.sourceforge.net/"/>
     </location>
   </locations>
 </target>

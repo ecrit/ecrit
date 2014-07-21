@@ -41,3 +41,7 @@ location "http://download.eclipse.org/intent/updates/releases/0.9" {
 	org.eclipse.mylyn.docs.intent.markup.feature.feature.group
 }
 
+location "http://texlipse.sourceforge.net/" {
+	net.sourceforge.texlipse.feature.group
+	org.bibsonomy.texlipseExtension.feature.group
+}
