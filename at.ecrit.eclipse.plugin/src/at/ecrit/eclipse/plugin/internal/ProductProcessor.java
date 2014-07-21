@@ -11,9 +11,10 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.internal.workbench.swt.E4Application;
 import org.eclipse.e4.ui.model.application.MApplication;
@@ -25,7 +26,6 @@ import org.eclipse.pde.internal.core.FeatureModelManager;
 import org.eclipse.pde.internal.core.PDECore;
 import org.eclipse.pde.internal.core.ifeature.IFeatureModel;
 import org.eclipse.pde.internal.core.ifeature.IFeaturePlugin;
-import org.osgi.framework.Bundle;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -171,21 +171,16 @@ public class ProductProcessor {
 		List<MModelFragment> mFragments = new ArrayList<MModelFragment>();
 		
 		for (String id : pluginIds) {
-			if (Platform.isRunning()) {
-				Bundle plugin = Platform.getBundle(id);
-				if (plugin != null) {
-					String location = plugin.getLocation();
-					location = location.replace("reference:file:/", "");
-					File pluginFile = new File(location);
-					
-					mFragments.addAll(FragmentExtensionPoint.getContributedFragments(pluginFile));
-				} else {
-					System.out.println("Could not resolve bundle by id " + id);
+			IProject project = ResourcesPlugin.getPlugin().getWorkspace().getRoot().getProject(id);
+			if (project != null) {
+				IPath location = project.getLocation();
+				if (location != null) {
+					File file = location.toFile();
+					mFragments.addAll(FragmentExtensionPoint.getContributedFragments(file));
 				}
 			} else {
-				System.out.println("Platform not running!");
+				System.out.println("Could not resolve bundle by id " + id);
 			}
-			
 		}
 		System.out.println("Found [" + mFragments.size() + "] fragments");
 		return mFragments;
