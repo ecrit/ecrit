@@ -25,69 +25,76 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.wb.swt.ResourceManager;
 
-import com.google.common.base.Joiner;
-
 import at.ecrit.document.model.ecritdocument.Document;
 import at.ecrit.document.model.ecritdocument.DocumentedPerspective;
 import at.ecrit.eclipse.plugin.outputter.depiction.TreeNode;
 
-public class DepictionImageGenerator {
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Iterables;
 
+public class DepictionImageGenerator {
+	
+	private static String[] SEPARATORS = {
+		" ", ",", "-"
+	};
+	private String separator;
 	private Document document;
 	private Resource appModelResource;
 	private File outputLocation;
 	private int width, height;
 	
-	private Image applicationImage = ResourceManager.getPluginImage("at.ecrit.eclipse.plugin", "rsc/icons/application_small.png");
-	private Image stackImage = ResourceManager.getPluginImage("at.ecrit.eclipse.plugin", "rsc/icons/applications-stack_small.png");
+	private Image applicationImage = ResourceManager.getPluginImage("at.ecrit.eclipse.plugin",
+		"rsc/icons/application_small.png");
+	private Image stackImage = ResourceManager.getPluginImage("at.ecrit.eclipse.plugin",
+		"rsc/icons/applications-stack_small.png");
 	
 	public DepictionImageGenerator(Document document, File outputLocation,
-			Resource appModelResource, int width, int height) {
+		Resource appModelResource, int width, int height){
 		this.document = document;
 		this.appModelResource = appModelResource;
 		this.outputLocation = outputLocation;
 		this.width = width;
 		this.height = height;
 	}
-
-	public void generate() {
+	
+	public void generate(){
 		// generate images for perspectives
-		for (DocumentedPerspective perspective : document
-				.getApplicationLayout().getPerspective()) {
-
+		for (DocumentedPerspective perspective : document.getApplicationLayout().getPerspective()) {
+			
 			createDepictionImageForPerspective(perspective.getModelElement());
 		}
 	}
-
+	
 	@SuppressWarnings("unchecked")
-	private void createDepictionImageForPerspective(MPerspective modelElement) {
-
-		String outputFileName = outputLocation.getAbsolutePath()
-				+ File.separator + modelElement.getElementId() + ".png";
-
+	private void createDepictionImageForPerspective(MPerspective modelElement){
+		
+		String outputFileName =
+			outputLocation.getAbsolutePath() + File.separator + modelElement.getElementId()
+				+ ".png";
+		
 		System.out.println("[PERSPECTIVE]=======" + outputFileName);
-
+		
 		Display display = Display.getCurrent();
 		Image image = new Image(display, width, height);
 		GC gc = new GC(image);
-
+		
 		TreeNode<MUIElement> treeRoot = generateUITreeForPerspective(modelElement);
-
+		
 		treeRoot.setData(new Rectangle(0, 0, width, height));
-
-		for (TreeNode<MUIElement> node : treeRoot.getTreeTraverser()
-				.preOrderTraversal(treeRoot)) {
+		
+		for (TreeNode<MUIElement> node : treeRoot.getTreeTraverser().preOrderTraversal(treeRoot)) {
 			List<TreeNode<MUIElement>> children = node.getChildren();
-
+			
 			MUIElement currentObject = node.getReference();
 			if (currentObject instanceof MPerspective) {
 				// set value on children
 				arrangeHorizontal(node, currentObject, children, null);
-
+				
 			} else if (currentObject instanceof MPartSashContainer) {
 				// set value on children
 				MPartSashContainer mpsc = (MPartSashContainer) currentObject;
-
+				
 				String containerData = mpsc.getContainerData();
 				int[] weight = null;
 				if (containerData != null && containerData.length() > 0) {
@@ -97,40 +104,40 @@ public class DepictionImageGenerator {
 						weight[i] = Integer.parseInt(split[i]);
 					}
 				}
-
+				
 				if (mpsc.isHorizontal()) {
 					arrangeHorizontal(node, currentObject, children, weight);
 				} else {
 					arrangeVertical(node, currentObject, children, weight);
 				}
-
+				
 			} else if (currentObject instanceof MPartStack) {
 				arrangeStacked(node, currentObject, children);
 			} else {
-				Rectangle rect = fixRectangleBoundaries(
-						(Rectangle) treeRoot.getData(),
+				Rectangle rect =
+					fixRectangleBoundaries((Rectangle) treeRoot.getData(),
 						(Rectangle) node.getData());
 				drawRectangle(rect, currentObject, gc, node);
 			}
-
-			System.out
-					.println(node.getLevel() + ": "
-							+ node.getReference().getElementId() + " "
-							+ node.getData());
+			
+			System.out.println(node.getLevel() + ": " + node.getReference().getElementId() + " "
+				+ node.getData());
 		}
-
+		
 		ImageLoader loader = new ImageLoader();
-		loader.data = new ImageData[] { image.getImageData() };
+		loader.data = new ImageData[] {
+			image.getImageData()
+		};
 		loader.save(outputFileName, SWT.IMAGE_PNG);
 		System.out.println("Saved " + outputFileName);
-
+		
 		gc.dispose();
 		image.dispose();
 	}
-
+	
 	/**
-	 * fix the boundaries of a rectangle, such that its width and height does
-	 * not overflow the overall image size.
+	 * fix the boundaries of a rectangle, such that its width and height does not overflow the
+	 * overall image size.
 	 * 
 	 * @param windowRectangle
 	 *            the overall image rectangle
@@ -138,63 +145,111 @@ public class DepictionImageGenerator {
 	 *            apperture of of the windowRectangle for this node
 	 * @return the corrected rectangle
 	 */
-	private Rectangle fixRectangleBoundaries(Rectangle windowRectangle,
-			Rectangle nodeRectangle) {
+	private Rectangle fixRectangleBoundaries(Rectangle windowRectangle, Rectangle nodeRectangle){
 		int nodeBorderHeight = nodeRectangle.y + nodeRectangle.height;
 		int nodeBorderWidth = nodeRectangle.x + nodeRectangle.width;
-
-		int newWidth = (nodeBorderWidth >= windowRectangle.width) ? nodeRectangle.width - 1
-				: nodeRectangle.width;
-		int newHeight = (nodeBorderHeight >= windowRectangle.height) ? nodeRectangle.height - 1
-				: nodeRectangle.height;
-
-		return new Rectangle(nodeRectangle.x, nodeRectangle.y, newWidth,
-				newHeight);
+		
+		int newWidth =
+			(nodeBorderWidth >= windowRectangle.width) ? nodeRectangle.width - 1
+					: nodeRectangle.width;
+		int newHeight =
+			(nodeBorderHeight >= windowRectangle.height) ? nodeRectangle.height - 1
+					: nodeRectangle.height;
+		
+		return new Rectangle(nodeRectangle.x, nodeRectangle.y, newWidth, newHeight);
 	}
-
+	
 	/**
 	 * draws the leaf rectangle, i.e. the single part description element
+	 * 
 	 * @param data
 	 * @param currentObject
 	 * @param gc
-	 * @param node 
+	 * @param node
 	 */
-	private void drawRectangle(Rectangle data, MUIElement currentObject, GC gc, TreeNode<MUIElement> node) {
+	private void drawRectangle(Rectangle data, MUIElement currentObject, GC gc,
+		TreeNode<MUIElement> node){
 		gc.drawRectangle(data);
 		gc.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_BLACK));
 		gc.fillRectangle(data.x, data.y, data.width, 10);
 		
-		System.out.println("Drawing "+currentObject);
+		System.out.println("Drawing " + currentObject);
 		
 		String label;
-		if(node.getParent().getReference() instanceof MPartStack) {
-			gc.drawImage(stackImage, data.x+2, data.y+1);
+		if (node.getParent().getReference() instanceof MPartStack) {
+			gc.drawImage(stackImage, data.x + 2, data.y + 1);
 			List<String> labels = new ArrayList<String>();
 			List<TreeNode<MUIElement>> children = node.getParent().getChildren();
 			for (TreeNode<MUIElement> treeNode : children) {
-				String lab = ((MUILabel)treeNode.getReference()).getLabel();
+				String lab = ((MUILabel) treeNode.getReference()).getLabel();
 				labels.add(lab);
 			}
 			label = Joiner.on(", ").join(labels);
 		} else {
-			gc.drawImage(applicationImage, data.x+2, data.y+1);
+			gc.drawImage(applicationImage, data.x + 2, data.y + 1);
 			if (currentObject instanceof MUILabel) {
 				label = ((MUILabel) currentObject).getLabel();
 			} else {
 				label = currentObject.getElementId();
 			}
 		}
-
+		
 		gc.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-
+		
 		Point size = gc.textExtent(label);
-
-		Point center = new Point(data.x + (data.width / 2), data.y
-				+ (data.height / 2));
-
+		Point center = new Point(data.x + (data.width / 2), data.y + (data.height / 2));
+		
+		if (data.width < size.x) {
+			label = wrapText(gc, data.width - 10, label);
+			size = gc.textExtent(label);
+			center = new Point(data.x + (data.width / 2), data.y + (data.height - size.y) / 2);
+		}
+		
 		gc.drawText(label, center.x - (size.x / 2), center.y);
 	}
-
+	
+	private String wrapText(GC gc, int maxWidth, String label){
+		String[] split = split(label, 0);
+		StringBuilder wrapped = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < split.length; i++) {
+			sb.append(split[i]);
+			Point textSize = gc.textExtent(sb.toString());
+			
+			if (maxWidth <= textSize.x || i == split.length - 1) {
+				if (i != split.length - 1) {
+					sb.delete(sb.lastIndexOf(split[i]), sb.length());
+				}
+				wrapped.append(sb.toString());
+				wrapped.append("\n");
+				
+				// clear string builder and add removed text
+				sb.setLength(0);
+				sb.append(split[i]);
+			}
+			sb.append(separator);
+		}
+		wrapped.delete(wrapped.lastIndexOf("\n"), wrapped.length());
+		return wrapped.toString();
+	}
+	
+	private String[] split(String label, int idx){
+		String[] split = label.split(SEPARATORS[idx]);
+		if (split.length <= 1) {
+			idx++;
+			if (idx < SEPARATORS.length) {
+				split = split(label, idx);
+			} else {
+				split = Iterables.toArray(Splitter.fixedLength(5).split(label), String.class);
+				separator = "";
+			}
+		} else {
+			separator = SEPARATORS[idx];
+		}
+		return split;
+	}
+	
 	/**
 	 * 
 	 * @param node
@@ -203,15 +258,14 @@ public class DepictionImageGenerator {
 	 * @param weight
 	 *            if <code>null</code> weight equally between all children
 	 */
-	private void arrangeVertical(TreeNode<MUIElement> node,
-			MUIElement currentObject, List<TreeNode<MUIElement>> children,
-			int[] weight) {
-
+	private void arrangeVertical(TreeNode<MUIElement> node, MUIElement currentObject,
+		List<TreeNode<MUIElement>> children, int[] weight){
+		
 		if (children == null || children.size() == 0)
 			return;
-
+		
 		weight = ensureSaveWeight(node, children, weight);
-
+		
 		// define split locations
 		int splitPoints[] = new int[weight.length + 1];
 		splitPoints[0] = ((Rectangle) node.getData()).y;
@@ -220,55 +274,54 @@ public class DepictionImageGenerator {
 			int newValue = (int) (sumUpTo(weight, i) * multiplier);
 			splitPoints[i] = newValue;
 		}
-
+		
 		// set respective points to child nodes
 		for (int i = 0; i < weight.length; i++) {
 			TreeNode<MUIElement> child = children.get(i);
-
+			
 			Rectangle thisRectangle = (Rectangle) node.getData();
-			child.setData(new Rectangle(thisRectangle.x, sumUpTo(splitPoints,
-					i + 1), thisRectangle.width, (int) (multiplier * weight[i])));
+			child.setData(new Rectangle(thisRectangle.x, sumUpTo(splitPoints, i + 1),
+				thisRectangle.width, (int) (multiplier * weight[i])));
 		}
 	}
-
-	private void arrangeHorizontal(TreeNode<MUIElement> node,
-			MUIElement currentObject, List<TreeNode<MUIElement>> children,
-			int[] weight) {
+	
+	private void arrangeHorizontal(TreeNode<MUIElement> node, MUIElement currentObject,
+		List<TreeNode<MUIElement>> children, int[] weight){
 		// ok
 		if (children == null || children.size() == 0)
 			return;
-
+		
 		weight = ensureSaveWeight(node, children, weight);
-
+		
 		// define split locations
 		int splitPoints[] = new int[weight.length + 1];
-
+		
 		splitPoints[0] = ((Rectangle) node.getData()).x;
 		float multiplier = ((Rectangle) node.getData()).width / 100f;
 		for (int i = 1; i < splitPoints.length; i++) {
 			int newValue = (int) (sumUpTo(weight, i) * multiplier);
 			splitPoints[i] = newValue;
 		}
-
+		
 		// set respective points to child nodes
 		for (int i = 0; i < weight.length; i++) {
 			TreeNode<MUIElement> child = children.get(i);
-
+			
 			Rectangle thisRectangle = (Rectangle) node.getData();
-			child.setData(new Rectangle(sumUpTo(splitPoints, i + 1),
-					thisRectangle.y, (int) (multiplier * weight[i]),
-					thisRectangle.height));
+			child.setData(new Rectangle(sumUpTo(splitPoints, i + 1), thisRectangle.y,
+				(int) (multiplier * weight[i]), thisRectangle.height));
 		}
 	}
-
+	
 	/**
 	 * arrange the childs s.t. they are presented within a part stack
+	 * 
 	 * @param node
 	 * @param currentObject
 	 * @param children
 	 */
-	private void arrangeStacked(TreeNode<MUIElement> node,
-			MUIElement currentObject, List<TreeNode<MUIElement>> children) {
+	private void arrangeStacked(TreeNode<MUIElement> node, MUIElement currentObject,
+		List<TreeNode<MUIElement>> children){
 		if (children == null || children.size() == 0)
 			return;
 		for (TreeNode<MUIElement> child : children) {
@@ -276,11 +329,10 @@ public class DepictionImageGenerator {
 			child.setData(thisRectangle);
 		}
 		
-		
 	}
-
-	private int[] ensureSaveWeight(TreeNode<MUIElement> node,
-			List<TreeNode<MUIElement>> children, int[] weight) {
+	
+	private int[] ensureSaveWeight(TreeNode<MUIElement> node, List<TreeNode<MUIElement>> children,
+		int[] weight){
 		int[] ret;
 		if (weight == null) {
 			ret = new int[children.size()];
@@ -288,42 +340,38 @@ public class DepictionImageGenerator {
 		} else {
 			if (weight.length > children.size()) {
 				ret = Arrays.copyOf(weight, children.size());
-				System.out
-						.println(node.getReference().getElementId()
-								+ " has more weight defined, than children. Truncating.");
+				System.out.println(node.getReference().getElementId()
+					+ " has more weight defined, than children. Truncating.");
 			} else {
 				ret = weight;
 			}
 		}
 		return ret;
 	}
-
+	
 	/**
 	 * @param array
 	 * @param i
 	 * @return the sum of all values of the array up to index i
 	 */
-	private int sumUpTo(int[] array, int i) {
+	private int sumUpTo(int[] array, int i){
 		int ret = 0;
 		for (int j = 0; j < i; j++) {
 			ret += array[j];
 		}
 		return ret;
 	}
-
+	
 	/**
-	 * Generate a tree of a given perspective and all its children. Eases the
-	 * treatment of such, as the iteration in the application model is not
-	 * feasible in the required way.
+	 * Generate a tree of a given perspective and all its children. Eases the treatment of such, as
+	 * the iteration in the application model is not feasible in the required way.
 	 * 
 	 * @param modelElement
 	 * @return
 	 */
-	private TreeNode<MUIElement> generateUITreeForPerspective(
-			MPerspective modelElement) {
+	private TreeNode<MUIElement> generateUITreeForPerspective(MPerspective modelElement){
 		TreeNode<MUIElement> tree = null;
-		for (TreeIterator<EObject> i = appModelResource.getAllContents(); i
-				.hasNext();) {
+		for (TreeIterator<EObject> i = appModelResource.getAllContents(); i.hasNext();) {
 			EObject eObject = (EObject) i.next();
 			if (eObject instanceof MPerspective) {
 				MPerspective perspective = (MPerspective) eObject;
@@ -331,9 +379,8 @@ public class DepictionImageGenerator {
 					tree = new TreeNode<MUIElement>(perspective);
 				}
 			} else if (tree != null
-					&& (eObject instanceof MPartSashContainer
-							|| eObject instanceof MPlaceholder
-							|| eObject instanceof MPart || eObject instanceof MPartStack)) {
+				&& (eObject instanceof MPartSashContainer || eObject instanceof MPlaceholder
+					|| eObject instanceof MPart || eObject instanceof MPartStack)) {
 				MUIElement muie;
 				TreeNode<MUIElement> node;
 				if (eObject instanceof MPlaceholder) {
@@ -344,7 +391,7 @@ public class DepictionImageGenerator {
 					muie = (MUIElement) eObject;
 					node = tree.getNodeReferencing(muie.getParent());
 				}
-
+				
 				if (node != null) {
 					node.addChildNode(new TreeNode<MUIElement>(muie));
 					// System.out.println(node.getReference().getElementId()
