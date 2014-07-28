@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="Luna SDK" sequenceNumber="1405666189">
+<?pde version="3.8"?><target name="Luna SDK" sequenceNumber="1405666191">
 <locations>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.sdk.ide" version="4.4.0.I20140606-1215"/>
@@ -33,14 +33,18 @@
 <repository location="http://download.eclipse.org/intent/updates/releases/0.9"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.e4.tools.css.spy.feature.feature.group" version="0.14.0.v20140707-1917"/>
+<unit id="org.eclipse.e4.tools.event.spy.feature.feature.group" version="0.15.0.v20140707-1917"/>
+<unit id="org.eclipse.e4.tools.emf.liveeditor.feature.feature.group" version="0.15.0.v20140725-0818"/>
+<unit id="org.eclipse.e4.tools.context.spy.feature.feature.group" version="0.1.0.v20140708-1626"/>
+<unit id="org.eclipse.e4.core.tools.feature.feature.group" version="0.14.0.v20140725-0818"/>
+<repository location="http://download.vogella.com/luna/e4tools"/>
+</location>
+<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="de.vonloesch.pdf4eclipse.feature.group" version="1.1.0"/>
 <unit id="net.sourceforge.texlipse.feature.group" version="1.5.0"/>
 <unit id="org.bibsonomy.texlipseExtension.feature.group" version="0.1.0"/>
 <repository location="http://texlipse.sourceforge.net/"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.e4.tools.css.spy.feature.feature.group" version="0.14.0.v20140707-1917"/>
-<unit id="org.eclipse.e4.core.tools.feature.feature.group" version="0.14.0.v20140724-1645"/>
-<repository location="http://download.vogella.com/luna/e4tools"/>
 </location>
 </locations>
 </target>
