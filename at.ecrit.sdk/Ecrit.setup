@@ -15,8 +15,8 @@
     label="ecrit">
   <setupTask
       xsi:type="jdt:JRETask"
-      version="JavaSE-1.7"
-      location="${jre.location-1.7}">
+      version="JavaSE-1.8"
+      location="${jre.location-1.8}">
     <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -70,8 +70,6 @@
     <requirement
         id="net.sourceforge.texlipse.feature.group"/>
     <repository
-        url="${train.url}"/>
-    <repository
         url="http://jeeeyul.github.io/update/"/>
     <repository
         url="http://download.vogella.com/luna/e4tools"/>
@@ -91,6 +89,7 @@
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone.ecrit"
+      location="${git.clone.ecrit}"
       remoteURI="https://github.com/ecrit/ecrit.git"
       checkoutBranch="master">
     <annotation
@@ -103,16 +102,13 @@
           key="label">
         <value>${git.clone.ecrit} Github repository</value>
       </detail>
-      <detail
-          key="target">
-        <value>remoteURI</value>
-      </detail>
     </annotation>
     <description>${git.clone.ecrit}</description>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone.pharmat"
+      location="${git.clone.pharmat}"
       remoteURI="https://github.com/ecrit/pharmacy_at.git"
       checkoutBranch="master">
     <annotation
@@ -124,10 +120,6 @@
       <detail
           key="label">
         <value>${git.clone.pharmat} Github repository</value>
-      </detail>
-      <detail
-          key="target">
-        <value>remoteURI</value>
       </detail>
     </annotation>
     <description>${git.clone.pharmat}</description>
@@ -183,6 +175,12 @@
             xsi:type="predicates:RepositoryPredicate"
             project="at.ecrit.sdk"/>
       </predicate>
+      <predicate
+          xsi:type="predicates:OrPredicate">
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern="at\.ecrit.*"/>
+      </predicate>
     </workingSet>
     <workingSet
         name="${git.clone.pharmat}"
@@ -199,6 +197,6 @@
   <stream name="master"/>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
-      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.github']"/>
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
   <description>Ecrit setup provides the ecrit installation</description>
 </setup:Project>
