@@ -114,14 +114,27 @@ public class DepictionImageGenerator {
 			} else if (currentObject instanceof MPartStack) {
 				arrangeStacked(node, currentObject, children);
 			} else {
+				if (node.getData() == null) {
+					node.setData(node.getParent().getData());
+					if (node.getData() == null) {
+						node.setData(node.getParent().getParent().getData());
+						if (node.getData() == null) {
+							node.setData(treeRoot.getData());
+						}
+					}
+					
+				}
 				Rectangle rect =
 					fixRectangleBoundaries((Rectangle) treeRoot.getData(),
 						(Rectangle) node.getData());
 				drawRectangle(rect, currentObject, gc, node);
 			}
 			
-			System.out.println(node.getLevel() + ": " + node.getReference().getElementId() + " "
-				+ node.getData());
+			String nodeRefId = "No NodeReference found";
+			if (node.getReference() != null) {
+				nodeRefId = node.getReference().getElementId();
+			}
+			System.out.println(node.getLevel() + ": " + nodeRefId + " " + node.getData());
 		}
 		
 		ImageLoader loader = new ImageLoader();
@@ -181,8 +194,10 @@ public class DepictionImageGenerator {
 			List<String> labels = new ArrayList<String>();
 			List<TreeNode<MUIElement>> children = node.getParent().getChildren();
 			for (TreeNode<MUIElement> treeNode : children) {
-				String lab = ((MUILabel) treeNode.getReference()).getLabel();
-				labels.add(lab);
+				if (treeNode.getReference() != null) {
+					String lab = ((MUILabel) treeNode.getReference()).getLabel();
+					labels.add(lab);
+				}
 			}
 			label = Joiner.on(", ").join(labels);
 		} else {

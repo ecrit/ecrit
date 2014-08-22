@@ -166,7 +166,7 @@ public class TreeNode<T> {
 	 */
 	public TreeNode<T> getNodeReferencing(Object object) {
 		for (TreeNode tn : tt.breadthFirstTraversal(this)) {
-			if (tn.getReference().equals(object))
+			if (object.equals(tn.getReference()))
 				return tn;
 		}
 		return null;
