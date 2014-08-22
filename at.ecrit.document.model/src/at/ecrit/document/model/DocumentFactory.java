@@ -32,6 +32,8 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarSeparator;
+import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuContributionImpl;
+import org.eclipse.e4.ui.model.application.ui.menu.impl.ToolBarContributionImpl;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -516,6 +518,9 @@ public class DocumentFactory {
 					part.getInitiatableItems().add(ii);
 				}
 			}
+		} else if (parent instanceof MenuContributionImpl
+			|| parent instanceof ToolBarContributionImpl) {
+			// ignore
 		} else {
 			ii.setItemType(InitiatableItemType.TOOLBAR);
 			ii.setContainingToolbar((MToolBar) parent);
