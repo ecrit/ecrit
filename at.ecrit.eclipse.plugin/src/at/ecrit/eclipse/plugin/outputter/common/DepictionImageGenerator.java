@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -48,6 +49,8 @@ public class DepictionImageGenerator {
 		"rsc/icons/application_small.png");
 	private Image stackImage = ResourceManager.getPluginImage("at.ecrit.eclipse.plugin",
 		"rsc/icons/applications-stack_small.png");
+	private boolean useSmallFont = false;
+	private Font smallFont = new Font(Display.getCurrent(), "Arial", 6, SWT.NORMAL);
 	
 	public DepictionImageGenerator(Document document, File outputLocation,
 		Resource appModelResource, int width, int height){
@@ -80,10 +83,29 @@ public class DepictionImageGenerator {
 		GC gc = new GC(image);
 		
 		TreeNode<MUIElement> treeRoot = generateUITreeForPerspective(modelElement);
-		
 		treeRoot.setData(new Rectangle(0, 0, width, height));
 		
 		for (TreeNode<MUIElement> node : treeRoot.getTreeTraverser().preOrderTraversal(treeRoot)) {
+			// use parents data in case node has no data set
+			if (node.getData() == null) {
+				System.out.println("Node " + node.getReference() + node.getData());
+				node.setData(node.getParent().getData());
+				
+				if (node.getData() == null) {
+					node.setData(node.getParent().getParent().getData());
+					
+					if (node.getData() == null) {
+						node.setData(treeRoot.getData());
+					}
+				}
+			}
+			
+			// make sure rectangle starting point is inside the root windows bounds
+			Rectangle nodeRectangle = (Rectangle) node.getData();
+			if (nodeRectangle.x >= width) {
+				nodeRectangle.x = width - nodeRectangle.width;
+				node.setData(nodeRectangle);
+			}
 			List<TreeNode<MUIElement>> children = node.getChildren();
 			
 			MUIElement currentObject = node.getReference();
@@ -101,7 +123,7 @@ public class DepictionImageGenerator {
 					String[] split = containerData.split(",");
 					weight = new int[split.length];
 					for (int i = 0; i < split.length; i++) {
-						weight[i] = Integer.parseInt(split[i]);
+						weight[i] = Integer.parseInt(ensureSaveContainerData(split[i]));
 					}
 				}
 				
@@ -114,16 +136,6 @@ public class DepictionImageGenerator {
 			} else if (currentObject instanceof MPartStack) {
 				arrangeStacked(node, currentObject, children);
 			} else {
-				if (node.getData() == null) {
-					node.setData(node.getParent().getData());
-					if (node.getData() == null) {
-						node.setData(node.getParent().getParent().getData());
-						if (node.getData() == null) {
-							node.setData(treeRoot.getData());
-						}
-					}
-					
-				}
 				Rectangle rect =
 					fixRectangleBoundaries((Rectangle) treeRoot.getData(),
 						(Rectangle) node.getData());
@@ -146,6 +158,19 @@ public class DepictionImageGenerator {
 		
 		gc.dispose();
 		image.dispose();
+	}
+	
+	private String ensureSaveContainerData(String value){
+		int val = Integer.parseInt(value);
+		
+		while (val > 100) {
+			if (val % 10 == 0) {
+				val = val / 10;
+			} else {
+				return "50";
+			}
+		}
+		return val + "";
 	}
 	
 	/**
@@ -216,6 +241,10 @@ public class DepictionImageGenerator {
 		
 		if (data.width < size.x) {
 			label = wrapText(gc, data.width - 10, label);
+			if (useSmallFont) {
+				gc.setFont(smallFont);
+				useSmallFont = false;
+			}
 			size = gc.textExtent(label);
 			center = new Point(data.x + (data.width / 2), data.y + (data.height - size.y) / 2);
 		}
@@ -234,6 +263,9 @@ public class DepictionImageGenerator {
 			
 			if (maxWidth <= textSize.x || i == split.length - 1) {
 				if (i != split.length - 1) {
+					if (i == 1) {
+						useSmallFont = true;
+					}
 					sb.delete(sb.lastIndexOf(split[i]), sb.length());
 				}
 				wrapped.append(sb.toString());
@@ -357,6 +389,24 @@ public class DepictionImageGenerator {
 				ret = Arrays.copyOf(weight, children.size());
 				System.out.println(node.getReference().getElementId()
 					+ " has more weight defined, than children. Truncating.");
+			} else if (weight.length <= children.size() && weight.length == 1) {
+				ret = Arrays.copyOf(weight, children.size());
+				
+				if (children.get(0).getReference().getContainerData() != null) {
+					for (int i = 0; i < children.size(); i++) {
+						MUIElement muiElement = children.get(i).getReference();
+						if (muiElement.getContainerData() != null) {
+							String value = ensureSaveContainerData(muiElement.getContainerData());
+							ret[i] = Integer.parseInt(value);
+						}
+					}
+				} else {
+					int singleWeight = 100 / children.size();
+					for (int i = 0; i < children.size(); i++) {
+						ret[i] = singleWeight;
+					}
+				}
+				
 			} else {
 				ret = weight;
 			}
