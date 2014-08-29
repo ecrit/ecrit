@@ -89,10 +89,12 @@
 				  												${toolBarElement.modelElement.elementId}
 				  											</li>
 				  										</#if>
-				  										<p>
-				  											<i>Description</i>
-				  											${toolBarElement.description}
-				  										</p>
+				  										<#if toolBarElement.description?has_content>
+					  										<p>
+					  											<i>Description</i>
+					  											${toolBarElement.description}
+				  											</p>
+				  										</#if>
 				  									<#else>
 				  										<li id="${toolBarElement.modelElement.elementId}">
 				  											${toolBarElement.modelElement.elementId}
