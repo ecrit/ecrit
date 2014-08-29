@@ -267,6 +267,10 @@ public class DepictionImageGenerator {
 						useSmallFont = true;
 					}
 					sb.delete(sb.lastIndexOf(split[i]), sb.length());
+				} else {
+					sb.delete(sb.lastIndexOf(split[i]), sb.length());
+					sb.append("\n");
+					sb.append(split[i]);
 				}
 				wrapped.append(sb.toString());
 				wrapped.append("\n");
@@ -277,8 +281,13 @@ public class DepictionImageGenerator {
 			}
 			sb.append(separator);
 		}
-		wrapped.delete(wrapped.lastIndexOf("\n"), wrapped.length());
-		return wrapped.toString();
+		
+		String wrappedText = wrapped.toString();
+		wrappedText = wrappedText.substring(0, wrappedText.lastIndexOf("\n"));
+		if (wrapped.toString().startsWith("\n")) {
+			wrappedText = wrappedText.replaceFirst("\n", "");
+		}
+		return wrappedText;
 	}
 	
 	private String[] split(String label, int idx){
