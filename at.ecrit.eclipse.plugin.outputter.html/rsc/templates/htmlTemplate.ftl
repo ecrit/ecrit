@@ -36,7 +36,11 @@
   </#if> 
 	
 	<#list doc.applicationLayout.window as win>
-		  <h4>${win.modelElement.label} Main Menus</h4>
+		  <#if win.modelElement.label?has_content>
+		  		<h4>${win.modelElement.label} Main Menus</h4>
+		  <#else>
+		  		<h4>Main Menus</h4>
+		  </#if>
 		  <#if win.containedMenus?has_content>
 			  <#list win.containedMenus as mainMenu>
 			  	<ul>
