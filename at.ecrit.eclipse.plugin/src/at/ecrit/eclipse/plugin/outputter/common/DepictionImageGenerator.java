@@ -240,51 +240,44 @@ public class DepictionImageGenerator {
 		Point center = new Point(data.x + (data.width / 2), data.y + (data.height / 2));
 		
 		if (data.width < size.x) {
-			label = wrapText(gc, data.width - 10, label);
-			if (useSmallFont) {
-				gc.setFont(smallFont);
-				useSmallFont = false;
-			}
+			label = wrapText(split(label, 0), data.width - 10, gc);
 			size = gc.textExtent(label);
+			if (size.x >= data.width - 5 || size.y >= data.height - 5) {
+				gc.setFont(smallFont);
+				size = gc.textExtent(label);
+			}
 			center = new Point(data.x + (data.width / 2), data.y + (data.height - size.y) / 2);
 		}
 		
 		gc.drawText(label, center.x - (size.x / 2), center.y);
 	}
 	
-	private String wrapText(GC gc, int maxWidth, String label){
-		String[] split = split(label, 0);
-		StringBuilder wrapped = new StringBuilder();
+	private String wrapText(String[] segments, int max, GC gc){
 		StringBuilder sb = new StringBuilder();
+		StringBuilder finalText = new StringBuilder();
 		
-		for (int i = 0; i < split.length; i++) {
-			sb.append(split[i]);
-			Point textSize = gc.textExtent(sb.toString());
+		for (int i = 0; i < segments.length; i++) {
+			String segment = segments[i];
+			Point point = gc.textExtent(segment);
 			
-			if (maxWidth <= textSize.x || i == split.length - 1) {
-				if (i != split.length - 1) {
-					if (i == 1) {
-						useSmallFont = true;
-					}
-					sb.delete(sb.lastIndexOf(split[i]), sb.length());
-				} else {
-					sb.delete(sb.lastIndexOf(split[i]), sb.length());
-					sb.append("\n");
-					sb.append(split[i]);
-				}
-				wrapped.append(sb.toString());
-				wrapped.append("\n");
-				
-				// clear string builder and add removed text
-				sb.setLength(0);
-				sb.append(split[i]);
+			if (point.x > max) {
+				String[] segmentSplit = split(segment, 0);
+				segment = wrapText(segmentSplit, max, gc);
 			}
-			sb.append(separator);
+			
+			point = gc.textExtent(sb.toString() + segment);
+			if (point.x > max) {
+				finalText.append(sb.toString());
+				finalText.append("\n");
+				sb.setLength(0);
+				sb.append(segment);
+			} else {
+				sb.append(segment);
+			}
 		}
-		
-		String wrappedText = wrapped.toString();
+		String wrappedText = finalText.toString();
 		wrappedText = wrappedText.substring(0, wrappedText.lastIndexOf("\n"));
-		if (wrapped.toString().startsWith("\n")) {
+		if (finalText.toString().startsWith("\n")) {
 			wrappedText = wrappedText.replaceFirst("\n", "");
 		}
 		return wrappedText;
