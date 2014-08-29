@@ -65,6 +65,7 @@ import at.ecrit.document.model.internal.ElementDocumentation;
 import at.ecrit.document.model.internal.PerspectiveStackDocumentation;
 import at.ecrit.document.model.outputconverter.AbstractOutputConverter;
 import at.ecrit.document.model.outputconverter.NullOutputConverter;
+import at.ecrit.document.model.translation.TranslationResolver;
 
 public class DocumentFactory {
 	
@@ -105,6 +106,7 @@ public class DocumentFactory {
 		modelService = application.getContext().get(EModelService.class);
 		
 		AppModelHelper.initAppModel(modelService, appModelResource);
+		applyLabelMappingAsRequired(appModelResource);
 		
 		setDocumentInformation(doc, application);
 		collectApplicationLayout(doc, appModelResource);
@@ -113,6 +115,22 @@ public class DocumentFactory {
 		populateStepsWithContributions(appModelResource, doc);
 		
 		return doc;
+	}
+	
+	private static void applyLabelMappingAsRequired(Resource appModelResource){
+		TranslationResolver translator = new TranslationResolver(uri);
+		
+		for (TreeIterator<EObject> i = appModelResource.getAllContents(); i.hasNext();) {
+			EObject eObject = (EObject) i.next();
+			
+			if (eObject instanceof MUILabel) {
+				MUILabel muiLabel = (MUILabel) eObject;
+				String label = muiLabel.getLabel();
+				if (label != null && label.startsWith("%")) {
+					muiLabel.setLabel(translator.getValueFor(label));
+				}
+			}
+		}
 	}
 	
 	private static void collectApplicationLayout(Document doc, Resource appModelResource){
