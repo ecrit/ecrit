@@ -20,6 +20,7 @@ import org.eclipse.e4.ui.model.application.ui.MUILabel;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimmedWindow;
@@ -192,6 +193,10 @@ public class DocumentFactory {
 		// Collect all perspective elements
 		List<MPerspective> perspectives =
 			modelService.findElements(application, null, MPerspective.class, null);
+		if (perspectives.isEmpty()) {
+			perspectives.add(generateDefaultPerspective(application));
+		}
+		
 		for (MPerspective perspective : perspectives) {
 			DocumentedPerspective dp = EcritdocumentFactory.eINSTANCE.createDocumentedPerspective();
 			dp.setModelElement(perspective);
@@ -215,6 +220,35 @@ public class DocumentFactory {
 		}
 		
 		doc.setApplicationLayout(al);
+	}
+	
+	private static MPerspective generateDefaultPerspective(MApplication application){
+		List<MPartSashContainer> partSashContainers =
+			modelService.findElements(application, null, MPartSashContainer.class, null);
+		
+		// create dummy perspective stack with a perspective
+		MPerspectiveStack perspectiveStack =
+			modelService.createModelElement(MPerspectiveStack.class);
+		perspectiveStack.setElementId("dummy.perspective.stack");
+		
+		// add perspective stack to topWindow
+		MWindow topWindow = modelService.getTopLevelWindowFor(partSashContainers.get(0));
+		topWindow.getChildren().add(perspectiveStack);
+		
+		// generate perspective and add it to perspectiveStack
+		// add parent partSashContainer as child
+		MPerspective perspective = modelService.createModelElement(MPerspective.class);
+		perspective.setElementId("Perspective");
+		perspective.setLabel(" ");
+		perspectiveStack.getChildren().add(perspective);
+		
+		for (MPartSashContainer mpsContainer : partSashContainers) {
+			if (mpsContainer.getParent().getClass().getSimpleName().contains("TrimmedWindow")) {
+				perspective.getChildren().add(mpsContainer);
+			}
+		}
+		
+		return perspective;
 	}
 	
 	private static DocumentedTrim findOrcreateTrimElementInApplication(ApplicationLayout al,
