@@ -1,5 +1,6 @@
 package at.ecrit.document.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -16,15 +17,19 @@ import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.commands.MHandler;
 import org.eclipse.e4.ui.model.application.commands.MKeyBinding;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.MUILabel;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimmedWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+import org.eclipse.e4.ui.model.application.ui.basic.MWindowElement;
+import org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
@@ -244,14 +249,30 @@ public class DocumentFactory {
 		List<MPartSashContainer> partSashContainers =
 			modelService.findElements(application, null, MPartSashContainer.class, null);
 		
-		// create dummy perspective stack with a perspective
-		MPerspectiveStack perspectiveStack =
-			modelService.createModelElement(MPerspectiveStack.class);
-		perspectiveStack.setElementId("dummy.perspective.stack");
+		// figure out the top window
+		MWindow topWindow;
+		if (partSashContainers.size() < 1) {
+			List<MWindow> windows =
+				modelService.findElements(application, null, MWindow.class, null);
+			topWindow = windows.get(0);
+		} else {
+			topWindow = modelService.getTopLevelWindowFor(partSashContainers.get(0));
+		}
 		
-		// add perspective stack to topWindow
-		MWindow topWindow = modelService.getTopLevelWindowFor(partSashContainers.get(0));
-		topWindow.getChildren().add(perspectiveStack);
+		MPerspectiveStack perspectiveStack = null;
+		if (!topWindow.getChildren().isEmpty()) {
+			MWindowElement winElement = topWindow.getChildren().get(0);
+			if (winElement instanceof MPerspectiveStack) {
+				perspectiveStack = (MPerspectiveStack) winElement;
+			}
+		}
+		
+		// create dummy perspectiveStack if needed
+		if (perspectiveStack == null) {
+			perspectiveStack = modelService.createModelElement(MPerspectiveStack.class);
+			perspectiveStack.setElementId("dummy.perspective.stack");
+			topWindow.getChildren().add(perspectiveStack);
+		}
 		
 		// generate perspective and add it to perspectiveStack
 		// add parent partSashContainer as child
@@ -266,6 +287,21 @@ public class DocumentFactory {
 			}
 		}
 		
+		// in case there are simple shared parts without partstack or partsashcontainer
+		// create dummy objects which hold shared parts
+		if (perspective.getChildren().isEmpty()) {
+			List<MUIElement> sharedElements = topWindow.getSharedElements();
+			MPartStack partStack = modelService.createModelElement(MPartStack.class);
+			perspective.getChildren().add(partStack);
+			
+			List<MPart> partsToAdd = new ArrayList<MPart>();
+			for (MUIElement shared : sharedElements) {
+				if (shared instanceof PartImpl) {
+					partsToAdd.add((MPart) shared);
+				}
+			}
+			partStack.getChildren().addAll(partsToAdd);
+		}
 		return perspective;
 	}
 	
@@ -437,11 +473,7 @@ public class DocumentFactory {
 		int psElements = perspectiveStacks.size();
 		
 		for (MPerspectiveStack perspectiveStack : perspectiveStacks) {
-			if (perspectiveStack.getElementId() == null) {
-				findOrCreateElementId(perspectiveStack);
-				log.error("Skipping perspectiveStack due to null ID " + perspectiveStack);
-				continue;
-			}
+			findOrCreateElementId(perspectiveStack);
 			
 			PerspectiveStackDocumentation psDocu =
 				AppModelHelper.getPerspectiveStackDocumentation(perspectiveStack.getElementId());
@@ -591,7 +623,7 @@ public class DocumentFactory {
 	private static String findOrCreateElementId(MApplicationElement mAppElement){
 		String elementId = mAppElement.getElementId();
 		
-		if (elementId == null) {
+		if (elementId == null || elementId.isEmpty()) {
 			int counter = 0;
 			StringBuilder sb = new StringBuilder();
 			
