@@ -9,6 +9,7 @@ import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.MUILabel;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
+import org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
@@ -36,6 +37,7 @@ import com.google.common.collect.Iterables;
 
 public class DepictionImageGenerator {
 	
+	private static String LINEBREAK = "\n";
 	private static String[] SEPARATORS = {
 		" ", ",", "-"
 	};
@@ -112,6 +114,17 @@ public class DepictionImageGenerator {
 			if (currentObject instanceof MPerspective) {
 				// set value on children
 				arrangeHorizontal(node, currentObject, children, null);
+				MPerspective perspective = (MPerspective) currentObject;
+				if (perspective.getChildren() == null || perspective.getChildren().isEmpty()) {
+					MPart labelPart = MBasicFactory.INSTANCE.createPart();
+					labelPart.setLabel(perspective.getLabel());
+					labelPart.setElementId(perspective.getElementId() + ".part");
+					perspective.getChildren().add(labelPart);
+					Rectangle rect =
+						fixRectangleBoundaries((Rectangle) treeRoot.getData(),
+							(Rectangle) node.getData());
+					drawRectangle(rect, labelPart, gc, node);
+				}
 				
 			} else if (currentObject instanceof MPartSashContainer) {
 				// set value on children
@@ -214,7 +227,7 @@ public class DepictionImageGenerator {
 		System.out.println("Drawing " + currentObject);
 		
 		String label;
-		if (node.getParent().getReference() instanceof MPartStack) {
+		if (node.getParent() != null && node.getParent().getReference() instanceof MPartStack) {
 			gc.drawImage(stackImage, data.x + 2, data.y + 1);
 			List<String> labels = new ArrayList<String>();
 			List<TreeNode<MUIElement>> children = node.getParent().getChildren();
@@ -260,27 +273,49 @@ public class DepictionImageGenerator {
 			String segment = segments[i];
 			Point point = gc.textExtent(segment);
 			
+			// check if this segment is already to long
 			if (point.x > max) {
 				String[] segmentSplit = split(segment, 0);
 				segment = wrapText(segmentSplit, max, gc);
 			}
 			
 			point = gc.textExtent(sb.toString() + segment);
+			// text too long -> add linebreak before continuing
 			if (point.x > max) {
 				finalText.append(sb.toString());
-				finalText.append("\n");
+				finalText.append(LINEBREAK);
 				sb.setLength(0);
 				sb.append(segment);
 			} else {
 				sb.append(segment);
 			}
 		}
-		String wrappedText = finalText.toString();
-		wrappedText = wrappedText.substring(0, wrappedText.lastIndexOf("\n"));
-		if (finalText.toString().startsWith("\n")) {
-			wrappedText = wrappedText.replaceFirst("\n", "");
+		
+		if (sb.length() > 0) {
+			finalText.append(sb.toString());
 		}
-		return wrappedText;
+		
+		// remove potential first and last line break
+		return removeRedundantLinebreaks(finalText.toString());
+	}
+	
+	/**
+	 * removes potential linebreaks in the beginning/end of the parts label
+	 * 
+	 * @param text
+	 *            complete (wrapped) label
+	 * @return a string without linebreaks at first/last position
+	 */
+	private String removeRedundantLinebreaks(String text){
+		if (text.startsWith(LINEBREAK)) {
+			text = text.replaceFirst(LINEBREAK, "");
+		}
+		
+		if (text.endsWith(LINEBREAK)) {
+			int endLineBreak = text.lastIndexOf(LINEBREAK);
+			text = text.substring(0, endLineBreak);
+		}
+		return text;
 	}
 	
 	private String[] split(String label, int idx){
@@ -290,7 +325,7 @@ public class DepictionImageGenerator {
 			if (idx < SEPARATORS.length) {
 				split = split(label, idx);
 			} else {
-				split = Iterables.toArray(Splitter.fixedLength(5).split(label), String.class);
+				split = Iterables.toArray(Splitter.fixedLength(3).split(label), String.class);
 				separator = "";
 			}
 		} else {
