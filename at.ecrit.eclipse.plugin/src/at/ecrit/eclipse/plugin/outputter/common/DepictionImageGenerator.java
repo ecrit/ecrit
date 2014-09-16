@@ -73,7 +73,6 @@ public class DepictionImageGenerator {
 	
 	@SuppressWarnings("unchecked")
 	private void createDepictionImageForPerspective(MPerspective modelElement){
-		
 		String outputFileName =
 			outputLocation.getAbsolutePath() + File.separator + modelElement.getElementId()
 				+ ".png";
@@ -86,6 +85,7 @@ public class DepictionImageGenerator {
 		
 		TreeNode<MUIElement> treeRoot = generateUITreeForPerspective(modelElement);
 		treeRoot.setData(new Rectangle(0, 0, width, height));
+		int afterPartSashX = 0;
 		
 		for (TreeNode<MUIElement> node : treeRoot.getTreeTraverser().preOrderTraversal(treeRoot)) {
 			// use parents data in case node has no data set
@@ -102,8 +102,16 @@ public class DepictionImageGenerator {
 				}
 			}
 			
-			// make sure rectangle starting point is inside the root windows bounds
+			if (afterPartSashX != 0
+				&& !(node.getParent().getReference() instanceof MPartSashContainer)) {
+				Rectangle nodeRectangle = (Rectangle) node.getData();
+				nodeRectangle.x = afterPartSashX;
+				node.setData(nodeRectangle);
+				afterPartSashX = 0;
+			}
+			
 			Rectangle nodeRectangle = (Rectangle) node.getData();
+			// make sure rectangle starting point is inside the root windows bounds
 			if (nodeRectangle.x >= width) {
 				nodeRectangle.x = width - nodeRectangle.width;
 				node.setData(nodeRectangle);
@@ -145,6 +153,7 @@ public class DepictionImageGenerator {
 				} else {
 					arrangeVertical(node, currentObject, children, weight);
 				}
+				afterPartSashX = nodeRectangle.x + nodeRectangle.width;
 				
 			} else if (currentObject instanceof MPartStack) {
 				arrangeStacked(node, currentObject, children);
