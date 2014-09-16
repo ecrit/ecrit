@@ -86,6 +86,7 @@ public class DepictionImageGenerator {
 		TreeNode<MUIElement> treeRoot = generateUITreeForPerspective(modelElement);
 		treeRoot.setData(new Rectangle(0, 0, width, height));
 		int afterPartSashX = 0;
+		int linkingPoint = 0;
 		
 		for (TreeNode<MUIElement> node : treeRoot.getTreeTraverser().preOrderTraversal(treeRoot)) {
 			// use parents data in case node has no data set
@@ -102,18 +103,14 @@ public class DepictionImageGenerator {
 				}
 			}
 			
-			if (afterPartSashX != 0
-				&& !(node.getParent().getReference() instanceof MPartSashContainer)) {
-				Rectangle nodeRectangle = (Rectangle) node.getData();
-				nodeRectangle.x = afterPartSashX;
-				node.setData(nodeRectangle);
-				afterPartSashX = 0;
-			}
-			
 			Rectangle nodeRectangle = (Rectangle) node.getData();
 			// make sure rectangle starting point is inside the root windows bounds
-			if (nodeRectangle.x >= width) {
-				nodeRectangle.x = width - nodeRectangle.width;
+			if (nodeRectangle.x >= width || nodeRectangle.x + 10 >= width) {
+				if (nodeRectangle.x != linkingPoint) {
+					nodeRectangle.x = linkingPoint;
+				} else {
+					nodeRectangle.x = width - nodeRectangle.width;
+				}
 				node.setData(nodeRectangle);
 			}
 			List<TreeNode<MUIElement>> children = node.getChildren();
@@ -158,10 +155,24 @@ public class DepictionImageGenerator {
 			} else if (currentObject instanceof MPartStack) {
 				arrangeStacked(node, currentObject, children);
 			} else {
+				if (afterPartSashX != 0) {
+					MUIElement reference = node.getParent().getReference();
+					if (!(reference instanceof MPartSashContainer)
+						&& !(reference instanceof MPartStack)) {
+						Rectangle nRec = (Rectangle) node.getData();
+						nRec.x = afterPartSashX;
+						node.setData(nRec);
+						afterPartSashX = 0;
+					}
+				}
 				Rectangle rect =
 					fixRectangleBoundaries((Rectangle) treeRoot.getData(),
 						(Rectangle) node.getData());
 				drawRectangle(rect, currentObject, gc, node);
+			}
+			
+			if (node.getLevel() > 0) {
+				linkingPoint = nodeRectangle.x + nodeRectangle.width;
 			}
 			
 			String nodeRefId = "No NodeReference found";
