@@ -84,7 +84,7 @@
 				  							<#list toolBarElement.containedInToolBar as contToolBar>
 				  								<#if toolBar.elementId == contToolBar.elementId>
 				  									<#if toolBarElement.modelElement.class.simpleName == "HandledToolItemImpl" || toolBarElement.modelElement.class.simpleName == "DirectToolItemImpl">
-				  										<#if toolBarElement.modelElement.label??>
+				  										<#if toolBarElement.modelElement.label?? && toolBarElement.modelElement.label != "">
 					  										<li id="${toolBarElement.modelElement.elementId}">
 					  											${toolBarElement.modelElement.label}
 					  										</li>
