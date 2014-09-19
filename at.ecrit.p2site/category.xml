@@ -6,7 +6,7 @@
    <feature url="features/at.ecrit.eclipse.plugin.feature_0.0.1.qualifier.jar" id="at.ecrit.eclipse.plugin.feature" version="0.0.0">
       <category name="ecrit"/>
    </feature>
-   <feature url="features/at.ecrit.eclipse.plugin.outputter.latex.feature_0.0.1.qualifier.jar" id="at.ecrit.eclipse.plugin.outputter.latex.feature" version="0.0.1.qualifier">
+   <feature url="features/at.ecrit.eclipse.plugin.outputter.latex.feature_0.1.0.qualifier.jar" id="at.ecrit.eclipse.plugin.outputter.latex.feature" version="0.1.0.qualifier">
       <category name="ecrit"/>
    </feature>
    <category-def name="ecritE4Tooling" label="Eclipse e4 tooling extension"/>

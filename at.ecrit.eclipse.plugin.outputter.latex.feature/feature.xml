@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="at.ecrit.eclipse.plugin.outputter.latex.feature"
-      label="LaTeX Outputter (Experimental)"
-      version="0.0.1.qualifier"
+      label="LaTeX Outputter"
+      version="0.1.0.qualifier"
       provider-name="ecrit.at">
 
    <description url="http://www.example.com/description">

@@ -29,4 +29,5 @@
   	<relativePath>../at.ecrit.releng</relativePath>
   </parent>
   <packaging>eclipse-test-plugin</packaging>
+<version>0.1.0-SNAPSHOT</version>
 </project>

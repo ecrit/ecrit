@@ -8,4 +8,5 @@
   	<relativePath>../at.ecrit.releng</relativePath>
   	<version>0.0.1-SNAPSHOT</version>
   </parent>
+<version>0.1.0-SNAPSHOT</version>
 </project>

@@ -2,7 +2,7 @@
 <feature
       id="at.ecrit.e4.tools.extension.feature"
       label="Ecrit e4 tooling extension"
-      version="0.0.1.qualifier"
+      version="0.1.0.qualifier"
       provider-name="ecrit.at">
 
    <description url="http://www.ecrit.at/">

@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Core
+Bundle-Name: Ecrit Core
 Bundle-SymbolicName: at.ecrit.e4.tools.extension.core;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: ecrit.at
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.e4.tools.emf.ui;bundle-version="0.12.0",

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Latex Outputter Test
 Bundle-SymbolicName: at.ecrit.eclipse.plugin.outputter.latex.test
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: ecrit.at
 Fragment-Host: at.ecrit.eclipse.plugin.outputter.latex
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

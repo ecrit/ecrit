@@ -31,11 +31,4 @@
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>ecrit_latex_doc/bibliography.bib</name>
-			<type>1</type>
-			<location>C:/Program Files (x86)/MiKTeX 2.9/bibtex/bib/arsclassica/Bibliography.bib</location>
-		</link>
-	</linkedResources>
 </projectDescription>

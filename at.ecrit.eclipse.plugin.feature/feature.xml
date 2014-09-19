@@ -2,7 +2,7 @@
 <feature
       id="at.ecrit.eclipse.plugin.feature"
       label="Eclipse Ecrit Plugin"
-      version="0.0.1.qualifier"
+      version="0.1.0.qualifier"
       provider-name="ecrit.at">
 
    <description url="http://www.ecrit.at">

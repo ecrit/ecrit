@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ecrit Latex Outputter
 Bundle-SymbolicName: at.ecrit.eclipse.plugin.outputter.latex;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: ecrit.at
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.0",
