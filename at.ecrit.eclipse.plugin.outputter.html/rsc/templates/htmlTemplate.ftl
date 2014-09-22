@@ -233,7 +233,14 @@
     </#list>
     
     <h2>Error messages and problem resolution</h2>
-    Requires extension of the application model
+    Requires extension of the application model. 
+    It is already possible though to include a FAQ-File (*.txt or *.textile) in your application model. 
+    See FAQ tab (next to 'About' tab).
+    
+    <#if (doc.applicationProperties.faq?has_content)>
+    	<h3> FAQ </h3>
+    	<p>${doc.applicationProperties.faq}</p>
+	</#if>
     
     <h2>Glossary</h2>
     Requires deeper connection to the EMF data model

@@ -338,7 +338,15 @@ This perspective contains the following parts
 %	CHAPTER - Error messages and problem resolution
 %----------------------------------------------------------------------------------------
 \chapter{Error messages and problem resolution}
-Document any error messages an problem resolutions in this chapter.
+Document any error messages an problem resolutions in this chapter. This requires an extension of the application model.
+It is already possible though to include a FAQ-File (*.txt or *.textile) in your application model. 
+See FAQ tab (next to 'About' tab).
+
+
+<#if (doc.applicationProperties.faq?has_content)>
+	\section{FAQ}
+	${doc.applicationProperties.faq}
+</#if>
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER - Glossary
