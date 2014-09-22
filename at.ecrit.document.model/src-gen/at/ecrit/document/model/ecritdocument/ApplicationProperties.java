@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getPerspectiveSwitcher <em>Perspective Switcher</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#isHasConceptOfMultipleUsers <em>Has Concept Of Multiple Users</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getUserRolesDescription <em>User Roles Description</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getFaq <em>Faq</em>}</li>
  * </ul>
  * </p>
  *
@@ -181,5 +182,31 @@ public interface ApplicationProperties extends EObject {
 	 * @generated
 	 */
 	void setUserRolesDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Faq</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Faq</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Faq</em>' attribute.
+	 * @see #setFaq(String)
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationProperties_Faq()
+	 * @model
+	 * @generated
+	 */
+	String getFaq();
+
+	/**
+	 * Sets the value of the '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getFaq <em>Faq</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Faq</em>' attribute.
+	 * @see #getFaq()
+	 * @generated
+	 */
+	void setFaq(String value);
 
 } // ApplicationProperties

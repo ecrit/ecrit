@@ -4,16 +4,18 @@ import at.ecrit.document.model.DocumentFactory;
 
 public class ApplicationDocumentation {
 	
-	private String about, install, multiUser, userRolesDesc, requiresLogin, perspectiveSwitcher;
+	private String about, install, multiUser, userRolesDesc, requiresLogin, perspectiveSwitcher,
+			faq;
 	
 	public ApplicationDocumentation(String about, String install, String multiUser,
-		String userRolesDesc, String requiresLogin, String perspectiveSwitcher){
+		String userRolesDesc, String requiresLogin, String perspectiveSwitcher, String faq){
 		this.about = about;
 		this.install = install;
 		this.multiUser = multiUser;
 		this.userRolesDesc = userRolesDesc;
 		this.requiresLogin = requiresLogin;
 		this.perspectiveSwitcher = perspectiveSwitcher;
+		this.faq = faq;
 	}
 	
 	public String getAbout(){
@@ -56,6 +58,13 @@ public class ApplicationDocumentation {
 			perspectiveSwitcher = "";
 		}
 		return DocumentFactory.outputConverter.parse(perspectiveSwitcher);
+	}
+	
+	public String getFAQ(){
+		if (faq == null) {
+			faq = "";
+		}
+		return DocumentFactory.outputConverter.parse(faq);
 	}
 	
 }

@@ -1,5 +1,9 @@
 package at.ecrit.document.model.internal;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Map;
 
 import org.eclipse.e4.ui.model.application.MApplication;
@@ -48,7 +52,32 @@ public class AppModelHelper {
 			persistedState.get(Constants.PERSISTENT_STATE_MULTIUSER),
 			persistedState.get(Constants.PERSISTENT_STATE_USERROLES),
 			persistedState.get(Constants.PERSISTENT_STATE_REQUIRES_LOGIN),
-			persistedState.get(Constants.PERSISTENT_STATE_PERSPECTIVE_SWITCH));
+			persistedState.get(Constants.PERSISTENT_STATE_PERSPECTIVE_SWITCH),
+			readFAQFile(persistedState.get(Constants.PERSISTENT_STATE_FAQ)));
+	}
+	
+	private static String readFAQFile(String path){
+		StringBuilder sbFAQ = new StringBuilder();
+		if (path == null || path.isEmpty()) {
+			return "";
+		}
+		
+		File file = new File(path);
+		if (!file.exists()) {
+			return "";
+		}
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(file.getAbsolutePath()))) {
+			String sCurrentLine;
+			
+			while ((sCurrentLine = br.readLine()) != null) {
+				sbFAQ.append(sCurrentLine);
+				sbFAQ.append("\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return sbFAQ.toString();
 	}
 	
 	public static PerspectiveStackDocumentation getPerspectiveStackDocumentation(String elementId){

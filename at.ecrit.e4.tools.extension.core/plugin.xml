@@ -11,6 +11,9 @@
       </editorTab>
       <editorTab
             contribution="at.ecrit.e4.tools.extension.core.EcritPerspectiveStackDocumentationElementEditorContribution">
+      </editorTab>
+      <editorTab
+            contribution="at.ecrit.e4.tools.extension.core.EcritFAQDocumentationElementEditorContribution">
       </editorTab>      
    </extension>
    <extension

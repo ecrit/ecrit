@@ -14,10 +14,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
@@ -118,6 +120,48 @@ public class MapEntryEditorComposite extends AbstractEditorComposite {
 			checked.setText("");
 			
 			context.bindValue(textProp.observeDelayed(200, checked), value_description);
+		}
+	}
+	
+	public MapEntryEditorComposite(Composite parent, int style, EMFDataBindingContext context,
+		WritableValue master, EditingDomain editingDomain, String label, String key,
+		final String filterPath, final String[] filterExt){
+		super(parent, style);
+		setLayout(new GridLayout(3, false));
+		
+		master.addValueChangeListener(new MasterValueChangeListener(value_description, key));
+		value_description.addValueChangeListener(new PersistedStateValueChangeListener(key, master,
+			editingDomain));
+		
+		{
+			Label l = new Label(this, SWT.NONE);
+			l.setText(label);
+			GridData gd_l = new GridData(GridData.HORIZONTAL_ALIGN_END);
+			gd_l.minimumWidth = 100;
+			gd_l.widthHint = 100;
+			l.setLayoutData(gd_l);
+			
+			final Text txtFAQFile = new Text(this, SWT.BORDER);
+			txtFAQFile.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+			txtFAQFile.setMessage("Set path of FAQ file");
+			
+			final Button btnBrowse = new Button(this, SWT.PUSH);
+			btnBrowse.setText("Browse");
+			btnBrowse.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e){
+					FileDialog fd = new FileDialog(btnBrowse.getShell());
+					fd.setText("Select FAQ file");
+					fd.setFilterPath(filterPath);
+					fd.setFilterExtensions(filterExt);
+					String selected = fd.open();
+					if (selected != null) {
+						txtFAQFile.setText(selected);
+					}
+				}
+			});
+			
+			context.bindValue(textProp.observeDelayed(200, txtFAQFile), value_description);
 		}
 	}
 	

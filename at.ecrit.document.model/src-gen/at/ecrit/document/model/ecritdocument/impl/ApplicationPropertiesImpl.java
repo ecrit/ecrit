@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#getPerspectiveSwitcher <em>Perspective Switcher</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#isHasConceptOfMultipleUsers <em>Has Concept Of Multiple Users</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#getUserRolesDescription <em>User Roles Description</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#getFaq <em>Faq</em>}</li>
  * </ul>
  * </p>
  *
@@ -147,6 +148,26 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected String userRolesDescription = USER_ROLES_DESCRIPTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFaq() <em>Faq</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFaq()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FAQ_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFaq() <em>Faq</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFaq()
+	 * @generated
+	 * @ordered
+	 */
+	protected String faq = FAQ_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -298,6 +319,27 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getFaq() {
+		return faq;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFaq(String newFaq) {
+		String oldFaq = faq;
+		faq = newFaq;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.APPLICATION_PROPERTIES__FAQ, oldFaq, faq));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -313,6 +355,8 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 				return isHasConceptOfMultipleUsers();
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION:
 				return getUserRolesDescription();
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__FAQ:
+				return getFaq();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -344,6 +388,9 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION:
 				setUserRolesDescription((String)newValue);
 				return;
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__FAQ:
+				setFaq((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -374,6 +421,9 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION:
 				setUserRolesDescription(USER_ROLES_DESCRIPTION_EDEFAULT);
 				return;
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__FAQ:
+				setFaq(FAQ_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -398,6 +448,8 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 				return hasConceptOfMultipleUsers != HAS_CONCEPT_OF_MULTIPLE_USERS_EDEFAULT;
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION:
 				return USER_ROLES_DESCRIPTION_EDEFAULT == null ? userRolesDescription != null : !USER_ROLES_DESCRIPTION_EDEFAULT.equals(userRolesDescription);
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__FAQ:
+				return FAQ_EDEFAULT == null ? faq != null : !FAQ_EDEFAULT.equals(faq);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -424,6 +476,8 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 		result.append(hasConceptOfMultipleUsers);
 		result.append(", userRolesDescription: ");
 		result.append(userRolesDescription);
+		result.append(", faq: ");
+		result.append(faq);
 		result.append(')');
 		return result.toString();
 	}

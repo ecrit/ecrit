@@ -450,6 +450,7 @@ public class DocumentFactory {
 		appProperties.setUserRolesDescription(al.getUserRolesDesc());
 		appProperties.setRequiresLogin(al.getRequiresLogin());
 		appProperties.setPerspectiveSwitcher(loadPerspectiveSwitchInformation());
+		appProperties.setFaq(al.getFAQ());
 		
 		doc.setApplicationProperties(appProperties);
 		

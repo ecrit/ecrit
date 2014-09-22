@@ -11,4 +11,6 @@ public class Constants {
 	public static final String PERSISTENT_STATE_INSTALL = "install";
 	public static final String PERSISTENT_STATE_REQUIRES_LOGIN = "requireslogin";
 	public static final String PERSISTENT_STATE_PERSPECTIVE_SWITCH = "perspectiveswitch";
+	
+	public static final String PERSISTENT_STATE_FAQ = "faq";
 }

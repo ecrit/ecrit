@@ -824,6 +824,15 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getApplicationProperties_Faq() {
+		return (EAttribute)applicationPropertiesEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDocumentedMenu() {
 		return documentedMenuEClass;
 	}
@@ -1103,6 +1112,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__PERSPECTIVE_SWITCHER);
 		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS);
 		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION);
+		createEAttribute(applicationPropertiesEClass, APPLICATION_PROPERTIES__FAQ);
 
 		documentedMenuEClass = createEClass(DOCUMENTED_MENU);
 		createEReference(documentedMenuEClass, DOCUMENTED_MENU__MODEL_ELEMENT);
@@ -1269,6 +1279,7 @@ public class EcritdocumentPackageImpl extends EPackageImpl implements Ecritdocum
 		initEAttribute(getApplicationProperties_PerspectiveSwitcher(), ecorePackage.getEString(), "perspectiveSwitcher", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplicationProperties_HasConceptOfMultipleUsers(), ecorePackage.getEBoolean(), "hasConceptOfMultipleUsers", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplicationProperties_UserRolesDescription(), ecorePackage.getEString(), "userRolesDescription", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplicationProperties_Faq(), ecorePackage.getEString(), "faq", null, 0, 1, ApplicationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentedMenuEClass, DocumentedMenu.class, "DocumentedMenu", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDocumentedMenu_ModelElement(), theMenuPackage.getMenu(), null, "modelElement", null, 1, 1, DocumentedMenu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
