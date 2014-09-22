@@ -4,11 +4,8 @@ package at.ecrit.document.model.ecritdocument.impl;
 
 import at.ecrit.document.model.ecritdocument.ApplicationProperties;
 import at.ecrit.document.model.ecritdocument.EcritdocumentPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -24,6 +21,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#getRequiresInstallation <em>Requires Installation</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#getPerspectiveSwitcher <em>Perspective Switcher</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#isHasConceptOfMultipleUsers <em>Has Concept Of Multiple Users</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.impl.ApplicationPropertiesImpl#getUserRolesDescription <em>User Roles Description</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,6 +127,26 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected boolean hasConceptOfMultipleUsers = HAS_CONCEPT_OF_MULTIPLE_USERS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUserRolesDescription() <em>User Roles Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUserRolesDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String USER_ROLES_DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUserRolesDescription() <em>User Roles Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUserRolesDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String userRolesDescription = USER_ROLES_DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -259,6 +277,27 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getUserRolesDescription() {
+		return userRolesDescription;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUserRolesDescription(String newUserRolesDescription) {
+		String oldUserRolesDescription = userRolesDescription;
+		userRolesDescription = newUserRolesDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcritdocumentPackage.APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION, oldUserRolesDescription, userRolesDescription));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -272,6 +311,8 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 				return getPerspectiveSwitcher();
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS:
 				return isHasConceptOfMultipleUsers();
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION:
+				return getUserRolesDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -281,6 +322,7 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -298,6 +340,9 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 				return;
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS:
 				setHasConceptOfMultipleUsers((Boolean)newValue);
+				return;
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION:
+				setUserRolesDescription((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -326,6 +371,9 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS:
 				setHasConceptOfMultipleUsers(HAS_CONCEPT_OF_MULTIPLE_USERS_EDEFAULT);
 				return;
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION:
+				setUserRolesDescription(USER_ROLES_DESCRIPTION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -348,6 +396,8 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 				return PERSPECTIVE_SWITCHER_EDEFAULT == null ? perspectiveSwitcher != null : !PERSPECTIVE_SWITCHER_EDEFAULT.equals(perspectiveSwitcher);
 			case EcritdocumentPackage.APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS:
 				return hasConceptOfMultipleUsers != HAS_CONCEPT_OF_MULTIPLE_USERS_EDEFAULT;
+			case EcritdocumentPackage.APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION:
+				return USER_ROLES_DESCRIPTION_EDEFAULT == null ? userRolesDescription != null : !USER_ROLES_DESCRIPTION_EDEFAULT.equals(userRolesDescription);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -372,6 +422,8 @@ public class ApplicationPropertiesImpl extends MinimalEObjectImpl.Container impl
 		result.append(perspectiveSwitcher);
 		result.append(", hasConceptOfMultipleUsers: ");
 		result.append(hasConceptOfMultipleUsers);
+		result.append(", userRolesDescription: ");
+		result.append(userRolesDescription);
 		result.append(')');
 		return result.toString();
 	}

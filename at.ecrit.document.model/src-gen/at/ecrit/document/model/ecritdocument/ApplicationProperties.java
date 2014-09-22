@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getRequiresInstallation <em>Requires Installation</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getPerspectiveSwitcher <em>Perspective Switcher</em>}</li>
  *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#isHasConceptOfMultipleUsers <em>Has Concept Of Multiple Users</em>}</li>
+ *   <li>{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getUserRolesDescription <em>User Roles Description</em>}</li>
  * </ul>
  * </p>
  *
@@ -154,5 +155,31 @@ public interface ApplicationProperties extends EObject {
 	 * @generated
 	 */
 	void setHasConceptOfMultipleUsers(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>User Roles Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>User Roles Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>User Roles Description</em>' attribute.
+	 * @see #setUserRolesDescription(String)
+	 * @see at.ecrit.document.model.ecritdocument.EcritdocumentPackage#getApplicationProperties_UserRolesDescription()
+	 * @model
+	 * @generated
+	 */
+	String getUserRolesDescription();
+
+	/**
+	 * Sets the value of the '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getUserRolesDescription <em>User Roles Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>User Roles Description</em>' attribute.
+	 * @see #getUserRolesDescription()
+	 * @generated
+	 */
+	void setUserRolesDescription(String value);
 
 } // ApplicationProperties

@@ -1108,13 +1108,22 @@ public interface EcritdocumentPackage extends EPackage {
 	int APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS = 4;
 
 	/**
+	 * The feature id for the '<em><b>User Roles Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION = 5;
+
+	/**
 	 * The number of structural features of the '<em>Application Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_PROPERTIES_FEATURE_COUNT = 5;
+	int APPLICATION_PROPERTIES_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Application Properties</em>' class.
@@ -2169,6 +2178,17 @@ public interface EcritdocumentPackage extends EPackage {
 	EAttribute getApplicationProperties_HasConceptOfMultipleUsers();
 
 	/**
+	 * Returns the meta object for the attribute '{@link at.ecrit.document.model.ecritdocument.ApplicationProperties#getUserRolesDescription <em>User Roles Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>User Roles Description</em>'.
+	 * @see at.ecrit.document.model.ecritdocument.ApplicationProperties#getUserRolesDescription()
+	 * @see #getApplicationProperties()
+	 * @generated
+	 */
+	EAttribute getApplicationProperties_UserRolesDescription();
+
+	/**
 	 * Returns the meta object for class '{@link at.ecrit.document.model.ecritdocument.DocumentedMenu <em>Documented Menu</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2935,6 +2955,14 @@ public interface EcritdocumentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute APPLICATION_PROPERTIES__HAS_CONCEPT_OF_MULTIPLE_USERS = eINSTANCE.getApplicationProperties_HasConceptOfMultipleUsers();
+
+		/**
+		 * The meta object literal for the '<em><b>User Roles Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION_PROPERTIES__USER_ROLES_DESCRIPTION = eINSTANCE.getApplicationProperties_UserRolesDescription();
 
 		/**
 		 * The meta object literal for the '{@link at.ecrit.document.model.ecritdocument.impl.DocumentedMenuImpl <em>Documented Menu</em>}' class.
