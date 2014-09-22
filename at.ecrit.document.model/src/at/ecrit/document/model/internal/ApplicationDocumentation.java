@@ -4,13 +4,14 @@ import at.ecrit.document.model.DocumentFactory;
 
 public class ApplicationDocumentation {
 	
-	private String about, install, multiUser, requiresLogin, perspectiveSwitcher;
+	private String about, install, multiUser, userRolesDesc, requiresLogin, perspectiveSwitcher;
 	
 	public ApplicationDocumentation(String about, String install, String multiUser,
-		String requiresLogin, String perspectiveSwitcher){
+		String userRolesDesc, String requiresLogin, String perspectiveSwitcher){
 		this.about = about;
 		this.install = install;
 		this.multiUser = multiUser;
+		this.userRolesDesc = userRolesDesc;
 		this.requiresLogin = requiresLogin;
 		this.perspectiveSwitcher = perspectiveSwitcher;
 	}
@@ -34,6 +35,13 @@ public class ApplicationDocumentation {
 			return false;
 		}
 		return true;
+	}
+	
+	public String getUserRolesDesc(){
+		if (userRolesDesc == null || userRolesDesc.isEmpty()) {
+			return "";
+		}
+		return DocumentFactory.outputConverter.parse(userRolesDesc);
 	}
 	
 	public boolean getRequiresLogin(){

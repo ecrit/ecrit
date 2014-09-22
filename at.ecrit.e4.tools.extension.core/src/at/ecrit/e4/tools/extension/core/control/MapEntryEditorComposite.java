@@ -28,7 +28,7 @@ import at.ecrit.e4.tools.extension.core.listener.PersistedStateValueChangeListen
 public class MapEntryEditorComposite extends AbstractEditorComposite {
 	
 	final WritableValue value_description = new WritableValue("", String.class);
-	private Text checked;
+	public Text checked;
 	
 	/**
 	 * Create the composite.

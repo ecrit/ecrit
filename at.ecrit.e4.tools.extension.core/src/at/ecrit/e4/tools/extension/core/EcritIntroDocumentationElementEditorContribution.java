@@ -45,11 +45,16 @@ public class EcritIntroDocumentationElementEditorContribution extends
 				"Installation", Constants.PERSISTENT_STATE_INSTALL);
 		installComp.setLayoutData(gd);
 		
-		Composite multiUser =
+		final Composite multiUser =
 			new MapEntryEditorComposite(parent, SWT.None, context, master, editingDomain,
 				"MultiUser", Constants.PERSISTENT_STATE_MULTIUSER, false);
 		GridData gd_Btn = new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1);
 		multiUser.setLayoutData(gd_Btn);
+		
+		final Composite userRolesDesc =
+			new MapEntryEditorComposite(parent, SWT.None, context, master, editingDomain,
+				"UserRoles", Constants.PERSISTENT_STATE_USERROLES);
+		userRolesDesc.setLayoutData(gd);
 		
 		Composite reqLoginComp =
 			new MapEntryEditorComposite(parent, SWT.None, context, master, editingDomain,

@@ -447,8 +447,10 @@ public class DocumentFactory {
 		appProperties.setAbout(al.getAbout());
 		appProperties.setRequiresInstallation(al.getInstall());
 		appProperties.setHasConceptOfMultipleUsers(al.getMultiUser());
+		appProperties.setUserRolesDescription(al.getUserRolesDesc());
 		appProperties.setRequiresLogin(al.getRequiresLogin());
 		appProperties.setPerspectiveSwitcher(loadPerspectiveSwitchInformation());
+		
 		doc.setApplicationProperties(appProperties);
 		
 		if (el.getDescription() != null) {
