@@ -13,6 +13,11 @@
   <h2>Introduction</h2>
   <p>${doc.applicationProperties.about}</p>
   
+  <#if (doc.applicationProperties.userRolesDescription?has_content)>
+  	<h3>User Roles</h3>
+  	<p>${doc.applicationProperties.userRolesDescription}</p>
+  </#if>
+  
   <h2>Conventions used in this documentation</h2>  
   <h2>Concept of operations</h2>
   

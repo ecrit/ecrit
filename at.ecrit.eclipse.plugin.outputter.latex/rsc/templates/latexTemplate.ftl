@@ -137,6 +137,11 @@ ${doc.creationDate?string("EEEE, MMMM dd, yyyy, hh:mm:ss a '('zzz')'")}
 \section{About ${doc.title}}\index{About ${doc.title} }
 ${doc.applicationProperties.about}
 
+<#if (doc.applicationProperties.userRolesDescription?has_content)>
+	\section{User Roles}\index{User Roles}
+	${doc.applicationProperties.userRolesDescription}
+</#if>
+
 \chapter{Concept of operations}
 
 \section{Software un/installation}\index{Software un/installation}
