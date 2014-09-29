@@ -294,7 +294,7 @@ public class DepictionImageGenerator {
 			Point point = gc.textExtent(segment);
 			
 			// check if this segment is already to long
-			if (point.x > max) {
+			if (point.x > max && segment.length() > 1) {
 				String[] segmentSplit = split(segment, 0);
 				segment = wrapText(segmentSplit, max, gc);
 			}
@@ -345,7 +345,8 @@ public class DepictionImageGenerator {
 			if (idx < SEPARATORS.length) {
 				split = split(label, idx);
 			} else {
-				split = Iterables.toArray(Splitter.fixedLength(3).split(label), String.class);
+				// min. split is a single letter
+				split = Iterables.toArray(Splitter.fixedLength(1).split(label), String.class);
 				separator = "";
 			}
 		} else {
