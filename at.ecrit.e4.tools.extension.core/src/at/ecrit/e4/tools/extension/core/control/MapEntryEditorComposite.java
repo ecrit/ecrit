@@ -11,8 +11,6 @@ import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
@@ -31,6 +29,7 @@ public class MapEntryEditorComposite extends AbstractEditorComposite {
 	
 	final WritableValue value_description = new WritableValue("", String.class);
 	public Text checked;
+	public SourceViewer viewer;
 	
 	/**
 	 * Create the composite.
@@ -62,8 +61,7 @@ public class MapEntryEditorComposite extends AbstractEditorComposite {
 			gd_l.widthHint = 100;
 			l.setLayoutData(gd_l);
 			
-			final SourceViewer viewer =
-				new SourceViewer(this, null, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+			viewer = new SourceViewer(this, null, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 			GridData gd_Viewer = new GridData(GridData.FILL_BOTH);
 			gd_Viewer.horizontalSpan = 2;
 			viewer.getControl().setLayoutData(gd_Viewer);
@@ -73,13 +71,6 @@ public class MapEntryEditorComposite extends AbstractEditorComposite {
 			viewer.enableOperation(ISourceViewer.QUICK_ASSIST, true);
 			viewer.enableOperation(ISourceViewer.CONTENTASSIST_CONTEXT_INFORMATION, true);
 			viewer.configure(new TextileSourceViewerConfiguration());
-			viewer.getControl().addKeyListener(new KeyAdapter() {
-				public void keyPressed(KeyEvent e){
-					if ((e.character == SWT.SPACE) && ((e.stateMask & SWT.MOD1) != 0)) {
-						viewer.doOperation(ISourceViewer.CONTENTASSIST_PROPOSALS);
-					}
-				}
-			});
 			
 			context.bindValue(textProp.observeDelayed(200, viewer.getTextWidget()),
 				value_description);

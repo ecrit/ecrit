@@ -35,7 +35,6 @@ public class TextileContentAssistProcessor implements IContentAssistProcessor {
 			char currChar;
 			while (currOffset >= 0 && !Character.isWhitespace(currChar = doc.getChar(currOffset))) {
 				currWord = currChar + currWord;
-				System.out.println(currWord);
 				currOffset--;
 			}
 			
